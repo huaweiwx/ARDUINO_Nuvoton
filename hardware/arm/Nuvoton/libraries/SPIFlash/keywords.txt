@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map SPI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SPIFlash	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+ReadMidDid	KEYWORD2 
+ChipErase	KEYWORD2
+ReadStatusReg	KEYWORD2
+WriteStatusReg	KEYWORD2
+PageProgram	KEYWORD2
+WaitReady	KEYWORD2
+ReadData	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

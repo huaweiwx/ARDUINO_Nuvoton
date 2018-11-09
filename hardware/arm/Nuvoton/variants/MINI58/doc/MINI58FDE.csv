@@ -1,0 +1,52 @@
+/****************************************************************************
+ * @file     MINI58FDE.csv
+ * @version  V1.09
+ * @Date     2018/10/17-19:29:05 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2018 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU: MINI58FDE(TSSOP20)
+Pin,Current Multi Function
+1,P1.2
+2,P1.3
+3,P1.4
+4,P1.5
+5,nRESET
+6,P3.2
+7,P3.4
+8,P3.5
+9,P5.1
+10,P5.0
+11,VSS
+12,P2.4
+13,P2.5
+14,P4.6/ICE_CLK
+15,P4.7/ICE_DAT
+16,P0.7
+17,P0.6
+18,P0.5
+19,P0.4
+20,VDD
+
+Pin,Description
+1,P1.2/ADC_CH2/UART0_RXD/PWM0_CH0
+2,P1.3/ADC_CH3/UART0_TXD/PWM0_CH1
+3,P1.4/ADC_CH4/UART1_RXD/PWM0_CH4
+4,P1.5/ADC_CH5/UART1_TXD
+5,nRESET
+6,P3.2/INT0/TM0_EXT/STADC
+7,P3.4/TM0_CNT_OUT/I2C0_SDA
+8,P3.5/TM1_CNT_OUT/I2C0_SCL
+9,P5.1/XT1_OUT/I2C1_SCL/UART0_RXD
+10,P5.0/XT1_IN/I2C1_SDA/UART0_TXD
+11,VSS
+12,P2.4/UART1_RXD/PWM0_CH2
+13,P2.5/UART1_TXD/PWM0_CH3
+14,P4.6/ICE_CLK/UART1_RXD
+15,P4.7/ICE_DAT/UART1_TXD
+16,P0.7/SPI0_CLK/PWM0_CH0
+17,P0.6/SPI0_MISO/PWM0_CH1
+18,P0.5/SPI0_MOSI/PWM0_CH4
+19,P0.4/SPI0_SS/PWM0_CH5
+20,VDD
+/*** (C) COPYRIGHT 2013-2018 Nuvoton Technology Corp. ***/

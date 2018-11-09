@@ -1,0 +1,816 @@
+# See: http://code.google.com/p/arduino/wiki/Platforms
+menu.cpu=Processor
+menu.clock_source=Clock source
+menu.osc_speed=OSC Speed(MHz)
+menu.cpu_speed=CPU Speed(MHz)
+menu.serial=Serial communication
+menu.upload_method=Upload method
+menu.log=Debug Log_level
+
+################################################################################################
+#                                   Nuvoton-M451                                               #
+################################################################################################
+M451.name=NuTiny_M451(256kFLASH 32kRAM)
+M451.build.vid=0x2341
+M451.build.pid=0x003e
+
+M451.build.core=nuvoton
+M451.build.mcu=cortex-m4
+M451.build.f_cpu=72000000L
+
+M451.build.series=M451Series
+M451.build.variant=M451
+M451.build.board=NuTiny_M451
+M451.build.extra_flags=-D__M451__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+M451.build.ldscript=256K_32K_flash.ld
+M451.upload.maximum_size=262144
+M451.upload.maximum_data_size=32768
+
+M451.menu.serial.UART0=Serial0
+M451.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+M451.menu.serial.UART1=Serial1
+M451.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+M451.menu.log.default=Release(no-exceptions)
+M451.menu.log.default.build.log_level=-fno-exceptions
+M451.menu.log.Release=Release(exceptions)
+M451.menu.log.fatal=FATAL
+M451.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M451.menu.log.error=ERROR
+M451.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M451.menu.log.warning=WARNING
+M451.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M451.menu.log.info=INFO
+M451.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M451.menu.log.debug=DEBUG
+M451.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M451.menu.log.trace=TRACE
+M451.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+M451.upload.tool=nulinkburn
+M451.upload.protocol=nuc-ba
+M451.upload.use_1200bps_touch=false
+M451.upload.wait_for_upload_port=false
+M451.upload.native_usb=false
+
+################################################################################################
+#                                   Nuvoton-M240                                               #
+################################################################################################
+NUC200.name=NuEdu_NUC240(128kFLASH 16kRAM) 
+NUC200.build.vid=0x2341
+NUC200.build.pid=0x003e
+
+NUC200.build.core=nuvoton
+NUC200.build.mcu=cortex-m0
+NUC200.build.f_cpu=48000000L
+
+NUC200.build.series=NUC200Series
+NUC200.build.variant=NUC240
+NUC200.build.board=NuEdu_NUC240
+NUC200.build.extra_flags=-D__NUC240__ -DCHIP100P -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+NUC200.build.ldscript=128K_16K_flash.ld
+NUC200.upload.maximum_size=131072
+NUC200.upload.maximum_data_size=16384
+
+NUC200.menu.serial.UART0=Serial0
+NUC200.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NUC200.menu.serial.UART1=Serial1
+NUC200.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NUC200.menu.log.default=Release(no-exceptions)
+NUC200.menu.log.default.build.log_level=-fno-exceptions
+NUC200.menu.log.Release=Release(exceptions)
+NUC200.menu.log.fatal=FATAL
+NUC200.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC200.menu.log.error=ERROR
+NUC200.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC200.menu.log.warning=WARNING
+NUC200.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC200.menu.log.info=INFO
+NUC200.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC200.menu.log.debug=DEBUG
+NUC200.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC200.menu.log.trace=TRACE
+NUC200.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NUC200.upload.tool=nulinkburn
+NUC200.upload.protocol=sam-ba
+NUC200.upload.use_1200bps_touch=false
+NUC200.upload.wait_for_upload_port=false
+NUC200.upload.native_usb=false
+
+
+############################################### NuEdu-Uno ##########################################
+NUC131.name=NuEdu-Uno(NUC131) 
+NUC131.build.vid=0x2341
+NUC131.build.pid=0x003e
+
+NUC131.build.core=nuvoton
+NUC131.build.mcu=cortex-m0
+NUC131.build.f_cpu=50000000L
+
+NUC131.build.series=NUC131
+NUC131.build.board=NuEdu_NUC131
+NUC131.build.variant=NUC131_UNO
+NUC131.build.extra_flags=-D__NUC131__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+NUC131.build.ldscript=64K_8K_flash.ld
+NUC131.upload.maximum_size=65536
+NUC131.upload.maximum_data_size=8192
+
+NUC131.menu.serial.UART0=Serial0
+NUC131.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NUC131.menu.serial.UART1=Serial1
+NUC131.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NUC131.menu.log.default=Release(no-exceptions)
+NUC131.menu.log.default.build.log_level=-fno-exceptions
+NUC131.menu.log.Release=Release(exceptions)
+NUC131.menu.log.fatal=FATAL
+NUC131.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC131.menu.log.error=ERROR
+NUC131.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC131.menu.log.warning=WARNING
+NUC131.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC131.menu.log.info=INFO
+NUC131.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC131.menu.log.debug=DEBUG
+NUC131.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC131.menu.log.trace=TRACE
+NUC131.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NUC131.upload.tool=nulinkburn
+NUC131.upload.protocol=nuc-ba
+NUC131.upload.use_1200bps_touch=false
+NUC131.upload.wait_for_upload_port=false
+NUC131.upload.native_usb=false
+
+############################################### NuMaker_NANO100 ##########################################
+NANO130.name=NANO130
+NANO130.build.vid=0x2341
+NANO130.build.pid=0x003e
+
+NANO130.build.core=nuvoton
+NANO130.build.mcu=cortex-m0
+NANO130.build.f_cpu=42000000L
+
+NANO130.menu.cpu.numake_nano100=NuMaker_NANO100(128kFLASH 16kRAM)
+
+NANO130.build.series=Nano100Series
+NANO130.build.variant=NANO130
+NANO130.build.board=__NUVOTON__
+NANO130.build.extra_flags= -D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+NANO130.build.ldscript=128K_16K_flash.ld
+NANO130.upload.maximum_size=65536
+NANO130.upload.maximum_data_size=8192
+
+NANO130.menu.serial.UART0=Serial0
+NANO130.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NANO130.menu.serial.UART1=Serial1
+NANO130.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NANO130.menu.log.default=Release(no-exceptions)
+NANO130.menu.log.default.build.log_level=-fno-exceptions
+NANO130.menu.log.Release=Release(exceptions)
+NANO130.menu.log.fatal=FATAL
+NANO130.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO130.menu.log.error=ERROR
+NANO130.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO130.menu.log.warning=WARNING
+NANO130.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO130.menu.log.info=INFO
+NANO130.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO130.menu.log.debug=DEBUG
+NANO130.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO130.menu.log.trace=TRACE
+NANO130.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NANO130.upload.tool=nulinkburn
+NANO130.upload.protocol=nuc-ba
+NANO130.upload.use_1200bps_touch=false
+NANO130.upload.wait_for_upload_port=false
+NANO130.upload.native_usb=false
+
+############################################### NuEdu-NANO120 ##########################################
+NANO120.name=NANO120
+NANO120.build.vid=0x2341
+NANO120.build.pid=0x003e
+
+NANO120.build.core=nuvoton
+NANO120.build.mcu=cortex-m0
+NANO120.build.f_cpu=42000000L
+NANO120.build.variant=Nano120
+NANO120.build.board=NANO120
+NANO120.build.series=Nano100Series
+NANO120.build.extra_flags= -D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+
+NANO120.menu.cpu.nano120ke3=NuTiny_EVB(NANO120KE3 128kFLASH 16kRAM)
+NANO120.menu.cpu.nano120ke3.build.ldscript=128K_16K_flash.ld
+NANO120.menu.cpu.nano120ke3.upload.maximum_size=125952
+NANO120.menu.cpu.nano120ke3.upload.maximum_data_size=16384
+
+NANO120.menu.cpu.nano120ke2=GENERIC_NANO120KE2 (64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120ke2.build.ldscript=64K_8K_flash.ld
+NANO120.menu.cpu.nano120ke2.upload.maximum_size=65536
+NANO120.menu.cpu.nano120ke2.upload.maximum_data_size=8192
+
+NANO120.menu.clock_source.HXT12=HXT
+NANO120.menu.clock_source.HXT12.build.osc=HXT12
+NANO120.menu.clock_source.HIRC=HIRC
+NANO120.menu.clock_source.HIRC.build.osc=HIRC
+
+NANO120.menu.cpu_speed.f48=48M
+NANO120.menu.cpu_speed.f48.build.f_cpu=48000000L -D{build.osc}
+NANO120.menu.cpu_speed.f32=32M
+NANO120.menu.cpu_speed.f32.build.f_cpu=32000000L -D{build.osc}
+NANO120.menu.cpu_speed.f24=24M
+NANO120.menu.cpu_speed.f24.build.f_cpu=24000000L -D{build.osc}
+
+NANO120.menu.serial.UART0=Serial0
+NANO120.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NANO120.menu.serial.UART1=Serial1
+NANO120.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NANO120.menu.log.default=Release(no-exceptions)
+NANO120.menu.log.default.build.log_level=-fno-exceptions
+NANO120.menu.log.Release=Release(exceptions)
+NANO120.menu.log.fatal=FATAL
+NANO120.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO120.menu.log.error=ERROR
+NANO120.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO120.menu.log.warning=WARNING
+NANO120.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO120.menu.log.info=INFO
+NANO120.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO120.menu.log.debug=DEBUG
+NANO120.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO120.menu.log.trace=TRACE
+NANO120.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NANO120.upload.tool=nulinkburn
+NANO120.upload.protocol=nuc-ba
+NANO120.upload.use_1200bps_touch=false
+NANO120.upload.wait_for_upload_port=false
+NANO120.upload.native_usb=false
+
+
+############################################### NuMaker-TRIO ##########################################
+NANO1x2.name=NANO1X2
+NANO1x2.build.vid=0x2341
+NANO1x2.build.pid=0x003e
+
+NANO1x2.build.core=nuvoton
+NANO1x2.build.mcu=cortex-m0
+NANO1x2.build.f_cpu=32000000L
+NANO1x2.build.variant=NANO102ZC2_TRIO
+NANO1x2.build.board=NANO102
+NANO1x2.build.series=Nano1X2Series
+
+NANO1x2.menu.cpu.numake_trio=NuMaker_TRIO(NANO102ZC2 32kFLASH 8kRAM)
+NANO1x2.menu.cpu.numake_trio.build.extra_flags= -D__NANO1X2__ -D__NANO102ZC2AN__ -D__IOT_EVB__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+NANO1x2.menu.cpu.numake_trio.build.ldscript=32K_8K_flash.ld
+NANO1x2.menu.cpu.numake_trio.upload.maximum_size=32768
+NANO1x2.menu.cpu.numake_trio.upload.maximum_data_size=8192
+
+NANO1x2.menu.serial.UART0=Serial0
+NANO1x2.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NANO1x2.menu.serial.UART1=Serial1
+NANO1x2.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NANO1x2.menu.log.default=Release(no-exceptions)
+NANO1x2.menu.log.default.build.log_level=-fno-exceptions
+NANO1x2.menu.log.Release=Release(exceptions)
+NANO1x2.menu.log.fatal=FATAL
+NANO1x2.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.error=ERROR
+NANO1x2.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.warning=WARNING
+NANO1x2.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.info=INFO
+NANO1x2.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.debug=DEBUG
+NANO1x2.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.trace=TRACE
+NANO1x2.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NANO1x2.upload.use_1200bps_touch=false
+NANO1x2.upload.wait_for_upload_port=false
+NANO1x2.upload.tool=nulinkburn
+NANO1x2.upload.protocol=nuc-ba
+NANO1x2.upload.native_usb=false
+
+
+############################################### NANO102S ##########################################
+#nuvoton_nano102s.name=NANO102S
+#nuvoton_nano102s.build.vid=0x2341
+#nuvoton_nano102s.build.pid=0x003e
+
+#nuvoton_nano102s.build.core=nuvoton
+#nuvoton_nano102s.build.mcu=cortex-m0
+#nuvoton_nano102s.build.variant=NANO1X2
+#nuvoton_nano102s.build.f_cpu=32000000L
+#nuvoton_nano102s.build.extra_flags= -D__NANO1X2__ -D__NANO102ZC2AN__ -D__IOT_EVB__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+#nuvoton_nano102s.build.board=__NUVOTON__
+#nuvoton_nano102s.build.ldscript=32K_8K_flash.ld
+#nuvoton_nano102s.build.series=Nano1X2Series
+#nuvoton_nano102s.upload.maximum_size=32768
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+#nuvoton_nano102s.menu.log.default=Release(no-exceptions)
+#nuvoton_nano102s.menu.log.default.build.log_level=-fno-exceptions
+#nuvoton_nano102s.menu.log.Release=Release(exceptions)
+#nuvoton_nano102s.menu.log.fatal=FATAL
+#nuvoton_nano102s.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.error=ERROR
+#nuvoton_nano102s.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.warning=WARNING
+#nuvoton_nano102s.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.info=INFO
+#nuvoton_nano102s.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.debug=DEBUG
+#nuvoton_nano102s.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.trace=TRACE
+#nuvoton_nano102s.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+#nuvoton_nano102s.upload.tool=nulinkburn
+#nuvoton_nano102s.upload.protocol=nuc-ba
+#nuvoton_nano102s.upload.wait_for_upload_port=false
+#nuvoton_nano102s.upload.use_1200bps_touch=false
+#nuvoton_nano102s.upload.native_usb=false
+
+#################################################################
+#                       nuvoton m480                            #
+#################################################################
+M480.name=M48x
+
+M480.build.core=nuvoton
+M480.build.mcu=cortex-m4
+M480.build.f_cpu=192000000L
+M480.build.variant=M480
+M480.build.board=M480
+
+M480.menu.cpu.m481_64I=GENERIC_M481SI(LQP64)(512kFLASH 160kRAM)
+M480.menu.cpu.m481_64I.build.extra_flags= -DCHIP64P -DM481S
+M480.menu.cpu.m481_64I.build.series=M480
+M480.menu.cpu.m481_64I.build.variant=M480
+M480.menu.cpu.m481_64I.build.board=GENERIC_M481S
+M480.menu.cpu.m481_64I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m481_64I.upload.maximum_size=524288
+M480.menu.cpu.m481_64I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m481_64G=GENERIC_M481SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.m481_64G.build.extra_flags= -DCHIP64P -DM481S
+M480.menu.cpu.m481_64G.build.series=M480
+M480.menu.cpu.m481_64G.build.variant=M480
+M480.menu.cpu.m481_64G.build.board=GENERIC_M481S
+M480.menu.cpu.m481_64G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m481_64G.upload.maximum_size=262144
+M480.menu.cpu.m481_64G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m481_48I=GENERIC_M481LI(LQP48)(512kFLASH 160kRAM)
+M480.menu.cpu.m481_48I.build.extra_flags= -DCHIP48P -DM481L
+M480.menu.cpu.m481_48I.build.series=M480
+M480.menu.cpu.m481_48I.build.variant=M480
+M480.menu.cpu.m481_48I.build.board=GENERIC_M481L
+M480.menu.cpu.m481_48I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m481_48I.upload.maximum_size=524288
+M480.menu.cpu.m481_48I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m481_48G=GENERIC_M481LG(LQP48)(256kFLASH 96kRAM)
+M480.menu.cpu.m481_48G.build.extra_flags= -DCHIP48P -DM481L
+M480.menu.cpu.m481_48G.build.series=M480
+M480.menu.cpu.m481_48G.build.variant=M480
+M480.menu.cpu.m481_48G.build.board=GENERIC_M481L
+M480.menu.cpu.m481_48G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m481_48G.upload.maximum_size=262144
+M480.menu.cpu.m481_48G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m481_33I=GENERIC_M481ZI(QFN33)(512kFLASH 160kRAM)
+M480.menu.cpu.m481_33I.build.extra_flags= -DCHIP33P -DM481Z
+M480.menu.cpu.m481_33I.build.series=M480
+M480.menu.cpu.m481_33I.build.variant=M480
+M480.menu.cpu.m481_33I.build.board=GENERIC_M481Z
+M480.menu.cpu.m481_33I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m481_33I.upload.maximum_size=524288
+M480.menu.cpu.m481_33I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m481_33G=GENERIC_M481ZG(QFN33)(256kFLASH 96kRAM)
+M480.menu.cpu.m481_33G.build.extra_flags= -DCHIP33P -DM481Z
+M480.menu.cpu.m481_33G.build.series=M480
+M480.menu.cpu.m481_33G.build.variant=M480
+M480.menu.cpu.m481_33G.build.board=GENERIC_M481Z
+M480.menu.cpu.m481_33G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m481_33G.upload.maximum_size=262144
+M480.menu.cpu.m481_33G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m482_128I=GENERIC_M482KI(LQP128)(512kFLASH 160kRAM)
+M480.menu.cpu.m482_128I.build.extra_flags= -DCHIP128P -DM482K
+M480.menu.cpu.m482_128I.build.series=M480
+M480.menu.cpu.m482_128I.build.variant=M480
+M480.menu.cpu.m482_128I.build.board=GENERIC_M482K
+M480.menu.cpu.m482_128I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m482_128I.upload.maximum_size=524288
+M480.menu.cpu.m482_128I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m482_128G=GENERIC_M482KG(LQP128)(256kFLASH 96kRAM)
+M480.menu.cpu.m482_128G.build.extra_flags= -DCHIP128P -DM482K
+M480.menu.cpu.m482_128G.build.series=M480
+M480.menu.cpu.m482_128G.build.variant=M480
+M480.menu.cpu.m482_128G.build.board=GENERIC_M482K
+M480.menu.cpu.m482_128G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m482_128G.upload.maximum_size=262144
+M480.menu.cpu.m482_128G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m482_64I=GENERIC_M482SI(LQP64)(512kFLASH 160kRAM)
+M480.menu.cpu.m482_64I.build.extra_flags= -DCHIP64P -DM482S
+M480.menu.cpu.m482_64I.build.series=M480
+M480.menu.cpu.m482_64I.build.variant=M480
+M480.menu.cpu.m482_64I.build.board=GENERIC_M482S
+M480.menu.cpu.m482_64I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m482_64I.upload.maximum_size=524288
+M480.menu.cpu.m482_64I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m482_64G=GENERIC_M482SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.m482_64G.build.extra_flags= -DCHIP64P -DM482S
+M480.menu.cpu.m482_64G.build.series=M480
+M480.menu.cpu.m482_64G.build.variant=M480
+M480.menu.cpu.m482_64G.build.board=GENERIC_M482S
+M480.menu.cpu.m482_64G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m482_64G.upload.maximum_size=262144
+M480.menu.cpu.m482_64G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m482_48I=GENERIC_M482LI(LQP48)(512kFLASH 160kRAM)
+M480.menu.cpu.m482_48I.build.extra_flags= -DCHIP48P -DM482L
+M480.menu.cpu.m482_48I.build.series=M480
+M480.menu.cpu.m482_48I.build.variant=M480
+M480.menu.cpu.m482_48I.build.board=GENERIC_M482L
+M480.menu.cpu.m482_48I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m482_48I.upload.maximum_size=524288
+M480.menu.cpu.m482_48I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m482_48G=GENERIC_M482LG(LQP48)(256kFLASH 96kRAM)
+M480.menu.cpu.m482_48G.build.extra_flags= -DCHIP48P -DM482L
+M480.menu.cpu.m482_48G.build.series=M480
+M480.menu.cpu.m482_48G.build.variant=M480
+M480.menu.cpu.m482_48G.build.board=GENERIC_M482L
+M480.menu.cpu.m482_48G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m482_48G.upload.maximum_size=262144
+M480.menu.cpu.m482_48G.upload.maximum_data_size=98304
+
+M480.menu.cpu.m482_33I=GENERIC_M482ZI(QFN33)(512kFLASH 160kRAM)
+M480.menu.cpu.m482_33I.build.extra_flags= -DCHIP33P -DM482Z
+M480.menu.cpu.m482_33I.build.series=M480
+M480.menu.cpu.m482_33I.build.variant=M480
+M480.menu.cpu.m482_33I.build.board=GENERIC_M482Z
+M480.menu.cpu.m482_33I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m482_33I.upload.maximum_size=524288
+M480.menu.cpu.m482_33I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m483_128=GENERIC_M483K(LQP128)(512kFLASH 160kRAM)
+M480.menu.cpu.m483_128.build.extra_flags= -DCHIP128P -DM483K
+M480.menu.cpu.m483_128.build.series=M480
+M480.menu.cpu.m483_128.build.variant=M480
+M480.menu.cpu.m483_128.build.board=GENERIC_M483K
+M480.menu.cpu.m483_128.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m483_128.upload.maximum_size=524288
+M480.menu.cpu.m483_128.upload.maximum_data_size=163840
+
+M480.menu.cpu.m483_64I=GENERIC_M483SI(LQP64)(512kFLASH 160kRAM)
+M480.menu.cpu.m483_64I.build.extra_flags= -DCHIP64P -DM483S
+M480.menu.cpu.m483_64I.build.series=M480
+M480.menu.cpu.m483_64I.build.variant=M480
+M480.menu.cpu.m483_64I.build.board=GENERIC_M483S
+M480.menu.cpu.m483_64I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m483_64I.upload.maximum_size=524288
+M480.menu.cpu.m483_64I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m483_64G=GENERIC_M483SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.m483_64G.build.extra_flags= -DCHIP64P -DM483S
+M480.menu.cpu.m483_64G.build.series=M480
+M480.menu.cpu.m483_64G.build.variant=M480
+M480.menu.cpu.m483_64G.build.board=GENERIC_M483S
+M480.menu.cpu.m483_64G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m483_64G.upload.maximum_size=262144
+M480.menu.cpu.m483_64G.upload.maximum_data_size=98304
+
+
+M480.menu.cpu.m484_128=GENERIC_M484K(LQP128)(512kFLASH 160kRAM)
+M480.menu.cpu.m484_128.build.extra_flags= -DCHIP128P -DM484K
+M480.menu.cpu.m484_128.build.series=M480
+M480.menu.cpu.m484_128.build.variant=M480
+M480.menu.cpu.m484_128.build.board=GENERIC_M484K
+M480.menu.cpu.m484_128.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m484_128.upload.maximum_size=524288
+M480.menu.cpu.m484_128.upload.maximum_data_size=163840
+
+M480.menu.cpu.m484_64I=GENERIC_M484SI(LQP64)(512kFLASH 160kRAM)
+M480.menu.cpu.m484_64I.build.extra_flags= -DCHIP64P -DM484S
+M480.menu.cpu.m484_64I.build.series=M480
+M480.menu.cpu.m484_64I.build.variant=M480
+M480.menu.cpu.m484_64I.build.board=GENERIC_M484S
+M480.menu.cpu.m484_64I.build.ldscript=512K_160K_flash.ld
+M480.menu.cpu.m484_64I.upload.maximum_size=524288
+M480.menu.cpu.m484_64I.upload.maximum_data_size=163840
+
+M480.menu.cpu.m484_64G=GENERIC_M484SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.m484_64G.build.extra_flags= -DCHIP64P -DM484S
+M480.menu.cpu.m484_64G.build.series=M480
+M480.menu.cpu.m484_64G.build.variant=M480
+M480.menu.cpu.m484_64G.build.board=GENERIC_M484S
+M480.menu.cpu.m484_64G.build.ldscript=256K_96K_flash.ld
+M480.menu.cpu.m484_64G.upload.maximum_size=262144
+M480.menu.cpu.m484_64G.upload.maximum_data_size=98304
+
+M480.menu.clock_source.HIRC192=HIRC(192MHz)
+M480.menu.clock_source.HIRC192.build.f_cpu=192000000L -DHIRC
+M480.menu.clock_source.HXT192=HXT_12M(192MMHz)
+M480.menu.clock_source.HXT192.build.f_cpu=192000000L -DHXT12
+
+M480.menu.serial.UART0=Serial0
+M480.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+M480.menu.serial.UART1=Serial1
+M480.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+M480.menu.log.default=Release(no-exceptions)
+M480.menu.log.default.build.log_level=-fno-exceptions
+M480.menu.log.Release=Release(exceptions)
+M480.menu.log.fatal=FATAL
+M480.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M480.menu.log.error=ERROR
+M480.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M480.menu.log.warning=WARNING
+M480.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M480.menu.log.info=INFO
+M480.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M480.menu.log.debug=DEBUG
+M480.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M480.menu.log.trace=TRACE
+M480.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+M480.upload.tool=nulinkburn
+M480.upload.protocol=nuc-ba
+M480.upload.use_1200bps_touch=false
+M480.upload.wait_for_upload_port=false
+M480.upload.native_usb=false
+
+########################################################
+#                  nuvoton m05x                       #
+########################################################
+M05x.name=M05x
+
+M05x.build.core=nuvoton
+M05x.build.mcu=cortex-m0
+M05x.build.f_cpu=22118400L
+M05x.build.variant=M0516
+M05x.build.board=M0516
+
+M05x.menu.cpu.m0516_48=GENERIC_M0516L(LQP48)(64kFLASH 4kRAM)
+M05x.menu.cpu.m0516_48.build.extra_flags= -DCHIP48P -DM0516L
+M05x.menu.cpu.m0516_48.build.series=M051Series
+M05x.menu.cpu.m0516_48.build.variant=M051
+M05x.menu.cpu.m0516_48.build.board=M0516L
+M05x.menu.cpu.m0516_48.build.ldscript=64K_4K_flash.ld
+M05x.menu.cpu.m0516_48.upload.maximum_size=65536
+M05x.menu.cpu.m0516_48.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m0516_33=GENERIC_M0516Z(QFN33) (64kFLASH 4kRAM)
+M05x.menu.cpu.m0516_33.build.extra_flags= -DCHIP33P -DM0516Z
+M05x.menu.cpu.m0516_33.build.series=M051Series
+M05x.menu.cpu.m0516_33.build.variant=M051
+M05x.menu.cpu.m0516_33.build.board=GENERIC_M0516Z
+M05x.menu.cpu.m0516_33.build.ldscript=64K_4K_flash.ld
+M05x.menu.cpu.m0516_33.upload.maximum_size=65536
+M05x.menu.cpu.m0516_33.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m058_48=GENERIC_M058L(LQP48)  (32kFLASH 4kRAM)
+M05x.menu.cpu.m058_48.build.extra_flags= -DCHIP48P -DM058L
+M05x.menu.cpu.m058_48.build.series=M058S
+M05x.menu.cpu.m058_48.build.variant=M058S
+M05x.menu.cpu.m058_48.build.board=GENERIC_M058L
+M05x.menu.cpu.m058_48.build.ldscript=32K_4K_flash.ld
+M05x.menu.cpu.m058_48.upload.maximum_size=32768
+M05x.menu.cpu.m058_48.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m058_33=GENERIC_M058Z(QFN33)  (32kFLASH 4kRAM)
+M05x.menu.cpu.m058_33.build.extra_flags= -DCHIP33P -DM058Z
+M05x.menu.cpu.m058_33.build.series=M058S
+M05x.menu.cpu.m058_33.build.variant=M058S
+M05x.menu.cpu.m058_33.build.board=GENERIC_M058Z
+M05x.menu.cpu.m058_33.build.ldscript=32K_4K_flash.ld
+M05x.menu.cpu.m058_33.upload.maximum_size=32768
+M05x.menu.cpu.m058_33.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m058_20=GENERIC_M058S(TSSOP20)(32kFLASH 4kRAM)
+M05x.menu.cpu.m058_20.build.extra_flags= -DCHIP20P -DM058s
+M05x.menu.cpu.m058_20.build.series=M058S
+M05x.menu.cpu.m058_20.build.variant=M058S
+M05x.menu.cpu.m058_20.build.board=GENERIC_M058S
+M05x.menu.cpu.m058_20.build.ldscript=32K_4K_flash.ld
+M05x.menu.cpu.m058_20.upload.maximum_size=32768
+M05x.menu.cpu.m058_20.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m054_48=GENERIC_M054L(LQP48)  (16kFLASH 4kRAM)
+M05x.menu.cpu.m054_48.build.extra_flags= -DCHIP48P -DM054L
+M05x.menu.cpu.m054_48.build.series=M051Series
+M05x.menu.cpu.m054_48.build.variant=M051
+M05x.menu.cpu.m054_48.build.board=GENERIC_M054L
+M05x.menu.cpu.m054_48.build.ldscript=16K_4K_flash.ld
+M05x.menu.cpu.m054_48.upload.maximum_size=16384
+M05x.menu.cpu.m054_48.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m054_33=GENERIC_M054Z(QFN33)  (16kFLASH 4kRAM)
+M05x.menu.cpu.m054_33.build.extra_flags= -DCHIP33P -DM054Z
+M05x.menu.cpu.m054_33.build.series=M051Series
+M05x.menu.cpu.m054_33.build.variant=M051
+M05x.menu.cpu.m054_33.build.board=GENERIC_M054Z
+M05x.menu.cpu.m054_33.build.ldscript=16K_4K_flash.ld
+M05x.menu.cpu.m054_33.upload.maximum_size=16384
+M05x.menu.cpu.m054_33.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m052_48=GENERIC_M052L(LQP48)   (8kFLASH 4kRAM)
+M05x.menu.cpu.m052_48.build.extra_flags= -DCHIP48P -DM052L
+M05x.menu.cpu.m052_48.build.series=M051Series
+M05x.menu.cpu.m052_48.build.variant=M051
+M05x.menu.cpu.m052_48.build.board=GENERIC_M052L
+M05x.menu.cpu.m052_48.build.ldscript=8K_4K_flash.ld
+M05x.menu.cpu.m052_48.upload.maximum_size=8192
+M05x.menu.cpu.m052_48.upload.maximum_data_size=4096
+
+M05x.menu.cpu.m052_33=GENERIC_M052Z(QFN33)   (8kFLASH 4kRAM)
+M05x.menu.cpu.m052_33.build.extra_flags= -DCHIP33P -DM052Z
+M05x.menu.cpu.m052_33.build.series=M051Series
+M05x.menu.cpu.m052_33.build.variant=M051
+M05x.menu.cpu.m052_33.build.board=GENERIC_M052Z
+M05x.menu.cpu.m052_33.build.ldscript=8K_4K_flash.ld
+M05x.menu.cpu.m052_33.upload.maximum_size=8192
+M05x.menu.cpu.m052_33.upload.maximum_data_size=4096
+
+M05x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+M05x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
+M05x.menu.clock_source.HXT1=HXT_12M(48MMHz)
+M05x.menu.clock_source.HXT1.build.f_cpu=48000000L -DHXT12
+M05x.menu.clock_source.HXT2=HXT_12M(24MMHz)
+M05x.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
+
+M05x.menu.serial.UART0=Serial0
+M05x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+M05x.menu.serial.UART1=Serial1
+M05x.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+M05x.menu.log.default=Release(no-exceptions)
+M05x.menu.log.default.build.log_level=-fno-exceptions
+M05x.menu.log.Release=Release(exceptions)
+M05x.menu.log.fatal=FATAL
+M05x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M05x.menu.log.error=ERROR
+M05x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M05x.menu.log.warning=WARNING
+M05x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M05x.menu.log.info=INFO
+M05x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M05x.menu.log.debug=DEBUG
+M05x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M05x.menu.log.trace=TRACE
+M05x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+M05x.upload.tool=nulinkburn
+M05x.upload.protocol=nuc-ba
+M05x.upload.use_1200bps_touch=false
+M05x.upload.wait_for_upload_port=false
+M05x.upload.native_usb=false
+
+########################################################
+#                  nuvoton mini5X                      #
+########################################################
+MINI5x.name=MINI5x
+
+MINI5x.build.core=nuvoton
+MINI5x.build.mcu=cortex-m0
+MINI5x.build.f_cpu=22118400L
+MINI5x.build.variant=MINI58
+MINI5x.build.board=GENERIC_MINI58FDE
+
+MINI5x.menu.cpu.MINI58_48=GENERIC_MINI58L(LQP48)  (32kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI58_48.build.extra_flags= -DCHIP48P -DMINI58L
+MINI5x.menu.cpu.MINI58_48.build.variant=MINI58
+MINI5x.menu.cpu.MINI58_48.build.board=GENERIC_MINI58L
+MINI5x.menu.cpu.MINI58_48.build.series=Mini58Series
+MINI5x.menu.cpu.MINI58_48.build.ldscript=32K_4K_flash.ld
+MINI5x.menu.cpu.MINI58_48.upload.maximum_size=32768
+MINI5x.menu.cpu.MINI58_48.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI58_33=GENERIC_MINI58T/Z(QFN33)(32kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI58_33.build.extra_flags= -DCHIP33P -DMINI58TZ
+MINI5x.menu.cpu.MINI58_33.build.variant=MINI58
+MINI5x.menu.cpu.MINI58_33.build.board=GENERIC_MINI58TZ
+MINI5x.menu.cpu.MINI58_33.build.series=Mini58Series
+MINI5x.menu.cpu.MINI58_33.build.ldscript=32K_4K_flash.ld
+MINI5x.menu.cpu.MINI58_33.upload.maximum_size=32768
+MINI5x.menu.cpu.MINI58_33.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI58_20=GENERIC_MINI58F(TSSOP20)(32kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI58_20.build.extra_flags= -DCHIP20P -DMINI58F
+MINI5x.menu.cpu.MINI58_20.build.variant=MINI58
+MINI5x.menu.cpu.MINI58_20.build.board=GENERIC_MINI58F
+MINI5x.menu.cpu.MINI58_20.build.series=Mini58Series
+MINI5x.menu.cpu.MINI58_20.build.ldscript=32K_4K_flash.ld
+MINI5x.menu.cpu.MINI58_20.upload.maximum_size=32768
+MINI5x.menu.cpu.MINI58_20.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI54_48=GENERIC_MINI54L(LQP48)  (16kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI54_48.build.extra_flags= -DCHIP48P -DMINI54L
+MINI5x.menu.cpu.MINI54_48.build.variant=MINI51
+MINI5x.menu.cpu.MINI54_48.build.board=GENERIC_MINI54L
+MINI5x.menu.cpu.MINI54_48.build.series=Mini51Series
+MINI5x.menu.cpu.MINI54_48.build.ldscript=16K_4K_flash.ld
+MINI5x.menu.cpu.MINI54_48.upload.maximum_size=16384
+MINI5x.menu.cpu.MINI54_48.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI54_33=GENERIC_MINI54T/Z(QEN33)(16kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI54_33.build.extra_flags= -DCHIP33P -DMINI54TZ
+MINI5x.menu.cpu.MINI54_33.build.variant=MINI51
+MINI5x.menu.cpu.MINI54_33.build.board=GENERIC_MINI54TZ
+MINI5x.menu.cpu.MINI54_33.build.series=Mini51Series
+MINI5x.menu.cpu.MINI54_33.build.ldscript=16K_4K_flash.ld
+MINI5x.menu.cpu.MINI54_33.upload.maximum_size=16384
+MINI5x.menu.cpu.MINI54_33.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI54_20=GENERIC_MINI54F(TSSOP20)(16kFLASH 4kRAM)
+MINI5x.menu.cpu.MINI54_20.build.extra_flags= -DCHIP20P -DMINI54F
+MINI5x.menu.cpu.MINI54_20.build.variant=MINI51
+MINI5x.menu.cpu.MINI54_20.build.board=GENERIC_MINI54F
+MINI5x.menu.cpu.MINI54_20.build.series=Mini51Series
+MINI5x.menu.cpu.MINI54_20.build.ldscript=16K_4K_flash.ld
+MINI5x.menu.cpu.MINI54_20.upload.maximum_size=16384
+MINI5x.menu.cpu.MINI54_20.upload.maximum_data_size=4096
+
+MINI5x.menu.cpu.MINI52_48=GENERIC_MINI52L(LQP48)   (8kFLASH 2kRAM)
+MINI5x.menu.cpu.MINI52_48.build.extra_flags= -DCHIP48P -DMINI52L
+MINI5x.menu.cpu.MINI52_48.build.variant=MINI51
+MINI5x.menu.cpu.MINI52_48.build.board=GENERIC_MINI52L
+MINI5x.menu.cpu.MINI52_48.build.series=Mini51Series
+MINI5x.menu.cpu.MINI52_48.build.ldscript=8K_2K_flash.ld
+MINI5x.menu.cpu.MINI52_48.upload.maximum_size=8192
+MINI5x.menu.cpu.MINI52_48.upload.maximum_data_size=2048
+
+MINI5x.menu.cpu.MINI52_33=GENERIC_MINI52T/Z(QEN33) (8kFLASH 2kRAM)
+MINI5x.menu.cpu.MINI52_33.build.extra_flags= -DCHIP33P -DMINI52TZ
+MINI5x.menu.cpu.MINI52_33.build.variant=MINI51
+MINI5x.menu.cpu.MINI52_33.build.board=GENERIC_MINI52TZ
+MINI5x.menu.cpu.MINI52_33.build.series=Mini51Series
+MINI5x.menu.cpu.MINI52_33.build.ldscript=8K_2K_flash.ld
+MINI5x.menu.cpu.MINI52_33.upload.maximum_size=8192
+MINI5x.menu.cpu.MINI52_33.upload.maximum_data_size=2048
+
+MINI5x.menu.cpu.MINI52_20=GENERIC_MINI52F(TSSOP20) (8kFLASH 2kRAM)
+MINI5x.menu.cpu.MINI52_20.build.extra_flags= -DCHIP20P -DMINI52F
+MINI5x.menu.cpu.MINI52_20.build.variant=MINI51
+MINI5x.menu.cpu.MINI52_20.build.board=GENERIC_MINI52F
+MINI5x.menu.cpu.MINI52_20.build.series=Mini51Series
+MINI5x.menu.cpu.MINI52_20.build.ldscript=8K_2K_flash.ld
+MINI5x.menu.cpu.MINI52_20.upload.maximum_size=8192
+MINI5x.menu.cpu.MINI52_20.upload.maximum_data_size=2048
+
+MINI5x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+MINI5x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
+MINI5x.menu.clock_source.HXT125=HXT_12M(50MMHz)
+MINI5x.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
+#MINI5x.menu.clock_source.HXT1210=HXT_12M(100MMHz)
+#MINI5x.menu.clock_source.HXT1210.build.f_cpu=100000000L -DHXT12
+
+MINI5x.menu.serial.UART0=Serial0
+MINI5x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+MINI5x.menu.serial.UART1=Serial1
+MINI5x.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+MINI5x.menu.log.default=Release(no-exceptions)
+MINI5x.menu.log.default.build.log_level=-fno-exceptions
+MINI5x.menu.log.Release=Release(exceptions)
+MINI5x.menu.log.fatal=FATAL
+MINI5x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+MINI5x.menu.log.error=ERROR
+MINI5x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+MINI5x.menu.log.warning=WARNING
+MINI5x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+MINI5x.menu.log.info=INFO
+MINI5x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+MINI5x.menu.log.debug=DEBUG
+MINI5x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+MINI5x.menu.log.trace=TRACE
+MINI5x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+MINI5x.upload.tool=nulinkburn
+MINI5x.upload.protocol=nuc-ba
+MINI5x.upload.use_1200bps_touch=false
+MINI5x.upload.wait_for_upload_port=false
+MINI5x.upload.native_usb=false
+
+############################################### The end ##########################################

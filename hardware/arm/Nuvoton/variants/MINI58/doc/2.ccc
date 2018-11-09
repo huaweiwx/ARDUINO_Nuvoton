@@ -1,0 +1,43 @@
+/****************************************************************************
+ * @file     2.c
+ * @version  V1.09
+ * @Date     2018/10/17-19:29:20 
+ * @brief    NuMicro generated code file
+ *
+ * Copyright (C) 2013-2018 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+
+/********************
+MCU: MINI58FDE(TSSOP20)
+Pin Configuration:
+Pin 14: ICE_CLK
+Pin 15: ICE_DAT
+********************/
+
+#include "Mini58Series.h";
+/*
+ * @brief This function provides the configued MFP registers
+ * @param None
+ * @return None
+ */
+void SYS_Init(void)
+{
+    //SYS->P0_MFP = 0x00000000;
+    //SYS->P1_MFP = 0x00000000;
+    //SYS->P2_MFP = 0x00000000;
+    //SYS->P3_MFP = 0x00000000;
+    //SYS->P4_MFP = 0x000000C0;
+    //SYS->P5_MFP = 0x00000000;
+
+    //If the defines do not exist in your project, please refer to the related sys.h in the sys_h folder appended to the tool package.
+    SYS->P0_MFP = 0x00000000;
+    SYS->P1_MFP = 0x00000000;
+    SYS->P2_MFP = 0x00000000;
+    SYS->P3_MFP = 0x00000000;
+    SYS->P4_MFP = SYS_MFP_P47_ICE_DAT | SYS_MFP_P46_ICE_CLK;
+    SYS->P5_MFP = 0x00000000;
+
+    return;
+}
+
+/*** (C) COPYRIGHT 2013-2018 Nuvoton Technology Corp. ***/
