@@ -5,9 +5,6 @@ extern void CLK_EnableModuleClock(uint32_t);
 
 void Enable_All_IPs(void)
 {
-#if USE_ICE >0
-  SYS->GPF_MFPL = SYS_GPF_MFPL_PF1MFP_ICE_CLK | SYS_GPF_MFPL_PF0MFP_ICE_DAT;
-#endif
 #if defined(__M451__)
    //Enable ADC module
   CLK_EnableModuleClock(EADC_MODULE);  
