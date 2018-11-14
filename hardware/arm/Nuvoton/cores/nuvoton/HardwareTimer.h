@@ -130,7 +130,7 @@ public:
 
 /* -- The rest of this file is deprecated. --------------------------------- */
 #ifndef NR_TIMERS
-#if defined(Mini58Series)|| defined(Mini51Series)
+#if defined(Mini58Series)|| defined(Mini51Series)||defined(NUC029FAE)
 #define NR_TIMERS 2
 #else
 #define NR_TIMERS 4

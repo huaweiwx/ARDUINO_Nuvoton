@@ -47,16 +47,15 @@ static void __initialize() {
 	NVIC_EnableIRQ(GPF_IRQn);	
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
-{
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
 	
 #ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
 #else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
- #endif
+    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+#endif
   		
 	if (!enabled) {
 		__initialize();
@@ -92,15 +91,13 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin)
-{
-
+void detachInterrupt(uint32_t pin){
 	#ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
 	#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-  #endif
+    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+    #endif
   	
 	// Retrieve pin information
 	GPIO_T *pio = GPIO_Desc[pin].P;
@@ -130,9 +127,8 @@ void detachInterrupt(uint32_t pin)
 extern "C" {
 #endif
 
-void GPA_IRQHandler(void)
-{
-		uint32_t i;		
+void GPA_IRQHandler(void){
+	  uint32_t i;		
 	  for (i=0; i<GNUM; i++) {
 	  	if(PA->INTSRC & (1<<i))
 	  	{ 
@@ -141,33 +137,31 @@ void GPA_IRQHandler(void)
 	  	}
 	  }  
 }
-void GPB_IRQHandler(void)
-{
-		uint32_t i;		
-	  for (i=0; i<GNUM; i++) {
-	  	if(PB->INTSRC & (1<<i))
-	  	{ 
-	  		if (callbacksGPB[i]) callbacksGPB[i]();	  		
-	  		PB->INTSRC = (1<<i);
-	  	}
-	  }  
+
+void GPB_IRQHandler(void){
+   uint32_t i;		
+   for (i=0; i<GNUM; i++) {
+   	if(PB->INTSRC & (1<<i))
+   	{ 
+   		if (callbacksGPB[i]) callbacksGPB[i]();	  		
+   		PB->INTSRC = (1<<i);
+   	}
+   }  
 }
 
-void GPC_IRQHandler(void)
-{
-		uint32_t i;		
-	  for (i=0; i<GNUM; i++) {
-	  	if(PC->INTSRC & (1<<i))
-	  	{ 
-	  		if (callbacksGPC[i]) callbacksGPC[i]();	  		
-	  		PC->INTSRC = (1<<i);
-	  	}
-	  }  
+void GPC_IRQHandler(void){
+  uint32_t i;		
+  for (i=0; i<GNUM; i++) {
+  	if(PC->INTSRC & (1<<i))
+  	{ 
+  		if (callbacksGPC[i]) callbacksGPC[i]();	  		
+  		PC->INTSRC = (1<<i);
+  	}
+  }  
 }
 
-void GPD_IRQHandler(void)
-{
-		uint32_t i;		
+void GPD_IRQHandler(void){
+	  uint32_t i;		
 	  for (i=0; i<GNUM; i++) {
 	  	if(PD->INTSRC & (1<<i))
 	  	{ 
@@ -177,9 +171,8 @@ void GPD_IRQHandler(void)
 	  }  
 }
 
-void GPE_IRQHandler(void)
-{
-		uint32_t i;		
+void GPE_IRQHandler(void){
+	  uint32_t i;		
 	  for (i=0; i<GNUM; i++) {
 	  	if(PE->INTSRC & (1<<i))
 	  	{ 
@@ -189,8 +182,7 @@ void GPE_IRQHandler(void)
 	  }  
 }
 
-void GPF_IRQHandler(void)
-{
+void GPF_IRQHandler(void){
 		uint32_t i;		
 	  for (i=0; i<GNUM; i++) {
 	  	if(PF->INTSRC & (1<<i))
@@ -218,7 +210,7 @@ static interruptCB callbacksPF[8];
 
 
 /* Configure PIO interrupt sources */
-static void __initialize() {
+static void __initialize(){
 	int i;
 	for (i=0; i<8; i++) {
 		callbacksPA[i] = NULL;
@@ -232,8 +224,7 @@ static void __initialize() {
 	NVIC_EnableIRQ(GPCDEF_IRQn);
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
-{
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
 	
 #ifdef USE_BoardToPin	
@@ -281,8 +272,7 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
 		GPIO_EnableInt(pio,pos,GPIO_INT_HIGH);		
 }
 
-void detachInterrupt(uint32_t pin)
-{
+void detachInterrupt(uint32_t pin){
 
 	#ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
@@ -319,8 +309,7 @@ void detachInterrupt(uint32_t pin)
 extern "C" {
 #endif
 
-void GPAB_IRQHandler(void)
-{
+void GPAB_IRQHandler(void){
 		uint32_t i;		
 	  for (i=0; i<8; i++) {
 	  	if(PA->ISRC & (1<<i))
@@ -335,8 +324,7 @@ void GPAB_IRQHandler(void)
 	  	}
 	  }  
 }
-void GPCDEF_IRQHandler(void)
-{
+void GPCDEF_IRQHandler(void){
 		uint32_t i;	
 	  for (i=0; i<8; i++) {
 	  	if(PC->ISRC & (1<<i))
@@ -394,8 +382,7 @@ static void __initialize() {
 }
 
 static int enabled = 0;
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
-{		
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){		
 #ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
@@ -437,8 +424,7 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin)
-{
+void detachInterrupt(uint32_t pin){
 
   #ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
@@ -475,8 +461,7 @@ void detachInterrupt(uint32_t pin)
 extern "C" {
 #endif
 
-void GPABC_IRQHandler(void)
-{
+void GPABC_IRQHandler(void){
 		uint32_t i;				
 	  for (i=0; i<GP_NUM; i++) {
 	  	if(PA->ISR & (1<<i))
@@ -496,8 +481,7 @@ void GPABC_IRQHandler(void)
 	  	}	  	
 	  }  
 }
-void GPDEF_IRQHandler(void)
-{
+void GPDEF_IRQHandler(void){
 		uint32_t i;	
 	  for (i=0; i<GP_NUM; i++) {
 	  	if(PD->ISR & (1<<i))
@@ -524,7 +508,7 @@ void GPDEF_IRQHandler(void)
 
 #elif defined(__NANO1X2__)
 
-#define GP_NUM 16
+#define GP_NUM    16
 typedef void (*interruptCB)(void);
 
 static interruptCB callbacksPA[GP_NUM];
@@ -550,8 +534,7 @@ static void __initialize() {
 }
 
 static int enabled = 0;
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
-{		
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){		
 #ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
@@ -593,9 +576,7 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin)
-{
-
+void detachInterrupt(uint32_t pin){
 	#ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
@@ -631,9 +612,8 @@ void detachInterrupt(uint32_t pin)
 extern "C" {
 #endif
 
-void GPABC_IRQHandler(void)
-{
-		uint32_t i;				
+void GPABC_IRQHandler(void){
+	  uint32_t i;				
 	  for (i=0; i<GP_NUM; i++) {
 	  	if(PA->ISRC & (1<<i))
 	  	{ 
@@ -652,26 +632,22 @@ void GPABC_IRQHandler(void)
 	  	}	  	
 	  }  
 }
-void GPDEF_IRQHandler(void)
-{
-		uint32_t i;	
-	  for (i=0; i<GP_NUM; i++) {
-	  	if(PD->ISRC & (1<<i))
-	  	{
-	  		if (callbacksPD[i]) callbacksPD[i]();	  		
-				PD->ISRC = (1<<i);	  			
-	  	}
-	  	if(PE->ISRC & (1<<i)) 
-	  	{
-	  		if (callbacksPE[i]) callbacksPE[i]();
-	  		PE->ISRC = (1<<i);	
-	  	}
-	  	if(PF->ISRC & (1<<i)) 
-	  	{
-	  		if (callbacksPF[i]) callbacksPF[i]();	  			
-	  		PF->ISRC = (1<<i);	
-	  	}
-	  }     
+void GPDEF_IRQHandler(void){
+   uint32_t i;	
+   for (i=0; i<GP_NUM; i++) {
+   	 if(PD->ISRC & (1<<i))   	 {
+   	 	if (callbacksPD[i]) callbacksPD[i]();	  		
+   	 	  PD->ISRC = (1<<i);	  			
+   	 }
+   	 if(PE->ISRC & (1<<i))   	 {
+   	 	if (callbacksPE[i]) callbacksPE[i]();
+   	 	  PE->ISRC = (1<<i);	
+   	 }
+   	 if(PF->ISRC & (1<<i))   	 {
+   	 	if (callbacksPF[i]) callbacksPF[i]();	  			
+   	 	  PF->ISRC = (1<<i);	
+   	 }
+   }     
 }
 
 #ifdef __cplusplus
@@ -704,8 +680,7 @@ static void __initialize() {
 	NVIC_EnableIRQ(GPCDEF_IRQn);
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
-{
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
 	
 #ifdef USE_BoardToPin	
@@ -749,15 +724,14 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode)
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin)
-{
+void detachInterrupt(uint32_t pin){
 
-	#ifdef USE_BoardToPin	
+#ifdef USE_BoardToPin	
 	if(pin > BoardToPin_MAX_COUNT) return;
 	pin=BoardToPinInfo[pin].pin;
-	#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-  #endif
+#else
+    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+#endif
   	
 	// Retrieve pin information
 	GPIO_T *pio = GPIO_Desc[pin].P;
@@ -787,8 +761,7 @@ void detachInterrupt(uint32_t pin)
 extern "C" {
 #endif
 
-void GPAB_IRQHandler(void)
-{
+void GPAB_IRQHandler(void){
 		uint32_t i;		
 	  for (i=0; i<8; i++) {
 	  	if(PA->ISRC & (1<<i))
@@ -803,29 +776,24 @@ void GPAB_IRQHandler(void)
 	  	}
 	  }  
 }
-void GPCDEF_IRQHandler(void)
-{
-		uint32_t i;	
+void GPCDEF_IRQHandler(void){
+	  uint32_t i;	
 	  for (i=0; i<8; i++) {
-	  	if(PC->ISRC & (1<<i))
-	  	{
+	  	if(PC->ISRC & (1<<i)){
 	  		if (callbacksPC[i]) callbacksPC[i]();	  		
 				PC->ISRC = (1<<i);	  			
 	  	}
-	  	if(PD->ISRC & (1<<i)) 
-	  	{
+	  	if(PD->ISRC & (1<<i)){
 	  		if (callbacksPD[i]) callbacksPD[i]();
-	  		PD->ISRC = (1<<i);	
+				PD->ISRC = (1<<i);	
 	  	}
-	  	if(PE->ISRC & (1<<i)) 
-	  	{
+	  	if(PE->ISRC & (1<<i)){
 	  		if (callbacksPE[i]) callbacksPE[i]();	  			
-	  		PE->ISRC = (1<<i);	
+				PE->ISRC = (1<<i);	
 	  	}
-	  	if(PF->ISRC & (1<<i)) 
-	  	{
+	  	if(PF->ISRC & (1<<i)){
 	  		if (callbacksPF[i]) callbacksPF[i]();	  			
-	  		PF->ISRC = (1<<i);	
+				PF->ISRC = (1<<i);	
 	  	}	  	
 	  }     
 }

@@ -1301,9 +1301,8 @@ bool USBDevice_::attach(void)
 
 bool USBDevice_::detach(void)
 {
-#if defined(__M451__) | defined(__NUC240__) | defined(__NANO100__)
+#if defined(M480) | defined(__M451__) | defined(__NUC240__) | defined(__NANO100__)
 	NVIC_DisableIRQ(USBD_IRQn);
-
 #endif	
 	return true;
 }

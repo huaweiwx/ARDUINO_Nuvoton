@@ -55,14 +55,14 @@ uint32_t analogRead(uint8_t ucPin)
  
 #if defined(__M451__)||defined(M480)   
 
-  if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
+    if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
   	  	
 	/* Disable the digital input path to avoid the leakage current. */
-  GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
+    GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
    
-  ADC_Config(ADC_Desc[ucPin]);
+    ADC_Config(ADC_Desc[ucPin]);
   
-  /* Set the ADC internal sampling time, input mode as single-end and enable the A/D converter */
+	/* Set the ADC internal sampling time, input mode as single-end and enable the A/D converter */
 	EADC_Open(ADC_Desc[ucPin].A, EADC_CTL_DIFFEN_SINGLE_END);
 	EADC_SetInternalSampleTime(EADC, 6);
 	
@@ -91,27 +91,27 @@ uint32_t analogRead(uint8_t ucPin)
 	ulValue=EADC_GET_CONV_DATA(EADC, ADC_Desc[ucPin].ch);
 	ulValue = mapResolution(ulValue, 12, _readResolution);
 
-  // Close ADC
-  EADC_Close(ADC_Desc[ucPin].A);
+	// Close ADC
+	EADC_Close(ADC_Desc[ucPin].A);
 #elif defined(__NUC240__)
 
-  if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
+	if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
   	
-  ADC_Config(ADC_Desc[ucPin]);
+	ADC_Config(ADC_Desc[ucPin]);
   
-  //GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
+	//GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
   
-  // Enable channel 0
+	// Enable channel 0
 	ADC_Open(ADC_Desc[ucPin].A, 0, 0, (1<<ADC_Desc[ucPin].ch));
 		
 	// Power on ADC
 	ADC_POWER_ON(ADC_Desc[ucPin].A);
 
-  // Wait for busy of conversion
-  while(ADC_IS_BUSY(ADC_Desc[ucPin].A));	
+	// Wait for busy of conversion
+	while(ADC_IS_BUSY(ADC_Desc[ucPin].A));	
   	
-  // Start for conversion	
-  ADC_START_CONV(ADC_Desc[ucPin].A);
+	// Start for conversion	
+	ADC_START_CONV(ADC_Desc[ucPin].A);
   		
 	// Wait for end of conversion
 	while(!ADC_GET_INT_FLAG(ADC_Desc[ucPin].A,ADC_ADF_INT));
@@ -123,15 +123,15 @@ uint32_t analogRead(uint8_t ucPin)
 	ulValue = ADC_GET_CONVERSION_DATA(ADC_Desc[ucPin].A,ADC_Desc[ucPin].ch);	
 	ulValue = mapResolution(ulValue, 12, _readResolution);
   
-  //GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin-1].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num-1].bit);
+	//GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin-1].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num-1].bit);
   
-  // Close ADC
-  ADC_Close(ADC_Desc[ucPin].A);
+	// Close ADC
+	ADC_Close(ADC_Desc[ucPin].A);
 #elif defined(__NANO100__) | defined(__NANO1X2__)
 
-  if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
+	if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
   	
-  ADC_Config(ADC_Desc[ucPin]);
+	ADC_Config(ADC_Desc[ucPin]);
   
   //GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
   

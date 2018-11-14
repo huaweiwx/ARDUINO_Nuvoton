@@ -1,5 +1,5 @@
 /*
-  EMF32 ARDUINO  avr_emulation.h
+  NUVOTON ARDUINO  avr_emulation.h
   
   Copyright (c) 2018 huaweiwx@sina.com 2018.9.1
 
@@ -93,78 +93,102 @@ class DDRemulation
     uint16_t save_ddr = 0;	
 };
 
-#if  defined(PA)
-extern	DDRemulation	DDRA;
+#if  defined(PA)|| defined(P0)
+	extern	DDRemulation	DDRA;
 #endif
-#if  defined(PB)
-extern	DDRemulation	DDRB;
+#if  defined(PB)|| defined(P1)
+	extern	DDRemulation	DDRB;
 #endif
-#if  defined(PC)
-extern  DDRemulation	DDRC;
+#if  defined(PC)|| defined(P2)
+	extern  DDRemulation	DDRC;
 #endif
-#if   defined(PD)
-extern  DDRemulation	DDRD;
+#if   defined(PD)|| defined(P3)
+	extern  DDRemulation	DDRD;
 #endif
-#if   defined(PE)
-extern  DDRemulation	DDRE;
+#if   defined(PE)|| defined(P4)
+	extern  DDRemulation	DDRE;
 #endif
-#if   defined(PF)
-extern  DDRemulation	DDRF;
+#if   defined(PF)|| defined(P5)
+	extern  DDRemulation	DDRF;
 #endif
-#if   defined(PG)
-extern  DDRemulation	DDRG;
+#if   defined(PG)|| defined(P6)
+	extern  DDRemulation	DDRG;
 #endif
-#if   defined(PH)
-extern  DDRemulation	DDRH;
+#if   defined(PH)|| defined(P7)
+	extern  DDRemulation	DDRH;
 #endif
 #if   defined(PJ)
-extern  DDRemulation	DDRJ;
+	extern  DDRemulation	DDRJ;
 #endif
 #if   defined(PK)
-extern  DDRemulation	DDRK;
+	extern  DDRemulation	DDRK;
 #endif
 
 #endif //__cplusplus
 
 #if  defined(PA)
-#define PORTA   PA->DOUT
-#define  PINA   PA->PIN
+  #define PORTA   PA->DOUT
+  #define  PINA   PA->PIN
+#elif defined(P0)
+  #define PORTA   P0->DOUT
+  #define  PINA   P0->PIN
 #endif
 #if  defined(PB)
-#define PORTB   PB->DOUT
-#define  PINB   PB->PIN
+  #define PORTB   P0->DOUT
+  #define  PINB   P0->PIN
+#elif defined(P1)
+  #define PORTB   P1->DOUT
+  #define  PINB   P1->PIN
 #endif
 #if  defined(PC)
-#define PORTC   PC->DOUT
-#define  PINC   PC->PIN
+  #define PORTC   PC->DOUT
+  #define  PINC   PC->PIN
+#elif defined(P2)
+  #define PORTC   P2->DOUT
+  #define  PINC   P2->PIN
 #endif
 #if  defined(PD)
-#define PORTD   PD->DOUT
-#define  PIND   PD->PIN
+  #define PORTD   PD->DOUT
+  #define  PIND   PD->PIN
+#elif defined(P3)
+  #define PORTD   P3->DOUT
+  #define  PIND   P3->PIN
 #endif
 #if  defined(PE)
-#define PORTE  PE->DOUT
-#define  PINE  PE->PIN
+  #define PORTE  PE->DOUT
+  #define  PINE  PE->PIN
+#elif defined(P4)
+  #define PORTE   P4->DOUT
+  #define  PINE   P4->PIN
 #endif
 #if  defined(PF)
-#define PORTF  PF->DOUT
-#define  PINF  PF->PIN
+  #define PORTF  PF->DOUT
+  #define  PINF  PF->PIN
+#elif defined(P5)
+  #define PORTF   P5->DOUT
+  #define  PINF   P5->PIN
 #endif
 #if  defined(PG)
-#define PORTG  PG->DOUT
-#define  PING  PG->PIN
+  #define PORTG  PG->DOUT
+  #define  PING  PG->PIN
+#elif defined(P56)
+  #define PORTG   P6->DOUT
+  #define  PING   P6->PIN
 #endif
 #if  defined(PH)
-#define PORTH  PH->DOUT
-#define  PINH  PH->PIN
+  #define PORTH  PH->DOUT
+  #define  PINH  PH->PIN
+#elif defined(P7)
+  #define PORTH   P7->DOUT
+  #define  PINH   P7->PIN
 #endif
 #if  defined(PJ)
-#define PORTJ  PJ->DOUT
-#define  PINJ  PJ->PIN
+  #define PORTJ  PJ->DOUT
+  #define  PINJ  PJ->PIN
 #endif
 #if  defined(PK)
-#define PORTK  PK->DOUT
-#define  PINK  PK->PIN
+  #define PORTK  PK->DOUT
+  #define  PINK  PK->PIN
 #endif
 
 #include "avr_pin_legacy.h"

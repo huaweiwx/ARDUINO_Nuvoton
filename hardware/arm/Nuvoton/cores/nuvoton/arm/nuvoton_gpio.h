@@ -57,8 +57,7 @@ inline T digitalRead(__ConstPin CPin)
 
 inline void digitalToggle(__ConstPin CPin)
 {
-  /* can add a section here to see if pin is readable */
-  ((GPIO_T*)CPin.ulPortBase)->DOUT ^= CPin.pinMask;
+   ((GPIO_T*)CPin.ulPortBase)->DOUT ^= CPin.pinMask;
 }
 
 /*gpio low layer interface class*/

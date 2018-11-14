@@ -1,5 +1,5 @@
 /*
-  EMF32ARDUINO avr_emulation.cpp
+  NUVOTON avr_emulation.cpp
   
   Copyright (c) 2018 huaweiwx@sina.com 2018.9.1
 
@@ -23,27 +23,43 @@
 
 #if  defined(PA)
 DDRemulation	DDRA(PA);
+#elif defined(P0)
+DDRemulation	DDRA(P0);
 #endif
 #if  defined(PB)
 DDRemulation	DDRB(PB);
+#elif defined(P1)
+DDRemulation	DDRB(P1);
 #endif
 #if  defined(PC)
 DDRemulation	DDRC(PC);
+#elif defined(P2)
+DDRemulation	DDRC(P2);
 #endif
 #if   defined(PD)
 DDRemulation	DDRD(PD);
+#elif defined(P3)
+DDRemulation	DDRD(P3);
 #endif
 #if   defined(PE)
 DDRemulation	DDRE(PE);
+#elif defined(P4)
+DDRemulation	DDRE(P4);
 #endif
 #if   defined(PF)
 DDRemulation	DDRF(PF);
+#elif defined(P5)
+DDRemulation	DDRF(P5);
 #endif
 #if   defined(PG)
 DDRemulation	DDRG(PG);
+#elif defined(P6)
+DDRemulation	DDRG(P6);
 #endif
 #if   defined(PH)
 DDRemulation	DDRH(PH);
+#elif defined(P7)
+DDRemulation	DDRH(P7);
 #endif
 #if   defined(PJ)
 DDRemulation	DDRJ(PJ);

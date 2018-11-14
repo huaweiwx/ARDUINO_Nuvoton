@@ -39,7 +39,6 @@ int main( void )
 	#endif
 			
 	setup();
-	
 	for (;;)
 	{
 #if USE_CORECALLBACK > 0
@@ -55,5 +54,5 @@ int main( void )
 }
 
 #else
-#error "Please update to GCC ver 5-2016q2 https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads"	
+  #error "Please update to GCC ver 5-2016q2 https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads"	
 #endif
