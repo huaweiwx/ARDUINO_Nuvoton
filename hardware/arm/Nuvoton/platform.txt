@@ -56,7 +56,7 @@ compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
 
-compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc"
+compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc" "-I{build.system.path}/{build.series}/Chips"
 
 # USB Flags
 # ---------

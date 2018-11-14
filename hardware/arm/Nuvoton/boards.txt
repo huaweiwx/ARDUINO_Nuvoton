@@ -155,16 +155,24 @@ NANO130.build.pid=0x003e
 NANO130.build.core=nuvoton
 NANO130.build.mcu=cortex-m0
 NANO130.build.f_cpu=42000000L
+NANO130.build.variant=NANO130
 
-NANO130.menu.cpu.numake_nano100=NuMaker_NANO100(128kFLASH 16kRAM)
+NANO130.menu.cpu.NuEdu=NuEdu-EVB_NANO130(128kFLASH 16kRAM)
+NANO130.menu.cpu.NuEdu.build.board=NuEdu_NANO130
+
+NANO130.menu.cpu.NuTiny=NuTiny_EVB_NANO130(128kFLASH 16kRAM)
+NANO130.menu.cpu.NuTiny.build.board=NuTiny_NANO130
 
 NANO130.build.series=Nano100Series
-NANO130.build.variant=NANO130
-NANO130.build.board=__NUVOTON__
 NANO130.build.extra_flags= -D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
 NANO130.build.ldscript=128K_16K_flash.ld
-NANO130.upload.maximum_size=65536
-NANO130.upload.maximum_data_size=8192
+NANO130.upload.maximum_size=131072
+NANO130.upload.maximum_data_size=16384
+
+NANO130.menu.clock_source.HXT12=HXT
+NANO130.menu.clock_source.HXT12.build.f_cpu=42000000L -DHXT12
+NANO130.menu.clock_source.HIRC=HIRC
+NANO130.menu.clock_source.HIRC.build.f_cpu=42000000L -DHIRC
 
 NANO130.menu.serial.UART0=Serial0
 NANO130.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
@@ -812,5 +820,58 @@ MINI5x.upload.protocol=nuc-ba
 MINI5x.upload.use_1200bps_touch=false
 MINI5x.upload.wait_for_upload_port=false
 MINI5x.upload.native_usb=false
+
+########################################################
+#                      NUC029                          #
+########################################################
+NUC029FAE.name=NUC029
+
+NUC029FAE.build.core=nuvoton
+NUC029FAE.build.mcu=cortex-m0
+NUC029FAE.build.f_cpu=22118400L
+NUC029FAE.build.variant=NUC029
+NUC029FAE.build.board=GENERIC_NUC029
+
+NUC029FAE.menu.cpu.m058_20=GENERIC_NUC029FAE(TSSOP20)(16kFLASH 2kRAM)
+NUC029FAE.menu.cpu.m058_20.build.extra_flags= -DCHIP20P
+NUC029FAE.menu.cpu.m058_20.build.series=NUC029FAE
+NUC029FAE.menu.cpu.m058_20.build.variant=NUC029
+NUC029FAE.menu.cpu.m058_20.build.board=GENERIC_NUC029FAE
+NUC029FAE.menu.cpu.m058_20.build.ldscript=16K_2K_flash_S.ld
+NUC029FAE.menu.cpu.m058_20.upload.maximum_size=16384
+NUC029FAE.menu.cpu.m058_20.upload.maximum_data_size=2048
+
+NUC029FAE.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+NUC029FAE.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
+NUC029FAE.menu.clock_source.HXT1=HXT_12M(48MMHz)
+NUC029FAE.menu.clock_source.HXT1.build.f_cpu=48000000L -DHXT12
+NUC029FAE.menu.clock_source.HXT2=HXT_12M(24MMHz)
+NUC029FAE.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
+
+NUC029FAE.menu.serial.UART0=Serial0
+NUC029FAE.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+NUC029FAE.menu.log.default=Release(no-exceptions)
+NUC029FAE.menu.log.default.build.log_level=-fno-exceptions
+NUC029FAE.menu.log.Release=Release(exceptions)
+NUC029FAE.menu.log.fatal=FATAL
+NUC029FAE.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.error=ERROR
+NUC029FAE.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.warning=WARNING
+NUC029FAE.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.info=INFO
+NUC029FAE.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.debug=DEBUG
+NUC029FAE.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.trace=TRACE
+NUC029FAE.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+NUC029FAE.upload.tool=nulinkburn
+NUC029FAE.upload.protocol=nuc-ba
+NUC029FAE.upload.use_1200bps_touch=false
+NUC029FAE.upload.wait_for_upload_port=false
+NUC029FAE.upload.native_usb=false
 
 ############################################### The end ##########################################
