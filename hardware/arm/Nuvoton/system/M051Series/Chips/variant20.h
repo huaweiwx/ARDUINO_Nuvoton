@@ -1,3 +1,5 @@
+
+#ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
   {NULL, NULL, {NULL, NULL, NULL}},                                           // 0
@@ -25,7 +27,9 @@ const GPIOPinDescription GPIO_Desc[] =
   {P0, BIT6, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P06_Msk, SYS_MFP_P06_GPIO }},   //17
   {P0, BIT5, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P05_Msk, SYS_MFP_P05_GPIO }},   //18
 };
+#endif
 
+#ifndef PWM_DESC_USERDEF
 const PWMPinDescription PWM_Desc[]={
 	{PWMA,PWM01_MODULE,PWMA_IRQn,0,500,{P2_0,SYS_MFP_P20_PWM0}},  //0
 	{PWMA,PWM01_MODULE,PWMA_IRQn,1,500,{P2_1,SYS_MFP_P21_PWM1}},  //1  
@@ -40,7 +44,9 @@ const PWMPinDescription PWM_Desc[]={
 	{PWMB,PWM23_MODULE,PWMB_IRQn,2,500,{P4_2,SYS_MFP_P42_PWM2}},  //10
 	{PWMB,PWM23_MODULE,PWMB_IRQn,3,500,{P4_3,SYS_MFP_P43_PWM3}},  //11
 };
+#endif
 
+#ifndef ADC_DESC_USERDEF
 const ADCPinDescription ADC_Desc[]={
 	{ADC,ADC_MODULE,0,{P1_0,SYS_MFP_P10_AIN0}},   	//0 
 	{ADC,ADC_MODULE,1,{P1_1,SYS_MFP_P11_AIN1}},		//1
@@ -51,13 +57,17 @@ const ADCPinDescription ADC_Desc[]={
 	{ADC,ADC_MODULE,6,{P1_6,SYS_MFP_P16_AIN6}},		//6
 	{ADC,ADC_MODULE,7,{P1_7,SYS_MFP_P17_AIN7}},		//7	
 };
+#endif
 
+#ifndef UART_DESC_USERDEF
 const UARTPinDescription UART_Desc[]={
    {UART0,UART0_MODULE,UART0_IRQn,{{P3_0,SYS_MFP_P30_RXD0}, {P3_1,SYS_MFP_P31_TXD0} }},	
    {UART0,UART0_MODULE,UART0_IRQn,{{P0_3,SYS_MFP_P03_RXD0}, {P0_2,SYS_MFP_P02_TXD0} }},	
    {UART1,UART1_MODULE,UART1_IRQn,{{P0_1,SYS_MFP_P01_RXD1}, {P0_0,SYS_MFP_P00_TXD1} }},	
 };
+#endif
 
+#ifndef SPI_DESC_USERDEF
 const SPIPinDescription SPI_Desc[]={
     {
 	 SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,
@@ -68,14 +78,18 @@ const SPIPinDescription SPI_Desc[]={
  	 {{P0_7,SYS_MFP_P07_SPICLK1},{P0_6,SYS_MFP_P06_MISO_1},{P0_5,SYS_MFP_P05_MOSI_1}, {P0_4,SYS_MFP_P04_SPISS1}, }
 	},
 };
+#endif
 
+#ifndef I2C_DESC_USERDEF
 const I2CPinDescription I2C_Desc[]={	
   {
 	I2C0,I2C0_MODULE,
     {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0},}
   },
 };
+#endif
 
+#ifndef PORT_DESC_USERDEF
 const GPIOPortDescription  PORT_Desc[]=
 {
 	{P0,/*0xff, */ (uint32_t)&SYS->P0_MFP,SYS_P0_MFP_P0_ALT_Pos,SYS_P0_MFP_P0_TYPE_Pos}, //32 
@@ -84,3 +98,5 @@ const GPIOPortDescription  PORT_Desc[]=
 	{P3,/*0xff, */ (uint32_t)&SYS->P3_MFP,SYS_P3_MFP_P3_ALT_Pos,SYS_P3_MFP_P3_TYPE_Pos}, //7 TXD
 	{P4,/*0xff, */ (uint32_t)&SYS->P4_MFP,SYS_P4_MFP_P4_ALT_Pos,SYS_P4_MFP_P4_TYPE_Pos}, //12 
 };
+#endif
+

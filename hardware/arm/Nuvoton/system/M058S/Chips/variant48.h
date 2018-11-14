@@ -15,10 +15,10 @@ const GPIOPinDescription GPIO_Desc[] =
   {P4, BIT3, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P43_Msk, SYS_MFP_P43_GPIO }},   //12
   {P3, BIT6, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P36_Msk, SYS_MFP_P36_GPIO }},   //13
   {P3, BIT7, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P37_Msk, SYS_MFP_P37_GPIO }},   //14
-  {NULL, NULL, {NULL, NULL, NULL}},                                                             //15
-  {NULL, NULL, {NULL, NULL, NULL}},                                                             //16
-  {NULL, NULL, {NULL, NULL, NULL}}, 											     	 	    //17
-  {NULL, NULL, {NULL, NULL, NULL}}, 											     	 	    //18
+  {NULL, NULL, {NULL, NULL, NULL}},                                           //15
+  {NULL, NULL, {NULL, NULL, NULL}},                                           //16
+  {NULL, NULL, {NULL, NULL, NULL}}, 					 	     	 	      //17
+  {NULL, NULL, {NULL, NULL, NULL}}, 									      //18
   {P2, BIT0, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P20_Msk, SYS_MFP_P20_GPIO }},   //19
   {P2, BIT1, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P21_Msk, SYS_MFP_P21_GPIO }},   //20
   {P2, BIT2, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P22_Msk, SYS_MFP_P22_GPIO }},   //21
@@ -31,10 +31,10 @@ const GPIOPinDescription GPIO_Desc[] =
   {P4, BIT4, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P44_Msk, SYS_MFP_P44_GPIO }},   //28
   {P4, BIT5, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P45_Msk, SYS_MFP_P45_GPIO }},   //29
 #if USE_ICE == 0
-  {P4, BIT6, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P46_Msk, SYS_MFP_P46_GPIO }},   //28
-  {P4, BIT7, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P47_Msk, SYS_MFP_P47_GPIO }},   //29
+  {P4, BIT6, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P46_Msk, SYS_MFP_P46_GPIO }},   //30
+  {P4, BIT7, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P47_Msk, SYS_MFP_P47_GPIO }},   //31
 #else
-  {NULL, NULL, {NULL, NULL, NULL}},   //31														//30
+  {NULL, NULL, {NULL, NULL, NULL}},   //30
   {NULL, NULL, {NULL, NULL, NULL}},   //31
 #endif
   {P0, BIT7, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P07_Msk, SYS_MFP_P07_GPIO }},   //32
@@ -46,8 +46,8 @@ const GPIOPinDescription GPIO_Desc[] =
   {P0, BIT2, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P02_Msk, SYS_MFP_P02_GPIO }},   //38
   {P0, BIT1, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P01_Msk, SYS_MFP_P01_GPIO }},   //39
   {P0, BIT0, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P00_Msk, SYS_MFP_P00_GPIO }},   //40
-  {NULL, NULL, {NULL, NULL, NULL}}, 															//41
-  {NULL, NULL, {NULL, NULL, NULL}}, 															//42
+  {NULL, NULL, {NULL, NULL, NULL}}, 										  //41
+  {NULL, NULL, {NULL, NULL, NULL}}, 										  //42
   {P1, BIT0, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P10_Msk, SYS_MFP_P10_GPIO }},   //43
   {P1, BIT1, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P11_Msk, SYS_MFP_P11_GPIO}},    //44
   {P1, BIT2, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P12_Msk, SYS_MFP_P12_GPIO}},    //45
@@ -55,7 +55,6 @@ const GPIOPinDescription GPIO_Desc[] =
   {P1, BIT4, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P14_Msk, SYS_MFP_P14_GPIO}},    //47
   {P4, BIT2, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P42_Msk, SYS_MFP_P42_GPIO}},    //48
 };
-
 
 const PWMPinDescription PWM_Desc[]={
 	{PWMA,PWM01_MODULE,PWMA_IRQn,0,500,{P2_0,SYS_MFP_P20_PWM0}},  //0
@@ -65,14 +64,14 @@ const PWMPinDescription PWM_Desc[]={
 };
 
 const ADCPinDescription ADC_Desc[]={
-	{ADC,ADC_MODULE,0,{P1_0,SYS_MFP_P10_AIN0}},   	//0 
-	{ADC,ADC_MODULE,1,{P1_1,SYS_MFP_P11_AIN1}},		//1
-	{ADC,ADC_MODULE,2,{P1_2,SYS_MFP_P12_AIN2}},		//2
-	{ADC,ADC_MODULE,3,{P1_3,SYS_MFP_P13_AIN3}},		//3
-	{ADC,ADC_MODULE,4,{P1_4,SYS_MFP_P14_AIN4}},		//4
-	{ADC,ADC_MODULE,5,{P1_5,SYS_MFP_P15_AIN5}},		//5	
-	{ADC,ADC_MODULE,6,{P1_6,SYS_MFP_P16_AIN6}},		//6
-	{ADC,ADC_MODULE,7,{P1_7,SYS_MFP_P17_AIN7}},		//7	
+	{ADC,ADC_MODULE,0,{P1_0,SYS_MFP_P10_AIN0}},   				  //0 
+	{ADC,ADC_MODULE,1,{P1_1,SYS_MFP_P11_AIN1}},					  //1
+	{ADC,ADC_MODULE,2,{P1_2,SYS_MFP_P12_AIN2}},					  //2
+	{ADC,ADC_MODULE,3,{P1_3,SYS_MFP_P13_AIN3}},					  //3
+	{ADC,ADC_MODULE,4,{P1_4,SYS_MFP_P14_AIN4}},					  //4
+	{ADC,ADC_MODULE,5,{P1_5,SYS_MFP_P15_AIN5}},					  //5	
+	{ADC,ADC_MODULE,6,{P1_6,SYS_MFP_P16_AIN6}},					  //6
+	{ADC,ADC_MODULE,7,{P1_7,SYS_MFP_P17_AIN7}},					  //7	
 };
 
 const UARTPinDescription UART_Desc[]={
@@ -92,21 +91,19 @@ const SPIPinDescription SPI_Desc[]={
 };
 
 const I2CPinDescription I2C_Desc[]={	
-  {
-	I2C0,I2C0_MODULE,
+  {	I2C0,I2C0_MODULE,
     {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0},}
   },
-  {
-	I2C1,I2C1_MODULE,
+  {	I2C1,I2C1_MODULE,
     {{P4_5,SYS_MFP_P45_SDA1},{P4_4, SYS_MFP_P44_SCL1},}
   },
 };
 
 const GPIOPortDescription  PORT_Desc[]=
 {
-	{P0,/*0xff, */ (uint32_t)&SYS->P0_MFP,SYS_P0_MFP_P0_ALT_Pos,SYS_P0_MFP_P0_TYPE_Pos}, //32 
-	{P1,/*0xff, */ (uint32_t)&SYS->P1_MFP,SYS_P1_MFP_P1_ALT_Pos,SYS_P1_MFP_P1_TYPE_Pos}, //3
-	{P2,/*0xff, */ (uint32_t)&SYS->P2_MFP,SYS_P2_MFP_P2_ALT_Pos,SYS_P2_MFP_P2_TYPE_Pos}, //19
-	{P3,/*0xff, */ (uint32_t)&SYS->P3_MFP,SYS_P3_MFP_P3_ALT_Pos,SYS_P3_MFP_P3_TYPE_Pos}, //7 TXD
-	{P4,/*0xff, */ (uint32_t)&SYS->P4_MFP,SYS_P4_MFP_P4_ALT_Pos,SYS_P4_MFP_P4_TYPE_Pos}, //12 
+	{P0,/* 0xff, */ (uint32_t)&SYS->P0_MFP,SYS_P0_MFP_P0_ALT_Pos,SYS_P0_MFP_P0_TYPE_Pos}, 
+	{P1,/* 0xff, */ (uint32_t)&SYS->P1_MFP,SYS_P1_MFP_P1_ALT_Pos,SYS_P1_MFP_P1_TYPE_Pos}, 
+	{P2,/* 0xff, */ (uint32_t)&SYS->P2_MFP,SYS_P2_MFP_P2_ALT_Pos,SYS_P2_MFP_P2_TYPE_Pos}, 
+	{P3,/* 0xff, */ (uint32_t)&SYS->P3_MFP,SYS_P3_MFP_P3_ALT_Pos,SYS_P3_MFP_P3_TYPE_Pos}, 
+	{P4,/* 0xff, */ (uint32_t)&SYS->P4_MFP,SYS_P4_MFP_P4_ALT_Pos,SYS_P4_MFP_P4_TYPE_Pos}, 
 };

@@ -170,7 +170,14 @@ extern const UARTPinDescription UART_Desc[];
 
 
 #define I2C_MAX_COUNT 1
-
 extern const I2CPinDescription I2C_Desc[];
+#define I2C_SCL 0
+#define I2C_SDA 1
+#define I2C_Config(Desc) \
+  do { \
+    uint8_t i; \
+    for(i=0;i<2;i++) \
+      outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
+  }while(0);
 
 #endif /*_NUVOTON_TYPEDEF_H_*/

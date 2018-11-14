@@ -1,3 +1,5 @@
+
+#ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
   {NULL, NULL, {NULL, NULL, NULL}},                                           // 0
@@ -54,7 +56,9 @@ const GPIOPinDescription GPIO_Desc[] =
   {P1, BIT3, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P13_Msk, SYS_MFP_P13_GPIO}},    //46
   {P1, BIT4, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P14_Msk, SYS_MFP_P14_GPIO}},    //47
 };
+#endif
 
+#ifndef PWM_DESC_USERDEF
 const PWMPinDescription PWM_Desc[]={
 	{PWM,PWMCH01_MODULE,PWM_IRQn,1,500,{P2_2,SYS_MFP_P22_PWM0_CH0}},  //3  
 	{PWM,PWMCH01_MODULE,PWM_IRQn,1,500,{P2_3,SYS_MFP_P23_PWM0_CH1}},  //3  
@@ -69,7 +73,9 @@ const PWMPinDescription PWM_Desc[]={
 	{PWM,PWMCH01_MODULE,PWM_IRQn,1,500,{P1_3,SYS_MFP_P13_PWM0_CH1}},  //1  
 	{PWM,PWMCH45_MODULE,PWM_IRQn,4,500,{P1_4,SYS_MFP_P14_PWM0_CH4}},  //2  
 };
+#endif
 
+#ifndef ADC_DESC_USERDEF
 const ADCPinDescription ADC_Desc[]={
 	{ADC,ADC_MODULE,0,{P5_3,SYS_MFP_P53_ADC_CH0}},   	//0 
 	{ADC,ADC_MODULE,1,{P1_0,SYS_MFP_P10_ADC_CH1}},   	//1 
@@ -80,7 +86,9 @@ const ADCPinDescription ADC_Desc[]={
 	{ADC,ADC_MODULE,6,{P3_0,SYS_MFP_P30_ADC_CH6}},   	//6 
 	{ADC,ADC_MODULE,7,{P3_1,SYS_MFP_P31_ADC_CH7}},   	//7 
 };
+#endif
 
+#ifndef UART_DESC_USERDEF
 const UARTPinDescription UART_Desc[]={
    {UART0,UART0_MODULE,UART0_IRQn,{{P0_1,SYS_MFP_P01_UART0_RXD}, {P0_0,SYS_MFP_P00_UART0_TXD} }},	
    {UART0,UART0_MODULE,UART0_IRQn,{{P1_2,SYS_MFP_P12_UART0_RXD}, {P1_3,SYS_MFP_P13_UART0_TXD} }},	
@@ -91,18 +99,24 @@ const UARTPinDescription UART_Desc[]={
 #endif
    {UART1,UART1_MODULE,UART1_IRQn,{{P2_4,SYS_MFP_P24_UART1_RXD}, {P2_5,SYS_MFP_P25_UART1_TXD} }},	
 };
+#endif
 
+#ifndef SPI_DESC_USERDEF
 const SPIPinDescription SPI_Desc[]={
   {SPI0,SPI0_MODULE,SPI_IRQn,CLK_CLKSEL1_SPISEL_HCLK, 
 	  {{P0_7,SYS_MFP_P07_SPI0_CLK},{P0_6,SYS_MFP_P06_SPI0_MISO},{P0_5,SYS_MFP_P05_SPI0_MOSI}, {P0_4,SYS_MFP_P04_SPI0_SS}}},
 };
+#endif
 
+#ifndef I2C_DESC_USERDEF
 const I2CPinDescription I2C_Desc[]={	
  {I2C0,I2C0_MODULE,{{P3_4,SYS_MFP_P34_I2C0_SDA},{P3_5, SYS_MFP_P35_I2C0_SCL}}},
  {I2C1,I2C1_MODULE,{{P2_3,SYS_MFP_P23_I2C1_SDA},{P2_2, SYS_MFP_P22_I2C1_SCL}}},
  {I2C1,I2C1_MODULE,{{P5_0,SYS_MFP_P50_I2C1_SDA},{P5_1, SYS_MFP_P51_I2C1_SCL}}},
 };
+#endif
 
+#ifndef PORT_DESC_USERDEF
 const GPIOPortDescription PORT_Desc[]={
 	{P0,0b11111111,(uint32_t)&SYS->P0_MFP,SYS_P0_MFP_MFP_Pos,SYS_P0_MFP_MFP_Msk,}, 
 	{P1,0b00111111,(uint32_t)&SYS->P1_MFP,SYS_P1_MFP_MFP_Pos,SYS_P1_MFP_MFP_Msk,}, 
@@ -111,3 +125,4 @@ const GPIOPortDescription PORT_Desc[]={
 	{P4,0b11000000,(uint32_t)&SYS->P4_MFP,SYS_P4_MFP_MFP_Pos,SYS_P4_MFP_MFP_Msk,}, 
 	{P5,0b00111111,(uint32_t)&SYS->P4_MFP,SYS_P4_MFP_MFP_Pos,SYS_P4_MFP_MFP_Msk,}, 
 };
+#endif

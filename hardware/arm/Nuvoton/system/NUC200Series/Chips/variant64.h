@@ -16,6 +16,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //0
@@ -84,7 +85,9 @@ const GPIOPinDescription GPIO_Desc[] =
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}}, //63
   {PB, BIT8,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB8_Msk, SYS_ALT_MFP_PB8_Msk,  NULL,                   NULL,                 SYS_GPB_MFP_PB8_GPIO }}, //64
 };
+#endif
 
+#ifndef PWM_DESC_USERDEF
 const PWMPinDescription PWM_Desc[] = {
   {PWMA, PWM01_MODULE, PWMA_IRQn, 0, 500, {65, SYS_GPA_MFP_PA12_PWM0, NULL,                 SYS_ALT_MFP1_PA12_PWM0, NULL                 }}, //0
   {PWMA, PWM01_MODULE, PWMA_IRQn, 1, 500, {64, SYS_GPA_MFP_PA13_PWM1, NULL,                 SYS_ALT_MFP1_PA13_PWM1, NULL                 }}, //1
@@ -95,7 +98,9 @@ const PWMPinDescription PWM_Desc[] = {
   {PWMB, PWM67_MODULE, PWMB_IRQn, 2, 500, {55, SYS_GPE_MFP_PE0_PWM6 , NULL,                 NULL,                  NULL                 }}, //6
   {PWMB, PWM67_MODULE, PWMB_IRQn, 3, 500, {54, SYS_GPE_MFP_PE1_PWM7 , NULL,                 NULL,                  NULL                 }}, //7
 };
+#endif
 
+#ifndef ADC_DESC_USERDEF
 const ADCPinDescription ADC_Desc[] = {
   {ADC, ADC_MODULE, 0, {71, SYS_GPA_MFP_PA0_ADC0, NULL,                 SYS_ALT_MFP1_PA0_ADC0, NULL                 }}, //0
   {ADC, ADC_MODULE, 1, {72, SYS_GPA_MFP_PA1_ADC1, NULL,                 SYS_ALT_MFP1_PA1_ADC1, NULL                 }}, //1
@@ -106,7 +111,9 @@ const ADCPinDescription ADC_Desc[] = {
   {ADC, ADC_MODULE, 6, {77, SYS_GPA_MFP_PA6_ADC6, NULL,                 SYS_ALT_MFP1_PA6_ADC6, NULL                 }}, //6
   {ADC, ADC_MODULE, 7, {78, SYS_GPA_MFP_PA7_ADC7, SYS_ALT_MFP_PA7_ADC7, SYS_ALT_MFP1_PA7_ADC7, NULL                 }}, //7
 };
+#endif
 
+#ifndef SPI_DESC_USERDEF
 const SPIPinDescription SPI_Desc[] = {
 
   {
@@ -124,19 +131,25 @@ const SPIPinDescription SPI_Desc[] = {
   //{59,SYS_GPC_MFP_PC10_SPI1_MISO0 },{61,SYS_GPC_MFP_PC8_SPI1_SS0}}},
 
 };
+#endif
 
+#ifndef UART_DESC_USERDEF
 const UARTPinDescription UART_Desc[] = {
   {UART0, UART0_MODULE, UART02_IRQn, {{32, SYS_GPB_MFP_PB0_UART0_RXD, NULL, NULL, NULL}, {33, SYS_GPB_MFP_PB1_UART0_TXD, NULL, NULL, NULL} }},
   {UART1, UART1_MODULE, UART1_IRQn, {{19, SYS_GPB_MFP_PB4_UART1_RXD, NULL, NULL, NULL}, {20, SYS_GPB_MFP_PB5_UART1_TXD, NULL, NULL, NULL} }},
   {UART2, UART2_MODULE, UART02_IRQn, {{38, SYS_GPD_MFP_PD14_UART2_RXD, NULL, NULL, NULL}, {39, SYS_GPD_MFP_PD15_UART2_TXD, NULL, NULL, NULL}}},
 };
+#endif
 
+#ifndef I2C_DESC_USERDEF
 const I2CPinDescription I2C_Desc[] = {
   {I2C1, I2C1_MODULE, {{9, SYS_GPA_MFP_PA11_I2C1_SCL, NULL, NULL, NULL}, {10, SYS_GPA_MFP_PA10_I2C1_SDA, NULL, NULL, NULL}}},
   {I2C0, I2C0_MODULE, {{11, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL}, {12, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL}}},
 };
+#endif
 
-
+#ifndef CAN_DESC_USERDEF
 const CANPinDescription CAN_Desc[] = {
   {CAN0, CAN0_MODULE, CAN0_IRQn, {{36, SYS_GPD_MFP_PD6_CAN0_RXD, NULL, NULL, NULL}, {37, SYS_GPD_MFP_PD7_CAN0_TXD, NULL, NULL, NULL}}},
 };
+#endif

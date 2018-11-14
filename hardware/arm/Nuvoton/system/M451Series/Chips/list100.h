@@ -1,7 +1,14 @@
+/****************************************************************************
+ * @file     M451(LQFP100)
+ * @version  V1.13
+ * @Date     2018/10/19-12:23:34 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2018 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
 #ifndef _CHIP100_PINLIST_H_
 #define _CHIP1000_PINLIST_H_
 
-#define VARIANT_PIN_LIST \
+#define CHIP_PIN_LIST \
 PIN(B,13,1  ),\
 PIN(B,14,2	),\
 PIN(B,15,3  ),\

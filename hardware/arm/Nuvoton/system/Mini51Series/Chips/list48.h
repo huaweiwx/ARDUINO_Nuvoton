@@ -111,16 +111,14 @@
 #define MISO_PIN   P1_6
 #define  SCK_PIN   P1_7
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
-#endif
+#define  SDA_PIN   P3_4
+#define  SCL_PIN   P3_5
 
-
-static const uint8_t A0 = 0;
-static const uint8_t A1 = 1;
-static const uint8_t A2 = 2;
-static const uint8_t A3 = 3;
-static const uint8_t A4 = 4;
-static const uint8_t A5 = 5;
+#define A0   0
+#define A1   1
+#define A2   2
+#define A3   3
+#define A4   4
+#define A5   5
 
 #endif
