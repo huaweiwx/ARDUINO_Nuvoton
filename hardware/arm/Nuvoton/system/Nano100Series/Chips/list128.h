@@ -1,13 +1,13 @@
 /****************************************************************************
- * @file     M483KIDAE(LQFP128)
+ * @file     NANO130KE3BN(LQFP128)
  * @version  V1.00
  * @Date     2018/10/19-20:44:46 
  * @brief    arduino pin descriptions file
  * Copyright (C) 2018 huaweiwx@sina.com.
 *****************************************************************************/
 
-#ifndef _CHIP64_PINLIST_H_
-#define _CHIP64_PINLIST_H_
+#ifndef _CHIP128_PINLIST_H_
+#define _CHIP128_PINLIST_H_
 
 #if USE_ICE >0
   #define CHIP_PIN_LIST \
@@ -114,6 +114,7 @@
    PIN(D,1 ,101), /* UART1_TXD/SPI2_CLK/SC1_DAT/AD9 */\
    PIN(D,2 ,102), /* UART1_RTSn/I2S_LRCLK/SPI2_MISO0/SC1_PWR/AD10 */\
    PIN(D,3 ,103), /* UART1_CTSn/I2S_BCLK/SPI2_MOSI0/SC1_RST/AD11 */\
+         /* 104 ,    NC   */\
    PIN(D,4 ,105), /* I2S_DI/SPI2_MISO1/SC1_CD/LCD_SEG35 */\
    PIN(D,5 ,106), /* I2S_DO/SPI2_MOSI1/LCD_SEG34 */\
    PIN(C,7 ,107), /* DA1_OUT/EBI_AD5/TC1/PWM0_CH1 */\
@@ -244,6 +245,7 @@
    PIN(D,1 ,101), /* UART1_TXD/SPI2_CLK/SC1_DAT/AD9 */\
    PIN(D,2 ,102), /* UART1_RTSn/I2S_LRCLK/SPI2_MISO0/SC1_PWR/AD10 */\
    PIN(D,3 ,103), /* UART1_CTSn/I2S_BCLK/SPI2_MOSI0/SC1_RST/AD11 */\
+         /* 104 ,    NC   */\
    PIN(D,4 ,105), /* I2S_DI/SPI2_MISO1/SC1_CD/LCD_SEG35 */\
    PIN(D,5 ,106), /* I2S_DO/SPI2_MOSI1/LCD_SEG34 */\
    PIN(C,7 ,107), /* DA1_OUT/EBI_AD5/TC1/PWM0_CH1 */\
@@ -268,7 +270,6 @@
    PIN(B,8 ,126), /* STADC/TM0/INT0/SC2_PWR/LCD_SEG30 */\
    PIN(E,15,127), /* LCD_SEG29 */\
    PIN(E,14,128)  /* LCD_SEG28 */
-
 #endif
 
 #define MISO_PIN  PE_3
@@ -279,16 +280,16 @@
 #define SDA_PIN   PA_10
 #define SCL_PIN   PA_11
 
-#define A0  0
-#define A1  1
-#define A2  2
-#define A3  3
-#define A4  4
-#define A5  5
-#define A6  6
-#define A7  7
-#define A8  8
-#define A9  9
+#define A0_PIN  0
+#define A1_PIN  1
+#define A2_PIN  2
+#define A3_PIN  3
+#define A4_PIN  4
+#define A5_PIN  5
+#define A6_PIN  6
+#define A7_PIN  7
+#define A8_PIN  8
+#define A9_PIN  9
 
 #endif
 

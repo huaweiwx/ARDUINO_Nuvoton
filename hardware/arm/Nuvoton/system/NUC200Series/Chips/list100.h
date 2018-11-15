@@ -1,7 +1,7 @@
 #ifndef _CHIP100_PINLIST_H_
 #define _CHIP100_PINLIST_H_
 
-#define VARIANT_PIN_LIST \
+#define CHIP_PIN_LIST \
 PIN(E,15, 1  ), \
 PIN(E,14, 2  ), \
 PIN(E,13, 3  ), \
@@ -112,14 +112,14 @@ PIN(B,8,  100)  /* TM0/STADC/CLKO */
 #define SCL_PIN  PA_9
 
 
-#define A0  0
-#define A1  1
-#define A2  2
-#define A3  3
-#define A4  4
-#define A5  5
-#define A6  6
-#define A7  7
+#define A0_PIN  0
+#define A1_PIN  1
+#define A2_PIN  2
+#define A3_PIN  3
+#define A4_PIN  4
+#define A5_PIN  5
+#define A6_PIN  6
+#define A7_PIN  7
 
 #endif
 
