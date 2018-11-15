@@ -96,7 +96,6 @@ extern void serialEventRun(void) __attribute__((weak));
 
 #if(UART_MAX_COUNT>1)
 extern HardwareSerial Serial1;
-extern void serial1EventRun(void) __attribute__((weak));
 #endif
 
 #ifdef MENU_SERIAL

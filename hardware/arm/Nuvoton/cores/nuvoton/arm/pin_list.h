@@ -20,9 +20,12 @@
 #define _NUVOTON_PIN_LIST_H_
 
 #ifdef VARIANT_PIN_LIST
-#	define PIN_LIST VARIANT_PIN_LIST
+  #define PIN_LIST VARIANT_PIN_LIST
+  #ifndef GPIO_DESC_USERDEF
+  #   define GPIO_DESC_USERDEF 1
+  #endif
 #else
-#	define PIN_LIST CHIP_PIN_LIST
+  #define PIN_LIST CHIP_PIN_LIST
 #endif
 
 #ifdef __cplusplus

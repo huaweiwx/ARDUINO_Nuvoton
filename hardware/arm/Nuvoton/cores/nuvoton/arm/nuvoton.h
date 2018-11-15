@@ -29,7 +29,8 @@
 #include "wiring_constants.h"
 #include "build_defines.h"
 
-#if defined(Mini58Series)|| defined(Mini51Series)||defined(M051Series)||defined(M058S)||defined(M480)||defined(__NUC240__)||defined(NUC029FAE)
+//#if defined(Mini58Series)|| defined(Mini51Series)||defined(M051Series)||defined(M058S)||defined(M480)||defined(__NUC240__)||defined(NUC029FAE)
+#if __has_include("chip.h")
   #include "chip.h"
 #endif
 
