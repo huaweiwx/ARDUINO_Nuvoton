@@ -15,7 +15,7 @@ M451.build.vid=0x2341
 M451.build.pid=0x003e
 
 M451.build.core=nuvoton
-M451.build.mcu=cortex-m4
+M451.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 M451.build.f_cpu=72000000L
 
 M451.build.series=M451Series
@@ -156,15 +156,15 @@ NANO130.build.core=nuvoton
 NANO130.build.mcu=cortex-m0
 NANO130.build.f_cpu=42000000L
 NANO130.build.variant=NANO130
+NANO130.build.board=NuEdu_NANO130
 
 NANO130.menu.cpu.NuEdu=NuEdu-EVB_NANO130(128kFLASH 16kRAM)
-NANO130.menu.cpu.NuEdu.build.board=NuEdu_NANO130
 
 NANO130.menu.cpu.NuTiny=NuTiny_EVB_NANO130(128kFLASH 16kRAM)
 NANO130.menu.cpu.NuTiny.build.board=NuTiny_NANO130
 
 NANO130.build.series=Nano100Series
-NANO130.build.extra_flags= -D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+NANO130.build.extra_flags= -D__NANO100__ -DCHIP128P -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
 NANO130.build.ldscript=128K_16K_flash.ld
 NANO130.upload.maximum_size=131072
 NANO130.upload.maximum_data_size=16384
@@ -323,7 +323,7 @@ NANO1x2.upload.native_usb=false
 #nuvoton_nano102s.build.variant=NANO1X2
 #nuvoton_nano102s.build.f_cpu=32000000L
 #nuvoton_nano102s.build.extra_flags= -D__NANO1X2__ -D__NANO102ZC2AN__ -D__IOT_EVB__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
-#nuvoton_nano102s.build.board=__NUVOTON__
+#nuvoton_nano102s.build.board=nuvoton
 #nuvoton_nano102s.build.ldscript=32K_8K_flash.ld
 #nuvoton_nano102s.build.series=Nano1X2Series
 #nuvoton_nano102s.upload.maximum_size=32768
@@ -357,7 +357,7 @@ NANO1x2.upload.native_usb=false
 M480.name=M48x
 
 M480.build.core=nuvoton
-M480.build.mcu=cortex-m4
+M480.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 M480.build.f_cpu=192000000L
 M480.build.variant=M480
 M480.build.board=M480
