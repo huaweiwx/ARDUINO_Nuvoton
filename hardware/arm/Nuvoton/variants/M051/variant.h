@@ -1,6 +1,5 @@
 #ifndef _VARIANT_H_
 #define _VARIANT_H_
-//#define USE_BoardToPin
 
 #ifndef LED_BUILTIN
 #define LED_BUILTIN P2_3

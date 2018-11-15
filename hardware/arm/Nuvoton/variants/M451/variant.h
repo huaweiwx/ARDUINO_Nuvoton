@@ -1,6 +1,5 @@
 #ifndef _VARIANT_H_
 #define _VARIANT_H_
-//#define USE_BoardToPin
 
 #define VARIANT_PIN_LIST \
 PIN(B,13,1  ),\

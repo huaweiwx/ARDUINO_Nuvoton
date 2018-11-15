@@ -5,7 +5,6 @@ extern void CLK_EnableModuleClock(uint32_t);
 
 void Enable_All_IPs(void)
 {
-#if 0
   CLK_EnableModuleClock(ADC_MODULE);    
   
   //Enable PWM0 ~PWM7 module
@@ -18,7 +17,6 @@ void Enable_All_IPs(void)
   CLK_SetModuleClock(PWM0_CH23_MODULE,CLK_CLKSEL1_PWM0_CH23_S_HXT,0);
   CLK_SetModuleClock(PWM1_CH01_MODULE,CLK_CLKSEL2_PWM1_CH01_S_HXT,0);
   CLK_SetModuleClock(PWM1_CH23_MODULE,CLK_CLKSEL2_PWM1_CH23_S_HXT,0);
-#endif
 }
 
 /* Init System Clock                                                                                       */
