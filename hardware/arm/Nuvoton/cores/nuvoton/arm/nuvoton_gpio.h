@@ -31,73 +31,57 @@
 //}
 
 inline void digitalWriteHigh(__ConstPin CPin) {
-  ((GPIO_T*)CPin.ulPortBase)->DOUT |= CPin.pinMask;	
+	outp32(CPin.ioReg, 1);
 }
 
 inline void digitalWriteLow(__ConstPin CPin) {
-  ((GPIO_T*)CPin.ulPortBase)->DOUT &= ~CPin.pinMask;	
+	outp32(CPin.ioReg, 0);
 }
 
 template<typename T=bool>
 inline void digitalWrite(__ConstPin CPin, T val )
 {
-  if (val) {
-    digitalWriteHigh(CPin);
-  } else {
-    digitalWriteLow(CPin);
-  }
+	outp32(CPin.ioReg, ((val)?1:0));
 }
 
 template<typename T>
 inline T digitalRead(__ConstPin CPin)
 {
-  /* can add a section here to see if pin is readable */
-  return bitRead(((GPIO_T*)CPin.ulPortBase)->PIN, CPin.pinMask);
+	return inp32(CPin.ioReg);
 }
 
 inline void digitalToggle(__ConstPin CPin)
 {
-   ((GPIO_T*)CPin.ulPortBase)->DOUT ^= CPin.pinMask;
+	M32(CPin.ioReg) ^= (uint32_t)1;
 }
 
 /*gpio low layer interface class*/
 class LL_PIN {
   public:
     __ConstPin CPin;
-    const uint8_t pos = (((CPin.pinMask)==BIT0)?0: 
-						(((CPin.pinMask)==BIT1)?1: 
-						(((CPin.pinMask)==BIT2)?2: 
-						(((CPin.pinMask)==BIT3)?3: 
-						(((CPin.pinMask)==BIT4)?4: 
-						(((CPin.pinMask)==BIT5)?5: 
-						(((CPin.pinMask)==BIT6)?6: 
-						(((CPin.pinMask)==BIT7)?7: 
-						(((CPin.pinMask)==BIT8)?8: 
-						(((CPin.pinMask)==BIT9)?9: 
-						(((CPin.pinMask)==BIT10)?10: 
-						(((CPin.pinMask)==BIT11)?11: 
-						(((CPin.pinMask)==BIT12)?12: 
-						(((CPin.pinMask)==BIT13)?13: 
-						(((CPin.pinMask)==BIT14)?14: 
-						(((CPin.pinMask)==BIT15)?15:16))))))))))))))));
-
-#if defined(P0)
-	const uint32_t ioReg = GPIO_PIN_DATA_BASE + 0x20 * (((GPIO_T*)CPin.ulPortBase)-P0)/(P1-P0) + (pos<<2);
-#else
-	const uint32_t ioReg = GPIO_PIN_DATA_BASE + 0x40 *  (((GPIO_T*)CPin.ulPortBase)-PA)/(PB-PA)+(pos<<2);
-#endif
     constexpr LL_PIN(__ConstPin CPin): CPin(CPin) {};
     
     template<typename T = bool>
     inline  T read() {
-      return inp32(ioReg);
+      return inp32(CPin.ioReg);
     }
 
+    inline __attribute__((always_inline))
+    void high() {
+      outp32(CPin.ioReg, 1);
+    }
+
+    inline __attribute__((always_inline))
+    void low() {
+      outp32(CPin.ioReg, 0);
+    }
+	
     template<typename T>
     inline void write(T value) {
-      outp32(ioReg, value);
+      outp32(CPin.ioReg, ((value)?1:0));
     }
 
+	
     template<typename T>
     inline LL_PIN & operator = (T value) {
       this->write(value);
@@ -114,15 +98,6 @@ class LL_PIN {
       return *this;
     }
 
-    inline __attribute__((always_inline))
-    void high() {
-      outp32(ioReg, 1);
-    }
-
-    inline __attribute__((always_inline))
-    void low() {
-      outp32(ioReg, 0);
-    }
 
     template<typename T>
     inline operator T () {
@@ -136,7 +111,7 @@ class LL_PIN {
     /*----- comptabled with DigitalPin ----------*/
     inline __attribute__((always_inline))
     void toggle() {
-         M32(ioReg) ^= (uint32_t)1;
+         M32(CPin.ioReg) ^= (uint32_t)1;
     }
 
     inline __attribute__((always_inline))
