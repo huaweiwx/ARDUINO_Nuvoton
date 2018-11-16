@@ -31,14 +31,15 @@
 #ifdef __cplusplus
 	class __ConstPin {
 	public:
-		constexpr __ConstPin(const uint32_t ulPortBase, const  uint32_t pinMask, const uint8_t ucPin)
-		: ulPortBase(ulPortBase), pinMask(pinMask), ucPin(ucPin) {};
+		constexpr __ConstPin(const uint32_t ulPortBase, const  uint32_t pinMask, const  uint32_t ioReg, const uint8_t ucPin)
+		: ulPortBase(ulPortBase), pinMask(pinMask), ucPin(ucPin), ioReg(ioReg) {};
 		constexpr operator uint8_t() const {
 		return ucPin;
 		}
-		const uint32_t ulPortBase;
-		const uint32_t pinMask;
-		const uint8_t  ucPin;
+		const uint32_t  ulPortBase;
+		const uint32_t  pinMask;
+        const  uint32_t ioReg;
+		const uint8_t   ucPin;
 	};
 	
 	#define PIN(a, b, c) _P##a##b = c
@@ -49,9 +50,9 @@
 	#undef PIN
 
     #ifdef GPIOA_BASE
-	  #define PIN(a, b, c) P##a##_##b(GPIO##a##_BASE,bit(b),c)
+	  #define PIN(a, b, c) P##a##_##b(GPIO##a##_BASE,bit(b),GPIO_PIN_REGADR(('a'-'A'),b),c)
     #else
-	  #define PIN(a, b, c) P##a##_##b(P##a##_BASE,bit(b),c)
+	  #define PIN(a, b, c) P##a##_##b(P##a##_BASE,bit(b),GPIO_PIN_REGADR(a,b),c)
     #endif	
 	constexpr __ConstPin PIN_LIST;
 	#undef PIN
