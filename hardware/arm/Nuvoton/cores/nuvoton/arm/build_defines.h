@@ -61,11 +61,11 @@
 #endif
 
 #ifndef  USE_ICE
-# define USE_ICE  1
+# define USE_ICE          1
 #endif
 
 #ifndef  USE_ERRORBLINK
-#  ifdef DEBUG_EFM_USER
+#  ifdef DEBUG_NUVOTON_USER
     #define USE_ERRORBLINK 1
 #  else
     #define USE_ERRORBLINK 0
@@ -123,41 +123,30 @@
 #endif
 
 //USART
-#ifndef USE_USART0
-# define USE_USART0 1
-#endif
-#ifndef USE_USART1
-# define USE_USART1 1
-#endif
-#ifndef USE_USART2
-# define USE_USART2 1
-#endif
-#ifndef USE_USART3
-# define USE_USART3 1
-#endif
-#ifndef USE_USART4
-# define USE_USART4 1
-#endif
-#ifndef USE_USART5
-# define USE_USART5 1
-#endif
 #ifndef USE_UART0
 # define USE_UART0 1
 #endif
 #ifndef USE_UART1
 # define USE_UART1 1
 #endif
-
-#ifndef USE_LEUART0
-# define USE_LEUART0 1
+#ifndef USE_UART2
+# define USE_UART2 1
 #endif
-
-#ifndef USE_LEUART1
-# define USE_LEUART1 1
+#ifndef USE_UART3
+# define USE_UART3 1
 #endif
-
+#ifndef USE_UART4
+# define USE_UART4 1
+#endif
+#ifndef USE_UART5
+# define USE_UART5 1
+#endif
 
 //SPI
+#ifndef USE_SPI0
+# define USE_SPI0 1
+#endif
+
 #ifndef USE_SPI1
 # define USE_SPI1 1
 #endif
@@ -174,29 +163,17 @@
 # define USE_SPI4 1
 #endif
 
-#ifndef USE_SPI5
-# define USE_SPI5 1
-#endif
-
-#ifndef USE_SPI6
-# define USE_SPI6 1
-#endif
-
 //I2C
+#ifndef USE_I2C0
+# define USE_I2C0 1
+#endif
+
 #ifndef USE_I2C1
 # define USE_I2C1 1
 #endif
 
 #ifndef USE_I2C2
 # define USE_I2C2 1
-#endif
-
-#ifndef USE_I2C3
-# define USE_I2C3 1
-#endif
-
-#ifndef USE_I2C4
-# define USE_I2C4 1
 #endif
 
 /***************  HAL_Conf default end  ******************/
