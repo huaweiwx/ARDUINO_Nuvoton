@@ -54,6 +54,14 @@
 	#define P0_5 PA_5
 	#define P0_6 PA_6
 	#define P0_7 PA_7
+	#define P0_8 PA_8
+	#define P0_9 PA_9
+	#define P0_10 PA_10
+	#define P0_11 PA_11
+	#define P0_12 PA_12
+	#define P0_13 PA_13
+	#define P0_14 PA_14
+	#define P0_15 PA_15
 #endif
 
 #if defined(P10) 
@@ -90,6 +98,14 @@
 	#define P1_5 PB_5
 	#define P1_6 PB_6
 	#define P1_7 PB_7
+	#define P1_8  PB_8
+	#define P1_9  PB_9
+	#define P1_10 PB_10
+	#define P1_11 PB_11
+	#define P1_12 PB_12
+	#define P1_13 PB_13
+	#define P1_14 PB_14
+	#define P1_15 PB_15
 #endif
 
 #if defined(P20) 
@@ -126,6 +142,14 @@
 	#define P2_5 PC_5
 	#define P2_6 PC_6
 	#define P2_7 PC_7
+	#define P2_8  PC_8
+	#define P2_9  PC_9
+	#define P2_10 PC_10
+	#define P2_11 PC_11
+	#define P2_12 PC_12
+	#define P2_13 PC_13
+	#define P2_14 PC_14
+	#define P2_15 PC_15
 #endif
 
 #if defined(P30) 
@@ -162,6 +186,14 @@
 	#define P3_5 PD_5
 	#define P3_6 PD_6
 	#define P3_7 PD_7
+	#define P3_8  PD_8
+	#define P3_9  PD_9
+	#define P3_10 PD_10
+	#define P3_11 PD_11
+	#define P3_12 PD_12
+	#define P3_13 PD_13
+	#define P3_14 PD_14
+	#define P3_15 PD_15
 #endif
 
 #if defined(P40) 
@@ -189,6 +221,7 @@
 	#define P44    PE4
 	#define P45    PE5
 	#define P46    PE6
+	#define P47    PE7
 	#define P4_0   PE_0
 	#define P4_1   PE_1
 	#define P4_2   PE_2
@@ -197,6 +230,14 @@
 	#define P4_5   PE_5
 	#define P4_6   PE_6
 	#define P4_7   PE_7
+	#define P4_8   PE_8
+	#define P4_9   PE_9
+	#define P4_10  PE_10
+	#define P4_11  PE_11
+	#define P4_12  PE_12
+	#define P4_13  PE_13
+	#define P4_14  PE_14
+	#define P4_15  PE_15
 #endif
 
 #if defined(P50) 
@@ -232,6 +273,14 @@
 	#define P5_5   PF_5
 	#define P5_6   PF_6
 	#define P5_7   PF_7
+	#define P5_8   PF_8
+	#define P5_9   PF_9
+	#define P5_10  PF_10
+	#define P5_11  PF_11
+	#define P5_12  PF_12
+	#define P5_13  PF_13
+	#define P5_14  PF_14
+	#define P5_15  PF_15
 #endif 
 
 #if defined(P60) 
@@ -268,6 +317,14 @@
 	#define P6_5   PG_5
 	#define P6_6   PG_6
 	#define P6_7   PG_7
+	#define P6_8   PG_8
+	#define P6_9   PG_9
+	#define P6_10  PG_10
+	#define P6_11  PG_11
+	#define P6_12  PG_12
+	#define P6_13  PG_13
+	#define P6_14  PG_14
+	#define P6_15  PG_15
 #endif 
 
 #if defined(P70) 
@@ -304,6 +361,14 @@
 	#define P7_5   PH_5
 	#define P7_6   PH_6
 	#define P7_7   PH_7
+	#define P7_8   PH_8
+	#define P7_9   PH_9
+	#define P7_10  PH_10
+	#define P7_11  PH_11
+	#define P7_12  PH_12
+	#define P7_13  PH_13
+	#define P7_14  PH_14
+	#define P7_15  PH_15
 #endif 
 
 #endif /*_PINNAME_LEGACY_H_*/

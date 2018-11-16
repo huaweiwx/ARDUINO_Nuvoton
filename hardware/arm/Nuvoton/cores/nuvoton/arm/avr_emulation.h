@@ -134,8 +134,8 @@ class DDRemulation
   #define  PINA   P0->PIN
 #endif
 #if  defined(PB)
-  #define PORTB   P0->DOUT
-  #define  PINB   P0->PIN
+  #define PORTB   PB->DOUT
+  #define  PINB   PB->PIN
 #elif defined(P1)
   #define PORTB   P1->DOUT
   #define  PINB   P1->PIN
@@ -155,29 +155,29 @@ class DDRemulation
   #define  PIND   P3->PIN
 #endif
 #if  defined(PE)
-  #define PORTE  PE->DOUT
-  #define  PINE  PE->PIN
+  #define PORTE   PE->DOUT
+  #define  PINE   PE->PIN
 #elif defined(P4)
   #define PORTE   P4->DOUT
   #define  PINE   P4->PIN
 #endif
 #if  defined(PF)
-  #define PORTF  PF->DOUT
-  #define  PINF  PF->PIN
+  #define PORTF   PF->DOUT
+  #define  PINF   PF->PIN
 #elif defined(P5)
   #define PORTF   P5->DOUT
   #define  PINF   P5->PIN
 #endif
 #if  defined(PG)
-  #define PORTG  PG->DOUT
-  #define  PING  PG->PIN
-#elif defined(P56)
+  #define PORTG   PG->DOUT
+  #define  PING   PG->PIN
+#elif defined(P6)
   #define PORTG   P6->DOUT
   #define  PING   P6->PIN
 #endif
 #if  defined(PH)
-  #define PORTH  PH->DOUT
-  #define  PINH  PH->PIN
+  #define PORTH   PH->DOUT
+  #define  PINH   PH->PIN
 #elif defined(P7)
   #define PORTH   P7->DOUT
   #define  PINH   P7->PIN
