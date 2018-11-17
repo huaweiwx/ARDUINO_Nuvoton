@@ -39,7 +39,7 @@
   ring_buffer rx_buffer0 = { { 0 }, 0, 0};
   HardwareSerial Serial0(UART_Desc[0].U, 0, CLK_CLKSEL1_UART0SEL_PLL, 1, UART_Desc[0].irq, &rx_buffer0);
   #endif
-  
+
   #if(UART_MAX_COUNT>1)
   ring_buffer rx_buffer1 = { { 0 }, 0, 0};
   HardwareSerial Serial1(UART_Desc[1].U, 1, CLK_CLKSEL1_UART1SEL_PLL, 1, UART_Desc[1].irq, &rx_buffer1);
@@ -73,7 +73,51 @@
     }
   }
   #endif
-  
+  #if(UART_MAX_COUNT>2)
+  void UART2_IRQHandler(void) {
+    while (UART_GET_INT_FLAG(UART2, UART_INTEN_RDAIEN_Msk)) {
+      unsigned int i = (rx_buffer2.head + 1) % SERIAL_BUFFER_SIZE;
+      if (i != rx_buffer2.tail) {
+        rx_buffer2.buffer[rx_buffer2.head] = UART_READ(UART2);
+        rx_buffer2.head = i;
+      }
+    }
+  }
+  #endif
+  #if(UART_MAX_COUNT>3)
+  void UART3_IRQHandler(void) {
+    while (UART_GET_INT_FLAG(UART3, UART_INTEN_RDAIEN_Msk)) {
+      unsigned int i = (rx_buffer3.head + 1) % SERIAL_BUFFER_SIZE;
+      if (i != rx_buffer3.tail) {
+        rx_buffer3.buffer[rx_buffer3.head] = UART_READ(UART3);
+        rx_buffer3.head = i;
+      }
+    }
+  }
+  #endif
+  #if(UART_MAX_COUNT>4)
+  void UART4_IRQHandler(void) {
+    while (UART_GET_INT_FLAG(UART4, UART_INTEN_RDAIEN_Msk)) {
+      unsigned int i = (rx_buffer4.head + 1) % SERIAL_BUFFER_SIZE;
+      if (i != rx_buffer4.tail) {
+        rx_buffer4.buffer[rx_buffer4.head] = UART_READ(UART4);
+        rx_buffer4.head = i;
+      }
+    }
+  }
+  #endif
+  #if(UART_MAX_COUNT>5)
+  void UART5_IRQHandler(void) {
+    while (UART_GET_INT_FLAG(UART5, UART_INTEN_RDAIEN_Msk)) {
+      unsigned int i = (rx_buffer5.head + 1) % SERIAL_BUFFER_SIZE;
+      if (i != rx_buffer5.tail) {
+        rx_buffer5.buffer[rx_buffer5.head] = UART_READ(UART5);
+        rx_buffer5.head = i;
+      }
+    }
+  }
+  #endif
+
   #ifdef __cplusplus
   }
   #endif
@@ -295,7 +339,7 @@
   }
   #endif
   
-#elif defined(Mini58Series) || defined(Mini51Series) || defined(M051Series) || defined(M058S)
+#else //if defined(Mini58Series) || defined(Mini51Series) || defined(M051Series) || defined(M058S)
   #ifdef CLK_CLKSEL1_UART_S_IRC22M
   #  define CLK_CLKSEL1_UART_S_HIRC CLK_CLKSEL1_UART_S_IRC22M
   #elif defined(CLK_CLKSEL1_UARTSEL_HIRC)
@@ -358,8 +402,6 @@
   }
   #endif
   
-#else
-#error "!add me!"
 #endif
 
 #if(UART_MAX_COUNT>0)
@@ -432,13 +474,6 @@ void HardwareSerial::begin(uint32_t baud) {
   //SYS_ResetModule(UART_Desc[u32Idx].module);
   /* Enable Interrupt */
   UART_ENABLE_INT(uart_device, UART_INTEN_RDAIEN_Msk);
-#elif defined(__NUC240__) | defined(__NUC131__)
-  /* Select IP clock source and clock divider */
-  CLK_SetModuleClock(UART_Desc[u32Idx].module, u32ClkSrc, CLK_CLKDIV_UART(u32ClkDiv));
-  /* Reset IP */
-  //SYS_ResetModule(UART_Desc[u32Idx].module);
-  /* Enable Interrupt */
-  UART_ENABLE_INT(uart_device, UART_IER_RDA_IEN_Msk);
 #elif defined(__NANO100__) | defined(__NANO1X2__)
   /* Select IP clock source and clock divider */
   CLK_SetModuleClock(UART_Desc[u32Idx].module, u32ClkSrc, CLK_UART_CLK_DIVIDER(u32ClkDiv));
@@ -446,6 +481,13 @@ void HardwareSerial::begin(uint32_t baud) {
   //SYS_ResetModule(UART_Desc[u32Idx].module);
   /* Enable Interrupt */
   UART_ENABLE_INT(uart_device, UART_IER_RDA_IE_Msk);
+#elif defined(__NUC240__) | defined(__NUC131__)
+  /* Select IP clock source and clock divider */
+  CLK_SetModuleClock(UART_Desc[u32Idx].module, u32ClkSrc, CLK_CLKDIV_UART(u32ClkDiv));
+  /* Reset IP */
+  //SYS_ResetModule(UART_Desc[u32Idx].module);
+  /* Enable Interrupt */
+  UART_ENABLE_INT(uart_device, UART_IER_RDA_IEN_Msk);
 #else
 
   #ifdef UART_INTEN_RDAIEN_Msk
