@@ -166,8 +166,12 @@ extern const SPIPinDescription SPI_Desc[];
 extern const UARTPinDescription UART_Desc[];
 #define UART_RX 0
 #define UART_TX 1
-#define UART_Config(Desc) 
-
+#define UART_Config(Desc) \
+  do { \
+    uint8_t i; \
+    for(i=0;i<2;i++) \
+      outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
+  }while(0);
 
 #define I2C_MAX_COUNT 1
 extern const I2CPinDescription I2C_Desc[];
