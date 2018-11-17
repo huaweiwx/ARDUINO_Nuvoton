@@ -66,6 +66,9 @@ public:
                    IRQn_Type u32IrqId,
                    ring_buffer *rx_buffer);
 
+    void setRouteLoc(uint32_t route){
+		this->u32Idx = route;  /* we can remap uart port as efm32 */
+	}
     /* Set up/tear down */
     void begin(uint32_t baud = 115200);
     void end(void);
