@@ -90,10 +90,13 @@ PIN(D,0,  83)  /* SPI2_SS0                       */\
 /* PIN(F,0,  84), /* XT1_OUT     */
 /* PIN(F,1,  85), /* XT1_IN      */
 
-#endif
 
-#ifndef  LED_BUILTIN
- #define LED_BUILTIN      PA_12  /*PA12*/
+#define LED_BUILTIN      PA_12  /*PA12*/
+
+#else
+  #ifndef  LED_BUILTIN
+    #define LED_BUILTIN      PA_12  /*PA12*/
+  #endif
 #endif
 
 /*if undef use default*/

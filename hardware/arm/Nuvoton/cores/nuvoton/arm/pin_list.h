@@ -51,6 +51,8 @@
 
     #ifdef GPIOA_BASE
 	  #define PIN(a, b, c) P##a##_##b(GPIO##a##_BASE,bit(b),GPIO_PIN_REGADR((GPIO##a##_BASE-GPIOA_BASE)/(GPIOB_BASE-GPIOA_BASE),b),c)
+	#elif defined(PA_BASE)  
+	  #define PIN(a, b, c) P##a##_##b(P##a##_BASE,bit(b),GPIO_PIN_REGADR((P##a##_BASE-PA_BASE)/(PB_BASE-PA_BASE),b),c)
     #else
 	  #define PIN(a, b, c) P##a##_##b(P##a##_BASE,bit(b),GPIO_PIN_REGADR(a,b),c)
     #endif	
