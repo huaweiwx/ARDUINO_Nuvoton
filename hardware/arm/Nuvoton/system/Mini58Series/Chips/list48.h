@@ -2,7 +2,7 @@
 #define _CHIP48_PINLIST_H_
 
 #if USE_ICE >0
-  #define VARIANT_PIN_LIST \
+  #define CHIP_PIN_LIST \
         /*1    NC  */\
   PIN(1,5,2),/*P1.5*/\
         /*3   nRESET*/\
@@ -52,7 +52,7 @@
   PIN(1,4,47) /*P1.4*/
         /*48    NC  */
 #else /*used ICE*/
-  #define VARIANT_PIN_LIST \
+  #define CHIP_PIN_LIST \
         /*1    NC  */\
   PIN(1,5,2),/*P1.5*/\
         /*3   nRESET*/\

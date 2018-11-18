@@ -2,7 +2,7 @@
 #define _CHIP20_PINLIST_H_
 
 #if USE_ICE >0
-  #define VARIANT_PIN_LIST \
+  #define CHIP_PIN_LIST \
   PIN(1,2,1),/*P1.2*/\
   PIN(1,3,2),/*P1.3*/\
   PIN(1,4,3),/*P1.4*/\
@@ -24,7 +24,7 @@
   PIN(0,4,19) /*P0.4*/
         /*20 , VDD*/
 #else /*used ICE*/
-  #define VARIANT_PIN_LIST \
+  #define CHIP_PIN_LIST \
   PIN(1,2,1),/*P1.2*/\
   PIN(1,3,2),/*P1.3*/\
   PIN(1,4,3),/*P1.4*/\

@@ -18,9 +18,11 @@
 #include "Arduino.h"
 
  #if defined(CHIP48P)
-  #include "Chips/variant48.h"
+  #include "variant48.h"
  #elif defined(CHIP33P)
-  #include "Chips/variant33.h"
+  #include "variant33.h"
  #elif defined(CHIP20P)
-  #include "Chips/variant20.h"
+  #include "variant20.h"
+ #else
+  #error "add me"	 
  #endif
