@@ -34,15 +34,56 @@
 #include <string.h>
 #include <inttypes.h>
 #include "Arduino.h"
+
+/*if undef use default*/
+#ifndef UART0_LOC
+#define UART0_LOC 0
+#endif
+#ifndef UART1_LOC
+#define UART1_LOC 1
+#endif
+#ifndef UART2_LOC
+#define UART2_LOC 2
+#endif
+#ifndef UART3_LOC
+#define UART3_LOC 3
+#endif
+#ifndef UART4_LOC
+#define UART4_LOC 4
+#endif
+#ifndef UART5_LOC
+#define UART5_LOC 5
+#endif
+
 #if  defined(M480)
   #if(UART_MAX_COUNT>0)
   ring_buffer rx_buffer0 = { { 0 }, 0, 0};
-  HardwareSerial Serial0(UART_Desc[0].U, 0, CLK_CLKSEL1_UART0SEL_PLL, 1, UART_Desc[0].irq, &rx_buffer0);
+  HardwareSerial Serial0(UART_Desc[UART0_LOC].U, UART0_LOC, CLK_CLKSEL1_UART0SEL_PLL, 1, UART_Desc[UART0_LOC].irq, &rx_buffer0);
   #endif
-
+  
   #if(UART_MAX_COUNT>1)
   ring_buffer rx_buffer1 = { { 0 }, 0, 0};
-  HardwareSerial Serial1(UART_Desc[1].U, 1, CLK_CLKSEL1_UART1SEL_PLL, 1, UART_Desc[1].irq, &rx_buffer1);
+  HardwareSerial Serial1(UART_Desc[UART1_LOC].U, UART1_LOC, CLK_CLKSEL1_UART1SEL_PLL, 1, UART_Desc[UART1_LOC].irq, &rx_buffer1);
+  #endif
+  
+  #if(UART_MAX_COUNT>2)
+  ring_buffer rx_buffer2 = { { 0 }, 0, 0};
+  HardwareSerial Serial2(UART_Desc[UART2_LOC].U, UART2_LOC, CLK_CLKSEL3_UART2SEL_PLL, 1, UART_Desc[UART2_LOC].irq, &rx_buffer2);
+  #endif
+
+  #if(UART_MAX_COUNT>3)
+  ring_buffer rx_buffer3 = { { 0 }, 0, 0};
+  HardwareSerial Serial3(UART_Desc[UART3_LOC].U, UART3_LOC, CLK_CLKSEL3_UART3SEL_PLL, 1, UART_Desc[UART3_LOC].irq, &rx_buffer3);
+  #endif
+  
+  #if(UART_MAX_COUNT>4)
+  ring_buffer rx_buffer4 = { { 0 }, 0, 0};
+  HardwareSerial Serial4(UART_Desc[UART4_LOC].U, UART4_LOC, CLK_CLKSEL3_UART4SEL_PLL, 1, UART_Desc[UART4_LOC].irq, &rx_buffer4);
+  #endif
+  
+  #if(UART_MAX_COUNT>5)
+  ring_buffer rx_buffer5 = { { 0 }, 0, 0};
+  HardwareSerial Serial5(UART_Desc[UART5_LOC].U, UART5_LOC, CLK_CLKSEL3_UART5SEL_PLL, 1, UART_Desc[UART5_LOC].irq, &rx_buffer5);
   #endif
   
   #ifdef __cplusplus

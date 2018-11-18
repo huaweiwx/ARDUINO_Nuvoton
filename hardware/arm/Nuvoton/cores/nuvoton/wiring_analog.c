@@ -52,10 +52,11 @@ void analogReference(eAnalogReference ulMode)
 uint32_t analogRead(uint8_t ucPin)
 {
  /*volatile*/ uint32_t ulValue = 0;
- 
+    if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
+
+
 #if defined(__M451__)||defined(M480)   
 
-    if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
   	  	
 	/* Disable the digital input path to avoid the leakage current. */
     GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
@@ -93,9 +94,38 @@ uint32_t analogRead(uint8_t ucPin)
 
 	// Close ADC
 	EADC_Close(ADC_Desc[ucPin].A);
-#elif defined(__NUC240__)
+#elif defined(__NANO100__) | defined(__NANO1X2__)
+	ADC_Config(ADC_Desc[ucPin]);
+  
+  //GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
+  
+  // Enable channel 
+	ADC_Open(ADC_Desc[ucPin].A, ADC_INPUT_MODE_SINGLE_END, ADC_OPERATION_MODE_SINGLE, (1<<ADC_Desc[ucPin].ch));
+	
+	// Power on ADC
+	ADC_POWER_ON(ADC_Desc[ucPin].A);
 
-	if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
+  // Wait for busy of conversion
+  while(ADC_IS_BUSY(ADC_Desc[ucPin].A));	
+  	
+  // Start for conversion	
+  ADC_START_CONV(ADC_Desc[ucPin].A);
+  		
+	// Wait for end of conversion
+	while(!ADC_GET_INT_FLAG(ADC_Desc[ucPin].A,ADC_ADF_INT));
+	
+	// Clear ADC flag
+	ADC_CLR_INT_FLAG(ADC_Desc[ucPin].A,ADC_ADF_INT);
+	
+	// Read the value
+	ulValue = ADC_GET_CONVERSION_DATA(ADC_Desc[ucPin].A,ADC_Desc[ucPin].ch);	
+	ulValue = mapResolution(ulValue, 12, _readResolution);
+  
+  //GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin-1].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num-1].bit);
+  
+  // Close ADC
+  ADC_Close(ADC_Desc[ucPin].A);
+#elif defined(__NUC240__)
   	
 	ADC_Config(ADC_Desc[ucPin]);
   
@@ -127,44 +157,12 @@ uint32_t analogRead(uint8_t ucPin)
   
 	// Close ADC
 	ADC_Close(ADC_Desc[ucPin].A);
-#elif defined(__NANO100__) | defined(__NANO1X2__)
+#else //if defined(__NUC131__)||defined(Mini58Series)|| defined(Mini51Series)||defined(M051Series)||defined(M058S)
 
-	if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
-  	
-	ADC_Config(ADC_Desc[ucPin]);
+  #ifndef ADC_ADF_INT
+     #define ADC_ADF_INT ADC_ADIF_INT   /*Mini58*/
+  #endif
   
-  //GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
-  
-  // Enable channel 
-	ADC_Open(ADC_Desc[ucPin].A, ADC_INPUT_MODE_SINGLE_END, ADC_OPERATION_MODE_SINGLE, (1<<ADC_Desc[ucPin].ch));
-	
-	// Power on ADC
-	ADC_POWER_ON(ADC_Desc[ucPin].A);
-
-  // Wait for busy of conversion
-  while(ADC_IS_BUSY(ADC_Desc[ucPin].A));	
-  	
-  // Start for conversion	
-  ADC_START_CONV(ADC_Desc[ucPin].A);
-  		
-	// Wait for end of conversion
-	while(!ADC_GET_INT_FLAG(ADC_Desc[ucPin].A,ADC_ADF_INT));
-	
-	// Clear ADC flag
-	ADC_CLR_INT_FLAG(ADC_Desc[ucPin].A,ADC_ADF_INT);
-	
-	// Read the value
-	ulValue = ADC_GET_CONVERSION_DATA(ADC_Desc[ucPin].A,ADC_Desc[ucPin].ch);	
-	ulValue = mapResolution(ulValue, 12, _readResolution);
-  
-  //GPIO_DISABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin-1].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num-1].bit);
-  
-  // Close ADC
-  ADC_Close(ADC_Desc[ucPin].A);
-#elif defined(__NUC131__)
-
-  if(ucPin>ADC_MAX_COUNT || ADC_Desc[ucPin].A==NULL) return 0;  	  
-  	
   ADC_Config(ADC_Desc[ucPin]);
   
   //GPIO_ENABLE_DIGITAL_PATH(GPIO_Desc[ADC_Desc[ucPin].pintype.num].P,GPIO_Desc[ADC_Desc[ucPin].pintype.num].bit);
@@ -195,8 +193,6 @@ uint32_t analogRead(uint8_t ucPin)
   
   // Close ADC
   ADC_Close(ADC_Desc[ucPin].A);
-#elif defined(Mini58Series)|| defined(Mini51Series)||defined(M051Series)||defined(M058S)
-
 #endif
   return ulValue;	
 }
@@ -214,9 +210,9 @@ void analogWrite(uint8_t ucPin, uint32_t ulValue) {
 	if(ucPin > BoardToPin_MAX_COUNT) return;
 	if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
 	ucPin=BoardToPinInfo[ucPin].num;
-	#else
+#else
 	if(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL) return;
-	#endif
+#endif
 	
 	ulValue = mapResolution(ulValue, _writeResolution, 8);
 	

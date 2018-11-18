@@ -101,6 +101,22 @@ extern void serialEventRun(void) __attribute__((weak));
 extern HardwareSerial Serial1;
 #endif
 
+#if(UART_MAX_COUNT>2)
+extern HardwareSerial Serial2;
+#endif
+
+#if(UART_MAX_COUNT>3)
+extern HardwareSerial Serial3;
+#endif
+
+#if(UART_MAX_COUNT>4)
+extern HardwareSerial Serial4;
+#endif
+
+#if(UART_MAX_COUNT>5)
+extern HardwareSerial Serial5;
+#endif
+
 #ifdef MENU_SERIAL
 #define Serial MENU_SERIAL
 #endif
