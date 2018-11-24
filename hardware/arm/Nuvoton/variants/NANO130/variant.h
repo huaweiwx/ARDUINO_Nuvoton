@@ -111,15 +111,15 @@ PIN(E,14, 84)  /* LCD_SEG28 */
 #define SDA   PA_10
 #define SCL   PA_11
 
-static const uint8_t A0 = 0;
-static const uint8_t A1 = 1;
-static const uint8_t A2 = 2;
-static const uint8_t A3 = 3;
-static const uint8_t A4 = 4;
-static const uint8_t A5 = 5;
-static const uint8_t A6 = 6;
-static const uint8_t A7 = 7;
-static const uint8_t A8 = 8;
-static const uint8_t A9 = 9;
+#define A0  0
+#define A1  1
+#define A2  2
+#define A3  3
+#define A4  4
+#define A5  5
+#define A6  6
+#define A7  7
+#define A8  8
+#define A9  9
 
 #endif

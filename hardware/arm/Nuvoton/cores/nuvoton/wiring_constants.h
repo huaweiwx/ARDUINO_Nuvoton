@@ -36,6 +36,7 @@ extern "C"{
 
 #define INPUT         GPIO_MODE_INPUT
 #define INPUT_PULLUP  GPIO_MODE_QUASI
+#define INPUT_QUASI   GPIO_MODE_QUASI
 #define OUTPUT        GPIO_MODE_OUTPUT
 #define OUTPUT_OD     GPIO_MODE_OPEN_DRAIN
 

@@ -195,17 +195,17 @@ M480.menu.clock_source.HIRC192.build.f_cpu=192000000L -DHIRC
 M480.menu.clock_source.HXT192=HXT_12M(192MMHz)
 M480.menu.clock_source.HXT192.build.f_cpu=192000000L -DHXT12
 
-M480.menu.serial.UART0=Serial0
+M480.menu.serial.UART0=Serial0(PF_2/3)
 M480.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
-M480.menu.serial.UART1=Serial1
+M480.menu.serial.UART1=Serial1(PB_2/3)
 M480.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
-M480.menu.serial.UART2=Serial2
+M480.menu.serial.UART2=Serial2(PB_0/1)
 M480.menu.serial.UART2.build.extra_flags_serial=-DMENU_SERIAL=Serial2
-M480.menu.serial.UART3=Serial3
+M480.menu.serial.UART3=Serial3(PB_14/15)
 M480.menu.serial.UART3.build.extra_flags_serial=-DMENU_SERIAL=Serial3
-M480.menu.serial.UART4=Serial4
+M480.menu.serial.UART4=Serial4(PA_2/3))
 M480.menu.serial.UART4.build.extra_flags_serial=-DMENU_SERIAL=Serial4
-M480.menu.serial.UART5=Serial5
+M480.menu.serial.UART5=Serial5(PB_4/5)
 M480.menu.serial.UART5.build.extra_flags_serial=-DMENU_SERIAL=Serial5
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
@@ -680,9 +680,9 @@ M05x.menu.clock_source.HXT1.build.f_cpu=48000000L -DHXT12
 M05x.menu.clock_source.HXT2=HXT_12M(24MMHz)
 M05x.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
 
-M05x.menu.serial.UART0=Serial0
+M05x.menu.serial.UART0=Serial0(P3_0/1)
 M05x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
-M05x.menu.serial.UART1=Serial1
+M05x.menu.serial.UART1=Serial1(P0_3/2)
 M05x.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
@@ -753,9 +753,9 @@ MINI58.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
 #MINI58.menu.clock_source.HXT1210=HXT_12M(100MMHz)
 #MINI58.menu.clock_source.HXT1210.build.f_cpu=100000000L -DHXT12
 
-MINI58.menu.serial.UART0=Serial0
+MINI58.menu.serial.UART0=Serial0(P1_2/3)
 MINI58.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
-MINI58.menu.serial.UART1=Serial1
+MINI58.menu.serial.UART1=Serial1(P1_4/5)
 MINI58.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
@@ -820,32 +820,32 @@ MINI5x.menu.cpu.MINI54_20.build.ldscript=16K_4K_flash.ld
 MINI5x.menu.cpu.MINI54_20.upload.maximum_size=16384
 MINI5x.menu.cpu.MINI54_20.upload.maximum_data_size=4096
 
-MINI5x.menu.cpu.MINI52_48=GENERIC_MINI52L(LQP48)   (8kFLASH 2kRAM)
-MINI5x.menu.cpu.MINI52_48.build.extra_flags=-DCHIP48P -DMINI52L
-MINI5x.menu.cpu.MINI52_48.build.variant=MINI51
-MINI5x.menu.cpu.MINI52_48.build.board=GENERIC_MINI52L
-MINI5x.menu.cpu.MINI52_48.build.series=Mini51Series
-MINI5x.menu.cpu.MINI52_48.build.ldscript=8K_2K_flash.ld
-MINI5x.menu.cpu.MINI52_48.upload.maximum_size=8192
-MINI5x.menu.cpu.MINI52_48.upload.maximum_data_size=2048
+#MINI5x.menu.cpu.MINI52_48=GENERIC_MINI52L(LQP48)   (8kFLASH 2kRAM)
+#MINI5x.menu.cpu.MINI52_48.build.extra_flags=-DCHIP48P -DMINI52L
+#MINI5x.menu.cpu.MINI52_48.build.variant=MINI51
+#MINI5x.menu.cpu.MINI52_48.build.board=GENERIC_MINI52L
+#MINI5x.menu.cpu.MINI52_48.build.series=Mini51Series
+#MINI5x.menu.cpu.MINI52_48.build.ldscript=8K_2K_flash.ld
+#MINI5x.menu.cpu.MINI52_48.upload.maximum_size=8192
+#MINI5x.menu.cpu.MINI52_48.upload.maximum_data_size=2048
 
-MINI5x.menu.cpu.MINI52_33=GENERIC_MINI52T/Z(QEN33) (8kFLASH 2kRAM)
-MINI5x.menu.cpu.MINI52_33.build.extra_flags=-DCHIP33P -DMINI52TZ
-MINI5x.menu.cpu.MINI52_33.build.variant=MINI51
-MINI5x.menu.cpu.MINI52_33.build.board=GENERIC_MINI52TZ
-MINI5x.menu.cpu.MINI52_33.build.series=Mini51Series
-MINI5x.menu.cpu.MINI52_33.build.ldscript=8K_2K_flash.ld
-MINI5x.menu.cpu.MINI52_33.upload.maximum_size=8192
-MINI5x.menu.cpu.MINI52_33.upload.maximum_data_size=2048
+#MINI5x.menu.cpu.MINI52_33=GENERIC_MINI52T/Z(QEN33) (8kFLASH 2kRAM)
+#MINI5x.menu.cpu.MINI52_33.build.extra_flags=-DCHIP33P -DMINI52TZ
+#MINI5x.menu.cpu.MINI52_33.build.variant=MINI51
+#MINI5x.menu.cpu.MINI52_33.build.board=GENERIC_MINI52TZ
+#MINI5x.menu.cpu.MINI52_33.build.series=Mini51Series
+#MINI5x.menu.cpu.MINI52_33.build.ldscript=8K_2K_flash.ld
+#MINI5x.menu.cpu.MINI52_33.upload.maximum_size=8192
+#MINI5x.menu.cpu.MINI52_33.upload.maximum_data_size=2048
 
-MINI5x.menu.cpu.MINI52_20=GENERIC_MINI52F(TSSOP20) (8kFLASH 2kRAM)
-MINI5x.menu.cpu.MINI52_20.build.extra_flags=-DCHIP20P -DMINI52F
-MINI5x.menu.cpu.MINI52_20.build.variant=MINI51
-MINI5x.menu.cpu.MINI52_20.build.board=GENERIC_MINI52F
-MINI5x.menu.cpu.MINI52_20.build.series=Mini51Series
-MINI5x.menu.cpu.MINI52_20.build.ldscript=8K_2K_flash.ld
-MINI5x.menu.cpu.MINI52_20.upload.maximum_size=8192
-MINI5x.menu.cpu.MINI52_20.upload.maximum_data_size=2048
+#MINI5x.menu.cpu.MINI52_20=GENERIC_MINI52F(TSSOP20) (8kFLASH 2kRAM)
+#MINI5x.menu.cpu.MINI52_20.build.extra_flags=-DCHIP20P -DMINI52F
+#MINI5x.menu.cpu.MINI52_20.build.variant=MINI51
+#MINI5x.menu.cpu.MINI52_20.build.board=GENERIC_MINI52F
+#MINI5x.menu.cpu.MINI52_20.build.series=Mini51Series
+#MINI5x.menu.cpu.MINI52_20.build.ldscript=8K_2K_flash.ld
+#MINI5x.menu.cpu.MINI52_20.upload.maximum_size=8192
+#MINI5x.menu.cpu.MINI52_20.upload.maximum_data_size=2048
 
 MINI5x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
 MINI5x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
@@ -854,7 +854,7 @@ MINI5x.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
 #MINI5x.menu.clock_source.HXT1210=HXT_12M(100MMHz)
 #MINI5x.menu.clock_source.HXT1210.build.f_cpu=100000000L -DHXT12
 
-MINI5x.menu.serial.UART0=Serial0
+MINI5x.menu.serial.UART0=Serial0(P1_2/3)
 MINI5x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
@@ -907,7 +907,7 @@ NUC029FAE.menu.clock_source.HXT1.build.f_cpu=48000000L -DHXT12
 NUC029FAE.menu.clock_source.HXT2=HXT_12M(24MMHz)
 NUC029FAE.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
 
-NUC029FAE.menu.serial.UART0=Serial0
+NUC029FAE.menu.serial.UART0=Serial0(P1_2/3)
 NUC029FAE.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#

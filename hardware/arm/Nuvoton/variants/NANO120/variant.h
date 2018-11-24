@@ -88,7 +88,7 @@ PIN(E,15,127), \
 PIN(E,14,128)
 
 #ifndef  LED_BUILTIN
- #define LED_BUILTIN 58
+ #define LED_BUILTIN PE_6
 #endif
 
 static const uint8_t SS   = 43;

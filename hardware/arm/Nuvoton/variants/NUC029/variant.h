@@ -2,7 +2,7 @@
 #define _VARIANT_H_
 
 #ifndef LED_BUILTIN
-#define LED_BUILTIN P2_3
+#define LED_BUILTIN P1_2
 #endif
 
 /*if undef use default*/
