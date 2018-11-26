@@ -43,12 +43,17 @@ void yield(void);
 #ifdef __cplusplus
 }
 
+/*C++ including option*/
 #include "WCharacter.h"
 //#include "WString.h"
 #include "WMath.h"
 #include "HardwareSerial.h"
 #include "HardwareTimer.h"
 #include "wiring_pulse.h"
+
+#if USE_ARDUINOSTREAMING
+#  include <Streaming.h>
+#endif
 
 void tone(uint8_t ucPin, unsigned int frequency, unsigned long duration = 0);
 void noTone(uint8_t ucPin);

@@ -32,7 +32,7 @@ compiler.size.cmd=arm-none-eabi-size
 
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -Dprintf=iprintf -MMD
-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++14 -ffunction-sections -fdata-sections -nostdlib -fno-threadsafe-statics --param max-inline-insns-single=500 -fno-rtti -Dprintf=iprintf -MMD
+compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++14 -fpermissive -ffunction-sections -fdata-sections -nostdlib -fno-threadsafe-statics --param max-inline-insns-single=500 -fno-rtti -Dprintf=iprintf -MMD
 compiler.c.elf.flags=-specs=nano.specs -specs=rdimon.specs -Os -Wl,--gc-sections
 compiler.ar.flags=rcs
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
@@ -56,7 +56,7 @@ compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
 
-compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc" "-I{build.system.path}/{build.series}/Chips"
+compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ "-I{build.path}/sketch" "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc" "-I{build.system.path}/{build.series}/Chips"
 
 # USB Flags
 # ---------

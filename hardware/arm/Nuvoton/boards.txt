@@ -207,6 +207,8 @@ M480.menu.serial.UART4=Serial4(PA_2/3))
 M480.menu.serial.UART4.build.extra_flags_serial=-DMENU_SERIAL=Serial4
 M480.menu.serial.UART5=Serial5(PB_4/5)
 M480.menu.serial.UART5.build.extra_flags_serial=-DMENU_SERIAL=Serial5
+M480.menu.serial.NuICE=Nulink console
+M480.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M480.menu.log.default=Release(no-exceptions)
@@ -258,6 +260,8 @@ M451.menu.serial.UART2=Serial
 M451.menu.serial.UART2.build.extra_flags_serial=-DMENU_SERIAL=Serial2
 M451.menu.serial.UART3=Serial3
 M451.menu.serial.UART3.build.extra_flags_serial=-DMENU_SERIAL=Serial3
+M451.menu.serial.NuICE=Nulink console
+M451.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M451.menu.log.default=Release(no-exceptions)
@@ -305,8 +309,10 @@ NUC200.menu.serial.UART0=Serial0
 NUC200.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 NUC200.menu.serial.UART1=Serial1
 NUC200.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
-NUC200.menu.serial.UART1=Serial2
-NUC200.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial2
+NUC200.menu.serial.UART2=Serial2
+NUC200.menu.serial.UART2.build.extra_flags_serial=-DMENU_SERIAL=Serial2
+NUC200.menu.serial.NuICE=Nulink console
+NUC200.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC200.menu.log.default=Release(no-exceptions)
@@ -353,6 +359,8 @@ NUC131.menu.serial.UART0=Serial0
 NUC131.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 #NUC131.menu.serial.UART1=Serial1
 #NUC131.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+NANO131.menu.serial.NuICE=Nulink console
+NANO131.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC131.menu.log.default=Release(no-exceptions)
@@ -408,6 +416,8 @@ NANO130.menu.serial.UART0=Serial0
 NANO130.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 NANO130.menu.serial.UART1=Serial1
 NANO130.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+NANO130.menu.serial.NuICE=Nulink console
+NANO130.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO130.menu.log.default=Release(no-exceptions)
@@ -471,6 +481,8 @@ NANO120.menu.serial.UART0=Serial0
 NANO120.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 NANO120.menu.serial.UART1=Serial1
 NANO120.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+NANO120.menu.serial.NuICE=Nulink console
+NANO120.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO120.menu.log.default=Release(no-exceptions)
@@ -518,6 +530,8 @@ NANO1x2.menu.serial.UART0=Serial0
 NANO1x2.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 NANO1x2.menu.serial.UART1=Serial1
 NANO1x2.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+NANO1x2.menu.serial.NuICE=Nulink console
+NANO1x2.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO1x2.menu.log.default=Release(no-exceptions)
@@ -684,6 +698,8 @@ M05x.menu.serial.UART0=Serial0(P3_0/1)
 M05x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 M05x.menu.serial.UART1=Serial1(P0_3/2)
 M05x.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+M05x.menu.serial.NuICE=Nulink console
+M05x.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M05x.menu.log.default=Release(no-exceptions)
@@ -757,6 +773,8 @@ MINI58.menu.serial.UART0=Serial0(P1_2/3)
 MINI58.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 MINI58.menu.serial.UART1=Serial1(P1_4/5)
 MINI58.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
+MINI58.menu.serial.NuICE=Nulink console
+MINI58.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 MINI58.menu.log.default=Release(no-exceptions)
@@ -856,6 +874,8 @@ MINI5x.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
 
 MINI5x.menu.serial.UART0=Serial0(P1_2/3)
 MINI5x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+MINI5x.menu.serial.NuICE=Nulink console
+MINI5x.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 MINI5x.menu.log.default=Release(no-exceptions)
@@ -909,6 +929,8 @@ NUC029FAE.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
 
 NUC029FAE.menu.serial.UART0=Serial0(P1_2/3)
 NUC029FAE.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
+NUC029FAE.menu.serial.NuICE=Nulink console
+NUC029FAE.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC029FAE.menu.log.default=Release(no-exceptions)

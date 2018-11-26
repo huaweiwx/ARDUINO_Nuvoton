@@ -445,6 +445,7 @@
   
 #endif
 
+#if 0
 #if(UART_MAX_COUNT>0)
 void serialEvent() __attribute__((weak));
 #endif
@@ -455,6 +456,7 @@ void serialEventRun(void)
   if (Serial.available()) serialEvent();
 #endif
 }
+#endif
 
 HardwareSerial::HardwareSerial(UART_T *uart_device,
                                uint32_t u32Idx,

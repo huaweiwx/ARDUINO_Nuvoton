@@ -28,17 +28,17 @@ extern "C"{
   #ifdef   GPIO_PMD_QUASI
     #define  GPIO_MODE_QUASI       GPIO_PMD_QUASI
   #else
-    #define  GPIO_MODE_QUASI       GPIO_PMD_INPUT
+    #define  GPIO_MODE_QUASI       GPIO_PMD_OPEN_DRAIN
   #endif
   #define  GPIO_MODE_OUTPUT        GPIO_PMD_OUTPUT
   #define  GPIO_MODE_OPEN_DRAIN    GPIO_PMD_OPEN_DRAIN
 #endif
 
 #define INPUT         GPIO_MODE_INPUT
-#define INPUT_PULLUP  GPIO_MODE_QUASI
-#define INPUT_QUASI   GPIO_MODE_QUASI
 #define OUTPUT        GPIO_MODE_OUTPUT
 #define OUTPUT_OD     GPIO_MODE_OPEN_DRAIN
+#define INPUT_PULLUP  GPIO_MODE_QUASI
+#define QUASI         GPIO_MODE_QUASI
 
 #define HIGH 0x1
 #define LOW  0x0
