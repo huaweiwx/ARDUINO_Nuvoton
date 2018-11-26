@@ -460,10 +460,15 @@ NANO120.menu.cpu.nano120ke3.build.ldscript=128K_16K_flash.ld
 NANO120.menu.cpu.nano120ke3.upload.maximum_size=125952
 NANO120.menu.cpu.nano120ke3.upload.maximum_data_size=16384
 
-NANO120.menu.cpu.nano120ke2=GENERIC_NANO120KE2 (64kFLASH 8kRAM)
-NANO120.menu.cpu.nano120ke2.build.ldscript=64K_8K_flash.ld
-NANO120.menu.cpu.nano120ke2.upload.maximum_size=65536
-NANO120.menu.cpu.nano120ke2.upload.maximum_data_size=8192
+NANO120.menu.cpu.nano120kd3=GENERIC_NANO120KD3 (64kFLASH 16kRAM)
+NANO120.menu.cpu.nano120kd3.build.ldscript=64K_16K_flash.ld
+NANO120.menu.cpu.nano120kd3.upload.maximum_size=65536
+NANO120.menu.cpu.nano120kd3.upload.maximum_data_size=16384
+
+NANO120.menu.cpu.nano120kd2=GENERIC_NANO120KD2 (64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120kd2.build.ldscript=64K_8K_flash.ld
+NANO120.menu.cpu.nano120kd2.upload.maximum_size=65536
+NANO120.menu.cpu.nano120kd2.upload.maximum_data_size=8192
 
 NANO120.menu.clock_source.HXT12=HXT
 NANO120.menu.clock_source.HXT12.build.osc=HXT12
