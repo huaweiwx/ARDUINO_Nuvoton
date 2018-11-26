@@ -359,8 +359,8 @@ NUC131.menu.serial.UART0=Serial0
 NUC131.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 #NUC131.menu.serial.UART1=Serial1
 #NUC131.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
-NANO131.menu.serial.NuICE=Nulink console
-NANO131.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NUC131.menu.serial.NuICE=Nulink console
+NUC131.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC131.menu.log.default=Release(no-exceptions)
