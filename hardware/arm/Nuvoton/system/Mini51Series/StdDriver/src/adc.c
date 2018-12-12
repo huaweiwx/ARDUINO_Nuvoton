@@ -2,12 +2,12 @@
  * @file     adc.c
  * @version  V1.00
  * $Revision: 5 $
- * $Date: 13/11/07 4:40p $ 
+ * $Date: 13/11/07 4:40p $
  * @brief    MINI51 series ADC driver source file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
-*****************************************************************************/ 
+*****************************************************************************/
 #include "Mini51Series.h"
 
 /** @addtogroup MINI51_Device_Driver MINI51 Device Driver
@@ -31,16 +31,16 @@
   * @param[in] u32ChMask Channel enable bit. Each bit corresponds to a input channel. Bit 0 is channel 0, bit 1 is channel 1...
   * @return  None
   * @note Mini51 series MCU ADC can only convert 1 channel at a time. If more than 1 channels are enabled, only channel
-  *       with smallest number will be convert.  
+  *       with smallest number will be convert.
   * @note This API does not turn on ADC power nor does trigger ADC conversion
   */
 void ADC_Open(ADC_T *adc,
-              uint32_t u32InputMode, 
-              uint32_t u32OpMode,  
+              uint32_t u32InputMode,
+              uint32_t u32OpMode,
               uint32_t u32ChMask)
 {
 
-    ADC->ADCR = 0;  // A clean start. 
+    ADC->ADCR = 0;  // A clean start.
     ADC->ADCHER  = (ADC->ADCHER & ~ADC_ADCHER_CHEN_Msk) | u32ChMask;
     return;
 }
@@ -53,7 +53,7 @@ void ADC_Open(ADC_T *adc,
 void ADC_Close(ADC_T *adc)
 {
     SYS->IPRSTC2 |= SYS_IPRSTC2_ADC_RST_Msk;
-    SYS->IPRSTC2 &= ~SYS_IPRSTC2_ADC_RST_Msk;    
+    SYS->IPRSTC2 &= ~SYS_IPRSTC2_ADC_RST_Msk;
     return;
 
 }
@@ -77,12 +77,15 @@ void ADC_EnableHWTrigger(ADC_T *adc,
                          uint32_t u32Param)
 {
     ADC->ADCR &= ~(ADC_TRIGGER_BY_PWM | ADC_RISING_EDGE_TRIGGER | ADC_ADCR_TRGEN_Msk);
-    if(u32Source == ADC_TRIGGER_BY_EXT_PIN) {
+    if(u32Source == ADC_TRIGGER_BY_EXT_PIN)
+    {
         ADC->ADCR |= u32Source | u32Param | ADC_ADCR_TRGEN_Msk;
-    } else {
+    }
+    else
+    {
         ADC->ADTDCR = (ADC->ADTDCR & ~ADC_ADTDCR_PTDT_Msk) | u32Param;
         ADC->ADCR |= u32Source | ADC_ADCR_TRGEN_Msk;
-    }    
+    }
     return;
 }
 
@@ -111,7 +114,7 @@ void ADC_DisableHWTrigger(ADC_T *adc)
   *                 - \ref ADC_SAMPLE_CLOCK_32
   *                 - \ref ADC_SAMPLE_CLOCK_64
   *                 - \ref ADC_SAMPLE_CLOCK_128
-  *                 - \ref ADC_SAMPLE_CLOCK_256  
+  *                 - \ref ADC_SAMPLE_CLOCK_256
   *                 - \ref ADC_SAMPLE_CLOCK_512
   *                 - \ref ADC_SAMPLE_CLOCK_1024
   * @return None
@@ -126,12 +129,12 @@ void ADC_SetExtraSampleTime(ADC_T *adc,
 /**
   * @brief Enable the interrupt(s) selected by u32Mask parameter.
   * @param[in] adc Base address of ADC module
-  * @param[in] u32Mask  The combination of interrupt status bits listed below. Each bit 
-  *                     corresponds to a interrupt status. This parameter decides which 
+  * @param[in] u32Mask  The combination of interrupt status bits listed below. Each bit
+  *                     corresponds to a interrupt status. This parameter decides which
   *                     interrupts will be enabled.
   *                     - \ref ADC_ADF_INT
   *                     - \ref ADC_CMP0_INT
-  *                     - \ref ADC_CMP1_INT  
+  *                     - \ref ADC_CMP1_INT
   * @return None
   */
 void ADC_EnableInt(ADC_T *adc, uint32_t u32Mask)
@@ -141,20 +144,20 @@ void ADC_EnableInt(ADC_T *adc, uint32_t u32Mask)
     if(u32Mask & ADC_CMP0_INT)
         ADC->ADCMPR[0] |= ADC_ADCMPR_CMPIE_Msk;
     if(u32Mask & ADC_CMP1_INT)
-        ADC->ADCMPR[1] |= ADC_ADCMPR_CMPIE_Msk;        
-    
+        ADC->ADCMPR[1] |= ADC_ADCMPR_CMPIE_Msk;
+
     return;
-}                   
+}
 
 /**
   * @brief Disable the interrupt(s) selected by u32Mask parameter.
   * @param[in] adc Base address of ADC module
-  * @param[in] u32Mask  The combination of interrupt status bits listed below. Each bit 
-  *                     corresponds to a interrupt status. This parameter decides which 
+  * @param[in] u32Mask  The combination of interrupt status bits listed below. Each bit
+  *                     corresponds to a interrupt status. This parameter decides which
   *                     interrupts will be disabled.
   *                     - \ref ADC_ADF_INT
   *                     - \ref ADC_CMP0_INT
-  *                     - \ref ADC_CMP1_INT  
+  *                     - \ref ADC_CMP1_INT
   * @return None
   */
 void ADC_DisableInt(ADC_T *adc, uint32_t u32Mask)
@@ -164,8 +167,8 @@ void ADC_DisableInt(ADC_T *adc, uint32_t u32Mask)
     if(u32Mask & ADC_CMP0_INT)
         ADC->ADCMPR[0] &= ~ADC_ADCMPR_CMPIE_Msk;
     if(u32Mask & ADC_CMP1_INT)
-        ADC->ADCMPR[1] &= ~ADC_ADCMPR_CMPIE_Msk;        
-    
+        ADC->ADCMPR[1] &= ~ADC_ADCMPR_CMPIE_Msk;
+
     return;
 }
 

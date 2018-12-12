@@ -82,22 +82,30 @@ const ADCPinDescription ADC_Desc[]={
 #endif
 
 #ifndef UART_DESC_USERDEF
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+   {{P0_1,SYS_MFP_P01_RXD}, {P0_0,SYS_MFP_P00_TXD}},	//Loc 0
+   {{P1_2,SYS_MFP_P12_RXD}, {P1_3,SYS_MFP_P13_TXD}},	//Loc 1
+};
 const UARTPinDescription UART_Desc[]={
-   {UART,UART_MODULE,UART_IRQn,{{P0_1,SYS_MFP_P01_RXD}, {P0_0,SYS_MFP_P00_TXD} }},	
-   {UART,UART_MODULE,UART_IRQn,{{P1_2,SYS_MFP_P12_RXD}, {P1_3,SYS_MFP_P13_TXD} }},	
+   {UART,UART_MODULE,UART_IRQn,UART0PinAlt},	
 };
 #endif
 
 #ifndef SPI_DESC_USERDEF
+const SPIPinAlt_TypeDef SPI0PinAlt[] = { 
+	  {{P0_7,SYS_MFP_P07_SPICLK},{P0_6,SYS_MFP_P06_MISO},{P0_5,SYS_MFP_P05_MOSI}, {P0_4,SYS_MFP_P04_SPISS}},
+};
 const SPIPinDescription SPI_Desc[]={
-  {SPI,SPI_MODULE,SPI_IRQn,CLK_CLKSEL1_SPI_S_HCLK, 
-	  {{P0_7,SYS_MFP_P07_SPICLK},{P0_6,SYS_MFP_P06_MISO},{P0_5,SYS_MFP_P05_MOSI}, {P0_4,SYS_MFP_P04_SPISS}}},
+  {SPI,SPI_MODULE,SPI_IRQn,CLK_CLKSEL1_SPI_S_HCLK, SPI0PinAlt},
 };
 #endif
 
 #ifndef I2C_DESC_USERDEF
+const I2CPinAlt_TypeDef I2C0PinAlt[] = {
+ {{P3_4,SYS_MFP_P34_SDA},{P3_5, SYS_MFP_P35_SCL}},
+};
 const I2CPinDescription I2C_Desc[]={	
- {I2C,I2C_MODULE,{{P3_4,SYS_MFP_P34_SDA},{P3_5, SYS_MFP_P35_SCL}}},
+ {I2C,I2C_MODULE,I2C0PinAlt},
 };
 #endif
 

@@ -1,13 +1,13 @@
 /**************************************************************************//**
  * @file     spi.h
  * @version  V1.00
- * $Revision: 13 $
- * $Date: 14/01/27 9:06a $ 
+ * $Revision: 15 $
+ * $Date: 15/10/01 11:36a $
  * @brief    Mini51 series SPI driver header file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
- *****************************************************************************/ 
+ *****************************************************************************/
 #ifndef __SPI_H__
 #define __SPI_H__
 
@@ -117,6 +117,15 @@ extern "C"
 #define SPI_GET_TX_FIFO_EMPTY_FLAG(spi) ( ((spi)->STATUS & SPI_STATUS_TX_EMPTY_Msk) == SPI_STATUS_TX_EMPTY_Msk ? 1:0 )
 
 /**
+  * @brief  Get the Tx FIFO full flag.
+  * @param  spi is the base address of SPI module.
+  * @return Tx FIFO flag
+  * @retval 0 Tx FIFO is not full
+  * @retval 1 Tx FIFO is full
+  */
+#define SPI_GET_TX_FIFO_FULL_FLAG(spi) ( ((spi)->STATUS & SPI_STATUS_TX_FULL_Msk) == SPI_STATUS_TX_FULL_Msk ? 1:0 )
+
+/**
   * @brief  Get the datum read from Rx FIFO.
   * @param  spi is the base address of SPI module.
   * @return Data in Rx buffer
@@ -138,8 +147,8 @@ extern "C"
   */
 static __INLINE void SPI_SET_SS_HIGH(SPI_T *spi)
 {
-  spi->SSR &= ~SPI_SSR_AUTOSS_Msk;  
-  spi->SSR |= (SPI_SSR_LTRIG_FLAG_Msk | SPI_SSR_SS_LVL_Msk | SPI_SSR_SSR_Msk);  
+    spi->SSR &= ~SPI_SSR_AUTOSS_Msk;
+    spi->SSR |= (SPI_SSR_LTRIG_FLAG_Msk | SPI_SSR_SS_LVL_Msk | SPI_SSR_SSR_Msk);
 }
 
 /**
@@ -149,10 +158,10 @@ static __INLINE void SPI_SET_SS_HIGH(SPI_T *spi)
   */
 static __INLINE void SPI_SET_SS_LOW(SPI_T *spi)
 {
-  spi->SSR &= ~SPI_SSR_AUTOSS_Msk;
-  spi->SSR |= SPI_SSR_LTRIG_FLAG_Msk;  
-  spi->SSR &= ~SPI_SSR_SS_LVL_Msk;
-  spi->SSR |= SPI_SSR_SSR_Msk;
+    spi->SSR &= ~SPI_SSR_AUTOSS_Msk;
+    spi->SSR |= SPI_SSR_LTRIG_FLAG_Msk;
+    spi->SSR &= ~SPI_SSR_SS_LVL_Msk;
+    spi->SSR |= SPI_SSR_SSR_Msk;
 }
 
 /**
@@ -194,15 +203,15 @@ static __INLINE void SPI_SET_SS_LOW(SPI_T *spi)
 /**
   * @brief  Set the data width of a SPI transaction.
   * @param  spi is the base address of SPI module.
-  * @param  u32Width is the bit width of transfer data.  
+  * @param  u32Width is the bit width of transfer data.
   * @return none
   */
 static __INLINE void SPI_SET_DATA_WIDTH(SPI_T *spi, uint32_t u32Width)
 {
-   if(u32Width == 32)
+    if(u32Width == 32)
         u32Width = 0;
-        
-   spi->CNTRL = (spi->CNTRL & ~SPI_CNTRL_TX_BIT_LEN_Msk) | (u32Width << SPI_CNTRL_TX_BIT_LEN_Pos);
+
+    spi->CNTRL = (spi->CNTRL & ~SPI_CNTRL_TX_BIT_LEN_Msk) | (u32Width << SPI_CNTRL_TX_BIT_LEN_Pos);
 }
 
 /**

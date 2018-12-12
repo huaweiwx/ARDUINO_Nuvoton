@@ -59,21 +59,34 @@ typedef struct _PWMPinDescription
   PinType pintype;
 } PWMPinDescription;
 
+typedef struct _SPIPinAlt
+{
+  PinType clk;
+  PinType mosi;
+  PinType miso;
+  PinType ss;
+} SPIPinAlt_TypeDef;
+
 typedef struct _SPIPinDescription
 {
   SPI_T *S;
   uint32_t module;
   IRQn_Type irq;
   uint32_t clksel;
-  PinType pintype[4];
+  const SPIPinAlt_TypeDef* pinAlt;
 } SPIPinDescription;
 
+typedef struct _UARTPinAlt
+{
+  PinType rxd;
+  PinType txd;
+} UARTPinAlt_TypeDef;
 typedef struct _UARTPinDescription
 {
   UART_T *U;
   uint32_t module;
   IRQn_Type irq;
-  PinType pintype[2];
+  const UARTPinAlt_TypeDef* pinAlt;
 } UARTPinDescription;
 
 #if defined(CAN0) /* M451/NUC240*/
@@ -86,11 +99,16 @@ typedef struct _CANPinDescription
 } CANPinDescription;
 #endif
 
+typedef struct _I2CPinAlt
+{
+  PinType scl;
+  PinType sda;
+} I2CPinAlt_TypeDef;
 typedef struct _I2CPinDescription
 {
   I2C_T *I;
   uint32_t module;
-  PinType pintype[2];
+  const I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 
 
@@ -117,51 +135,41 @@ extern BoardToPin BoardToPinInfo[];
 extern const GPIOPinDescription GPIO_Desc[];
 #define GPIO_Config(Desc) outp32(Desc.Pin.MFP,(inp32(Desc.Pin.MFP) & ~Desc.Pin.Mask) | Desc.Pin.Type)
 
-#define PWM_MAX_COUNT 8
+#define PWM_MAX_COUNT 15
 extern const PWMPinDescription PWM_Desc[];
 #define PWM_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
 
-#define ADC_MAX_COUNT 11
+#define ADC_MAX_COUNT 10
 extern const ADCPinDescription ADC_Desc[];
 #define ADC_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
 
-#define SPI_MAX_COUNT 1
+#define SPI_MAX_COUNT 3
 #define SPI_CHANNELS_NUM 1
 
 
 extern const SPIPinDescription SPI_Desc[];
-#define SPI_SCK   0
-#define SPI_MOSI  1
-#define SPI_MISO  2
-#define SPI_SS    3
 #define SPI_Config(Desc) \
   do { \
-    uint8_t i; \
-   for(i=0;i<4;i++) \
-      if(Desc.pintype[i].num != 0) \
-        outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
+    outp32(GPIO_Desc[Desc.clk.num].Pin.MFP, (inp32(GPIO_Desc[Desc.clk.num].Pin.MFP) & ~GPIO_Desc[Desc.clk.num].Pin.Mask) | Desc.clk.type); \
+    outp32(GPIO_Desc[Desc.mosi.num].Pin.MFP,(inp32(GPIO_Desc[Desc.mosi.num].Pin.MFP) & ~GPIO_Desc[Desc.mosi.num].Pin.Mask) | Desc.mosi.type); \
+    outp32(GPIO_Desc[Desc.mido.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
+    outp32(GPIO_Desc[Desc.ss.num].Pin.MFP,  (inp32(GPIO_Desc[Desc.ss.num].Pin.MFP) & ~GPIO_Desc[Desc.ss.num].Pin.Mask) | Desc.ss.type); \
   }while(0);
 
-#define UART_MAX_COUNT 2
+#define UART_MAX_COUNT 6
 extern const UARTPinDescription UART_Desc[];
-#define UART_RX 0
-#define UART_TX 1
 #define UART_Config(Desc) \
   do { \
-    uint8_t i; \
-    for(i=0;i<2;i++) \
-      outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
+    outp32(GPIO_Desc[Desc.rxd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.rxd.num].Pin.MFP) & ~GPIO_Desc[Desc.rxd.num].Pin.Mask) | Desc.rxd.type); \
+    outp32(GPIO_Desc[Desc.txd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.txd.num].Pin.MFP) & ~GPIO_Desc[Desc.txd.num].Pin.Mask) | Desc.txd.type); \
   }while(0);
 
 #define I2C_MAX_COUNT 2
 extern const I2CPinDescription I2C_Desc[];
-#define I2C_SCL 0
-#define I2C_SDA 1
 #define I2C_Config(Desc) \
   do { \
-    uint8_t i; \
-    for(i=0;i<2;i++) \
-      outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
+    outp32(GPIO_Desc[Desc.sda.num].Pin.MFP,(inp32(GPIO_Desc[Desc.sda.num].Pin.MFP) & ~GPIO_Desc[Desc.sda.num].Pin.Mask) | Desc.sda.type); \
+    outp32(GPIO_Desc[Desc.scl.num].Pin.MFP,(inp32(GPIO_Desc[Desc.scl.num].Pin.MFP) & ~GPIO_Desc[Desc.scl.num].Pin.Mask) | Desc.scl.type); \
   }while(0);
 
 #endif /*_NUVOTON_TYPEDEF_H_*/

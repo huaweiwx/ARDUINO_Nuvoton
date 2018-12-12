@@ -1,8 +1,8 @@
 /**************************************************************************//**
  * @file     clk.h
  * @version  V3.0
- * $Revision: 6 $
- * $Date: 15/04/08 5:58p $
+ * $Revision: 9 $
+ * $Date: 17/07/24 1:32p $
  * @brief    CLK driver header file
  *
  * @note
@@ -49,6 +49,7 @@ extern "C"
 #define CLK_CLKSEL0_STCLK_S_HXT_DIV2    0x10UL /*!< Setting SysTick clock source as HXT/2 */
 #define CLK_CLKSEL0_STCLK_S_HCLK_DIV2   0x18UL /*!< Setting SysTick clock source as HCLK/2 */
 #define CLK_CLKSEL0_STCLK_S_HIRC_DIV2   0x38UL /*!< Setting SysTick clock source as internal HIRC/2 */
+#define CLK_CLKSEL0_STCLK_S_HCLK        0x04UL /*!< Setting SysTick clock source as HCLK */
 
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -269,6 +270,7 @@ __STATIC_INLINE uint32_t CLK_GetPLLClockFreq(void)
   * @return     None
   * @details    Use the SysTick to generate the delay time and the UNIT is in us.
   *             The SysTick clock source is from HCLK, i.e the same as system core clock.
+  *             User can use SystemCoreClockUpdate() to calculate CyclesPerUs automatically before using this function.
   */
 __STATIC_INLINE void CLK_SysTickDelay(uint32_t us)
 {
@@ -282,6 +284,48 @@ __STATIC_INLINE void CLK_SysTickDelay(uint32_t us)
     /* Disable SysTick counter */
     SysTick->CTRL = 0;
 }
+
+/**
+  * @brief      This function execute long delay function.
+  * @param[in]  us  Delay time. 
+  * @return     None
+  * @details    Use the SysTick to generate the long delay time and the UNIT is in us.
+  *             The SysTick clock source is from HCLK, i.e the same as system core clock.
+  *             User can use SystemCoreClockUpdate() to calculate CyclesPerUs automatically before using this function.
+  */
+__STATIC_INLINE void CLK_SysTickLongDelay(uint32_t us)
+{
+    uint32_t delay;
+        
+    /* It should <= 335544us for each delay loop */
+    delay = 335544UL;
+
+    do
+    {
+        if(us > delay)
+        {
+            us -= delay;
+        }
+        else
+        {
+            delay = us;
+            us = 0UL;
+        }        
+        
+        SysTick->LOAD = delay * CyclesPerUs;
+        SysTick->VAL  = (0x0UL);
+        SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
+
+        /* Waiting for down-count to zero */
+        while((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0UL);
+
+        /* Disable SysTick counter */
+        SysTick->CTRL = 0UL;
+    
+    }while(us > 0UL);
+    
+}
+
 
 
 void CLK_DisableCKO(void);
@@ -303,7 +347,8 @@ void CLK_DisableModuleClock(uint32_t u32ModuleIdx);
 uint32_t CLK_EnablePLL(uint32_t u32PllClkSrc, uint32_t u32PllFreq);
 void CLK_DisablePLL(void);
 uint32_t CLK_WaitClockReady(uint32_t u32ClkMask);
-
+void CLK_EnableSysTick(uint32_t u32ClkSrc, uint32_t u32Count);
+void CLK_DisableSysTick(void);
 
 
 /*@}*/ /* end of group CLK_EXPORTED_FUNCTIONS */

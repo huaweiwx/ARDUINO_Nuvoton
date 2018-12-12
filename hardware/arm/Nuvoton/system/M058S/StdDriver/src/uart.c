@@ -1,8 +1,8 @@
 /**************************************************************************//**
  * @file     uart.c
  * @version  V3.00
- * $Revision: 5 $
- * $Date: 15/04/08 5:58p $
+ * $Revision: 7 $
+ * $Date: 16/03/04 9:40a $
  * @brief    M058S series UART driver source file
  *
  * @note
@@ -44,7 +44,7 @@ void UART_ClearIntFlag(UART_T* uart , uint32_t u32InterruptFlag)
 
     if(u32InterruptFlag & UART_ISR_RLS_INT_Msk) /* clear Receive Line Status Interrupt */
     {
-        uart->FSR = UART_FSR_BIF_Msk | UART_FSR_FEF_Msk | UART_FSR_FEF_Msk;
+        uart->FSR = UART_FSR_BIF_Msk | UART_FSR_FEF_Msk | UART_FSR_PEF_Msk;
         uart->FSR = UART_FSR_RS485_ADD_DETF_Msk;
     }
 
@@ -433,7 +433,7 @@ void UART_SelectLINMode(UART_T* uart, uint32_t u32Mode, uint32_t u32BreakLength)
     uart->FUN_SEL = UART_FUNC_SEL_LIN;
 
     /* Select LIN function setting : Tx enable, Rx enable and break field length */
-    uart->ALT_CSR &= ~(UART_ALT_CSR_LIN_TX_EN_Msk | UART_ALT_CSR_LIN_TX_EN_Msk | UART_ALT_CSR_UA_LIN_BKFL_Msk);
+    uart->ALT_CSR &= ~(UART_ALT_CSR_LIN_TX_EN_Msk | UART_ALT_CSR_LIN_RX_EN_Msk | UART_ALT_CSR_UA_LIN_BKFL_Msk);
     uart->ALT_CSR |= (u32Mode | (u32BreakLength << UART_ALT_CSR_UA_LIN_BKFL_Pos));
 }
 

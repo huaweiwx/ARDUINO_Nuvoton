@@ -1,8 +1,8 @@
 /**************************************************************************//**
  * @file     UART.h
  * @version  V3.00
- * $Revision: 6 $
- * $Date: 15/04/08 5:58p $
+ * $Revision: 7 $
+ * $Date: 15/06/16 2:34p $
  * @brief    UART driver header file
  *
  * @note
@@ -315,19 +315,26 @@ extern "C"
  *    @brief        Get specified interrupt indicator status
  *
  *    @param[in]    uart            The pointer of the specified UART module
- *    @param[in]    u32eIntTypeFlag Interrupt Type Flag,should be
-  *                                 - UART_ISR_LIN_RX_BREAK_INT_Msk : Lin bus interrupt
- *                                  - UART_ISR_BUF_ERR_INT_Msk      : Buffer Error interrupt
- *                                  - UART_ISR_TOUT_INT_Msk         : Rx time-out interrupt
- *                                  - UART_ISR_MODEM_INT_Msk        : Modem interrupt
- *                                  - UART_ISR_RLS_INT_Msk          : Rx Line status interrupt
- *                                  - UART_ISR_THRE_INT_Msk         : Tx empty interrupt
- *                                  - UART_ISR_RDA_INT_Msk          : Rx ready interrupt
+ *    @param[in]    u32eIntTypeFlag Interrupt Type Flag, should be
+ *                                  - UART_ISR_LIN_RX_BREAK_INT_Msk : LIN Bus Interrupt Indicator
+ *                                  - UART_ISR_BUF_ERR_INT_Msk      : Buffer Error Interrupt Indicator
+ *                                  - UART_ISR_TOUT_INT_Msk         : Rx Time-out Interrupt Indicator
+ *                                  - UART_ISR_MODEM_INT_Msk        : MODEM Status Interrupt Indicator
+ *                                  - UART_ISR_RLS_INT_Msk          : Rx Line Status Interrupt Indicator
+ *                                  - UART_ISR_THRE_INT_Msk         : Tx Empty Interrupt Indicator
+ *                                  - UART_ISR_RDA_INT_Msk          : Rx Ready Interrupt Indicator
+ *                                  - UART_ISR_LIN_RX_BREAK_IF_Msk  : LIN Bus Interrupt Flag
+ *                                  - UART_ISR_BUF_ERR_IF_Msk       : Buffer Error Interrupt Flag
+ *                                  - UART_ISR_TOUT_IF_Msk          : Rx Time-out Interrupt Flag
+ *                                  - UART_ISR_MODEM_IF_Msk         : MODEM Status Interrupt Flag
+ *                                  - UART_ISR_RLS_IF_Msk           : Rx Line Status Interrupt Flag
+ *                                  - UART_ISR_THRE_IF_Msk          : Tx Empty Interrupt Flag
+ *                                  - UART_ISR_RDA_IF_Msk           : Rx Ready Interrupt Flag
  *
  *    @retval       0 The specified interrupt is not happened.
  *                  1 The specified interrupt is happened.
  *
- *    @details      This macro get specified interrupt indicator status.
+ *    @details      This macro get specified interrupt flag or interrupt indicator status.
  */
 #define UART_GET_INT_FLAG(uart,u32eIntTypeFlag)    (((uart)->ISR & (u32eIntTypeFlag))?1:0)
 

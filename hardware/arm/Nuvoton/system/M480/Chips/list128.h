@@ -6,8 +6,8 @@
  * Copyright (C) 2018 huaweiwx@sina.com.
 *****************************************************************************/
 
-#ifndef _CHIP64_PINLIST_H_
-#define _CHIP64_PINLIST_H_
+#ifndef _CHIP128_PINLIST_H_
+#define _CHIP128_PINLIST_H_
 
 #if USE_ICE >0
   #define CHIP_PIN_LIST \
@@ -287,5 +287,4 @@
 #define A4  4
 #define A5  5
 
-#endif
-
+#endif //_CHIP128_PINLIST_H_

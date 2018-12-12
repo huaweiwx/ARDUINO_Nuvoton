@@ -1,20 +1,27 @@
 /*
-  Copyright (c) 2011 Arduino.  All right reserved.
+  variant128.h
+  
+  Copyright (c) 2018 huaweiwx@sina.com 2018.11.1
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU Lesser General Public License for more details.
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
 
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
 */
+
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
@@ -68,8 +75,8 @@ const GPIOPinDescription GPIO_Desc[] =
   {PB, BIT3, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB3_MFP_Msk, SYS_PB_L_MFP_PB3_MFP_GPB3}},   //47
   {PD, BIT6, {(uint32_t)&SYS->PD_L_MFP, SYS_PD_L_MFP_PD6_MFP_Msk, SYS_PD_L_MFP_PD6_MFP_GPD6}},   //48
   {PD, BIT7, {(uint32_t)&SYS->PD_L_MFP, SYS_PD_L_MFP_PD7_MFP_Msk, SYS_PD_L_MFP_PD7_MFP_GPD7}},   //49
-  {PD, BIT14, {(uint32_t)&SYS->PD_H_MFP, SYS_PD_H_MFP_PD14_MFP_Msk, SYS_PD_H_MFP_PD14_MFP_GPD14}}, //50
-  {PD, BIT15, {(uint32_t)&SYS->PD_H_MFP, SYS_PD_H_MFP_PD15_MFP_Msk, SYS_PD_H_MFP_PD15_MFP_GPD15}}, //51
+  {PD, BIT14, {(uint32_t)&SYS->PD_H_MFP, SYS_PD_H_MFP_PD14_MFP_Msk, SYS_PD_H_MFP_PD14_MFP_GPD14}},//50
+  {PD, BIT15, {(uint32_t)&SYS->PD_H_MFP, SYS_PD_H_MFP_PD15_MFP_Msk, SYS_PD_H_MFP_PD15_MFP_GPD15}},//51
   {PC, BIT5, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC5_MFP_Msk, SYS_PC_L_MFP_PC5_MFP_GPC5}},   //52
   {PC, BIT4, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC4_MFP_Msk, SYS_PC_L_MFP_PC4_MFP_GPC4}},   //53
   {PC, BIT3, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC3_MFP_Msk, SYS_PC_L_MFP_PC3_MFP_GPC3}},   //54
@@ -79,25 +86,25 @@ const GPIOPinDescription GPIO_Desc[] =
   {PE, BIT6, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE6_MFP_Msk, SYS_PE_L_MFP_PE6_MFP_GPE6}},   //58
   {NULL, NULL, {NULL, NULL, NULL}}, /*59,LCD_VLCD */
   {NULL, NULL, {NULL, NULL, NULL}}, /*60,NC       */
-  {PE, BIT5, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE5_MFP_Msk, SYS_PE_L_MFP_PE5_MFP_GPE5}},   //61
-  {PB, BIT11, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB11_MFP_Msk, SYS_PB_H_MFP_PB11_MFP_GPB11}}, //62
-  {PB, BIT10, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB10_MFP_Msk, SYS_PB_H_MFP_PB10_MFP_GPB10}}, //63
-  {PB, BIT9, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB9_MFP_Msk, SYS_PB_H_MFP_PB9_MFP_GPB9}},   //64
-  {PE, BIT4, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE4_MFP_Msk, SYS_PE_L_MFP_PE4_MFP_GPE4}},   //65
-  {PE, BIT3, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE3_MFP_Msk, SYS_PE_L_MFP_PE3_MFP_GPE3}},   //66
-  {PE, BIT2, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE2_MFP_Msk, SYS_PE_L_MFP_PE2_MFP_GPE2}},   //67
-  {PE, BIT1, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE1_MFP_Msk, SYS_PE_L_MFP_PE1_MFP_GPE1}},   //68
-  {PE, BIT0, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE0_MFP_Msk, SYS_PE_L_MFP_PE0_MFP_GPE0}},   //69
-  {PC, BIT13, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC13_MFP_Msk, SYS_PC_H_MFP_PC13_MFP_GPC13}}, //70
-  {PC, BIT12, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC12_MFP_Msk, SYS_PC_H_MFP_PC12_MFP_GPC12}}, //71
-  {PC, BIT11, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC11_MFP_Msk, SYS_PC_H_MFP_PC11_MFP_GPC11}}, //72
-  {PC, BIT10, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC10_MFP_Msk, SYS_PC_H_MFP_PC10_MFP_GPC10}}, //73
+  {PE, BIT5, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE5_MFP_Msk, SYS_PE_L_MFP_PE5_MFP_GPE5}},    //61
+  {PB, BIT11, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB11_MFP_Msk, SYS_PB_H_MFP_PB11_MFP_GPB11}},//62
+  {PB, BIT10, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB10_MFP_Msk, SYS_PB_H_MFP_PB10_MFP_GPB10}},//63
+  {PB, BIT9, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB9_MFP_Msk, SYS_PB_H_MFP_PB9_MFP_GPB9}},    //64
+  {PE, BIT4, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE4_MFP_Msk, SYS_PE_L_MFP_PE4_MFP_GPE4}},    //65
+  {PE, BIT3, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE3_MFP_Msk, SYS_PE_L_MFP_PE3_MFP_GPE3}},    //66
+  {PE, BIT2, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE2_MFP_Msk, SYS_PE_L_MFP_PE2_MFP_GPE2}},    //67
+  {PE, BIT1, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE1_MFP_Msk, SYS_PE_L_MFP_PE1_MFP_GPE1}},    //68
+  {PE, BIT0, {(uint32_t)&SYS->PE_L_MFP, SYS_PE_L_MFP_PE0_MFP_Msk, SYS_PE_L_MFP_PE0_MFP_GPE0}},    //69
+  {PC, BIT13, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC13_MFP_Msk, SYS_PC_H_MFP_PC13_MFP_GPC13}},//70
+  {PC, BIT12, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC12_MFP_Msk, SYS_PC_H_MFP_PC12_MFP_GPC12}},//71
+  {PC, BIT11, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC11_MFP_Msk, SYS_PC_H_MFP_PC11_MFP_GPC11}},//72
+  {PC, BIT10, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC10_MFP_Msk, SYS_PC_H_MFP_PC10_MFP_GPC10}},//73
   {PC, BIT9, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC9_MFP_Msk, SYS_PC_H_MFP_PC9_MFP_GPC9 }},   //74
   {PC, BIT8, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC8_MFP_Msk, SYS_PC_H_MFP_PC8_MFP_GPC8 }},   //75
-  {PA, BIT15, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA15_MFP_Msk, SYS_PA_H_MFP_PA15_MFP_GPA15}}, //76
-  {PA, BIT14, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA14_MFP_Msk, SYS_PA_H_MFP_PA14_MFP_GPA14}}, //77
-  {PA, BIT13, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA13_MFP_Msk, SYS_PA_H_MFP_PA13_MFP_GPA13}}, //78
-  {PA, BIT12, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA12_MFP_Msk, SYS_PA_H_MFP_PA12_MFP_GPA12}}, //79
+  {PA, BIT15, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA15_MFP_Msk, SYS_PA_H_MFP_PA15_MFP_GPA15}},//76
+  {PA, BIT14, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA14_MFP_Msk, SYS_PA_H_MFP_PA14_MFP_GPA14}},//77
+  {PA, BIT13, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA13_MFP_Msk, SYS_PA_H_MFP_PA13_MFP_GPA13}},//78
+  {PA, BIT12, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA12_MFP_Msk, SYS_PA_H_MFP_PA12_MFP_GPA12}},//79
 #if USE_ICE == 0
   {PF, BIT0, {(uint32_t)&SYS->PF_L_MFP, SYS_PF_L_MFP_PF0_MFP_Msk, SYS_PF_L_MFP_PF0_MFP_GPF0}},   //80
   {PF, BIT1, {(uint32_t)&SYS->PF_L_MFP, SYS_PF_L_MFP_PF1_MFP_Msk, SYS_PF_L_MFP_PF1_MFP_GPF1}},   //81
@@ -132,9 +139,9 @@ const GPIOPinDescription GPIO_Desc[] =
   {PD, BIT5, {(uint32_t)&SYS->PD_L_MFP, SYS_PD_L_MFP_PD5_MFP_Msk, SYS_PD_L_MFP_PD5_MFP_GPD5 }},   //106
   {PC, BIT7, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC7_MFP_Msk, SYS_PC_L_MFP_PC7_MFP_GPC7 }},   //107
   {PC, BIT6, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC6_MFP_Msk, SYS_PC_L_MFP_PC6_MFP_GPC6 }},   //108
-  {PC, BIT15, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC15_MFP_Msk, SYS_PC_H_MFP_PC15_MFP_GPC15}}, //109
-  {PC, BIT14, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC14_MFP_Msk, SYS_PC_H_MFP_PC14_MFP_GPC14}}, //110
-  {PB, BIT15, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB15_MFP_Msk, SYS_PB_H_MFP_PB15_MFP_GPB15}}, //111
+  {PC, BIT15, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC15_MFP_Msk, SYS_PC_H_MFP_PC15_MFP_GPC15}},//109
+  {PC, BIT14, {(uint32_t)&SYS->PC_H_MFP, SYS_PC_H_MFP_PC14_MFP_Msk, SYS_PC_H_MFP_PC14_MFP_GPC14}},//110
+  {PB, BIT15, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB15_MFP_Msk, SYS_PB_H_MFP_PB15_MFP_GPB15}},//111
   {NULL, NULL, {NULL, NULL, NULL}}, /*112,NC     */
   {NULL, NULL, {NULL, NULL, NULL}}, /*113,XT1_IN */
   {NULL, NULL, {NULL, NULL, NULL}}, /*114,XT1_OUT*/
@@ -150,8 +157,8 @@ const GPIOPinDescription GPIO_Desc[] =
   {NULL, NULL, {NULL, NULL, NULL}}, /*124,VSS */
   {NULL, NULL, {NULL, NULL, NULL}}, /*125,PVSS*/
   {PB, BIT8, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB8_MFP_Msk, SYS_PB_H_MFP_PB8_MFP_GPB8 }},   //126
-  {PE, BIT15, {(uint32_t)&SYS->PE_H_MFP, SYS_PE_H_MFP_PE15_MFP_Msk, SYS_PE_H_MFP_PE15_MFP_GPE15}}, //127
-  {PE, BIT14, {(uint32_t)&SYS->PE_H_MFP, SYS_PE_H_MFP_PE14_MFP_Msk, SYS_PE_H_MFP_PE14_MFP_GPE14}}, //128
+  {PE, BIT15, {(uint32_t)&SYS->PE_H_MFP, SYS_PE_H_MFP_PE15_MFP_Msk, SYS_PE_H_MFP_PE15_MFP_GPE15}},//127
+  {PE, BIT14, {(uint32_t)&SYS->PE_H_MFP, SYS_PE_H_MFP_PE14_MFP_Msk, SYS_PE_H_MFP_PE14_MFP_GPE14}},//128
 };
 #endif
 
@@ -184,37 +191,59 @@ const ADCPinDescription ADC_Desc[] = {
 #endif
 
 #ifndef SPI_DESC_USERDEF
+const SPIPinAlt_TypeDef SPI0PinAlt[] = {
+    {{PC_1, SYS_PC_L_MFP_PC1_MFP_SPI0_SCLK }, {PC_3, SYS_PC_L_MFP_PC3_MFP_SPI0_MOSI0},
+      {PC_2, SYS_PC_L_MFP_PC2_MFP_SPI0_MISO0}, {PC_0, SYS_PC_L_MFP_PC0_MFP_SPI0_SS0}},  /*Loc 0*/
+    {{PE_2, SYS_PE_L_MFP_PE2_MFP_SPI0_SCLK }, {PE_4, SYS_PE_L_MFP_PE4_MFP_SPI0_MOSI0},
+      {PE_3, SYS_PE_L_MFP_PE3_MFP_SPI0_MISO0}, {PE_1, SYS_PE_L_MFP_PE1_MFP_SPI0_SS0}},  /*Loc 1*/
+};
+const SPIPinAlt_TypeDef SPI1PinAlt[] = {
+    {{PB_2, SYS_PB_L_MFP_PB2_MFP_SPI1_SCLK }, {PB_0, SYS_PB_L_MFP_PB0_MFP_SPI1_MOSI0},
+      {PB_1, SYS_PB_L_MFP_PB1_MFP_SPI1_MISO0}, {PB_3, SYS_PB_L_MFP_PB3_MFP_SPI1_SS0}},   /*Loc 0*/
+    {{PC_9, SYS_PC_H_MFP_PC9_MFP_SPI1_SCLK }, {PC_11, SYS_PC_H_MFP_PC11_MFP_SPI1_MOSI0},
+      {PC_10, SYS_PC_H_MFP_PC10_MFP_SPI1_MISO0}, {PC_8, SYS_PC_H_MFP_PC8_MFP_SPI1_SS0}}, /*Loc 1*/
+};
+const SPIPinAlt_TypeDef SPI2PinAlt[] = { 
+    {{PA_9, SYS_PA_H_MFP_PA9_MFP_SPI2_SCLK }, {PA_11, SYS_PA_H_MFP_PA11_MFP_SPI2_MOSI0},
+      {PA_10, SYS_PA_H_MFP_PA10_MFP_SPI2_MISO0}, {PA_8, SYS_PA_H_MFP_PA8_MFP_SPI2_SS0}}, /*Loc 0*/
+    {{PB_5, SYS_PB_L_MFP_PB5_MFP_SPI2_SCLK }, {PB_7, SYS_PB_L_MFP_PB7_MFP_SPI2_MOSI0},
+      {PB_6, SYS_PB_L_MFP_PB6_MFP_SPI2_MISO0}, {PB_4, SYS_PB_L_MFP_PB4_MFP_SPI2_SS0}},   /*Loc 1*/
+};
 const SPIPinDescription SPI_Desc[] = {
-  { SPI0, SPI0_MODULE, SPI0_IRQn, CLK_CLKSEL2_SPI0_S_HCLK,
-    { {PE_2, SYS_PE_L_MFP_PE2_MFP_SPI0_SCLK  }, {PE_4, SYS_PE_L_MFP_PE4_MFP_SPI0_MOSI0 },
-      {PE_3, SYS_PE_L_MFP_PE3_MFP_SPI0_MISO0 }, {PE_1, SYS_PE_L_MFP_PE1_MFP_SPI0_SS0}
-    }
-  },
-
-  { SPI1, SPI1_MODULE, SPI1_IRQn, CLK_CLKSEL2_SPI1_S_HCLK,
-    { {PB_2, SYS_PB_L_MFP_PB2_MFP_SPI1_SCLK  }, {PB_0, SYS_PB_L_MFP_PB0_MFP_SPI1_MOSI0 },
-      {PB_1, SYS_PB_L_MFP_PB1_MFP_SPI1_MISO0 }, {PB_3, SYS_PB_L_MFP_PB3_MFP_SPI1_SS0}
-    }
-  },
-
-  { SPI2, SPI2_MODULE, SPI2_IRQn, CLK_CLKSEL2_SPI2_S_HCLK,
-    { {PB_5, SYS_PB_L_MFP_PB5_MFP_SPI2_SCLK  }, {PB_7, SYS_PB_L_MFP_PB7_MFP_SPI2_MOSI0 },
-      {PB_6, SYS_PB_L_MFP_PB6_MFP_SPI2_MISO0 }, {PB_4, SYS_PB_L_MFP_PB4_MFP_SPI2_SS0}
-    }
-  },
+  { SPI0, SPI0_MODULE, SPI0_IRQn, CLK_CLKSEL2_SPI0_S_HCLK, SPI0PinAlt},
+  { SPI1, SPI1_MODULE, SPI1_IRQn, CLK_CLKSEL2_SPI1_S_HCLK, SPI1PinAlt},
+  { SPI2, SPI2_MODULE, SPI2_IRQn, CLK_CLKSEL2_SPI2_S_HCLK, SPI2PinAlt},
 };
 #endif
 
 #ifndef UART_DESC_USERDEF
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+  {{PA_14,SYS_PA_H_MFP_PA14_MFP_UART0_RX}, {PA_15,SYS_PA_H_MFP_PA15_MFP_UART0_TX}},  /* Loc 0*/
+  {{PB_0, SYS_PB_L_MFP_PB0_MFP_UART0_RX }, {PB_1, SYS_PB_L_MFP_PB1_MFP_UART0_TX }},  /* Loc 1*/
+};
+const UARTPinAlt_TypeDef UART1PinAlt[] = {
+  {{PB_4, SYS_PB_L_MFP_PB4_MFP_UART1_RX }, {PB_5, SYS_PB_L_MFP_PB5_MFP_UART1_TX }},  /* Loc 0*/
+  {{PA_2, SYS_PA_L_MFP_PA2_MFP_UART1_RX }, {PA_3, SYS_PA_L_MFP_PA3_MFP_UART1_TX }},  /* Loc 1*/
+  {{PD_0, SYS_PD_L_MFP_PD0_MFP_UART1_RX},  {PD_1, SYS_PD_L_MFP_PD1_MFP_UART1_TX }},  /* Loc 2*/
+  {{PC_10,SYS_PC_H_MFP_PC10_MFP_UART1_RX}, {PC_11,SYS_PC_H_MFP_PC11_MFP_UART1_TX}},  /* Loc 3*/
+};
 const UARTPinDescription UART_Desc[] = {
-  {UART1, UART1_MODULE, UART1_IRQn, {{PC_10, SYS_PC_H_MFP_PC10_MFP_UART1_RX}, {PC_11, SYS_PC_H_MFP_PC11_MFP_UART1_TX}}}, /* UART_RX0,UART_TX0 */
-  {UART0, UART0_MODULE, UART0_IRQn, { {PB_0, SYS_PB_L_MFP_PB0_MFP_UART0_RX }, {PB_1,   SYS_PB_L_MFP_PB1_MFP_UART0_TX}}},  /* UART_RX1,UART_TX1 */
+  {UART0, UART0_MODULE, UART0_IRQn, UART0PinAlt},
+  {UART1, UART1_MODULE, UART1_IRQn, UART1PinAlt}, 
 };
 #endif
 
 #ifndef I2C_DESC_USERDEF
+const I2CPinAlt_TypeDef I2C0PinAlt[] = {
+  {{PA_9,  SYS_PA_H_MFP_PA9_MFP_I2C0_SCL},{PA_8, SYS_PA_H_MFP_PA8_MFP_I2C0_SDA }},  /* Loc 0*/
+  {{PA_5,  SYS_PA_L_MFP_PA5_MFP_I2C0_SCL},{PA_4, SYS_PA_L_MFP_PA4_MFP_I2C0_SDA }},  /* Loc 1*/
+  {{PA_13,SYS_PA_H_MFP_PA13_MFP_I2C0_SCL},{PA_12,SYS_PA_H_MFP_PA12_MFP_I2C0_SDA}},  /* Loc 2*/
+};
+const I2CPinAlt_TypeDef I2C1PinAlt[] = {
+  {{PA_11,SYS_PA_H_MFP_PA11_MFP_I2C1_SCL},{PA_10,SYS_PA_H_MFP_PA10_MFP_I2C1_SDA}},  /* Loc 0 */
+};
 const I2CPinDescription I2C_Desc[] = {
-  {I2C1, I2C1_MODULE, {{PA_11, SYS_PA_H_MFP_PA11_MFP_I2C1_SCL}, {PA_10, SYS_PA_H_MFP_PA10_MFP_I2C1_SDA}}}, /* I2C0_SDA,I2C0_SCL */
-  {I2C0, I2C0_MODULE, {{PA_9,  SYS_PA_H_MFP_PA9_MFP_I2C0_SCL },  {PA_8, SYS_PA_H_MFP_PA8_MFP_I2C0_SDA }}},   /* I2C1_SDA,I2C1_SCL */
+  {I2C0, I2C0_MODULE, I2C0PinAlt},
+  {I2C1, I2C1_MODULE, I2C1PinAlt},
 };
 #endif

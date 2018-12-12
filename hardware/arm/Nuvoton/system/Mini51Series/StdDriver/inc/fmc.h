@@ -1,8 +1,8 @@
 /**************************************************************************//**
  * @file     FMC.h
  * @version  V1.00
- * $Revision: 9 $
- * $Date: 13/11/07 4:40p $
+ * $Revision: 11 $
+ * $Date: 15/09/16 11:12a $
  * @brief    MINI51 series FMC driver header file
  *
  * @note
@@ -15,7 +15,7 @@
 extern "C"
 {
 #endif
-    
+
 /** @addtogroup MINI51_Device_Driver MINI51 Device Driver
   @{
 */
@@ -30,7 +30,7 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /* Define Base Address                                                                                     */
 /*---------------------------------------------------------------------------------------------------------*/
-#define FMC_APROM_BASE          0x00000000UL    /*!< APROM  Base Address         */  
+#define FMC_APROM_BASE          0x00000000UL    /*!< APROM  Base Address         */
 #define FMC_LDROM_BASE          0x00100000UL    /*!< LDROM  Base Address         */
 #define FMC_LDROM_END           0x00100800UL    /*!< LDROM  End Address          */
 #define FMC_CONFIG_BASE         0x00300000UL    /*!< CONFIG Base Address         */
@@ -46,7 +46,7 @@ extern "C"
 #define FMC_ISPCMD_PROGRAM      0x21            /*!< ISP Command: Program Flash     */
 #define FMC_ISPCMD_PAGE_ERASE   0x22            /*!< ISP Command: Page Erase Flash  */
 #define FMC_ISPCMD_READ_CID     0x0B            /*!< ISP Command: Read Company ID   */
-#define FMC_ISPCMD_READ_DID     0x0C            /*!< ISP Command: Read Device ID    */
+#define FMC_ISPCMD_READ_PID     0x0C            /*!< ISP Command: Read Product ID   */
 #define FMC_ISPCMD_READ_UID     0x04            /*!< ISP Command: Read Unique ID    */
 #define FMC_ISPCMD_VECMAP       0x2E            /*!< ISP Command: Vector Page Remap */
 
@@ -67,28 +67,22 @@ extern "C"
 #define FMC_ENABLE_LD_UPDATE()      (FMC->ISPCON |=  FMC_ISPCON_LDUEN_Msk)      /*!< Enable LDROM update  */
 #define FMC_ENABLE_CFG_UPDATE()     (FMC->ISPCON |=  FMC_ISPCON_CFGUEN_Msk)     /*!< Enable User Config update  */
 #define FMC_ENABLE_ISP()            (FMC->ISPCON |=  FMC_ISPCON_ISPEN_Msk)      /*!< Enable ISP function  */
-#define FMC_GET_FAIL_FLAG()         ((FMC->ISPCON & FMC_ISPCON_ISPFF_Msk) ? 1 : 0)  /*!< Get ISP fail flag  */
+#define FMC_GET_FAIL_FLAG()         ((FMC->ISPCON & FMC_ISPCON_ISPFF_Msk) ? 1 : 0)  /*!< Get ISP fail flag      */
+#define FMC_CLR_FAIL_FLAG()         (FMC->ISPCON |= FMC_ISPCON_ISPFF_Msk)       /*!< Clear ISP fail flag        */
 
 
-extern void FMC_SetBootSource(int32_t i32BootSrc);
 extern void FMC_Close(void);
-extern void FMC_DisableAPUpdate(void);
-extern void FMC_DisableConfigUpdate(void);
-extern void FMC_DisableLDUpdate(void);
-extern void FMC_EnableAPUpdate(void);
-extern void FMC_EnableConfigUpdate(void);
-extern void FMC_EnableLDUpdate(void);
 extern int32_t FMC_Erase(uint32_t u32PageAddr);
 extern int32_t FMC_GetBootSource(void);
 extern void FMC_Open(void);
 extern uint32_t FMC_Read (uint32_t u32Addr);
 extern uint32_t FMC_ReadCID(void);
-extern uint32_t FMC_ReadDID(void);
 extern uint32_t FMC_ReadPID(void);
 extern uint32_t FMC_ReadUCID(uint32_t u32Index);
 extern uint32_t FMC_ReadUID(uint32_t u32Index);
 extern uint32_t FMC_ReadDataFlashBaseAddr(void);
 extern void FMC_SetVectorPageAddr(uint32_t u32PageAddr);
+extern uint32_t FMC_GetVectorPageAddr(void);
 extern void FMC_Write(uint32_t u32Addr, uint32_t u32Data);
 extern int32_t FMC_ReadConfig(uint32_t *u32Config, uint32_t u32Count);
 extern int32_t FMC_WriteConfig(uint32_t *u32Config, uint32_t u32Count);

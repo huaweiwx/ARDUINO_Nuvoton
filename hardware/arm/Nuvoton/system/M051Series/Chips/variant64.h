@@ -1,3 +1,26 @@
+/*
+  variant64.h
+  
+  Copyright (c) 2018 huaweiwx@sina.com 2018.11.1
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
 
 #ifndef PWM_DESC_USERDEF
 const PWMPinDescription PWM_Desc[]={
@@ -30,32 +53,39 @@ const ADCPinDescription ADC_Desc[]={
 #endif
 
 #ifndef UART_DESC_USERDEF
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+   {{P3_0,SYS_MFP_P30_RXD0}, {P3_1,SYS_MFP_P31_TXD0}},	   //Loc 0
+   {{P0_3,SYS_MFP_P03_RXD0}, {P0_2,SYS_MFP_P02_TXD0}},	   //Loc 1
+};
+const UARTPinAlt_TypeDef UART1PinAlt[] = {
+   {{P0_1,SYS_MFP_P01_RXD1}, {P0_0,SYS_MFP_P00_TXD1}},	
+};
 const UARTPinDescription UART_Desc[]={
-   {UART0,UART0_MODULE,UART0_IRQn,{{P3_0,SYS_MFP_P30_RXD0}, {P3_1,SYS_MFP_P31_TXD0} }},	
-   {UART0,UART0_MODULE,UART0_IRQn,{{P0_3,SYS_MFP_P03_RXD0}, {P0_2,SYS_MFP_P02_TXD0} }},	
-   {UART1,UART1_MODULE,UART1_IRQn,{{P0_1,SYS_MFP_P01_RXD1}, {P0_0,SYS_MFP_P00_TXD1} }},	
+   {UART0,UART0_MODULE,UART0_IRQn,UART0PinAlt},	
+   {UART1,UART1_MODULE,UART1_IRQn,UART1PinAlt},	
 };
 #endif
 
 #ifndef SPI_DESC_USERDEF
-const SPIPinDescription SPI_Desc[]={
-    {
-	 SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,
- 	 {{P1_7,SYS_MFP_P17_SPICLK0},{P1_6,SYS_MFP_P16_MISO_0},{P1_5,SYS_MFP_P15_MOSI_0}, {P1_4,SYS_MFP_P14_SPISS0}, }
-	},
-	{
+const SPIPinAlt_TypeDef SPI0PinAlt[] = {
+ 	 {{P1_7,SYS_MFP_P17_SPICLK0},{P1_6,SYS_MFP_P16_MISO_0},{P1_5,SYS_MFP_P15_MOSI_0}, {P1_4,SYS_MFP_P14_SPISS0}}, 
+};
+const SPIPinAlt_TypeDef SPI1PinAlt[] = {
 	 SPI1,SPI1_MODULE,SPI1_IRQn,CLK_CLKSEL1_SPI1_S_HCLK,
- 	 {{P0_7,SYS_MFP_P07_SPICLK1},{P0_6,SYS_MFP_P06_MISO_1},{P0_5,SYS_MFP_P05_MOSI_1}, {P0_4,SYS_MFP_P04_SPISS1}, }
-	},
+ 	 {{P0_7,SYS_MFP_P07_SPICLK1},{P0_6,SYS_MFP_P06_MISO_1},{P0_5,SYS_MFP_P05_MOSI_1}, {P0_4,SYS_MFP_P04_SPISS1}}, 
+};
+const SPIPinDescription SPI_Desc[]={
+    {SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,SPI0PinAlt},
+	{SPI1,SPI1_MODULE,SPI1_IRQn,CLK_CLKSEL1_SPI1_S_HCLK,SPI1PinAlt},
 };
 #endif
 
 #ifndef I2C_DESC_USERDEF
+const I2CPinAlt_TypeDef I2C0PinAlt[] = {
+    {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0}},
+};
 const I2CPinDescription I2C_Desc[]={	
-  {
-	I2C0,I2C0_MODULE,
-    {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0},}
-  },
+    {I2C0,I2C0_MODULE, I2C0PinAlt},
 };
 #endif
 

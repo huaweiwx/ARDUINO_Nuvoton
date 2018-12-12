@@ -1,8 +1,8 @@
 /**************************************************************************//**
  * @file     retarget.c
  * @version  V3.00
- * $Revision: 3 $
- * $Date: 15/04/08 5:58p $
+ * $Revision: 4 $
+ * $Date: 15/11/04 9:35a $
  * @brief    Debug Port and Semihost Setting Source File
  *
  * @note
@@ -485,10 +485,6 @@ void SendChar(int ch)
         }
         else
         {
-            int i;
-
-            for(i = 0; i < g_buf_len; i++)
-                SendChar_ToUART(g_buf[i]);
             g_buf_len = 0;
         }
     }

@@ -83,21 +83,33 @@ typedef struct _PWMPinDescription
   PinType pintype;
 } PWMPinDescription;
 
+typedef struct _SPIPinAlt
+{
+  PinType clk;
+  PinType mosi;
+  PinType miso;
+  PinType ss;
+} SPIPinAlt_TypeDef;
 typedef struct _SPIPinDescription
 {
   SPI_T *S;
   uint32_t module;
   IRQn_Type irq;
   uint32_t clksel;
-  PinType pintype[4];
+  const SPIPinAlt_TypeDef* pinAlt;
 } SPIPinDescription;
 
+typedef struct _UARTPinAlt
+{
+  PinType rxd;
+  PinType txd;
+} UARTPinAlt_TypeDef;
 typedef struct _UARTPinDescription
 {
   UART_T *U;
   uint32_t module;
   IRQn_Type irq;
-  PinType pintype[2];
+  const UARTPinAlt_TypeDef* pinAlt;
 } UARTPinDescription;
 
 #if defined(CAN0) /* M451/NUC240*/
@@ -110,11 +122,16 @@ typedef struct _CANPinDescription
 } CANPinDescription;
 #endif
 
+typedef struct _I2CPinAlt
+{
+  PinType scl;
+  PinType sda;
+} I2CPinAlt_TypeDef;
 typedef struct _I2CPinDescription
 {
   I2C_T *I;
   uint32_t module;
-  PinType pintype[2];
+  const I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 
 

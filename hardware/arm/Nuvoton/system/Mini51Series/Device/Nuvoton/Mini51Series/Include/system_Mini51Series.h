@@ -2,20 +2,20 @@
  * @file     system_Mini51Series.h
  * @version  V1.00
  * $Revision: 4 $
- * $Date: 13/11/07 4:40p $ 
+ * $Date: 13/11/07 4:40p $
  * @brief    Mini51 series system clock definition file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
- *****************************************************************************/  
- 
+ *****************************************************************************/
+
 
 #ifndef __SYSTEM_MINI51SERIES_H__
 #define __SYSTEM_MINI51SERIES_H__
 
 #ifdef __cplusplus
- extern "C" {
-#endif 
+extern "C" {
+#endif
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* Macro Definition                                                                                        */
@@ -42,7 +42,7 @@ extern uint32_t CyclesPerUs;            /*!< Cycles per micro second */
  * @param  None
  * @return None
  *
- * @brief  Updates the SystemCoreClock with current core Clock 
+ * @brief  Updates the SystemCoreClock with current core Clock
  *         retrieved from CPU registers.
  */
 

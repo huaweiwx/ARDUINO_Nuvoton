@@ -1,13 +1,13 @@
 /**************************************************************************//**
  * @file     i2c.h
  * @version  V1.00
- * $Revision: 11 $
- * $Date: 14/01/20 9:09a $ 
+ * $Revision: 12 $
+ * $Date: 15/12/31 1:06p $
  * @brief    Mini51 series I2C driver header file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
- *****************************************************************************/ 
+ *****************************************************************************/
 #ifndef __I2C_H__
 #define __I2C_H__
 
@@ -62,7 +62,11 @@ extern "C"
   * @param i2c is the base address of I2C module.
   * @return none
   */
-#define I2C_STOP(i2c) ( (i2c)->I2CON = ((i2c)->I2CON & ~I2C_I2CON_SI_Msk) | I2C_I2CON_STO_Msk )
+#define I2C_STOP(i2c) \
+do { \
+    (i2c)->I2CON |= (I2C_I2CON_SI_Msk | I2C_I2CON_STO_Msk); \
+    while((i2c)->I2CON & I2C_I2CON_STO_Msk); \
+} while(0)
 
 /**
   * @brief This macro will return when I2C module is ready.

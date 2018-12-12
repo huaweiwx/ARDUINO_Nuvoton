@@ -1,13 +1,13 @@
 /**************************************************************************//**
  * @file     wdt.c
  * @version  V1.00
- * $Revision: 3 $
- * $Date: 13/10/05 1:24p $ 
+ * $Revision: 4 $
+ * $Date: 15/03/18 5:39p $
  * @brief    MINI51 series WDT driver source file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
-*****************************************************************************/ 
+*****************************************************************************/
 #include "Mini51Series.h"
 
 /** @addtogroup MINI51_Device_Driver MINI51 Device Driver
@@ -35,14 +35,14 @@
  *                - \ref WDT_TIMEOUT_2POW16
  *                - \ref WDT_TIMEOUT_2POW18
  * @param[in] u32ResetDelay This parameter is current not used
- * @param[in] u32EnableReset Enable WDT rest system function. Valid values are TRUE and FALSE
+ * @param[in] u32EnableReset Enable WDT reset system function. Valid values are TRUE and FALSE
  * @param[in] u32EnableWakeup Enable WDT wake-up system function. Valid values are TRUE and FALSE
  * @return None
- */ 
+ */
 void  WDT_Open(uint32_t u32TimeoutInterval,
-                  uint32_t u32ResetDelay,
-                  uint32_t u32EnableReset,
-                  uint32_t u32EnableWakeup)
+               uint32_t u32ResetDelay,
+               uint32_t u32EnableReset,
+               uint32_t u32EnableWakeup)
 {
 
     WDT->WTCR = u32TimeoutInterval | WDT_WTCR_WTE_Msk |
@@ -55,7 +55,7 @@ void  WDT_Open(uint32_t u32TimeoutInterval,
  * @brief This function stops WDT counting and disable WDT module
  * @param None
  * @return None
- */ 
+ */
 void WDT_Close(void)
 {
     WDT->WTCR = 0;

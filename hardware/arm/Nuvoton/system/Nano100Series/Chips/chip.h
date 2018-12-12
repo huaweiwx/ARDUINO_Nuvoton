@@ -13,6 +13,8 @@
   #include "list28.h"
  #elif defined(CHIP20P)
   #include "list20.h"
+ #else
+  #error "add me!"	 
  #endif
 
  

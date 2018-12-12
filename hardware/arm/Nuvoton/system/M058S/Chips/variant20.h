@@ -52,39 +52,29 @@ const ADCPinDescription ADC_Desc[]={
 #endif
 
 #ifndef UART_DESC_USERDEF
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+   {{P3_0,SYS_MFP_P30_RXD}, {P3_1,SYS_MFP_P31_TXD}},	
+};
 const UARTPinDescription UART_Desc[]={
-   {UART0,UART0_MODULE,UART0_IRQn,{{P3_0,SYS_MFP_P30_RXD}, {P3_1,SYS_MFP_P31_TXD} }},	
-//   {UART0,UART0_MODULE,UART0_IRQn,{{P0_3,SYS_MFP_P03_RXD}, {P0_2,SYS_MFP_P02_TXD} }},	
+   {UART0,UART0_MODULE,UART0_IRQn,UART0PinAlt},	
 };
 #endif
 
 #ifndef SPI_DESC_USERDEF
+const SPIPinAlt_TypeDef SPI0PinAlt[] = {
+	 {{P0_7,SYS_MFP_P07_SPICLK},{P0_6,SYS_MFP_P06_MISO},{P0_5,SYS_MFP_P05_MOSI}, {P1_4,SYS_MFP_P14_SPISS}},
+};
 const SPIPinDescription SPI_Desc[]={
-//    {
-//	 SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,
-// 	 {{P1_7,SYS_MFP_P17_SPICLK},{P1_6,SYS_MFP_P16_MISO},{P1_5,SYS_MFP_P15_MOSI}, {P1_4,SYS_MFP_P14_SPISS}, }
-//	},
-	{
-	 SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,
-	 {{P0_7,SYS_MFP_P07_SPICLK},{P0_6,SYS_MFP_P06_MISO},{P0_5,SYS_MFP_P05_MOSI}, {P1_4,SYS_MFP_P14_SPISS}, }
-	},
+	{SPI0,SPI0_MODULE,SPI0_IRQn,CLK_CLKSEL1_SPI0_S_HCLK,SPI0PinAlt},
 };
 #endif
 
 #ifndef I2C_DESC_USERDEF
-const I2CPinDescription I2C_Desc[]={	
-  {
-	I2C0,I2C0_MODULE,
+const I2CPinAlt_TypeDef I2C0PinAlt[] = {
     {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0},}
-  },
-//  {
-//	I2C0,I2C0_MODULE,
- //   {{P5_2,SYS_MFP_P52_SDA0},{P5_3, SYS_MFP_P53_SCL0},}
-//  },
-//  {
-//	I2C1,I2C1_MODULE,
-//    {{P4_5,SYS_MFP_P45_SDA1},{P4_4, SYS_MFP_P44_SCL1},}
-//  },
+};
+const I2CPinDescription I2C_Desc[]={	
+    {I2C0,I2C0_MODULE,I2C0PinAlt},
 };
 #endif
 

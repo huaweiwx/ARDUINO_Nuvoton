@@ -1,13 +1,13 @@
 /**************************************************************************//**
  * @file     gpio.h
  * @version  V1.00
- * $Revision: 7 $
- * $Date: 14/01/15 10:46a $ 
+ * $Revision: 9 $
+ * $Date: 15/10/06 10:44a $
  * @brief    Mini51 series GPIO driver header file
  *
  * @note
  * Copyright (C) 2013 Nuvoton Technology Corp. All rights reserved.
- *****************************************************************************/ 
+ *****************************************************************************/
 #ifndef __GPIO_H__
 #define __GPIO_H__
 
@@ -44,7 +44,7 @@ extern "C"
 #define GPIO_INT_RISING             0x00010000UL /*!< Interrupt enable by Input Rising Edge */
 #define GPIO_INT_FALLING            0x00000001UL /*!< Interrupt enable by Input Falling Edge */
 #define GPIO_INT_BOTH_EDGE          0x00010001UL /*!< Interrupt enable by both Rising Edge and Falling Edge */
-#define GPIO_INT_HIGH               0x01010000UL /*!< Interrupt enable by Level-High */    
+#define GPIO_INT_HIGH               0x01010000UL /*!< Interrupt enable by Level-High */
 #define GPIO_INT_LOW                0x01000001UL /*!< Interrupt enable by Level-Level */
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -56,11 +56,11 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /*  DBNCECON Constant Definitions                                                                          */
 /*---------------------------------------------------------------------------------------------------------*/
-#define GPIO_DBNCECON_ICLK_ON           0x00000020UL /*!< DBNCECON setting for all IO pins edge detection circuit is always active after reset */ 
-#define GPIO_DBNCECON_ICLK_OFF          0x00000000UL /*!< DBNCECON setting for edge detection circuit is active only if IO pin corresponding GPIOx_IEN bit is set to 1 */ 
+#define GPIO_DBNCECON_ICLK_ON           0x00000020UL /*!< DBNCECON setting for all IO pins edge detection circuit is always active after reset */
+#define GPIO_DBNCECON_ICLK_OFF          0x00000000UL /*!< DBNCECON setting for edge detection circuit is active only if IO pin corresponding GPIOx_IEN bit is set to 1 */
 
-#define GPIO_DBNCECON_DBCLKSRC_IRC10K   0x00000010UL /*!< DBNCECON setting for de-bounce counter clock source is the internal 10 kHz */ 
-#define GPIO_DBNCECON_DBCLKSRC_HCLK     0x00000000UL /*!< DBNCECON setting for de-bounce counter clock source is the internal HCLK */ 
+#define GPIO_DBNCECON_DBCLKSRC_IRC10K   0x00000010UL /*!< DBNCECON setting for de-bounce counter clock source is the internal 10 kHz */
+#define GPIO_DBNCECON_DBCLKSRC_HCLK     0x00000000UL /*!< DBNCECON setting for de-bounce counter clock source is the internal HCLK */
 
 #define GPIO_DBNCECON_DBCLKSEL_1        0x00000000UL /*!< DBNCECON setting for sampling cycle = 1 clocks */
 #define GPIO_DBNCECON_DBCLKSEL_2        0x00000001UL /*!< DBNCECON setting for sampling cycle = 2 clocks */
@@ -81,19 +81,19 @@ extern "C"
 
 /** Define GPIO Pin Data Input/Output. It could be used to control each I/O pin by pin address mapping.
  *  Example 1:
- *  
- *      P00 = 1; 
- *  
+ *
+ *      P00 = 1;
+ *
  *  It is used to set P0.0 to high;
- *  
+ *
  *  Example 2:
- *  
+ *
  *      if (P00)
  *          P00 = 0;
- *  
+ *
  *  If P0.0 pin status is high, then set P0.0 data output to low.
  */
-#define GPIO_PIN_ADDR(port, pin)    (*((volatile uint32_t *)((GPIOBIT0_BASE+(0x20*(port))) + ((pin)<<2)))) 
+#define GPIO_PIN_ADDR(port, pin)    (*((volatile uint32_t *)((GPIOBIT0_BASE+(0x20*(port))) + ((pin)<<2))))
 #define P00             GPIO_PIN_ADDR(0, 0) /*!< Specify P00 Pin Data Input/Output */
 #define P01             GPIO_PIN_ADDR(0, 1) /*!< Specify P01 Pin Data Input/Output */
 #define P02             GPIO_PIN_ADDR(0, 2) /*!< Specify P02 Pin Data Input/Output */
@@ -150,8 +150,8 @@ extern "C"
 /**
  * @brief       Clear GPIO Pin Interrupt Flag
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
@@ -162,8 +162,8 @@ extern "C"
 /**
  * @brief       Disable Pin De-bounce Function
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
@@ -174,8 +174,8 @@ extern "C"
 /**
  * @brief       Enable Pin De-bounce Function
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
@@ -186,32 +186,32 @@ extern "C"
 /**
  * @brief       Disable I/O Digital Input Path
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
  * @details     Disable I/O digital input path of specified GPIO pin.
  */
-#define GPIO_DISABLE_DIGITAL_PATH(gpio, u32PinMask)   ((gpio)->OFFD |= u32PinMask)
+#define GPIO_DISABLE_DIGITAL_PATH(gpio, u32PinMask)   ((gpio)->OFFD |= (u32PinMask << 16))
 
 /**
  * @brief       Enable I/O Digital Input Path
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
  * @details     Enable I/O digital input path of specified GPIO pin.
  */
-#define GPIO_ENABLE_DIGITAL_PATH(gpio, u32PinMask)    ((gpio)->OFFD &= ~u32PinMask)
+#define GPIO_ENABLE_DIGITAL_PATH(gpio, u32PinMask)    ((gpio)->OFFD &= ~(u32PinMask << 16))
 
 /**
  * @brief       Disable I/O DOUT mask
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
@@ -222,8 +222,8 @@ extern "C"
 /**
  * @brief       Enable I/O DOUT mask
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @return      None
  *
@@ -234,8 +234,8 @@ extern "C"
 /**
  * @brief       Get GPIO Pin Interrupt Flag
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
- * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. BIT0, BIT1, BIT2,.. BIT7
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
+ * @param[in]   u32PinMask  The single or multiple pins of specified GPIO port. \ref BIT0, \ref BIT1, \ref BIT2,.. \ref BIT7
  *
  * @retval      0           No interrupt at specified GPIO pin
  * @retval      1           The specified GPIO pin generate an interrupt
@@ -247,27 +247,29 @@ extern "C"
 /**
  * @brief       Set De-bounce Sampling Cycle Time
  *
- * @param[in]   clksrc      The de-bounce counter clock source. It could be GPIO_DBNCECON_DBCLKSRC_HCLK or GPIO_DBNCECON_DBCLKSRC_IRC10K.
+ * @param[in]   clksrc      The de-bounce counter clock source. It could be \ref GPIO_DBNCECON_DBCLKSRC_HCLK or \ref GPIO_DBNCECON_DBCLKSRC_IRC10K.
  * @param[in]   clksel      The de-bounce sampling cycle selection. It could be \n
- *                              GPIO_DBNCECON_DBCLKSEL_1, GPIO_DBNCECON_DBCLKSEL_2, GPIO_DBNCECON_DBCLKSEL_4, GPIO_DBNCECON_DBCLKSEL_8, \n
- *                              GPIO_DBNCECON_DBCLKSEL_16, GPIO_DBNCECON_DBCLKSEL_32, GPIO_DBNCECON_DBCLKSEL_64, GPIO_DBNCECON_DBCLKSEL_128, \n
- *                              GPIO_DBNCECON_DBCLKSEL_256, GPIO_DBNCECON_DBCLKSEL_512, GPIO_DBNCECON_DBCLKSEL_1024, GPIO_DBNCECON_DBCLKSEL_2048, \n
- *                              GPIO_DBNCECON_DBCLKSEL_4096, GPIO_DBNCECON_DBCLKSEL_8192, GPIO_DBNCECON_DBCLKSEL_16384, GPIO_DBNCECON_DBCLKSEL_32768.
+ *                              \ref GPIO_DBNCECON_DBCLKSEL_1, \ref GPIO_DBNCECON_DBCLKSEL_2, \ref GPIO_DBNCECON_DBCLKSEL_4, \ref GPIO_DBNCECON_DBCLKSEL_8, \n
+ *                              \ref GPIO_DBNCECON_DBCLKSEL_16, \ref GPIO_DBNCECON_DBCLKSEL_32, \ref GPIO_DBNCECON_DBCLKSEL_64, \ref GPIO_DBNCECON_DBCLKSEL_128, \n
+ *                              \ref GPIO_DBNCECON_DBCLKSEL_256, \ref GPIO_DBNCECON_DBCLKSEL_512, \ref GPIO_DBNCECON_DBCLKSEL_1024, \ref GPIO_DBNCECON_DBCLKSEL_2048, \n
+ *                              \ref GPIO_DBNCECON_DBCLKSEL_4096, \ref GPIO_DBNCECON_DBCLKSEL_8192, \ref GPIO_DBNCECON_DBCLKSEL_16384, \ref GPIO_DBNCECON_DBCLKSEL_32768.
  *
  * @return      None
  *
- * @details     Set the interrupt de-bounce sampling cycle time based on the debounce counter clock source. \n
- *              Example: _GPIO_SET_DEBOUNCE_TIME(GPIO_DBNCECON_DBCLKSRC_IRC10K, GPIO_DBNCECON_DBCLKSEL_4). \n
- *              It's meaning the De-debounce counter clock source is internal 10 KHz and sampling cycle selection is 4. \n
- *              Then the target de-bounce sampling cycle time is (2^4)*(1/(10*1000)) s = 16*0.0001 s = 1600 us,
- *              and system will sampling interrupt input once per 1600 us.
+ * @details     Set the interrupt de-bounce sampling cycle time based on the debounce counter clock source, below is an example.
+ * \code
+ *     // It's meaning the De-debounce counter clock source is internal 10 KHz and sampling cycle selection is 4.
+ *     //   Then the target de-bounce sampling cycle time is (2^4)*(1/(10*1000)) s = 16*0.0001 s = 1600 us,
+ *     //   and system will sampling interrupt input once per 1600 us.
+ *     _GPIO_SET_DEBOUNCE_TIME(GPIO_DBNCECON_DBCLKSRC_IRC10K, GPIO_DBNCECON_DBCLKSEL_4);
+ * \endcode
  */
 #define GPIO_SET_DEBOUNCE_TIME(clksrc, clksel)  (GPIO->DBNCECON = (GPIO_DBNCECON_ICLK_ON_Msk | clksrc | clksel))
 
 /**
  * @brief       Get GPIO Port IN Data
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  *
  * @retval      The specified port data
  *
@@ -278,7 +280,7 @@ extern "C"
 /**
  * @brief       Set GPIO Port OUT Data
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  * @param[in]   data        GPIO port data.
  *
  * @retval      None
@@ -301,10 +303,10 @@ extern "C"
 /**
  * @brief       Enable External GPIO interrupt 0
  *
- * @param[in]   gpio            GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio            GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  * @param[in]   u32Pin          The pin of specified GPIO port.
  * @param[in]   u32IntAttribs   The interrupt attribute of specified GPIO pin. It could be \n
- *                              GPIO_INT_RISING, GPIO_INT_FALLING, GPIO_INT_BOTH_EDGE, GPIO_INT_HIGH, GPIO_INT_LOW.
+ *                              \ref GPIO_INT_RISING, \ref GPIO_INT_FALLING, \ref GPIO_INT_BOTH_EDGE, \ref GPIO_INT_HIGH, \ref GPIO_INT_LOW.
  *
  * @return      None
  *
@@ -316,7 +318,7 @@ extern "C"
 /**
  * @brief       Disable External GPIO interrupt 0
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  * @param[in]   u32Pin      The pin of specified GPIO port. It could be 0 ~ 7.
  *
  * @return      None
@@ -329,10 +331,10 @@ extern "C"
 /**
  * @brief       Enable External GPIO interrupt 1
  *
- * @param[in]   gpio            GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio            GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  * @param[in]   u32Pin          The pin of specified GPIO port.
  * @param[in]   u32IntAttribs   The interrupt attribute of specified GPIO pin. It could be \n
- *                              GPIO_INT_RISING, GPIO_INT_FALLING, GPIO_INT_BOTH_EDGE, GPIO_INT_HIGH, GPIO_INT_LOW.
+ *                              \ref GPIO_INT_RISING, \ref GPIO_INT_FALLING, \ref GPIO_INT_BOTH_EDGE, \ref GPIO_INT_HIGH, \ref GPIO_INT_LOW.
  *
  * @return      None
  *
@@ -344,7 +346,7 @@ extern "C"
 /**
  * @brief       Disable External GPIO interrupt 1
  *
- * @param[in]   gpio        GPIO port. It could be P0, P1, P2, P3, P4 or P5.
+ * @param[in]   gpio        GPIO port. It could be \ref P0, \ref P1, \ref P2, \ref P3, \ref P4 or \ref P5.
  * @param[in]   u32Pin      The pin of specified GPIO port. It could be 0 ~ 7.
  *
  * @return      None

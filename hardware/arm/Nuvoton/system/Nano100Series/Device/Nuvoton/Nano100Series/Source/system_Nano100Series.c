@@ -100,7 +100,7 @@ void SystemCoreClockUpdate (void)
     CyclesPerUs = (SystemCoreClock + 500000) / 1000000;
 }
 
-#if USE_ASSERT
+#if 0 //USE_ASSERT
 
 /**
  * @brief      Assert Error Message
