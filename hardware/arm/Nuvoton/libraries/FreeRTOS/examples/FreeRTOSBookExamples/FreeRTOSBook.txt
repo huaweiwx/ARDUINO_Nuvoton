@@ -1,0 +1,35 @@
+The folder examples/FreeRTOSBook has sixteen examples.
+
+These examples are described in the book: 
+Using The FreeRTOS Real Time Kernel - a Practical Guide 
+
+http://shop.freertos.org/RTOS_primer_books_and_manual_s/1819.htm
+
+The following examples are fully described in the above book.  I have modified
+The examples to run as Arduino sketches.  The original code is here.
+ 
+http://www.freertos.org/Documentation/code/source-code-for-standard-edition-examples.zip
+
+Warning: The interrupt examples use attachInterrupt() to generate interrupts.
+         The pin for interrupt zero must be free for use as an output on AVR.
+         On ARM Due you must connect pin 2 to pin 3.
+
+Input characters will stop an example.
+
+Example  1. Creating Tasks  创建任务
+Example  2. Using the Task Parameter  使用任务参数
+Example  3. Experimenting with priorities  尝试优先级
+Example  4. Using the Blocked state to create a delay   使用阻止状态创建延迟
+Example  5. Converting the example tasks to use vTaskDelayUntil()  将示例任务转换为使用 vTaskDelayUntil ()
+Example  6. Combining blocking and non-blocking tasks  组合阻止和非阻塞任务
+Example  7. Defining an Idle Task Hook Function   定义空闲任务挂钩函数
+Example  8. Changing task priorities  更改任务优先级
+Example  9. Deleting tasks  删除任务
+Example 10. Blocking When Receiving From a Queue  从队列接收时阻塞
+Example 11. Blocking When Sending to a Queue / Sending Structures on a Queue   发送到队列的队列/发送结构时阻塞
+Example 12. Using a Binary Semaphore to Synchronize a Task with an Interrupt  使用二进制信号量将任务与中断同步
+Example 13. Using a Counting Semaphore to Synchronize a Task with an Interrupt  使用计数信号量将任务与中断同步
+Example 14. Sending and Receiving on a Queue from Within an Interrupt  从中断中发送和接收队列
+Example 15. Rewriting vPrintString() to Use a Semaphore     重写 vPrintString () 使用信号量
+Example 16. Re-writing vPrintString() to Use a Gatekeeper Task   重新编写 vPrintString()，使用一个把关守卫任务
+
