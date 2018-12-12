@@ -110,7 +110,11 @@ PIN(B,8 ,64)
 #endif
 
 #ifndef  LED_BUILTIN
- #define  LED_BUILTIN  13
+ #define  LED_BUILTIN  PB_7
+  #define LED_BUILTIN_MASK 0
+#endif
+#ifndef LED_BUILTIN_MASK
+  #define LED_BUILTIN_MASK 0
 #endif
 
 static const uint8_t SS   = 43;

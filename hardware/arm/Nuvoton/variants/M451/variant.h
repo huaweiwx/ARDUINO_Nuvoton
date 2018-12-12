@@ -89,7 +89,11 @@ PIN(B,11,99 ),\
 PIN(B,12,100)
 
 #ifndef  LED_BUILTIN
- #define LED_BUILTIN     PC_9 /*38*/
+ #define LED_BUILTIN      PC_9 /*38*/
+  #define LED_BUILTIN_MASK 0
+#endif
+#ifndef LED_BUILTIN_MASK
+  #define LED_BUILTIN_MASK 0
 #endif
 
 /*if undef use default*/

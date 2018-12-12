@@ -91,11 +91,16 @@ PIN(D,0,  83)  /* SPI2_SS0                       */\
 /* PIN(F,1,  85), /* XT1_IN      */
 
 
-#define LED_BUILTIN      PA_12  /*PA12*/
+  #define LED_BUILTIN      PA_12  /*PA12*/
+  #define LED_BUILTIN_MASK 0
 
 #else
   #ifndef  LED_BUILTIN
     #define LED_BUILTIN      PA_12  /*PA12*/
+    #define LED_BUILTIN_MASK 0
+  #endif
+  #ifndef LED_BUILTIN_MASK
+    #define LED_BUILTIN_MASK 0
   #endif
 #endif
 
