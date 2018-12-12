@@ -1,0 +1,1 @@
+#error ***********  This is a dummy library, purely to make the nuvoton examples easy to access. Do not include it  *********
