@@ -22,6 +22,7 @@
 
 #include <inttypes.h>
 #include <stdio.h> // for size_t
+#include <stdarg.h>
 
 #include "WString.h"
 #include "Printable.h"
@@ -29,22 +30,28 @@
 #define DEC 10
 #define HEX 16
 #define OCT 8
+#ifdef BIN // Prevent warnings if BIN is previously defined in "iotnx4.h" or similar
+  #undef BIN
+#endif
 #define BIN 2
+
+typedef unsigned long long uint64_t;
+typedef long long int64_t;
 
 class Print
 {
   private:
     int write_error;
-    size_t printNumber(unsigned long, uint8_t);
-    size_t printFloat(double, uint8_t);
+    size_t printNumber(unsigned long long, uint8_t);
+	size_t printFloat(double, uint8_t);
   protected:
     void setWriteError(int err = 1) { write_error = err; }
   public:
     Print() : write_error(0) {}
-  
+
     int getWriteError() { return write_error; }
     void clearWriteError() { setWriteError(0); }
-  
+
     virtual size_t write(uint8_t) = 0;
     size_t write(const char *str) {
       if (str == NULL) return 0;
@@ -54,10 +61,6 @@ class Print
     size_t write(const char *buffer, size_t size) {
       return write((const uint8_t *)buffer, size);
     }
-    
-    // default to zero, meaning "a single write may block"
-    // should be overriden by subclasses with buffering
-    virtual int availableForWrite() { return 0; }
 
     size_t print(const __FlashStringHelper *);
     size_t print(const String &);
@@ -68,6 +71,9 @@ class Print
     size_t print(unsigned int, int = DEC);
     size_t print(long, int = DEC);
     size_t print(unsigned long, int = DEC);
+	size_t print(long long, int = DEC);
+    size_t print(unsigned long long, int = DEC);
+	size_t print(float,int = 2);
     size_t print(double, int = 2);
     size_t print(const Printable&);
 
@@ -80,11 +86,15 @@ class Print
     size_t println(unsigned int, int = DEC);
     size_t println(long, int = DEC);
     size_t println(unsigned long, int = DEC);
+	size_t println(long long, int = DEC);
+    size_t println(unsigned long long, int = DEC);
+    size_t println(float, int = 2);
     size_t println(double, int = 2);
     size_t println(const Printable&);
     size_t println(void);
 
-    virtual void  flush(){ /* Empty implementation for backward compatibi    lity */ }
+	size_t printf(const char* format, ...);  
+	size_t printf(const char* format, va_list);  
 };
 
 #endif

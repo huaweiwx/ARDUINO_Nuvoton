@@ -24,21 +24,26 @@ extern "C"{
 #endif // __cplusplus
 
 #ifndef    GPIO_MODE_INPUT
-  #define  GPIO_MODE_INPUT         GPIO_PMD_INPUT
+  #define  GPIO_MODE_INPUT         GPIO_PMD_INPUT       /* 0 */
+  #define  GPIO_MODE_OUTPUT        GPIO_PMD_OUTPUT      /* 1 */
+  #define  GPIO_MODE_OPEN_DRAIN    GPIO_PMD_OPEN_DRAIN  /* 2 */
+
   #ifdef   GPIO_PMD_QUASI
-    #define  GPIO_MODE_QUASI       GPIO_PMD_QUASI
+    #define  GPIO_MODE_QUASI       GPIO_PMD_QUASI       /* 3 */
   #else
-    #define  GPIO_MODE_QUASI       GPIO_PMD_OPEN_DRAIN
+    #define  GPIO_MODE_QUASI       GPIO_PMD_OPEN_DRAIN  /* NANO */
   #endif
-  #define  GPIO_MODE_OUTPUT        GPIO_PMD_OUTPUT
-  #define  GPIO_MODE_OPEN_DRAIN    GPIO_PMD_OPEN_DRAIN
 #endif
 
-#define INPUT         GPIO_MODE_INPUT
-#define OUTPUT        GPIO_MODE_OUTPUT
-#define OUTPUT_OD     GPIO_MODE_OPEN_DRAIN
-#define INPUT_PULLUP  GPIO_MODE_QUASI
-#define QUASI         GPIO_MODE_QUASI
+#define INPUT         GPIO_MODE_INPUT      /* 0  */
+#define OUTPUT        GPIO_MODE_OUTPUT     /* 1  */
+#define OUTPUT_OD     GPIO_MODE_OPEN_DRAIN /* 2  */
+#define QUASI         GPIO_MODE_QUASI      /* 3  */
+
+#define INPUT_PULLUP                        0b0100
+#define INPUT_PULLDOWN                      0b1000
+
+#define OUTPUT_PP     OUTPUT
 
 #define HIGH 0x1
 #define LOW  0x0

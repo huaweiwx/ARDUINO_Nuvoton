@@ -1221,11 +1221,11 @@ USBDevice_::USBDevice_()
 bool USBDevice_::attach(void)
 {    
 #if defined(__M451__)
-		SYS_UnlockReg(); /* Unlock protected registers */		    
+    SYS_UnlockReg(); /* Unlock protected registers */		    
     CLK_EnableModuleClock(USBD_MODULE); /* Enable module clock */		    
-		CLK_SetModuleClock(USBD_MODULE, 0, CLK_CLKDIV0_USB(3));  /* Select module clock source */
+	CLK_SetModuleClock(USBD_MODULE, 0, CLK_CLKDIV0_USB(3));  /* Select module clock source */
     SYS->USBPHY = SYS_USBPHY_LDO33EN_Msk;	/* Enable USB LDO33 */   
-	  SYS_LockReg();  /* Lock protected registers */  
+    SYS_LockReg();  /* Lock protected registers */  
 	  
     USBD_Open(&gsInfo, HID_ClassRequest, NULL);     
     HID_Init(); /* Endpoint configuration */
@@ -1292,7 +1292,7 @@ bool USBDevice_::attach(void)
 	else
 	{
 		return false;
-  }    
+    }    
 #else
 	return false;
 #endif    

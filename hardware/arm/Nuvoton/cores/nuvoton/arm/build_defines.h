@@ -21,7 +21,14 @@
 #define _BUILD_DEFINES_H_
 
 #define  ARDUINO_EXTEND 1
+
 #include "util/utils_all.h"
+
+#ifdef USE_ASSERT   /*compatable with stm32*/
+ #ifndef USE_FULL_ASSERT
+  #define USE_FULL_ASSERT
+ #endif
+#endif
 
 #if __has_include("HAL_Conf.h")
 # include "HAL_Conf.h"
@@ -64,11 +71,11 @@
 # define USE_ICE          1
 #endif
 
-#ifndef  USE_ERRORBLINK
-#  ifdef DEBUG_NUVOTON_USER
-    #define USE_ERRORBLINK 1
+#ifndef  USE_ERRORCALLBACK
+#  ifdef USE_FULL_ASSERT
+    #define USE_ERRORCALLBACK 1
 #  else
-    #define USE_ERRORBLINK 0
+    #define USE_ERRORCALLBACK 0
 #  endif
 #endif	
 

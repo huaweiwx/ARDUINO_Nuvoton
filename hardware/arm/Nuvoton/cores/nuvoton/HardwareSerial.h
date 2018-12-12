@@ -60,14 +60,15 @@ struct ring_buffer
 class HardwareSerial : public Stream {
 public:
     HardwareSerial(UART_T *uart_device,
-                   uint32_t u32ModuleIdx,
+                   uint8_t ucIdx,
+                   uint8_t ucLoc,
                    uint32_t u32ClkSrc,
                    uint32_t u32ClkDiv,
                    IRQn_Type u32IrqId,
                    ring_buffer *rx_buffer);
 
     void setRouteLoc(uint32_t route){
-		this->u32Idx = route;  /* we can remap uart port as efm32 */
+		this->ucLoc = route;  /* we can remap uart port as efm32 */
 	}
     /* Set up/tear down */
     void begin(uint32_t baud = 115200);
@@ -86,7 +87,8 @@ public:
     ring_buffer *_rx_buffer;
 private:
     UART_T *uart_device;
-    uint32_t u32Idx;
+    uint8_t ucIdx;
+    uint8_t ucLoc;
     uint32_t u32ClkSrc;
     uint32_t u32ClkDiv;  
     IRQn_Type u32IrqId;

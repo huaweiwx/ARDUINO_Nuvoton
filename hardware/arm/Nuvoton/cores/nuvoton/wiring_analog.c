@@ -18,10 +18,6 @@
 
 #include "Arduino.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 static int _readResolution = 10;
 static int _writeResolution = 8;
 
@@ -65,8 +61,9 @@ uint32_t analogRead(uint8_t ucPin)
   
 	/* Set the ADC internal sampling time, input mode as single-end and enable the A/D converter */
 	EADC_Open(ADC_Desc[ucPin].A, EADC_CTL_DIFFEN_SINGLE_END);
+  #if defined(__M451__)  
 	EADC_SetInternalSampleTime(EADC, 6);
-	
+  #endif	
 	/* Configure the sample 0 module for analog input channel 0 and enable ADINT0 trigger source */
 	EADC_ConfigSampleModule(EADC,ADC_Desc[ucPin].ch, EADC_ADINT0_TRIGGER, ADC_Desc[ucPin].ch);
 	
@@ -201,11 +198,18 @@ uint32_t analogRead(uint8_t ucPin)
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
+
+#if defined(M480)   
+ #define PWM_ConfigOutputChannel EPWM_ConfigOutputChannel
+ #define PWM_EnableOutput        EPWM_EnableOutput
+ #define PWM_Start               EPWM_Start
+#endif 
+
 //static uint8_t PWMEnabled = 0;
 static uint8_t pinEnabled[PWM_MAX_COUNT]={0};
 static uint32_t fixValue[PWM_MAX_COUNT]={0};
+
 void analogWrite(uint8_t ucPin, uint32_t ulValue) {
-	
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;
 	if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
@@ -218,8 +222,8 @@ void analogWrite(uint8_t ucPin, uint32_t ulValue) {
 	
 	ulValue=((ulValue+1)*100)/(1<<_writeResolution);
 #if defined(__M451__)||defined(M480)   
-	if(ulValue==100)
-	{  
+	if(ulValue==0)
+	{
 		int32_t pin=PWM_Desc[ucPin].pintype.num;
 		GPIO_Config(GPIO_Desc[pin]);
 		GPIO_SetMode(GPIO_Desc[pin].P, GPIO_Desc[pin].bit, GPIO_MODE_OUTPUT);
@@ -266,16 +270,13 @@ void analogWrite(uint8_t ucPin, uint32_t ulValue) {
 	if (!pinEnabled[ucPin]){
 		//Set Mutifunction pins
 		PWM_Config(PWM_Desc[ucPin]);		
-    
 		//Config PWMs
 		PWM_ConfigOutputChannel(PWM_Desc[ucPin].P,PWM_Desc[ucPin].ch,PWM_Desc[ucPin].freq,ulValue);
-		
 		//Enable PWM output
 		PWM_EnableOutput(PWM_Desc[ucPin].P,(1<<PWM_Desc[ucPin].ch));
 		
 		//Start PWM
 		PWM_Start(PWM_Desc[ucPin].P,(1<<PWM_Desc[ucPin].ch));
-		
 		pinEnabled[ucPin] = 1;
 	}
 	
@@ -285,11 +286,6 @@ void analogWrite(uint8_t ucPin, uint32_t ulValue) {
 		PWM_ConfigOutputChannel(PWM_Desc[ucPin].P,PWM_Desc[ucPin].ch,PWM_Desc[ucPin].freq,ulValue);
 		fixValue[ucPin]=ulValue;
 	}
-
 	
 	return;
 }
-
-#ifdef __cplusplus
-}
-#endif

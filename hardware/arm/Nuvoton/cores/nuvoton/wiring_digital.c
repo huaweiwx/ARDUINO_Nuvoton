@@ -17,12 +17,8 @@
 */
 #include "Arduino.h"
 
-#ifdef __cplusplus
- extern "C" {
-#endif
 
-
-extern void pinMode(uint8_t ucPin, uint32_t ulMode )
+void pinMode(uint8_t ucPin, uint32_t ulMode)
 {
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;
@@ -31,11 +27,28 @@ extern void pinMode(uint8_t ucPin, uint32_t ulMode )
 #else
     if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif  
+
     GPIO_Config(GPIO_Desc[ucPin]); 
-	GPIO_SetMode(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit, ulMode); 
+	GPIO_SetMode(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit, ulMode & 0b11); 
+
+#ifdef GPIO_PUSEL_PULL_UP  //M480
+	if(ulMode == INPUT_PULLUP){
+		GPIO_SetPullCtl(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit,GPIO_PUSEL_PULL_UP); 
+    } else if(ulMode == INPUT_PULLDOWN){
+		GPIO_SetPullCtl(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit,GPIO_PUSEL_PULL_DOWN); 
+    } else if(ulMode == INPUT){
+		GPIO_SetPullCtl(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit,GPIO_PUSEL_DISABLE); 
+    }
+#elif defined(GPIO_ENABLE_PULL_UP)  /*NANO*/
+	if(ulMode == INPUT_PULLUP){
+		GPIO_ENABLE_PULL_UP(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit); 
+    } else if(ulMode == INPUT){
+		GPIO_DISABLE_PULL_UP(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit);
+	}
+#endif
 }
 
-extern void digitalWriteHigh(uint8_t ucPin)
+void digitalWriteHigh(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;
@@ -44,11 +57,10 @@ extern void digitalWriteHigh(uint8_t ucPin)
 #else	
 	if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
-
 	(GPIO_Desc[ucPin].P)->DOUT |= GPIO_Desc[ucPin].bit;	
 }
 
-extern void digitalWriteLow(uint8_t ucPin)
+void digitalWriteLow(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;
@@ -61,15 +73,15 @@ extern void digitalWriteLow(uint8_t ucPin)
 	(GPIO_Desc[ucPin].P)->DOUT &= ~GPIO_Desc[ucPin].bit;
 }
 
-extern void digitalWrite(uint8_t ucPin, uint8_t ucVal )
+void digitalWrite(uint8_t ucPin, uint8_t ucVal)
 {
 	if(ucVal)
 		digitalWriteHigh(ucPin);	
 	else
-		digitalWriteLow(ucPin);;
+		digitalWriteLow(ucPin);
 }
 
-extern int digitalRead(uint8_t ucPin )
+int digitalRead(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;     
@@ -82,7 +94,7 @@ extern int digitalRead(uint8_t ucPin )
 }
 
 
-extern void digitalToggle(uint8_t ucPin)  //add 2015.6 by huawei
+void digitalToggle(uint8_t ucPin)  //add 2015.6 by huawei
 {
 #ifdef USE_BoardToPin
 	if(ucPin > BoardToPin_MAX_COUNT) return;
@@ -93,8 +105,4 @@ extern void digitalToggle(uint8_t ucPin)  //add 2015.6 by huawei
 #endif
 	((GPIO_T *)(GPIO_Desc[ucPin].P))->DOUT ^= GPIO_Desc[ucPin].bit;	
 }
-
-#ifdef __cplusplus
-}
-#endif
 

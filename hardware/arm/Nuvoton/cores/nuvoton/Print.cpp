@@ -25,7 +25,8 @@
 #include <string.h>
 #include <math.h>
 #include "Arduino.h"
-
+#include <stdarg.h>
+#include <limits.h>
 #include "Print.h"
 
 // Public Methods //////////////////////////////////////////////////////////////
@@ -84,22 +85,58 @@ size_t Print::print(long n, int base)
     if (n < 0) {
       int t = print('-');
       n = -n;
-      return printNumber(n, 10) + t;
+      return printNumber((unsigned long long)n, 10) + t;
     }
-    return printNumber(n, 10);
+    return printNumber((unsigned long long)n, 10);
   } else {
-    return printNumber(n, base);
+    return printNumber((unsigned long long)n, base);
   }
 }
 
 size_t Print::print(unsigned long n, int base)
 {
   if (base == 0) return write(n);
+  else return printNumber((unsigned long long)n, base);
+}
+
+size_t Print::print(long long n, int base)
+{
+  if (base == 0) {
+    return write(n);
+  } else if (base == 10) {
+    if (n < 0) {
+      int t = print('-');
+      n = -n;
+      return printNumber((unsigned long long)n, 10) + t;
+    }
+    return printNumber((unsigned long long)n, 10);
+  } else {
+    return printNumber((unsigned long long)n, base);
+  }
+}
+
+size_t Print::print(unsigned long long n, int base)
+{
+  if (base == 0) return write(n);
   else return printNumber(n, base);
+}
+
+size_t Print::print(float n, int digits)
+{
+  if (n >  LONG_MAX) return print ("ovf");  // constant determined empirically
+  if (n <  LONG_MIN) return print ("ovf");  // constant determined empirically
+  if (isnan(n)) return print("nan");
+  if (isinf(n)) return print("inf");
+  
+  return printFloat((double)n, digits);
 }
 
 size_t Print::print(double n, int digits)
 {
+  if (n >  LONG_LONG_MAX) return print ("ovf");  // constant determined empirically
+  if (n <  LONG_LONG_MIN) return print ("ovf");  // constant determined empirically
+  if (isnan(n)) return print("nan");
+  if (isinf(n)) return print("inf");
   return printFloat(n, digits);
 }
 
@@ -176,6 +213,25 @@ size_t Print::println(unsigned long num, int base)
   return n;
 }
 
+size_t Print::println(long long num, int base)
+{
+  size_t n = print(num, base);
+  n += println();
+  return n;
+}
+
+size_t Print::println(unsigned long long num, int base)
+{
+  size_t n = print(num, base);
+  n += println();
+  return n;
+}
+
+size_t Print::println(float num, int digits)
+{
+  return println((double)num, digits);
+}
+
 size_t Print::println(double num, int digits)
 {
   size_t n = print(num, digits);
@@ -192,9 +248,9 @@ size_t Print::println(const Printable& x)
 
 // Private Methods /////////////////////////////////////////////////////////////
 
-size_t Print::printNumber(unsigned long n, uint8_t base)
+size_t Print::printNumber(unsigned long long n, uint8_t base)
 {
-  char buf[8 * sizeof(long) + 1]; // Assumes 8-bit chars plus zero byte.
+  char buf[8 * sizeof(long long) + 1]; // Assumes 8-bit chars plus zero byte.
   char *str = &buf[sizeof(buf) - 1];
 
   *str = '\0';
@@ -205,7 +261,6 @@ size_t Print::printNumber(unsigned long n, uint8_t base)
   do {
     char c = n % base;
     n /= base;
-
     *--str = c < 10 ? c + '0' : c + 'A' - 10;
   } while(n);
 
@@ -215,12 +270,7 @@ size_t Print::printNumber(unsigned long n, uint8_t base)
 size_t Print::printFloat(double number, uint8_t digits) 
 { 
   size_t n = 0;
-  
-  if (isnan(number)) return print("nan");
-  if (isinf(number)) return print("inf");
-  if (number > 4294967040.0) return print ("ovf");  // constant determined empirically
-  if (number <-4294967040.0) return print ("ovf");  // constant determined empirically
-  
+   
   // Handle negative numbers
   if (number < 0.0)
   {
@@ -236,23 +286,46 @@ size_t Print::printFloat(double number, uint8_t digits)
   number += rounding;
 
   // Extract the integer part of the number and print it
-  unsigned long int_part = (unsigned long)number;
+  unsigned long long int_part = (unsigned long long)number;
   double remainder = number - (double)int_part;
   n += print(int_part);
 
   // Print the decimal point, but only if there are digits beyond
   if (digits > 0) {
-    n += print("."); 
+    n += print('.'); 
   }
 
   // Extract digits from the remainder one at a time
   while (digits-- > 0)
   {
     remainder *= 10.0;
-    int toPrint = int(remainder);
+    unsigned int toPrint = (unsigned int)(remainder);
     n += print(toPrint);
     remainder -= toPrint; 
   } 
   
   return n;
+}
+
+size_t Print::printf(const char* format, ...) {
+
+    va_list args;
+    va_start(args, format);
+    size_t ret = printf(format, args);
+    va_end(args);
+
+    return ret;
+}
+
+size_t Print::printf(const char* format, va_list args) {
+    int fileno = setPrintOutput(this);
+
+    size_t ret = 0;
+    if (fileno > 0) {
+       ret = vdprintf(fileno, format, args);
+    }
+
+    setPrintOutput(NULL);
+
+    return ret;
 }

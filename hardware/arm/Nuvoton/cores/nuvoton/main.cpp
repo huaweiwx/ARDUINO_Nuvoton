@@ -34,15 +34,17 @@ int main( void )
 	init();		
 	initVariant();
 	
-	#if defined(__M451__) | defined(__NUC240__) |defined(__NANO100__)
+#if defined(USBD) //  M451/NUC200/NANO100/NUC029xEE
+  #if (USE_USBDSERIAL)|| (USE_USBDMSC)||(USE_USBDCOMPOSITE)
 	USBDevice.attach();
-	#endif
+  #endif
+#endif
 			
 	setup();
 	for (;;)
 	{
 #if USE_CORECALLBACK > 0
-      coreCallback();
+        coreCallback();
 #endif
 		loop();		
 #if USE_SERIALEVENTRUN > 0	

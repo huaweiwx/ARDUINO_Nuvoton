@@ -11,7 +11,7 @@
 #include "Arduino.h"
 
 //	Singletons for mouse and keyboard
-#if defined(__M451__) | defined(__NUC240__) | defined(__NANO100__)
+#if defined(M480) | defined(__M451__) | defined(__NUC240__) | defined(__NANO100__)
 Mouse_ Mouse;
 Keyboard_ Keyboard;
 

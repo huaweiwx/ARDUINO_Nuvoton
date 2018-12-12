@@ -32,13 +32,11 @@
 	class __ConstPin {
 	public:
 		constexpr __ConstPin(const uint32_t ulPortBase, const  uint32_t pinMask, const  uint32_t ioReg, const uint8_t ucPin)
-		: ulPortBase(ulPortBase), pinMask(pinMask), ucPin(ucPin), ioReg(ioReg) {};
-		constexpr operator uint8_t() const {
-		return ucPin;
-		}
+		: ulPortBase(ulPortBase), pinMask(pinMask), ioReg(ioReg), ucPin(ucPin) {};
+		constexpr operator uint8_t() const {return ucPin;}
 		const uint32_t  ulPortBase;
 		const uint32_t  pinMask;
-        const  uint32_t ioReg;
+        const uint32_t  ioReg;
 		const uint8_t   ucPin;
 	};
 	

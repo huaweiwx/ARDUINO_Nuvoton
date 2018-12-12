@@ -50,6 +50,7 @@ void yield(void);
 #include "HardwareSerial.h"
 #include "HardwareTimer.h"
 #include "wiring_pulse.h"
+#include "arm/NuConsole.h"
 
 #if USE_ARDUINOSTREAMING
 #  include <Streaming.h>

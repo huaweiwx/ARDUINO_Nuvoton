@@ -170,7 +170,7 @@
 	#define PD_6 P3_6
 	#define PD_7 P3_7
 #elif defined(PD0) 
-	#define P00  PD0
+	#define P30  PD0
 	#define P31  PD1
 	#define P32  PD2
 	#define P33  PD3
@@ -178,7 +178,7 @@
 	#define P35  PD5
 	#define P36  PD6
 	#define P37  PD7
-	#define P0_0 PD_0
+	#define P3_0 PD_0
 	#define P3_1 PD_1
 	#define P3_2 PD_2
 	#define P3_3 PD_3

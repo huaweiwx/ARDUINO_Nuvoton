@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2012 Arduino.  All right reserved.
+  Copyright (c) 2014 Arduino.  All right reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -16,19 +16,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/**
- * Empty yield() hook.
- *
- * This function is intended to be used by library writers to build
- * libraries or sketches that supports cooperative threads.
- *
- * Its defined as a weak symbol and it can be redefined to implement a
- * real cooperative scheduler.
- */
-static void __empty() {
-	// Empty
+#include <stdlib.h>
+
+extern "C" void __cxa_pure_virtual(void) __attribute__ ((__noreturn__));
+extern "C" void __cxa_deleted_virtual(void) __attribute__ ((__noreturn__));
+
+void __cxa_pure_virtual(void) {
+  // We might want to write some diagnostics to uart in this case
+  //std::terminate();
+  while (1)
+    ;
 }
 
-void yield(void) __attribute__ ((weak, alias("__empty")));
-
+void __cxa_deleted_virtual(void) {
+  // We might want to write some diagnostics to uart in this case
+  //std::terminate();
+  while (1)
+    ;
+}
 
