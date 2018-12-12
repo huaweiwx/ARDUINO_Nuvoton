@@ -209,23 +209,24 @@ M480.menu.serial.UART5=Serial5(PB_4/5)
 M480.menu.serial.UART5.build.extra_flags_serial=-DMENU_SERIAL=Serial5
 M480.menu.serial.NuICE=Nulink console
 M480.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+M480.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M480.menu.log.default=Release(no-exceptions)
 M480.menu.log.default.build.log_level=-fno-exceptions
 M480.menu.log.Release=Release(exceptions)
 M480.menu.log.fatal=FATAL
-M480.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M480.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 M480.menu.log.error=ERROR
-M480.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M480.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 M480.menu.log.warning=WARNING
-M480.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M480.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 M480.menu.log.info=INFO
-M480.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M480.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 M480.menu.log.debug=DEBUG
-M480.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M480.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 M480.menu.log.trace=TRACE
-M480.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+M480.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 M480.upload.tool=nulinkburn
 M480.upload.protocol=nuc-ba
@@ -262,23 +263,24 @@ M451.menu.serial.UART3=Serial3
 M451.menu.serial.UART3.build.extra_flags_serial=-DMENU_SERIAL=Serial3
 M451.menu.serial.NuICE=Nulink console
 M451.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+M451.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M451.menu.log.default=Release(no-exceptions)
 M451.menu.log.default.build.log_level=-fno-exceptions
 M451.menu.log.Release=Release(exceptions)
 M451.menu.log.fatal=FATAL
-M451.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M451.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 M451.menu.log.error=ERROR
-M451.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M451.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 M451.menu.log.warning=WARNING
-M451.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M451.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 M451.menu.log.info=INFO
-M451.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M451.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 M451.menu.log.debug=DEBUG
-M451.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M451.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 M451.menu.log.trace=TRACE
-M451.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+M451.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 M451.upload.tool=nulinkburn
 M451.upload.protocol=nuc-ba
@@ -313,30 +315,30 @@ NUC200.menu.serial.UART2=Serial2
 NUC200.menu.serial.UART2.build.extra_flags_serial=-DMENU_SERIAL=Serial2
 NUC200.menu.serial.NuICE=Nulink console
 NUC200.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NUC200.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC200.menu.log.default=Release(no-exceptions)
 NUC200.menu.log.default.build.log_level=-fno-exceptions
 NUC200.menu.log.Release=Release(exceptions)
 NUC200.menu.log.fatal=FATAL
-NUC200.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC200.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NUC200.menu.log.error=ERROR
-NUC200.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC200.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NUC200.menu.log.warning=WARNING
-NUC200.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC200.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NUC200.menu.log.info=INFO
-NUC200.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC200.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NUC200.menu.log.debug=DEBUG
-NUC200.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC200.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NUC200.menu.log.trace=TRACE
-NUC200.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NUC200.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 NUC200.upload.tool=nulinkburn
 NUC200.upload.protocol=sam-ba
 NUC200.upload.use_1200bps_touch=false
 NUC200.upload.wait_for_upload_port=false
 NUC200.upload.native_usb=false
-
 
 ############################################### NuEdu-Uno ##########################################
 NUC131.name=NuEdu-Uno(NUC131) 
@@ -361,23 +363,24 @@ NUC131.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 #NUC131.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 NUC131.menu.serial.NuICE=Nulink console
 NUC131.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NUC131.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC131.menu.log.default=Release(no-exceptions)
 NUC131.menu.log.default.build.log_level=-fno-exceptions
 NUC131.menu.log.Release=Release(exceptions)
 NUC131.menu.log.fatal=FATAL
-NUC131.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC131.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NUC131.menu.log.error=ERROR
-NUC131.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC131.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NUC131.menu.log.warning=WARNING
-NUC131.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC131.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NUC131.menu.log.info=INFO
-NUC131.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC131.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NUC131.menu.log.debug=DEBUG
-NUC131.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC131.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NUC131.menu.log.trace=TRACE
-NUC131.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NUC131.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 NUC131.upload.tool=nulinkburn
 NUC131.upload.protocol=nuc-ba
@@ -418,23 +421,24 @@ NANO130.menu.serial.UART1=Serial1
 NANO130.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 NANO130.menu.serial.NuICE=Nulink console
 NANO130.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NANO130.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO130.menu.log.default=Release(no-exceptions)
 NANO130.menu.log.default.build.log_level=-fno-exceptions
 NANO130.menu.log.Release=Release(exceptions)
 NANO130.menu.log.fatal=FATAL
-NANO130.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO130.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NANO130.menu.log.error=ERROR
-NANO130.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO130.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NANO130.menu.log.warning=WARNING
-NANO130.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO130.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NANO130.menu.log.info=INFO
-NANO130.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO130.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NANO130.menu.log.debug=DEBUG
-NANO130.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO130.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NANO130.menu.log.trace=TRACE
-NANO130.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NANO130.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 NANO130.upload.tool=nulinkburn
 NANO130.upload.protocol=nuc-ba
@@ -449,26 +453,87 @@ NANO120.build.pid=0x003e
 
 NANO120.build.core=nuvoton
 NANO120.build.mcu=cortex-m0
-NANO120.build.f_cpu=42000000L
+NANO120.build.f_cpu=48000000L
 NANO120.build.variant=Nano120
 NANO120.build.board=NANO120
 NANO120.build.series=Nano100Series
-NANO120.build.extra_flags=-D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
 
 NANO120.menu.cpu.nano120ke3=NuTiny_EVB(NANO120KE3 128kFLASH 16kRAM)
+NANO120.menu.cpu.nano120ke3.build.chip=-DCHIP128P -DNANO120KE3 -DNuTiny_EVB
 NANO120.menu.cpu.nano120ke3.build.ldscript=128K_16K_flash.ld
 NANO120.menu.cpu.nano120ke3.upload.maximum_size=125952
 NANO120.menu.cpu.nano120ke3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120ke3.upload.device=NANO120KE3BN
 
-NANO120.menu.cpu.nano120kd3=GENERIC_NANO120KD3 (64kFLASH 16kRAM)
+NANO120.menu.cpu.nano120kd3=GENERIC_NANO120KD3(LQP128)(64kFLASH 16kRAM)
+NANO120.menu.cpu.nano120kd3.build.chip=-DCHIP128P -DNANO120KD3
 NANO120.menu.cpu.nano120kd3.build.ldscript=64K_16K_flash.ld
 NANO120.menu.cpu.nano120kd3.upload.maximum_size=65536
 NANO120.menu.cpu.nano120kd3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120kd3.upload.device=NANO120KD3BN
 
-NANO120.menu.cpu.nano120kd2=GENERIC_NANO120KD2 (64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120kd2=GENERIC_NANO120KD2(LQP128)(64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120kd2.build.chip=-DCHIP128P -DNANO120KD2
 NANO120.menu.cpu.nano120kd2.build.ldscript=64K_8K_flash.ld
 NANO120.menu.cpu.nano120kd2.upload.maximum_size=65536
 NANO120.menu.cpu.nano120kd2.upload.maximum_data_size=8192
+NANO120.menu.cpu.nano120kd2.upload.device=NANO120KD2BN
+
+NANO120.menu.cpu.nano120se3=GENERIC_NANO120SE3(LQP64)128kFLASH 16kRAM)
+NANO120.menu.cpu.nano120se3.build.chip=-DCHIP64P -DNANO120SE3
+NANO120.menu.cpu.nano120se3.build.ldscript=128K_16K_flash.ld
+NANO120.menu.cpu.nano120se3.upload.maximum_size=125952
+NANO120.menu.cpu.nano120se3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120se3.upload.device=NANO120SE3BN
+
+NANO120.menu.cpu.nano120sd3=GENERIC_NANO120SD3(LQP64)(64kFLASH 16kRAM)
+NANO120.menu.cpu.nano120sd3.build.chip=-DCHIP64P -DNANO120SD3
+NANO120.menu.cpu.nano120sd3.build.ldscript=64K_16K_flash.ld
+NANO120.menu.cpu.nano120sd3.upload.maximum_size=65536
+NANO120.menu.cpu.nano120sd3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120sd3.upload.device=NANO120SD3BN
+
+NANO120.menu.cpu.nano120sd2=GENERIC_NANO120SD2(LQP64)(64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120sd2.build.chip=-DCHIP64P -DNANO120SD2
+NANO120.menu.cpu.nano120sd2.build.ldscript=64K_8K_flash.ld
+NANO120.menu.cpu.nano120sd2.upload.maximum_size=65536
+NANO120.menu.cpu.nano120sd2.upload.maximum_data_size=8192 
+NANO120.menu.cpu.nano120sd2.upload.device=NANO120SD2BN
+
+NANO120.menu.cpu.nano120sc2=GENERIC_NANO120SC2(LQP64)(64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120sc2.build.chip=-DCHIP64P -DNANO120SC2
+NANO120.menu.cpu.nano120sc2.build.ldscript=32K_8K_flash.ld
+NANO120.menu.cpu.nano120sc2.upload.maximum_size=32768
+NANO120.menu.cpu.nano120sc2.upload.maximum_data_size=8192
+NANO120.menu.cpu.nano120sc2.upload.device=NANO120SC2BN
+
+NANO120.menu.cpu.nano120le3=GENERIC_NANO120LE3(LQP48)128kFLASH 16kRAM)
+NANO120.menu.cpu.nano120le3.build.chip=-DCHIP48P -DNANO120LE3
+NANO120.menu.cpu.nano120le3.build.ldscript=128K_16K_flash.ld
+NANO120.menu.cpu.nano120le3.upload.maximum_size=125952
+NANO120.menu.cpu.nano120le3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120le3.upload.device=NANO120LE3BN
+
+NANO120.menu.cpu.nano120ld3=GENERIC_NANO120LD3(LQP48)(64kFLASH 16kRAM)
+NANO120.menu.cpu.nano120ld3.build.chip=-DCHIP48P -DNANO120LD3
+NANO120.menu.cpu.nano120ld3.build.ldscript=64K_16K_flash.ld
+NANO120.menu.cpu.nano120ld3.upload.maximum_size=65536
+NANO120.menu.cpu.nano120ld3.upload.maximum_data_size=16384
+NANO120.menu.cpu.nano120ld3.upload.device=NANO120LD3BN
+
+NANO120.menu.cpu.nano120ld2=GENERIC_NANO120LD2(LQP48)(64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120ld2.build.chip=-DCHIP48P -DNANO120LD2
+NANO120.menu.cpu.nano120ld2.build.ldscript=64K_8K_flash.ld
+NANO120.menu.cpu.nano120ld2.upload.maximum_size=65536
+NANO120.menu.cpu.nano120ld2.upload.maximum_data_size=8192
+NANO120.menu.cpu.nano120ld2.upload.device=NANO120LD2BN
+
+NANO120.menu.cpu.nano120lc2=GENERIC_NANO120LC2(LQP48)(64kFLASH 8kRAM)
+NANO120.menu.cpu.nano120lc2.build.chip=-DCHIP48P -DNANO120LC2
+NANO120.menu.cpu.nano120lc2.build.ldscript=32K_8K_flash.ld
+NANO120.menu.cpu.nano120lc2.upload.maximum_size=32768
+NANO120.menu.cpu.nano120lc2.upload.maximum_data_size=8192
+NANO120.menu.cpu.nano120lc2.upload.device=NANO120LC2BN
 
 NANO120.menu.clock_source.HXT12=HXT
 NANO120.menu.clock_source.HXT12.build.osc=HXT12
@@ -488,30 +553,37 @@ NANO120.menu.serial.UART1=Serial1
 NANO120.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 NANO120.menu.serial.NuICE=Nulink console
 NANO120.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NANO120.menu.serial.NuICE.upload.console=NUCONSOLE
+
+NANO120.build.extra_flags=-D__NANO100__ -DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON {build.chip}
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO120.menu.log.default=Release(no-exceptions)
 NANO120.menu.log.default.build.log_level=-fno-exceptions
 NANO120.menu.log.Release=Release(exceptions)
 NANO120.menu.log.fatal=FATAL
-NANO120.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO120.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NANO120.menu.log.error=ERROR
-NANO120.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO120.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NANO120.menu.log.warning=WARNING
-NANO120.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO120.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NANO120.menu.log.info=INFO
-NANO120.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO120.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NANO120.menu.log.debug=DEBUG
-NANO120.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO120.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NANO120.menu.log.trace=TRACE
-NANO120.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NANO120.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
-NANO120.upload.tool=nulinkburn
-NANO120.upload.protocol=nuc-ba
-NANO120.upload.use_1200bps_touch=false
-NANO120.upload.wait_for_upload_port=false
-NANO120.upload.native_usb=false
+NANO120.menu.upload_method.nulink=Nulink
+NANO120.menu.upload_method.nulink.upload.tool=nulinkburn
+NANO120.menu.upload_method.nulink.upload.protocol=nuc-ba
+NANO120.menu.upload_method.nulink.upload.use_1200bps_touch=false
+NANO120.menu.upload_method.nulink.upload.wait_for_upload_port=false
+NANO120.menu.upload_method.nulink.upload.native_usb=false
 
+NANO120.menu.upload_method.jLinkMethod=JLink
+NANO120.menu.upload_method.jLinkMethod.upload.tool=jlinkob_upload
+NANO120.menu.upload_method.jLinkMethod.upload.protocol=jlink
 
 ############################################### NuMaker-TRIO ##########################################
 NANO1x2.name=NANO1X2
@@ -537,23 +609,24 @@ NANO1x2.menu.serial.UART1=Serial1
 NANO1x2.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 NANO1x2.menu.serial.NuICE=Nulink console
 NANO1x2.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NANO1x2.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NANO1x2.menu.log.default=Release(no-exceptions)
 NANO1x2.menu.log.default.build.log_level=-fno-exceptions
 NANO1x2.menu.log.Release=Release(exceptions)
 NANO1x2.menu.log.fatal=FATAL
-NANO1x2.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NANO1x2.menu.log.error=ERROR
-NANO1x2.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NANO1x2.menu.log.warning=WARNING
-NANO1x2.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NANO1x2.menu.log.info=INFO
-NANO1x2.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NANO1x2.menu.log.debug=DEBUG
-NANO1x2.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NANO1x2.menu.log.trace=TRACE
-NANO1x2.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NANO1x2.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 NANO1x2.upload.use_1200bps_touch=false
 NANO1x2.upload.wait_for_upload_port=false
@@ -582,17 +655,17 @@ NANO1x2.upload.native_usb=false
 #nuvoton_nano102s.menu.log.default.build.log_level=-fno-exceptions
 #nuvoton_nano102s.menu.log.Release=Release(exceptions)
 #nuvoton_nano102s.menu.log.fatal=FATAL
-#nuvoton_nano102s.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 #nuvoton_nano102s.menu.log.error=ERROR
-#nuvoton_nano102s.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 #nuvoton_nano102s.menu.log.warning=WARNING
-#nuvoton_nano102s.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 #nuvoton_nano102s.menu.log.info=INFO
-#nuvoton_nano102s.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 #nuvoton_nano102s.menu.log.debug=DEBUG
-#nuvoton_nano102s.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 #nuvoton_nano102s.menu.log.trace=TRACE
-#nuvoton_nano102s.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+#nuvoton_nano102s.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
 #nuvoton_nano102s.upload.tool=nulinkburn
 #nuvoton_nano102s.upload.protocol=nuc-ba
@@ -619,6 +692,7 @@ M05x.menu.cpu.m0516_48.build.board=M0516L
 M05x.menu.cpu.m0516_48.build.ldscript=64K_4K_flash.ld
 M05x.menu.cpu.m0516_48.upload.maximum_size=65536
 M05x.menu.cpu.m0516_48.upload.maximum_data_size=4096
+M05x.menu.cpu.m0516_48.upload.device=M0516LE
 
 M05x.menu.cpu.m0516_33=GENERIC_M0516Z(QFN33) (64kFLASH 4kRAM)
 M05x.menu.cpu.m0516_33.build.extra_flags=-DCHIP33P -DM0516Z
@@ -628,6 +702,7 @@ M05x.menu.cpu.m0516_33.build.board=GENERIC_M0516Z
 M05x.menu.cpu.m0516_33.build.ldscript=64K_4K_flash.ld
 M05x.menu.cpu.m0516_33.upload.maximum_size=65536
 M05x.menu.cpu.m0516_33.upload.maximum_data_size=4096
+M05x.menu.cpu.m0516_33.upload.device=M0516ZE
 
 M05x.menu.cpu.m058_48=GENERIC_M058L(LQP48)  (32kFLASH 4kRAM)
 M05x.menu.cpu.m058_48.build.extra_flags=-DCHIP48P -DM058L
@@ -637,6 +712,7 @@ M05x.menu.cpu.m058_48.build.board=GENERIC_M058L
 M05x.menu.cpu.m058_48.build.ldscript=32K_4K_flash.ld
 M05x.menu.cpu.m058_48.upload.maximum_size=32768
 M05x.menu.cpu.m058_48.upload.maximum_data_size=4096
+M05x.menu.cpu.m058_48.upload.device=M058LE
 
 M05x.menu.cpu.m058_33=GENERIC_M058Z(QFN33)  (32kFLASH 4kRAM)
 M05x.menu.cpu.m058_33.build.extra_flags=-DCHIP33P -DM058Z
@@ -646,6 +722,7 @@ M05x.menu.cpu.m058_33.build.board=GENERIC_M058Z
 M05x.menu.cpu.m058_33.build.ldscript=32K_4K_flash.ld
 M05x.menu.cpu.m058_33.upload.maximum_size=32768
 M05x.menu.cpu.m058_33.upload.maximum_data_size=4096
+M05x.menu.cpu.m058_33.upload.device=M058ZE
 
 M05x.menu.cpu.m058_20=GENERIC_M058S(TSSOP20)(32kFLASH 4kRAM)
 M05x.menu.cpu.m058_20.build.extra_flags=-DCHIP20P -DM058s
@@ -655,6 +732,7 @@ M05x.menu.cpu.m058_20.build.board=GENERIC_M058S
 M05x.menu.cpu.m058_20.build.ldscript=32K_4K_flash.ld
 M05x.menu.cpu.m058_20.upload.maximum_size=32768
 M05x.menu.cpu.m058_20.upload.maximum_data_size=4096
+M05x.menu.cpu.m058_20.upload.device=M058SE
 
 M05x.menu.cpu.m054_48=GENERIC_M054L(LQP48)  (16kFLASH 4kRAM)
 M05x.menu.cpu.m054_48.build.extra_flags=-DCHIP48P -DM054L
@@ -664,6 +742,7 @@ M05x.menu.cpu.m054_48.build.board=GENERIC_M054L
 M05x.menu.cpu.m054_48.build.ldscript=16K_4K_flash.ld
 M05x.menu.cpu.m054_48.upload.maximum_size=16384
 M05x.menu.cpu.m054_48.upload.maximum_data_size=4096
+M05x.menu.cpu.m054_48.upload.device=M054LE
 
 M05x.menu.cpu.m054_33=GENERIC_M054Z(QFN33)  (16kFLASH 4kRAM)
 M05x.menu.cpu.m054_33.build.extra_flags=-DCHIP33P -DM054Z
@@ -673,6 +752,7 @@ M05x.menu.cpu.m054_33.build.board=GENERIC_M054Z
 M05x.menu.cpu.m054_33.build.ldscript=16K_4K_flash.ld
 M05x.menu.cpu.m054_33.upload.maximum_size=16384
 M05x.menu.cpu.m054_33.upload.maximum_data_size=4096
+M05x.menu.cpu.m054_33.upload.device=M054ZE
 
 M05x.menu.cpu.m052_48=GENERIC_M052L(LQP48)   (8kFLASH 4kRAM)
 M05x.menu.cpu.m052_48.build.extra_flags=-DCHIP48P -DM052L
@@ -682,6 +762,7 @@ M05x.menu.cpu.m052_48.build.board=GENERIC_M052L
 M05x.menu.cpu.m052_48.build.ldscript=8K_4K_flash.ld
 M05x.menu.cpu.m052_48.upload.maximum_size=8192
 M05x.menu.cpu.m052_48.upload.maximum_data_size=4096
+M05x.menu.cpu.m052_48.upload.device=M052LE
 
 M05x.menu.cpu.m052_33=GENERIC_M052Z(QFN33)   (8kFLASH 4kRAM)
 M05x.menu.cpu.m052_33.build.extra_flags=-DCHIP33P -DM052Z
@@ -691,6 +772,7 @@ M05x.menu.cpu.m052_33.build.board=GENERIC_M052Z
 M05x.menu.cpu.m052_33.build.ldscript=8K_4K_flash.ld
 M05x.menu.cpu.m052_33.upload.maximum_size=8192
 M05x.menu.cpu.m052_33.upload.maximum_data_size=4096
+M05x.menu.cpu.m052_33.upload.device=M052ZE
 
 M05x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
 M05x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
@@ -705,34 +787,40 @@ M05x.menu.serial.UART1=Serial1(P0_3/2)
 M05x.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 M05x.menu.serial.NuICE=Nulink console
 M05x.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+M05x.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 M05x.menu.log.default=Release(no-exceptions)
 M05x.menu.log.default.build.log_level=-fno-exceptions
 M05x.menu.log.Release=Release(exceptions)
 M05x.menu.log.fatal=FATAL
-M05x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+M05x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 M05x.menu.log.error=ERROR
-M05x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+M05x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 M05x.menu.log.warning=WARNING
-M05x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+M05x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 M05x.menu.log.info=INFO
-M05x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+M05x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 M05x.menu.log.debug=DEBUG
-M05x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+M05x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 M05x.menu.log.trace=TRACE
-M05x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+M05x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
-M05x.upload.tool=nulinkburn
-M05x.upload.protocol=nuc-ba
-M05x.upload.use_1200bps_touch=false
-M05x.upload.wait_for_upload_port=false
-M05x.upload.native_usb=false
+M05x.menu.upload_method.nulink=Nulink
+M05x.menu.upload_method.nulink.upload.tool=nulinkburn
+M05x.menu.upload_method.nulink.upload.protocol=nuc-ba
+M05x.menu.upload_method.nulink.upload.use_1200bps_touch=false
+M05x.menu.upload_method.nulink.upload.wait_for_upload_port=false
+M05x.menu.upload_method.nulink.upload.native_usb=false
+
+M05x.menu.upload_method.jLinkMethod=JLink
+M05x.menu.upload_method.jLinkMethod.upload.tool=jlinkob_upload
+M05x.menu.upload_method.jLinkMethod.upload.protocol=jlink
 
 ########################################################
 #                  nuvoton mini58                      #
 ########################################################
-MINI58.name=Mini51(8)
+MINI58.name=Mini58
 
 MINI58.build.core=nuvoton
 MINI58.build.mcu=cortex-m0
@@ -748,6 +836,7 @@ MINI58.menu.cpu.MINI58_48.build.series=Mini58Series
 MINI58.menu.cpu.MINI58_48.build.ldscript=32K_4K_flash.ld
 MINI58.menu.cpu.MINI58_48.upload.maximum_size=32768
 MINI58.menu.cpu.MINI58_48.upload.maximum_data_size=4096
+MINI58.menu.cpu.MINI58_48.upload.device=MINI58LAN
 
 MINI58.menu.cpu.MINI58_33=GENERIC_MINI58T/Z(QFN33)(32kFLASH 4kRAM)
 MINI58.menu.cpu.MINI58_33.build.extra_flags=-DCHIP33P -DMINI58TZ
@@ -757,6 +846,7 @@ MINI58.menu.cpu.MINI58_33.build.series=Mini58Series
 MINI58.menu.cpu.MINI58_33.build.ldscript=32K_4K_flash.ld
 MINI58.menu.cpu.MINI58_33.upload.maximum_size=32768
 MINI58.menu.cpu.MINI58_33.upload.maximum_data_size=4096
+MINI58.menu.cpu.MINI58_33.upload.device=MINI58TAN
 
 MINI58.menu.cpu.MINI58_20=GENERIC_MINI58F(TSSOP20)(32kFLASH 4kRAM)
 MINI58.menu.cpu.MINI58_20.build.extra_flags=-DCHIP20P -DMINI58F
@@ -766,6 +856,7 @@ MINI58.menu.cpu.MINI58_20.build.series=Mini58Series
 MINI58.menu.cpu.MINI58_20.build.ldscript=32K_4K_flash.ld
 MINI58.menu.cpu.MINI58_20.upload.maximum_size=32768
 MINI58.menu.cpu.MINI58_20.upload.maximum_data_size=4096
+MINI58.menu.cpu.MINI58_20.upload.device=MINI58FAN
 
 MINI58.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
 MINI58.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
@@ -780,35 +871,40 @@ MINI58.menu.serial.UART1=Serial1(P1_4/5)
 MINI58.menu.serial.UART1.build.extra_flags_serial=-DMENU_SERIAL=Serial1
 MINI58.menu.serial.NuICE=Nulink console
 MINI58.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+MINI58.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 MINI58.menu.log.default=Release(no-exceptions)
 MINI58.menu.log.default.build.log_level=-fno-exceptions
 MINI58.menu.log.Release=Release(exceptions)
 MINI58.menu.log.fatal=FATAL
-MINI58.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+MINI58.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 MINI58.menu.log.error=ERROR
-MINI58.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+MINI58.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 MINI58.menu.log.warning=WARNING
-MINI58.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+MINI58.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 MINI58.menu.log.info=INFO
-MINI58.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+MINI58.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 MINI58.menu.log.debug=DEBUG
-MINI58.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+MINI58.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 MINI58.menu.log.trace=TRACE
-MINI58.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+MINI58.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
-MINI58.upload.tool=nulinkburn
-MINI58.upload.protocol=nuc-ba
-MINI58.upload.use_1200bps_touch=false
-MINI58.upload.wait_for_upload_port=false
-MINI58.upload.native_usb=false
+MINI58.menu.upload_method.nulink=Nulink
+MINI58.menu.upload_method.nulink.upload.tool=nulinkburn
+MINI58.menu.upload_method.nulink.upload.protocol=nuc-ba
+MINI58.menu.upload_method.nulink.upload.use_1200bps_touch=false
+MINI58.menu.upload_method.nulink.upload.wait_for_upload_port=false
+MINI58.menu.upload_method.nulink.upload.native_usb=false
 
+MINI58.menu.upload_method.jLinkMethod=JLink
+MINI58.menu.upload_method.jLinkMethod.upload.tool=jlinkob_upload
+MINI58.menu.upload_method.jLinkMethod.upload.protocol=jlink
 
 ########################################################
 #                  nuvoton mini5X                      #
 ########################################################
-MINI5x.name=Mini51(4/2)
+MINI5x.name=Mini54
 
 MINI5x.build.core=nuvoton
 MINI5x.build.mcu=cortex-m0
@@ -824,6 +920,7 @@ MINI5x.menu.cpu.MINI54_48.build.series=Mini51Series
 MINI5x.menu.cpu.MINI54_48.build.ldscript=16K_4K_flash.ld
 MINI5x.menu.cpu.MINI54_48.upload.maximum_size=16384
 MINI5x.menu.cpu.MINI54_48.upload.maximum_data_size=4096
+MINI5x.menu.cpu.MINI54_48.upload.device=MINI54LAN
 
 MINI5x.menu.cpu.MINI54_33=GENERIC_MINI54T/Z(QEN33)(16kFLASH 4kRAM)
 MINI5x.menu.cpu.MINI54_33.build.extra_flags=-DCHIP33P -DMINI54TZ
@@ -833,6 +930,7 @@ MINI5x.menu.cpu.MINI54_33.build.series=Mini51Series
 MINI5x.menu.cpu.MINI54_33.build.ldscript=16K_4K_flash.ld
 MINI5x.menu.cpu.MINI54_33.upload.maximum_size=16384
 MINI5x.menu.cpu.MINI54_33.upload.maximum_data_size=4096
+MINI5x.menu.cpu.MINI54_33.upload.device=MINI54TAN
 
 MINI5x.menu.cpu.MINI54_20=GENERIC_MINI54F(TSSOP20)(16kFLASH 4kRAM)
 MINI5x.menu.cpu.MINI54_20.build.extra_flags=-DCHIP20P -DMINI54F
@@ -842,6 +940,7 @@ MINI5x.menu.cpu.MINI54_20.build.series=Mini51Series
 MINI5x.menu.cpu.MINI54_20.build.ldscript=16K_4K_flash.ld
 MINI5x.menu.cpu.MINI54_20.upload.maximum_size=16384
 MINI5x.menu.cpu.MINI54_20.upload.maximum_data_size=4096
+MINI5x.menu.cpu.MINI54_20.upload.device=MINI54FAN
 
 #MINI5x.menu.cpu.MINI52_48=GENERIC_MINI52L(LQP48)   (8kFLASH 2kRAM)
 #MINI5x.menu.cpu.MINI52_48.build.extra_flags=-DCHIP48P -DMINI52L
@@ -881,29 +980,35 @@ MINI5x.menu.serial.UART0=Serial0(P1_2/3)
 MINI5x.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 MINI5x.menu.serial.NuICE=Nulink console
 MINI5x.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+MINI5x.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 MINI5x.menu.log.default=Release(no-exceptions)
 MINI5x.menu.log.default.build.log_level=-fno-exceptions
 MINI5x.menu.log.Release=Release(exceptions)
 MINI5x.menu.log.fatal=FATAL
-MINI5x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+MINI5x.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 MINI5x.menu.log.error=ERROR
-MINI5x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+MINI5x.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 MINI5x.menu.log.warning=WARNING
-MINI5x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+MINI5x.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 MINI5x.menu.log.info=INFO
-MINI5x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+MINI5x.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 MINI5x.menu.log.debug=DEBUG
-MINI5x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+MINI5x.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 MINI5x.menu.log.trace=TRACE
-MINI5x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+MINI5x.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
-MINI5x.upload.tool=nulinkburn
-MINI5x.upload.protocol=nuc-ba
-MINI5x.upload.use_1200bps_touch=false
-MINI5x.upload.wait_for_upload_port=false
-MINI5x.upload.native_usb=false
+MINI5x.menu.upload_method.nulink=Nulink
+MINI5x.menu.upload_method.nulink.upload.tool=nulinkburn
+MINI5x.menu.upload_method.nulink.upload.protocol=nuc-ba
+MINI5x.menu.upload_method.nulink.upload.use_1200bps_touch=false
+MINI5x.menu.upload_method.nulink.upload.wait_for_upload_port=false
+MINI5x.menu.upload_method.nulink.upload.native_usb=false
+
+MINI5x.menu.upload_method.jLinkMethod=JLink
+MINI5x.menu.upload_method.jLinkMethod.upload.tool=jlinkob_upload
+MINI5x.menu.upload_method.jLinkMethod.upload.protocol=jlink
 
 ########################################################
 #                      NUC029                          #
@@ -916,14 +1021,15 @@ NUC029FAE.build.f_cpu=22118400L
 NUC029FAE.build.variant=NUC029
 NUC029FAE.build.board=GENERIC_NUC029
 
-NUC029FAE.menu.cpu.m058_20=GENERIC_NUC029FAE(TSSOP20)(16kFLASH 2kRAM)
-NUC029FAE.menu.cpu.m058_20.build.extra_flags=-DCHIP20P
-NUC029FAE.menu.cpu.m058_20.build.series=NUC029FAE
-NUC029FAE.menu.cpu.m058_20.build.variant=NUC029
-NUC029FAE.menu.cpu.m058_20.build.board=GENERIC_NUC029FAE
-NUC029FAE.menu.cpu.m058_20.build.ldscript=16K_2K_flash_S.ld
-NUC029FAE.menu.cpu.m058_20.upload.maximum_size=16384
-NUC029FAE.menu.cpu.m058_20.upload.maximum_data_size=2048
+NUC029FAE.menu.cpu.nuc029_20=GENERIC_NUC029FAE(TSSOP20)(16kFLASH 2kRAM)
+NUC029FAE.menu.cpu.nuc029_20.build.extra_flags=-DCHIP20P
+NUC029FAE.menu.cpu.nuc029_20.build.series=NUC029FAE
+NUC029FAE.menu.cpu.nuc029_20.build.variant=NUC029
+NUC029FAE.menu.cpu.nuc029_20.build.board=GENERIC_NUC029FAE
+NUC029FAE.menu.cpu.nuc029_20.build.ldscript=16K_2K_flash_S.ld
+NUC029FAE.menu.cpu.nuc029_20.upload.maximum_size=16384
+NUC029FAE.menu.cpu.nuc029_20.upload.maximum_data_size=2048
+NUC029FAE.menu.cpu.nuc029_20.upload.device=NUC029FAE
 
 NUC029FAE.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
 NUC029FAE.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
@@ -936,28 +1042,34 @@ NUC029FAE.menu.serial.UART0=Serial0(P1_2/3)
 NUC029FAE.menu.serial.UART0.build.extra_flags_serial=-DMENU_SERIAL=Serial0
 NUC029FAE.menu.serial.NuICE=Nulink console
 NUC029FAE.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
+NUC029FAE.menu.serial.NuICE.upload.console=NUCONSOLE
 
 #-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
 NUC029FAE.menu.log.default=Release(no-exceptions)
 NUC029FAE.menu.log.default.build.log_level=-fno-exceptions
 NUC029FAE.menu.log.Release=Release(exceptions)
 NUC029FAE.menu.log.fatal=FATAL
-NUC029FAE.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_ASSERT
 NUC029FAE.menu.log.error=ERROR
-NUC029FAE.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_ASSERT
 NUC029FAE.menu.log.warning=WARNING
-NUC029FAE.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_ASSERT
 NUC029FAE.menu.log.info=INFO
-NUC029FAE.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_ASSERT
 NUC029FAE.menu.log.debug=DEBUG
-NUC029FAE.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_ASSERT
 NUC029FAE.menu.log.trace=TRACE
-NUC029FAE.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+NUC029FAE.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_ASSERT
 
-NUC029FAE.upload.tool=nulinkburn
-NUC029FAE.upload.protocol=nuc-ba
-NUC029FAE.upload.use_1200bps_touch=false
-NUC029FAE.upload.wait_for_upload_port=false
-NUC029FAE.upload.native_usb=false
+NUC029FAE.menu.upload_method.nulink=Nulink
+NUC029FAE.menu.upload_method.nulink.upload.tool=nulinkburn
+NUC029FAE.menu.upload_method.nulink.upload.protocol=nuc-ba
+NUC029FAE.menu.upload_method.nulink.upload.use_1200bps_touch=false
+NUC029FAE.menu.upload_method.nulink.upload.wait_for_upload_port=false
+NUC029FAE.menu.upload_method.nulink.upload.native_usb=false
+
+NUC029FAE.menu.upload_method.jLinkMethod=JLink
+NUC029FAE.menu.upload_method.jLinkMethod.upload.tool=jlinkob_upload
+NUC029FAE.menu.upload_method.jLinkMethod.upload.protocol=jlink
 
 ############################################### The end ##########################################
