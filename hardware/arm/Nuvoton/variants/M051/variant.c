@@ -4,10 +4,6 @@ extern void CLK_EnableModuleClock(uint32_t);
 
 void Enable_All_IPs(void)
 {
-#if USE_ICE >0
-  SYS->P4_MFP = SYS_MFP_P47_ICE_DAT | SYS_MFP_P46_ICE_CLK;
-#endif
-
   //Enable ADC module
   CLK_EnableModuleClock(ADC_MODULE);
   
