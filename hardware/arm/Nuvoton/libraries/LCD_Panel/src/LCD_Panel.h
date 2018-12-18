@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2018 by huaweiwx <huaweiwx@sina.com>
+ * NANO100_LCD_PANEL class for arduino.
+ *
+ * This file is free software; you can redistribute it and/or modify
+ * it under the terms of either the GNU General Public License version 2
+ * or the GNU Lesser General Public License version 2.1, both as
+ * published by the Free Software Foundation.
+ */
+ 
 #ifndef __NANO100_LCDPANEL_H
 #define __NANO100_LCDPANEL_H
 

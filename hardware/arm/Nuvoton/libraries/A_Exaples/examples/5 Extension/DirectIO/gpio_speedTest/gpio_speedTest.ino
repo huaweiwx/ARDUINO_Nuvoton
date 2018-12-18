@@ -10,7 +10,7 @@
     read speed:    mode3   2331khz  429us in avr emulate
                    mode1/2  904khz 1106us in cplus and  LL_PIN
                    mode0    635khz 1573us in c mode
-     write speed:  mode3   2702khz  370us in avr emulate
+    write speed:   mode3   2702khz  370us in avr emulate
                    mode1/2 3984khz  251us in cplus and  LL_PIN
                    mode0    362khz 2759us in c mode
 

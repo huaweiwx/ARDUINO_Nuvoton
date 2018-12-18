@@ -9,7 +9,7 @@ extern "C" {
 	void _Error_Handler(char* file, uint32_t line);
 	
 	void assertMsg(const char* file, int line) {
-#if USE_ERRORCALLBACK
+#if USE_ERRORBLINK
         _Error_Handler((char *)file, line);
 #else
 		interrupts();

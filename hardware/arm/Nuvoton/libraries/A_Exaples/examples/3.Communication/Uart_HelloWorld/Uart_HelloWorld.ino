@@ -5,9 +5,8 @@
 
 void setup() {
   pinMode(LED_BUILTIN,OUTPUT);
-
+//  Serial.setRouteLoc(1); /*default Loc 0*/
   Serial.begin(115200);  /*set param: 115200bps 8N1 (default 115200bps 8N1) Loc 0*/
-  
 }
 
 void loop() {

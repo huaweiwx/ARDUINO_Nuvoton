@@ -8,7 +8,7 @@
 	   setSymbol(uint32_t u32Zone, uint32_t u32Index, uint32_t u32OnOff);
 	   printNumber(uint32_t  u32Zone, long long value);
 
-   huaweiwx@sina.com 2018.11..14
+   huaweiwx<huaweiwx@sina.com> 2018.11..14
 */
 
 #include "LCD_Panel.h"

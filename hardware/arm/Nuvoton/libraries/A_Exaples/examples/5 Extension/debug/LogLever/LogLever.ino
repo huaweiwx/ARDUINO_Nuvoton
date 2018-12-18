@@ -3,14 +3,14 @@
   
   fault:
     _Error_Handler(char* , uint32_t);
-    assert_param(int condition);
+    assert_param(int condition);  /*USE_ASSERT be set only*/
     errorLedBlink(int); 
           
   debug:
     debug(const char *format, ...);
     debug_if(int condition, const char *format, ...);
     
-  log:
+  log: (if LogLever > 0)
      PRINT_FATAL(...)
      PRINT_ERROR(...)
      PRINT_WARNING(...)
@@ -32,6 +32,7 @@ void setup() {
 }
 extern "C" void _Error_Handler(char* file, uint32_t line);
 void test (int n) {
+//only LogLever > 0	
   assert_param( n < 20);
   if ((n % 10) == 0) {
     PRINT_TRACE("val= %d\n", n);
@@ -40,6 +41,8 @@ void test (int n) {
   } else {
     PRINT_INFO("val= %d\n", n);
   }
+  
+//for any LogLever value  
   if (n >20) {
     PRINT_INFO("\nval= %d must <= 30 \n", n);
     _Error_Handler(__FILENAME__, __LINE__);

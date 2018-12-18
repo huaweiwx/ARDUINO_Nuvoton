@@ -1,0 +1,17 @@
+这是一个mcu及应用程序管理模块，接受串口命令，执行下功能：
+
+1 help或？ 显示命令列表和mcu信息                                    Display list of commands & get mcu info ...
+2 d [addr] 显示地址[addr]开始的数据                                 disp memory[addr]
+3 ls/dir   显示文件列表和特定开始地址是否空闲，有应用app可通过go命令跳转执行  list apps in mcu
+4 type     显示查看文本文件内容                                     type a txt file(filename)
+5 go       跳转到指定的位置序号执行应用                             goto n slot addr running(slot#)
+6 pm       设置arduino指定脚号的模式                                Set pinMode(pin,mode)
+7 dw       设置arduino指定脚号的输出电平                            digitalWrite(pin,val)
+8 dt       设置arduino指定脚号的电平翻转                            digitalToggle(pin)
+9 aw       设置arduino指定脚号的模拟输出pwm                         analogWrite(pin,val)
+10 ar      读取arduino指定脚号电平  								analogRead(pin)
+11 si      在arduino指定脚号移位输入(输入脚号，时钟脚号，位序)      shiftIn([dpin cpin order])
+12 so      在arduino指定脚号移位输出(输出脚号，时钟脚号，位序)	    shiftOut(val[ dpin cpin order])
+13 pulse   在arduino指定脚号测试高脉冲或低脉冲						pulseIn([pin state])
+14 ee      板载eeprom（at24cxx）读写								i2c eeprom read/write[adr ....] 
+15 load    从spiflash虚拟盘装入合法的ram运行bin文件到ram，可通过go或reset执行   chech bin file and load it if available

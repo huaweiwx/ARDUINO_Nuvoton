@@ -1,0 +1,38 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+EXTEEPROM	KEYWORD1
+AT24CXX_TypeDef	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+#EXTEEPROM
+setPins	KEYWORD2  
+write	KEYWORD2
+writeLenByte	KEYWORD2
+writeBuf	KEYWORD2
+check	KEYWORD2
+read	KEYWORD2
+readLenByte	KEYWORD2
+readBuf	KEYWORD2
+begin	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+AT24C01	LITERAL1
+AT24C02	LITERAL1
+AT24C04	LITERAL1
+AT24C08	LITERAL1
+AT24C16	LITERAL1
+AT24C32	LITERAL1
+AT24C64	LITERAL1
+AT24C128	LITERAL1
+AT24C256	LITERAL1
+AT24C512	LITERAL1

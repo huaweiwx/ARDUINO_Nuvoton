@@ -53,9 +53,15 @@ extern "C" void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTask
  }
 
 /* show port info */
+#if (RAM_LENGTH < 8192)
+#    error "! FreeRTOS for arduino  must be sram >= 8k !"
+#endif
+
 #if (portINFO >0)
 	
-#if portUSE_HEAP == 1
+#if portUSE_HEAP == 0
+#pragma message "port heap use newlib"
+#elif portUSE_HEAP == 1
 #pragma message "port heap use heap_1.c"
 #elif portUSE_HEAP == 2
 #pragma message "port heap use heap_2.c"

@@ -1,0 +1,35 @@
+#FUNCTIONS COLOR 			#D35400 - ORANGE			KEYWORD1
+#FUNCTIONS COLOR			#D35400 - ORANGE			KEYWORD2
+#STRUCTURE COLORS 			#5E6D03 - GREEN				KEYWORD3
+#VARIABLES COLOR 			#00979C - BLUE				LITERAL1
+
+
+#Core Class KEYWORD2
+stm32_dev	KEYWORD1
+
+#Function KEYWORD2 specifies methods and functions
+#UTILS
+UTIL_toDigit	KEYWORD1
+UTIL_num	KEYWORD1
+UTIL_isHexStr	KEYWORD1
+UTIL_hexNum	KEYWORD1
+UTIL_getNum	KEYWORD1
+
+bitMaskPos	KEYWORD1
+UTIL_PortPin2Str	KEYWORD1
+UTIL_Str2PortPin	KEYWORD1
+
+#STM32_DEV
+stm32_getDev	KEYWORD1
+
+#bootloader
+UTIL_checkUserCode	KEYWORD1
+UTIL_jumpToUser	KEYWORD1
+# KEYWORD3 specifies structures
+
+
+#HAL Macro & const LITERAL1 specifies constants
+
+
+# operators aren't highlighted, but may have documentation
+

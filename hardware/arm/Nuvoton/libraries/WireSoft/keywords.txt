@@ -1,0 +1,38 @@
+#######################################
+# Syntax Coloring Map For Wire
+#######################################
+
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Instances (KEYWORD1)
+#######################################
+
+WireSoft	KEYWORD2
+TwoWireSoft	KEYWORD2
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD1
+end	KEYWORD1
+setPins	KEYWORD1
+setClock	KEYWORD1
+beginTransmission	KEYWORD1
+endTransmission	KEYWORD1
+requestFrom	KEYWORD1
+send	KEYWORD1
+receive	KEYWORD1
+
+#######################################
+# Constants (LITERAL1)
+I2C_FAST_MODE	LITERAL1
+SOFT_STANDARD	LITERAL1
+SOFT_FAST	LITERAL1
+
+#######################################
+

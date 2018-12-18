@@ -50,6 +50,16 @@
 
 #ifndef portUSE_HEAP
 #  define portUSE_HEAP                    2
+#else
+#  if  (RAM_LENGTH < 16384)&&(portUSE == 0)
+#    error "use newlib must sram >= 16k and configTOTAL_HEAP_SIZE >= 8k"
+#  endif
+#endif
+
+#if portUSE_HEAP < 1  /* for use newlib */
+# ifndef configUSE_NEWLIB_REENTRANT
+#  define configUSE_NEWLIB_REENTRANT 1
+# endif
 #endif
 
 #ifndef configUSE_PREEMPTION
@@ -61,8 +71,18 @@
 #define configCPU_CLOCK_HZ              (SystemCoreClock)
 #define configTICK_RATE_HZ              (( portTickType )1000 )
 #define configMAX_PRIORITIES            ( 5 )
+#ifndef configMINIMAL_STACK_SIZE
 #define configMINIMAL_STACK_SIZE        (( unsigned short )128 )
-#define configTOTAL_HEAP_SIZE           (( size_t )( 4 * 1024 ) )
+#endif
+#ifndef configTOTAL_HEAP_SIZE
+# if RAM_LENGTH > 16384
+#  define configTOTAL_HEAP_SIZE           (( size_t )(RAM_LENGTH/4))
+# elif  RAM_LENGTH > 8192
+#  define configTOTAL_HEAP_SIZE           (( size_t )( 8 * 1024 ) )
+# else
+#  define configTOTAL_HEAP_SIZE           (( size_t )( 4 * 1024 ) )
+# endif
+#endif
 #define configMAX_TASK_NAME_LEN         ( 10 )
 #define configUSE_TRACE_FACILITY        1
 #define configUSE_16_BIT_TICKS          0
@@ -71,15 +91,23 @@
 #ifndef configQUEUE_REGISTRY_SIZE
 #  define configQUEUE_REGISTRY_SIZE       8
 #endif      
-#ifndef configCHECK_FOR_STACK_OVERFLOW
-#  define configCHECK_FOR_STACK_OVERFLOW  0
-#endif      
 #ifndef   configUSE_RECURSIVE_MUTEXES
 #  define configUSE_RECURSIVE_MUTEXES     1
 #endif
+#ifndef configCHECK_FOR_STACK_OVERFLOW
+# if USE_ASSERT
+#   define configCHECK_FOR_STACK_OVERFLOW  1
+# else
+#   define configCHECK_FOR_STACK_OVERFLOW  0
+# endif      
+#endif
 #ifndef   configUSE_MALLOC_FAILED_HOOK
-#  define configUSE_MALLOC_FAILED_HOOK    1
-#endif      
+# if USE_ASSERT
+#   define configUSE_MALLOC_FAILED_HOOK    1
+# else
+#   define configUSE_MALLOC_FAILED_HOOK    0
+# endif
+#endif
 #define  configUSE_APPLICATION_TASK_TAG   0
 #ifndef  configUSE_COUNTING_SEMAPHORES
 #define  configUSE_COUNTING_SEMAPHORES   1

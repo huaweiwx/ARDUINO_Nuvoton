@@ -1,0 +1,39 @@
+#######################################
+# Syntax Coloring Map For Ultrasound
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LEDClass	KEYWORD1
+Led	KEYWORD1
+Led1	KEYWORD1
+Led2	KEYWORD1
+Led3	KEYWORD1
+Led4	KEYWORD1
+Led5	KEYWORD1
+Led6	KEYWORD1
+Led7	KEYWORD1
+LEDs	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+toggle	KEYWORD2
+set	KEYWORD2
+on	KEYWORD2
+off	KEYWORD2
+flash	KEYWORD2
+availablePwm	KEYWORD2
+on_val	KEYWORD2
+isOn	KEYWORD2
+fade	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+BOARD_NR_LED LITERAL1
+#######################################
+
+

@@ -15,7 +15,6 @@ static void myTask1(void __attribute__ ((unused)) *argument)
 {
   /*Task1 setup*/
   uint32_t i = 0;
-  
   Serial.begin(115200);  /*set param: 115200bps 8N1 (default 115200bps 8N1) */
 
   /* Infinite loop */
@@ -24,9 +23,7 @@ static void myTask1(void __attribute__ ((unused)) *argument)
     /* USER CODE BEGIN Task1 */
     vTaskDelay(1000);
     i++;
-    Serial.print("Count:");
-    Serial.print(i, HEX);
-    Serial.println(" in myTask1");
+    Serial << "Count:" << _HEX(i) << " in myTask1";
     /* USER CODE END Task1 */
   }
 }
@@ -51,7 +48,7 @@ void setup() {
               NULL,
               configMINIMAL_STACK_SIZE,
               NULL,
-              tskIDLE_PRIORITY +1,
+              tskIDLE_PRIORITY + 1,
               NULL);
   xTaskCreate(myTask2,
               NULL,

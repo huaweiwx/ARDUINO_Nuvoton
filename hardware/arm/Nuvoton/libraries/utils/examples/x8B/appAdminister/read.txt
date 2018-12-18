@@ -1,0 +1,5 @@
+这是一个简化版本的应用程序管理模块，由于x8/B内存较小，只提供查询可跳转应用的功能，接受串口命令，执行下功能：
+1 ？ 显示命令列表和mcu信息                                    Display list of commands & get mcu info ...
+2 go  跳转到指定的位置序号执行应用                            goto n slot addr running(slot#)
+
+和xE类似的mcu查询管理移至vdos模块；
