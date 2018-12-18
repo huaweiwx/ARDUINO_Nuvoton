@@ -141,6 +141,7 @@ typedef struct _I2CPinDescription
 } I2CPinDescription;
 
 
+#ifdef USE_BoardToPin
 typedef struct _BoardToPin
 {
   int32_t pin;
@@ -148,7 +149,6 @@ typedef struct _BoardToPin
   uint8_t num;
 } BoardToPin;
 
-#ifdef USE_BoardToPin
 #define GPIO_TYPE   0
 #define UART_TYPE   1
 #define I2C_TYPE    2
@@ -156,15 +156,7 @@ typedef struct _BoardToPin
 #define ADC_TYPE    4
 #define PWM_TYPE    5
 #define CAN_TYPE    6
-#if defined(__NUC131__)
-#define BoardToPin_MAX_COUNT 44
-#elif defined(__NANO1X2__)
-#if defined(__IOT_EVB__)
-#define BoardToPin_MAX_COUNT 18
-#endif
-#else
 #define BoardToPin_MAX_COUNT 81
-#endif
 extern const BoardToPin BoardToPinInfo[];
 #endif
 

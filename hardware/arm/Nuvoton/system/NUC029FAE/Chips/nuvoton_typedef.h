@@ -134,19 +134,13 @@ typedef struct _I2CPinDescription
   const I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 
-
-
+#ifdef USE_BoardToPin
 typedef struct _BoardToPin
 {
   int32_t pin;
   uint8_t type;
   uint8_t num;
 } BoardToPin;
-
-#define BoardToPin_MAX_COUNT 81
-extern BoardToPin BoardToPinInfo[];
-
-
 
 #define GPIO_TYPE   0
 #define UART_TYPE  	1
@@ -155,10 +149,10 @@ extern BoardToPin BoardToPinInfo[];
 #define ADC_TYPE	4
 #define PWM_TYPE	5
 #define CAN_TYPE	6
-#define BoardToPin_MAX_COUNT 0x54
 
-//extern BoardToPin BoardToPinInfo[];
-
+#define BoardToPin_MAX_COUNT 81
+extern BoardToPin BoardToPinInfo[];
+#endif 
 
 extern const GPIOPinDescription GPIO_Desc[];
 #define GPIO_Config(Desc)   /*outp32(Desc.MFP,(inp32(Desc.MFP) & ~Desc.Mask) | Desc.Type)*/
