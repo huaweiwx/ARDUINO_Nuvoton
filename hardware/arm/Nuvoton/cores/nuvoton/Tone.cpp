@@ -55,11 +55,11 @@ void tone(uint8_t ucPin, unsigned int frequency, unsigned long duration)
 {	
 	tone_t *tone;
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));// if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].type!=PWM_TYPE));//if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
 	ucPin=BoardToPinInfo[ucPin].num;
 #else
-	if(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL) return;
+	assert_param(!(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL));//if(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL) return;
 #endif
 	
 	
@@ -130,13 +130,13 @@ void tone(uint8_t ucPin, unsigned int frequency, unsigned long duration)
 
 void noTone(uint8_t ucPin)
 {
-  tone_t *tone;
+	tone_t *tone;
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));//if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].type!=PWM_TYPE));//if(BoardToPinInfo[ucPin].type!=PWM_TYPE) return;
 	ucPin=BoardToPinInfo[ucPin].num;
 #else
-	if(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL) return;
+	assert_param(!(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL));//if(ucPin>PWM_MAX_COUNT || PWM_Desc[ucPin].P==NULL) return;
 #endif	
 	//close tone		
 	tone=&Tone;

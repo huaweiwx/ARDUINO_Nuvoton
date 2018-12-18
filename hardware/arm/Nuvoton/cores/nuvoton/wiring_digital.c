@@ -21,12 +21,12 @@
 void pinMode(uint8_t ucPin, uint32_t ulMode)
 {
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].pin == -1) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
 	ucPin=BoardToPinInfo[ucPin].pin;
-#else
-    if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
-#endif  
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
 
     GPIO_Config(GPIO_Desc[ucPin]); 
 	GPIO_SetMode(GPIO_Desc[ucPin].P, GPIO_Desc[ucPin].bit, ulMode & 0b11); 
@@ -51,11 +51,11 @@ void pinMode(uint8_t ucPin, uint32_t ulMode)
 void digitalWriteHigh(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].pin == -1) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
 	ucPin=BoardToPinInfo[ucPin].pin;
 #else	
-	if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
 	(GPIO_Desc[ucPin].P)->DOUT |= GPIO_Desc[ucPin].bit;	
 }
@@ -63,11 +63,11 @@ void digitalWriteHigh(uint8_t ucPin)
 void digitalWriteLow(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].pin == -1) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
 	ucPin=BoardToPinInfo[ucPin].pin;
 #else	
-	if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
 		
 	(GPIO_Desc[ucPin].P)->DOUT &= ~GPIO_Desc[ucPin].bit;
@@ -84,11 +84,11 @@ void digitalWrite(uint8_t ucPin, uint8_t ucVal)
 int digitalRead(uint8_t ucPin)
 {
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;     
-	if(BoardToPinInfo[ucPin].pin == -1) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
 	ucPin=BoardToPinInfo[ucPin].pin;
 #else	
-	if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return LOW;
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
 	return ((GPIO_Desc[ucPin].P)->PIN & GPIO_Desc[ucPin].bit)?HIGH:LOW;
 }
@@ -97,11 +97,11 @@ int digitalRead(uint8_t ucPin)
 void digitalToggle(uint8_t ucPin)  //add 2015.6 by huawei
 {
 #ifdef USE_BoardToPin
-	if(ucPin > BoardToPin_MAX_COUNT) return;
-	if(BoardToPinInfo[ucPin].pin == -1) return;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
 	ucPin=BoardToPinInfo[ucPin].pin;
 #else	
-	if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P == NULL) return;
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
 	((GPIO_T *)(GPIO_Desc[ucPin].P))->DOUT ^= GPIO_Desc[ucPin].bit;	
 }

@@ -22,7 +22,7 @@
 #define __NUNOTON_GPIO_H__
 
 #include "util/base.h"
-
+#define MEM_ADDR  M32
 #ifdef __cplusplus
 
 //inline void pinMode(__ConstPin CPin, uint32_t mode) {

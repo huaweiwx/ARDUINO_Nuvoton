@@ -47,23 +47,23 @@ static void __initialize() {
 	NVIC_EnableIRQ(GPF_IRQn);	
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
-	
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
   		
 	if (!enabled) {
 		__initialize();
 		enabled = 1;
 	}
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	
@@ -91,17 +91,18 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin){
-	#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-	#else
-    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-    #endif
+void detachInterrupt(uint8_t ucPin){
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   	
 	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	for (t = mask; t>1; t>>=1, pos++);	
@@ -224,23 +225,24 @@ static void __initialize(){
 	NVIC_EnableIRQ(GPCDEF_IRQn);
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
-	
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
- #endif
+
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   		
 	if (!enabled) {
 		__initialize();
 		enabled = 1;
 	}
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	
@@ -272,18 +274,18 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 		GPIO_EnableInt(pio,pos,GPIO_INT_HIGH);		
 }
 
-void detachInterrupt(uint32_t pin){
-
-	#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-	#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-  #endif
+void detachInterrupt(uint8_t ucPin){
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   	
 	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	for (t = mask; t>1; t>>=1, pos++);	
@@ -382,21 +384,22 @@ static void __initialize() {
 }
 
 static int enabled = 0;
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){		
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode){		
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
   		
 	if (!enabled) {
 		__initialize();
 		enabled = 1;
 	}
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	
@@ -424,18 +427,18 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin){
-
-  #ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-  #else
-    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-  #endif
+void detachInterrupt(uint8_t ucPin){
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   	
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	for (t = mask; t>1; t>>=1, pos++);	
@@ -534,21 +537,22 @@ static void __initialize() {
 }
 
 static int enabled = 0;
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){		
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode){		
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
   		
 	if (!enabled) {
 		__initialize();
 		enabled = 1;
 	}
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	
@@ -576,17 +580,18 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin){
-	#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-	#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
-  #endif
+void detachInterrupt(uint8_t ucPin){
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   	
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	for (t = mask; t>1; t>>=1, pos++);	
@@ -680,23 +685,23 @@ static void __initialize() {
 	NVIC_EnableIRQ(GPCDEF_IRQn);
 }
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode){
 	static int enabled = 0;
-	
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-  if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
- #endif
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
+#endif
   		
 	if (!enabled) {
 		__initialize();
 		enabled = 1;
 	}
-	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	// Retrieve ucPin information
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	
@@ -724,18 +729,19 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode){
 		GPIO_EnableInt(pio,pos,GPIO_INT_BOTH_EDGE);		
 }
 
-void detachInterrupt(uint32_t pin){
+void detachInterrupt(uint8_t ucPin){
 
-#ifdef USE_BoardToPin	
-	if(pin > BoardToPin_MAX_COUNT) return;
-	pin=BoardToPinInfo[pin].pin;
-#else
-    if(pin>NUM_DIGITAL_PINS || GPIO_Desc[pin].P==NULL) return;
+#ifdef USE_BoardToPin
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
   	
 	// Retrieve pin information
-	GPIO_T *pio = GPIO_Desc[pin].P;
-	uint32_t mask = GPIO_Desc[pin].bit;
+	GPIO_T *pio = GPIO_Desc[ucPin].P;
+	uint32_t mask = GPIO_Desc[ucPin].bit;
 	uint32_t pos = 0;
 	uint32_t t;
 	for (t = mask; t>1; t>>=1, pos++);	

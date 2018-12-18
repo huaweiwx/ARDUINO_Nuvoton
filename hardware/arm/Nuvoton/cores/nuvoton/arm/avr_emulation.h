@@ -183,12 +183,12 @@ class DDRemulation
   #define  PINH   P7->PIN
 #endif
 #if  defined(PJ)
-  #define PORTJ  PJ->DOUT
-  #define  PINJ  PJ->PIN
+  #define PORTJ   PJ->DOUT
+  #define  PINJ   PJ->PIN
 #endif
 #if  defined(PK)
-  #define PORTK  PK->DOUT
-  #define  PINK  PK->PIN
+  #define PORTK   PK->DOUT
+  #define  PINK   PK->PIN
 #endif
 
 #include "avr_pin_legacy.h"

@@ -36,12 +36,12 @@ extern uint32_t pulseIn(uint8_t ucPin, uint32_t state, uint32_t timeout )
     uint32_t maxloops = microsecondsToClockCycles(timeout) / 22;
     uint32_t tmp;
 
-
 #ifdef USE_BoardToPin
-    if(ucPin > BoardToPin_MAX_COUNT) return 0;
-    ucPin=BoardToPinInfo[ucPin].pin;
-#else
-    if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return 0;
+	assert_param(!(ucPin > BoardToPin_MAX_COUNT));   //if(ucPin > BoardToPin_MAX_COUNT) return;
+	assert_param(!(BoardToPinInfo[ucPin].pin == -1));//if(BoardToPinInfo[ucPin].pin == -1) return;
+	ucPin=BoardToPinInfo[ucPin].pin;
+#else	
+	assert_param(!(ucPin>=NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL));//if(ucPin>NUM_DIGITAL_PINS || GPIO_Desc[ucPin].P==NULL) return;
 #endif
     // wait for any previous pulse to end
     do

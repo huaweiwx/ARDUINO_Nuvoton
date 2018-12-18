@@ -1,15 +1,14 @@
 
 # Nuvoton MCU and platform.
-# ------------------------------
-#
+# ------------------------------------------
 # For more info:
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 
-name=Nuvoton NuMicro
+name=Nuvoton
 version=1.8.5
 
 # Nuvoton compile variables
-# ----------------------
+# ------------------------------------------
 
 compiler.warning_flags=-w 
 compiler.warning_flags.none=-w {build.log_level}
@@ -41,8 +40,7 @@ compiler.elf2hex.flags2=-O ihex
 compiler.ldflags=
 
 compiler.define=-DARDUINO=
-##compiler.combine.flags=-u _sbrk -u link -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid
-compiler.combine.flags=-u _sbrk -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid
+compiler.combine.flags=-u _sbrk -u link -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid
 
 # This can be overridden in boards.txt
 build.extra_flags=
@@ -58,10 +56,10 @@ compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
 
-compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ "-I{build.path}/sketch" "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc" "-I{build.system.path}/{build.series}/Chips"
+compiler.lib.c.flags=-D{build.series} -D__NUVOTON__ -DRAM_LENGTH={upload.maximum_data_size} "-I{build.path}/sketch" "-I{build.system.path}/{build.series}" "-I{build.system.path}/CMSIS/Include" "-I{build.system.path}/{build.series}/Device/Nuvoton/{build.series}/Include" "-I{build.system.path}/{build.series}/StdDriver/inc" "-I{build.system.path}/{build.series}/Chips"
 
 # USB Flags
-# ---------
+# ------------------------------------------
 build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} -DUSBCON '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
 
 # Default usb manufacturer will be replaced at compile time using
@@ -70,7 +68,7 @@ build.usb_manufacturer="Unknown"
 
 
 # NUVOTON compile patterns
-# ---------------------
+# ------------------------------------------
 
 ## Compile c files
 recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -mcpu={build.mcu} -mthumb -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.c.extra_flags} {build.extra_flags} {build.extra_flags_serial} {compiler.lib.c.flags} {includes} "{source_file}" -o "{object_file}"
@@ -88,7 +86,6 @@ recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compil
 
 ## Combine gc-sections, archives, and objects
 recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" -mcpu={build.mcu} -mthumb {compiler.c.elf.flags} "-T{build.system.path}/linker_scripts/{build.ldscript}" "-Wl,-Map,{build.path}/{build.project_name}.map" {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "-L{build.path}" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--entry=Reset_Handler -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--start-group {compiler.combine.flags} {object_files} "{build.path}/{archive_file}" -lstdc++ -lc  -Wl,--end-group -lm -lgcc --specs=nano.specs
-##recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} "-T{build.system.path}/linker_scripts/{build.ldscript}" "-Wl,-Map,{build.path}/{build.project_name}.map" {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "-L{build.path}" -Wl,--start-group {compiler.combine.flags} {object_files} "{build.extra_lib}" "{build.path}/{archive_file}" -lstdc++ -lc -Wl,--end-group -lm -lgcc --specs=nano.specs
 
 ## Create bin
 recipe.objcopy.bin.pattern="{compiler.path}{compiler.elf2hex.cmd}" {compiler.elf2hex.flags} {compiler.elf2hex.extra_flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.bin"
@@ -113,7 +110,7 @@ recipe.size.regex.data=^(?:\.data|\.bss|\.noinit)\s+([0-9]+).*
 
 
 # Nuvotn MCU Uploader tools
-# -------------------
+# ------------------------------------------
 
 # This can be overridden in boards.txt
 #upload.console=Serial

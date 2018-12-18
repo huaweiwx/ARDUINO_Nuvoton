@@ -23,9 +23,9 @@
 extern "C" {
 #endif
 
-void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode);
+void attachInterrupt(uint8_t ucPin, void (*callback)(void), uint32_t mode);
 
-void detachInterrupt(uint32_t pin);
+void detachInterrupt(uint8_t ucPin);
 
 #ifdef __cplusplus
 }

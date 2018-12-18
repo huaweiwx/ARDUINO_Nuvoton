@@ -1,4 +1,6 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
+# huaweiwx@sina.com 2018.10.12
+
 menu.cpu=Processor
 menu.clock_source=Clock source
 menu.osc_speed=OSC Speed(MHz)
@@ -211,7 +213,7 @@ M480.menu.serial.NuICE=Nulink console
 M480.menu.serial.NuICE.build.extra_flags_serial=-DMENU_SERIAL=NuConsole
 M480.menu.serial.NuICE.upload.console=NUCONSOLE
 
-#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+#------------------------ DEBUG & LOGLEVEL ----------------------------#
 M480.menu.log.default=Release(no-exceptions)
 M480.menu.log.default.build.log_level=-fno-exceptions
 M480.menu.log.Release=Release(exceptions)
@@ -237,7 +239,7 @@ M480.upload.native_usb=false
 ################################################################################################
 #                                   Nuvoton-M451                                               #
 ################################################################################################
-M451.name=NuTiny_M451(256kFLASH 32kRAM)
+M451.name=NuTiny_M451(M453VG6AE 256kFLASH 32kRAM)
 M451.build.vid=0x2341
 M451.build.pid=0x003e
 

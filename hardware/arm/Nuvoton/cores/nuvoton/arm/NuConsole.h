@@ -93,6 +93,12 @@ class NuConsoleCLASS : public Stream {
       NuConsole_Init();
     }
 
+#if __LOG_LEVEL  /*__LOG_LEVEL > 0*/
+    __deprecated("setRouteLoc only supports real serial port, NuConsoleClass is virtual serial port and it's ignored here. (huaweiwx)")
+#endif
+    void setRouteLoc(uint8_t loc){
+		UNUSED(loc);
+	}
     /* I/O */
     int available( void ) {
       return NuConsole_available();

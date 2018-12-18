@@ -78,6 +78,7 @@ int _gettimeofday (struct timeval * tp, struct timezone * tzp)
 
   return 0;
 }
+
 void initialise_monitor_handles()
 {
 }

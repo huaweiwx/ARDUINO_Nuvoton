@@ -30,6 +30,16 @@
  #endif
 #endif
 
+#ifdef USE_FULL_ASSERT
+# ifndef DEBUG
+#   define DEBUG
+#  endif
+#endif
+
+#ifndef DEBUG
+# define NDEBUG
+#endif
+
 #if __has_include("HAL_Conf.h")
 # include "HAL_Conf.h"
 #endif
@@ -70,14 +80,6 @@
 #ifndef  USE_ICE
 # define USE_ICE          1
 #endif
-
-#ifndef  USE_ERRORCALLBACK
-#  ifdef USE_FULL_ASSERT
-    #define USE_ERRORCALLBACK 1
-#  else
-    #define USE_ERRORCALLBACK 0
-#  endif
-#endif	
 
 #ifndef  USE_TIMER0_PWM
 # define USE_TIMER0_PWM 1

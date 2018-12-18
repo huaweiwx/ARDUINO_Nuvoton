@@ -76,21 +76,6 @@ void delay( uint32_t ms )
     while (GetTickCount() < end);
 }
 
-#if defined ( __ICCARM__ ) /* IAR Ewarm 5.41+ */
-extern signed int putchar( signed int c ) ;
-/**
- * \brief
- *
- * \param c  Character to output.
- *
- * \return The character that was output.
- */
-extern WEAK signed int putchar( signed int c )
-{
-    return c ;
-}
-#endif /* __ICCARM__ */
-
 #ifdef __cplusplus
 }
 #endif
