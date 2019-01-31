@@ -47,6 +47,7 @@ extern uint32_t _estack;
 #define NFC_RAM_ADDR    (0x20100000u) /**< NAND Flash Controller RAM base address */
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void SystemInit(void);
 int main(void);
 /** \endcond */
 
@@ -73,7 +74,6 @@ void EINT1_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")
 void GPIOP0P1_IRQHandler   ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void GPIOP2P3P4_IRQHandler ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void PWMA_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
-void PWMB_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void TMR0_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void TMR1_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void TMR2_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
@@ -82,14 +82,12 @@ void UART0_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")
 void UART1_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void SPI0_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler")));    
 void SPI1_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler")));    
-void GPIO5_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+void GPIOP5_IRQHandler     ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+void GPIOP6P7_IRQHandler   ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void I2C0_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void I2C1_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
-void ACMP01_IRQHandler     ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void ACMP23_IRQHandler     ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void PWRWU_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void ADC_IRQHandler        ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
-void RTC_IRQHandler        ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
   
 /* Exception Table */
 __attribute__ ((section(".vectors")))
@@ -122,17 +120,17 @@ const void * exception_table[] = {
 	(void *)GPIOP0P1_IRQHandler, 
 	(void *)GPIOP2P3P4_IRQHandler,
 	(void *)PWMA_IRQHandler, 
-	(void *)PWMB_IRQHandler, 
+	(void *)Dummy_Handler, //PWMB_IRQHandler, 
 	(void *)TMR0_IRQHandler,
 	(void *)TMR1_IRQHandler,
 	(void *)TMR2_IRQHandler,
 	(void *)TMR3_IRQHandler,
 	(void *)UART0_IRQHandler,
-	(void *)UART1_IRQHandler,
+	(void *)Dummy_Handler, //UART1_IRQHandler,
 	(void *)SPI0_IRQHandler,            
-	(void *)SPI1_IRQHandler,
-	(void *)Dummy_Handler,
-	(void *)Dummy_Handler,
+	(void *)Dummy_Handler, //SPI1_IRQHandler,
+	(void *)GPIOP5_IRQHandler,
+	(void *)GPIOP6P7_IRQHandler,
 	(void *)I2C0_IRQHandler,
 	(void *)I2C1_IRQHandler,
 	(void *)Dummy_Handler,
@@ -140,13 +138,13 @@ const void * exception_table[] = {
 	(void *)Dummy_Handler,
 	(void *)Dummy_Handler,
 	(void *)Dummy_Handler,
-	(void *)ACMP01_IRQHandler,
-	(void *)ACMP23_IRQHandler,
+	(void *)Dummy_Handler,
+	(void *)Dummy_Handler,
 	(void *)Dummy_Handler,
 	(void *)PWRWU_IRQHandler,
 	(void *)ADC_IRQHandler, 
 	(void *)Dummy_Handler,
-	(void *)RTC_IRQHandler,
+	(void *)Dummy_Handler,
 };
 
 /**
@@ -172,8 +170,10 @@ void Reset_Handler(void)
 		*pDest++ = 0;
 	}
 
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
 	/* Initialize the C library */
-
 	// Arduino: we must setup hardware before doing this
 	__libc_init_array();
 

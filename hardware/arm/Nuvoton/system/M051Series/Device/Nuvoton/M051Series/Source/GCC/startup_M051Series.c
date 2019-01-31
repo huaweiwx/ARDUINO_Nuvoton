@@ -47,6 +47,7 @@ extern uint32_t _estack;
 #define NFC_RAM_ADDR    (0x20100000u) /**< NAND Flash Controller RAM base address */
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void SystemInit(void);
 int main(void);
 /** \endcond */
 
@@ -82,7 +83,6 @@ void UART0_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")
 void UART1_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void SPI0_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler")));    
 void SPI1_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler")));    
-void GPIO5_IRQHandler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void I2C0_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void I2C1_IRQHandler       ( void ) __attribute__ ((weak, alias("Dummy_Handler"))); 
 void ACMP01_IRQHandler     ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
@@ -172,8 +172,10 @@ void Reset_Handler(void)
 		*pDest++ = 0;
 	}
 
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
 	/* Initialize the C library */
-
 	// Arduino: we must setup hardware before doing this
 	__libc_init_array();
 

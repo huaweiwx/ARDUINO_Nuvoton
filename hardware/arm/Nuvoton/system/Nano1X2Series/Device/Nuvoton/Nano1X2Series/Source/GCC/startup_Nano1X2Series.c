@@ -47,6 +47,7 @@ extern uint32_t _estack;
 #define NFC_RAM_ADDR    (0x20100000u) /**< NAND Flash Controller RAM base address */
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void SystemInit(void);
 int main(void);
 /** \endcond */
 
@@ -110,49 +111,49 @@ const void * exception_table[] = {
 	(void*) MemManage_Handler,
 	(void*) BusFault_Handler,
 	(void*) UsageFault_Handler,
-	(void*) (0UL),           /* Reserved */
-	(void*) (0UL),           /* Reserved */
-	(void*) (0UL),           /* Reserved */
-	(void*) (0UL),           /* Reserved */
+	(void*) (0UL),             /* Reserved */
+	(void*) (0UL),             /* Reserved */
+	(void*) (0UL),             /* Reserved */
+	(void*) (0UL),             /* Reserved */
 	(void*) SVC_Handler,
 	(void*) DebugMon_Handler,
-	(void*) (0UL),           /* Reserved */
+	(void*) (0UL),             /* Reserved */
 	(void*) PendSV_Handler,
 	(void*) SysTick_Handler,
 
 	/* Configurable interrupts */
-	(void *)BOD_IRQHandler,    /*  0  BOD_IRQHandler */
-	(void *)WDT_IRQHandler,
-  (void *)EINT0_IRQHandler,
-  (void *)EINT1_IRQHandler,
-  (void *)GPABC_IRQHandler, 
-  (void *)GPDEF_IRQHandler,
-  (void *)PWM0_IRQHandler, 
-  (void *)(0UL), 
-  (void *)TMR0_IRQHandler,
-  (void *)TMR1_IRQHandler,
-  (void *)TMR2_IRQHandler,
-  (void *)TMR3_IRQHandler,
-  (void *)UART0_IRQHandler,
-  (void *)UART1_IRQHandler,
-  (void *)SPI0_IRQHandler,            
-  (void *)SPI1_IRQHandler,
-  (void *)(0UL),
-  (void *)HIRC_IRQHandler,
-  (void *)I2C0_IRQHandler,
-  (void *)I2C1_IRQHandler,
-  (void *)(0UL),
-  (void *)SC0_IRQHandler,
-  (void *)SC1_IRQHandler,
-  (void *)ACMP_IRQHandler,
-  (void *)(0UL),
-  (void *)LCD_IRQHandler,
-  (void *)PDMA_IRQHandler,
-  (void *)(0UL),
-  (void *)PDWU_IRQHandler,
-  (void *)ADC_IRQHandler, 
-  (void *)(0UL),
-  (void *)RTC_IRQHandler,
+	(void *) BOD_IRQHandler,    /*  0  BOD_IRQHandler */
+	(void *) WDT_IRQHandler,
+    (void *) EINT0_IRQHandler,
+    (void *) EINT1_IRQHandler,
+    (void *) GPABC_IRQHandler, 
+    (void *) GPDEF_IRQHandler,
+    (void *) PWM0_IRQHandler, 
+    (void *) (0UL), 
+    (void *) TMR0_IRQHandler,
+    (void *) TMR1_IRQHandler,
+    (void *) TMR2_IRQHandler,
+    (void *) TMR3_IRQHandler,
+    (void *) UART0_IRQHandler,
+    (void *) UART1_IRQHandler,
+    (void *) SPI0_IRQHandler,            
+    (void *) SPI1_IRQHandler,
+    (void *) (0UL),
+    (void *) HIRC_IRQHandler,
+    (void *) I2C0_IRQHandler,
+    (void *) I2C1_IRQHandler,
+    (void *) (0UL),
+    (void *) SC0_IRQHandler,
+    (void *) SC1_IRQHandler,
+    (void *) ACMP_IRQHandler,
+    (void *) (0UL),
+    (void *) LCD_IRQHandler,
+    (void *) PDMA_IRQHandler,
+    (void *) (0UL),
+    (void *) PDWU_IRQHandler,
+    (void *) ADC_IRQHandler, 
+    (void *) (0UL),
+    (void *) RTC_IRQHandler,
 };
 
 /**
@@ -178,8 +179,10 @@ void Reset_Handler(void)
 		*pDest++ = 0;
 	}
 
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
 	/* Initialize the C library */
-
 	// Arduino: we must setup hardware before doing this
 	__libc_init_array();
 

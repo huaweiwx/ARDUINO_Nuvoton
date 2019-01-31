@@ -18,7 +18,8 @@
 #include "Arduino.h"
 
 #ifdef USE_BoardToPin
-const BoardToPin BoardToPinInfo[] = {{ 17, UART_TYPE, 0}, // 0: PB0(UART_RX0)   /* 64Pins */
+const BoardToPin BoardToPinInfo[] = {
+  { 17, UART_TYPE, 0}, // 0: PB0(UART_RX0)   /* 64Pins */
   { 18, UART_TYPE, 0}, // 1: PB1(UART_TX0)
   {  5, PWM_TYPE, 0}, // 2: PF4 (PWM0)
   {  4, PWM_TYPE, 1}, // 3: PF5 (PWM1)
@@ -214,23 +215,28 @@ const ADCPinDescription ADC_Desc[] = {
   {ADC, ADC_MODULE, 5, {49, SYS_GPA_MFP_PA5_ADC5, NULL, NULL, NULL, NULL}}, //5
 };
 
-const SPIPinDescription SPI_Desc[] = {
+const SPIPinAlt_TypeDef SPI0PinAlt[] = {
+  {{PC_1, SYS_GPC_MFP_PC1_SPI0_CLK  , NULL, NULL, NULL, NULL},
+   {PC_2, SYS_GPC_MFP_PC2_SPI0_MISO0, NULL, NULL, NULL, NULL},
+   {PC_3, SYS_GPC_MFP_PC3_SPI0_MOSI0, NULL, NULL, NULL, NULL},
+   {PC_0, SYS_GPC_MFP_PC0_SPI0_SS0  , NULL, NULL, NULL, NULL},}
+};
 
-  {
-    SPI0, SPI0_MODULE, SPI0_IRQn, CLK_CLKSEL1_SPI0_S_HCLK,
-    {
-      {27, SYS_GPC_MFP_PC1_SPI0_CLK  , NULL, NULL, NULL, NULL},
-      {26, SYS_GPC_MFP_PC2_SPI0_MISO0, NULL, NULL, NULL, NULL},
-      {25, SYS_GPC_MFP_PC3_SPI0_MOSI0, NULL, NULL, NULL, NULL},
-      {28, SYS_GPC_MFP_PC0_SPI0_SS0  , NULL, NULL, NULL, NULL},
-    }
-  },
+const SPIPinDescription SPI_Desc[] = {
+  {SPI0, SPI0_MODULE, SPI0_IRQn, CLK_CLKSEL1_SPI0_S_HCLK,SPI0PinAlt},
+};
+
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+  {{PB_0, SYS_GPB_MFP_PB0_UART0_RXD, NULL, NULL, NULL, NULL}, {PB_1, SYS_GPB_MFP_PB1_UART0_TXD, NULL, NULL, NULL, NULL}},
 };
 
 const UARTPinDescription UART_Desc[] = {
-  {UART0, UART0_MODULE, UART02_IRQn, {{17, SYS_GPB_MFP_PB0_UART0_RXD, NULL, NULL, NULL, NULL}, {18, SYS_GPB_MFP_PB1_UART0_TXD, NULL, NULL, NULL, NULL} }},
+  {UART0, UART0_MODULE, UART02_IRQn, UART0PinAlt},
 };
 
+const I2CPinAlt_TypeDef I2C0PinAlt[] = {
+  {{PA_8, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL, NULL}, {PA_9, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL, NULL}},
+};
 const I2CPinDescription I2C_Desc[] = {
-  {I2C0, I2C0_MODULE, {{9, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL, NULL}, {8, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL, NULL}}},
+  {I2C0, I2C0_MODULE, I2C0_IRQn,I2C0PinAlt},
 };

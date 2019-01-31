@@ -41,6 +41,7 @@ extern uint32_t _sstack;
 extern uint32_t _estack;
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void SystemInit(void);
 int main(void);
 /** \endcond */
 
@@ -133,7 +134,7 @@ const void * exception_table[] = {
  (void*) MemManage_Handler,
  (void*) BusFault_Handler,
  (void*) UsageFault_Handler,
- (void*) (0UL),           /* Reserved */
+ (void*) (0UL),           		   /* Reserved */
  (void*) (0UL),                    /* Reserved */
  (void*) (0UL),                    /* Reserved */
  (void*) (0UL),                    /* Reserved */
@@ -201,12 +202,12 @@ const void * exception_table[] = {
  (void*) USBH_IRQHandler,          //; 54: USB host
  (void*) USBOTG_IRQHandler,        //; 55: USB OTG
  (void*) CAN0_IRQHandler,          //; 56: CAN0
- (void*) (0UL),          					 //; 57: Reserved
+ (void*) (0UL),          		   //; 57: Reserved
  (void*) SC0_IRQHandler,           //; 58: 
- (void*) (0UL),          					 //; 59: Reserved.
- (void*) (0UL),          					 //; 60: 
- (void*) (0UL) ,         					 //; 61: 
- (void*) (0UL),          					 //; 62:
+ (void*) (0UL),          		   //; 59: Reserved.
+ (void*) (0UL),          		   //; 60: 
+ (void*) (0UL) ,         		   //; 61: 
+ (void*) (0UL),          		   //; 62:
  (void*) TK_IRQHandler,            //; 63:	
 };
 
@@ -233,8 +234,10 @@ void Reset_Handler(void)
 		*pDest++ = 0;
 	}
 
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
 	/* Initialize the C library */
-
 	// Arduino: we must setup hardware before doing this
 	__libc_init_array();
 

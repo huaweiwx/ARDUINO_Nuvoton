@@ -33,8 +33,8 @@
   PIN(A,2 ,20), /*/SPIM_CLK/QSPI0_CLK/SPI0_CLK/SD1_DAT2/SC0_RST/UART4_RXD/UART1_RXD/I2C1_SDA/BPWM0_CH2/EPWM0_CH3                                       */\
   PIN(A,1 ,21), /*/SPIM_MISO/QSPI0_MISO0/SPI0_MISO/SD1_DAT1/SC0_DAT/UART0_TXD/UART1_nCTS/I2C2_SCL/BPWM0_CH1/EPWM0_CH4/DAC1_ST                          */\
   PIN(A,0 ,22), /*/SPIM_MOSI/QSPI0_MOSI0/SPI0_MOSI/SD1_DAT0/SC0_CLK/UART0_RXD/UART1_nRTS/I2C2_SDA/BPWM0_CH0/EPWM0_CH5/DAC0_ST                          */\
-        /* 23),  VDDIO                                                                                                                               */\
-        /* 24),  nRESET                                                                                                                              */\
+        /* 23   VDDIO                                                                                                                               */\
+        /* 24   nRESET                                                                                                                              */\
   /*PIN(F,0 ,25), /UART1_TXD/I2C1_SCL/BPWM1_CH0/ICE_DAT                                                                                                */\
   /*PIN(F,1 ,26), /UART1_RXD/I2C1_SDA/BPWM1_CH1/ICE_CLK                                                                                                */\
   PIN(C,5 ,27), /*/EBI_AD5/SPIM_D2/QSPI0_MISO1/UART2_TXD/I2C1_SCL/CAN0_TXD/UART4_TXD/EPWM1_CH0                                                         */\
@@ -47,16 +47,16 @@
   PIN(A,13,34), /*/I2S0_MCLK/UART4_RXD/I2C1_SDA/SPI2_CLK/CAN0_RXD/SC2_RST/BPWM1_CH3/QEI1_A                                                             */\
   PIN(A,14,35), /*/I2S0_DI/UART0_TXD/SPI2_MISO/I2C2_SCL/SC2_DAT/BPWM1_CH4/QEI1_B                                                                       */\
   PIN(A,15,36), /*/I2S0_DO/UART0_RXD/SPI2_MOSI/I2C2_SDA/SC2_CLK/BPWM1_CH5/EPWM0_SYNC_IN                                                                */\
-       /*  37),    VSS                                                                                                                                 */\
-       /*  38),    LDO_CAP                                                                                                                             */\
-       /*  39),    VDD                                                                                                                                 */\
+       /*  37     VSS                                                                                                                                 */\
+       /*  38     LDO_CAP                                                                                                                             */\
+       /*  39     VDD                                                                                                                                 */\
   PIN(C,14,40), /*/EBI_AD11/SC1_nCD/SPI0_I2SMCLK/USCI0_CTL0/QSPI0_CLK/EPWM0_SYNC_IN/TM1                                                                */\
   PIN(B,15,41), /*/EADC0_CH15/EBI_AD12/SC1_PWR/SPI0_SS/USCI0_CTL1/UART0_nCTS/UART3_TXD/I2C2_SMBAL/EPWM1_CH0/TM0_EXT                                    */\
   PIN(B,14,42), /*/EADC0_CH14/EBI_AD13/SC1_RST/SPI0_CLK/USCI0_DAT1/UART0_nRTS/UART3_RXD/I2C2_SMBSUS/EPWM1_CH1/TM1_EXT/CLKO                             */\
   PIN(B,13,43), /*/EADC0_CH13/DAC1_OUT/ACMP0_P3/ACMP1_P3/EBI_AD14/SC1_DAT/SPI0_MISO/USCI0_DAT0/UART0_TXD/UART3_nRTS/I2C2_SCL/EPWM1_CH2/TM2_EXT         */\
   PIN(B,12,44), /*/EADC0_CH12/DAC0_OUT/ACMP0_P2/ACMP1_P2/EBI_AD15/SC1_CLK/SPI0_MOSI/USCI0_CLK/UART0_RXD/UART3_nCTS/I2C2_SDA/SD0_nCD/EPWM1_CH3/TM3_EXT  */\
-        /* 45),    AVDD                                                                                                                                */\
-        /* 46),    AVSS                                                                                                                                */\
+        /* 45     AVDD                                                                                                                                */\
+        /* 46     AVSS                                                                                                                                */\
   PIN(B,7 ,47), /*/EADC0_CH7/EBI_nWRL/USCI1_DAT0/CAN1_TXD/UART1_TXD/SD1_CMD/EBI_nCS0/BPWM1_CH4/EPWM1_BRAKE0/EPWM1_CH4/INT5/ACMP0_O                     */\
   PIN(B,6 ,48)  /*/EADC0_CH6/EBI_nWRH/USCI1_DAT1/CAN1_RXD/UART1_RXD/SD1_CLK/EBI_nCS1/BPWM1_CH5/EPWM1_BRAKE1/EPWM1_CH5/INT4/ACMP1_O                     */
 
@@ -84,8 +84,8 @@
   PIN(A,2 ,20), /*/SPIM_CLK/QSPI0_CLK/SPI0_CLK/SD1_DAT2/SC0_RST/UART4_RXD/UART1_RXD/I2C1_SDA/BPWM0_CH2/EPWM0_CH3                                       */\
   PIN(A,1 ,21), /*/SPIM_MISO/QSPI0_MISO0/SPI0_MISO/SD1_DAT1/SC0_DAT/UART0_TXD/UART1_nCTS/I2C2_SCL/BPWM0_CH1/EPWM0_CH4/DAC1_ST                          */\
   PIN(A,0 ,22), /*/SPIM_MOSI/QSPI0_MOSI0/SPI0_MOSI/SD1_DAT0/SC0_CLK/UART0_RXD/UART1_nRTS/I2C2_SDA/BPWM0_CH0/EPWM0_CH5/DAC0_ST                          */\
-        /* 23),  VDDIO                                                                                                                               */\
-        /* 24),  nRESET                                                                                                                              */\
+        /* 23   VDDIO                                                                                                                               */\
+        /* 24   nRESET                                                                                                                              */\
   PIN(F,0 ,25), /*/UART1_TXD/I2C1_SCL/BPWM1_CH0/ICE_DAT                                                                                                */\
   PIN(F,1 ,26), /*/UART1_RXD/I2C1_SDA/BPWM1_CH1/ICE_CLK                                                                                                */\
   PIN(C,5 ,27), /*/EBI_AD5/SPIM_D2/QSPI0_MISO1/UART2_TXD/I2C1_SCL/CAN0_TXD/UART4_TXD/EPWM1_CH0                                                         */\
@@ -98,16 +98,16 @@
   PIN(A,13,34), /*/I2S0_MCLK/UART4_RXD/I2C1_SDA/SPI2_CLK/CAN0_RXD/SC2_RST/BPWM1_CH3/QEI1_A                                                             */\
   PIN(A,14,35), /*/I2S0_DI/UART0_TXD/SPI2_MISO/I2C2_SCL/SC2_DAT/BPWM1_CH4/QEI1_B                                                                       */\
   PIN(A,15,36), /*/I2S0_DO/UART0_RXD/SPI2_MOSI/I2C2_SDA/SC2_CLK/BPWM1_CH5/EPWM0_SYNC_IN                                                                */\
-       /*  37),    VSS                                                                                                                                 */\
-       /*  38),    LDO_CAP                                                                                                                             */\
-       /*  39),    VDD                                                                                                                                 */\
+       /*  37     VSS                                                                                                                                 */\
+       /*  38     LDO_CAP                                                                                                                             */\
+       /*  39     VDD                                                                                                                                 */\
   PIN(C,14,40), /*/EBI_AD11/SC1_nCD/SPI0_I2SMCLK/USCI0_CTL0/QSPI0_CLK/EPWM0_SYNC_IN/TM1                                                                */\
   PIN(B,15,41), /*/EADC0_CH15/EBI_AD12/SC1_PWR/SPI0_SS/USCI0_CTL1/UART0_nCTS/UART3_TXD/I2C2_SMBAL/EPWM1_CH0/TM0_EXT                                    */\
   PIN(B,14,42), /*/EADC0_CH14/EBI_AD13/SC1_RST/SPI0_CLK/USCI0_DAT1/UART0_nRTS/UART3_RXD/I2C2_SMBSUS/EPWM1_CH1/TM1_EXT/CLKO                             */\
   PIN(B,13,43), /*/EADC0_CH13/DAC1_OUT/ACMP0_P3/ACMP1_P3/EBI_AD14/SC1_DAT/SPI0_MISO/USCI0_DAT0/UART0_TXD/UART3_nRTS/I2C2_SCL/EPWM1_CH2/TM2_EXT         */\
   PIN(B,12,44), /*/EADC0_CH12/DAC0_OUT/ACMP0_P2/ACMP1_P2/EBI_AD15/SC1_CLK/SPI0_MOSI/USCI0_CLK/UART0_RXD/UART3_nCTS/I2C2_SDA/SD0_nCD/EPWM1_CH3/TM3_EXT  */\
-        /* 45),    AVDD                                                                                                                                */\
-        /* 46),    AVSS                                                                                                                                */\
+        /* 45     AVDD                                                                                                                                */\
+        /* 46     AVSS                                                                                                                                */\
   PIN(B,7 ,47), /*/EADC0_CH7/EBI_nWRL/USCI1_DAT0/CAN1_TXD/UART1_TXD/SD1_CMD/EBI_nCS0/BPWM1_CH4/EPWM1_BRAKE0/EPWM1_CH4/INT5/ACMP0_O                     */\
   PIN(B,6 ,48)  /*/EADC0_CH6/EBI_nWRH/USCI1_DAT1/CAN1_RXD/UART1_RXD/SD1_CLK/EBI_nCS1/BPWM1_CH5/EPWM1_BRAKE1/EPWM1_CH5/INT4/ACMP1_O                     */
 #endif
@@ -119,7 +119,6 @@
 
 #define  SDA_PIN PC_0
 #define  SCL_PIN PC_1
-#endif
 
 #define A0  0
 #define A1  1

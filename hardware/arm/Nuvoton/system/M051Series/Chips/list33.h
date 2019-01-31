@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M0516ZDE(QFN33)
+ * @file     M051(QFN33)
  * @version  V1.13
  * @Date     2018/10/19-12:23:34 
  * @brief    NuMicro pin descriptions file

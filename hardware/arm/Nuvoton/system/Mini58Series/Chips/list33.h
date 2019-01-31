@@ -1,5 +1,5 @@
-#ifndef _CHIP32_PINLIST_H_
-#define _CHIP32_PINLIST_H_
+#ifndef _CHIP33_PINLIST_H_
+#define _CHIP33_PINLIST_H_
 
 #if USE_ICE >0
   #define CHIP_PIN_LIST \

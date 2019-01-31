@@ -2,7 +2,7 @@
 #define _VARIANT_H_
 
 #ifndef LED_BUILTIN
-  #define LED_BUILTIN P2_3
+  #define LED_BUILTIN P1_0
   #define LED_BUILTIN_MASK 0
 #endif
 #ifndef LED_BUILTIN_MASK

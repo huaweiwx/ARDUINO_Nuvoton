@@ -247,6 +247,9 @@ Reset_Handler:
 	str	r1, [r0]
 	
 /*huawei add*/
+#ifndef __NO_SYSTEM_INIT
+    bl SystemInit  
+#endif
     bl __libc_init_array  
 	
 #ifndef __START

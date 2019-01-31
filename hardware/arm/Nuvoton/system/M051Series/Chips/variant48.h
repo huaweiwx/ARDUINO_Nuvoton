@@ -21,6 +21,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
+#pragma GCC diagnostic ignored "-Wconversion-null"
 
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
@@ -119,6 +120,7 @@ const UARTPinAlt_TypeDef UART0PinAlt[] = {
 };
 const UARTPinAlt_TypeDef UART1PinAlt[] = {
    {{P0_1,SYS_MFP_P01_RXD1}, {P0_0,SYS_MFP_P00_TXD1}},	
+   {{P1_2,SYS_MFP_P12_RXD1}, {P1_3,SYS_MFP_P13_TXD1}},	
 };
 const UARTPinDescription UART_Desc[]={
    {UART0,UART0_MODULE,UART0_IRQn,UART0PinAlt},	
@@ -131,7 +133,6 @@ const SPIPinAlt_TypeDef SPI0PinAlt[] = {
  	 {{P1_7,SYS_MFP_P17_SPICLK0},{P1_6,SYS_MFP_P16_MISO_0},{P1_5,SYS_MFP_P15_MOSI_0}, {P1_4,SYS_MFP_P14_SPISS0}}, 
 };
 const SPIPinAlt_TypeDef SPI1PinAlt[] = {
-	 SPI1,SPI1_MODULE,SPI1_IRQn,CLK_CLKSEL1_SPI1_S_HCLK,
  	 {{P0_7,SYS_MFP_P07_SPICLK1},{P0_6,SYS_MFP_P06_MISO_1},{P0_5,SYS_MFP_P05_MOSI_1}, {P0_4,SYS_MFP_P04_SPISS1}}, 
 };
 const SPIPinDescription SPI_Desc[]={
@@ -144,19 +145,13 @@ const SPIPinDescription SPI_Desc[]={
 const I2CPinAlt_TypeDef I2C0PinAlt[] = {
   {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0}},
 };
-const I2CPinDescription I2C_Desc[]={	
-  {I2C0,I2C0_MODULE,I2C0PinAlt},
+const I2CPinAlt_TypeDef I2C1PinAlt[] = {
+  {{P4_5,SYS_MFP_P45_SDA1},{P4_4, SYS_MFP_P44_SCL1}},
+  {{P2_5,SYS_MFP_P25_SDA1},{P2_4, SYS_MFP_P24_SCL1}},
 };
-#endif
-
-#ifndef PORT_DESC_USERDEF
-const GPIOPortDescription  PORT_Desc[]=
-{
-	{P0,/*0xff, */ (uint32_t)&SYS->P0_MFP,SYS_P0_MFP_P0_ALT_Pos,SYS_P0_MFP_P0_TYPE_Pos}, //32 
-	{P1,/*0xff, */ (uint32_t)&SYS->P1_MFP,SYS_P1_MFP_P1_ALT_Pos,SYS_P1_MFP_P1_TYPE_Pos}, //3
-	{P2,/*0xff, */ (uint32_t)&SYS->P2_MFP,SYS_P2_MFP_P2_ALT_Pos,SYS_P2_MFP_P2_TYPE_Pos}, //19
-	{P3,/*0xff, */ (uint32_t)&SYS->P3_MFP,SYS_P3_MFP_P3_ALT_Pos,SYS_P3_MFP_P3_TYPE_Pos}, //7 TXD
-	{P4,/*0xff, */ (uint32_t)&SYS->P4_MFP,SYS_P4_MFP_P4_ALT_Pos,SYS_P4_MFP_P4_TYPE_Pos}, //12 
+const I2CPinDescription I2C_Desc[]={	
+  {I2C0,I2C0_MODULE,I2C0_IRQn,I2C0PinAlt},
+  {I2C1,I2C1_MODULE,I2C1_IRQn,I2C1PinAlt},
 };
 #endif
 

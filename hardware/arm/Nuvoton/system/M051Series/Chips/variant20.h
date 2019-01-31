@@ -21,6 +21,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
+#pragma GCC diagnostic ignored "-Wconversion-null"
 
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
@@ -114,18 +115,6 @@ const I2CPinAlt_TypeDef I2C0PinAlt[] = {
    {{P3_4,SYS_MFP_P34_SDA0},{P3_5, SYS_MFP_P35_SCL0}},
 };
 const I2CPinDescription I2C_Desc[]={	
-  {I2C0,I2C0_MODULE,I2C0PinAlt},
+  {I2C0,I2C0_MODULE,I2C0_IRQn,I2C0PinAlt},
 };
 #endif
-
-#ifndef PORT_DESC_USERDEF
-const GPIOPortDescription  PORT_Desc[]=
-{
-	{P0,/*0xff, */ (uint32_t)&SYS->P0_MFP,SYS_P0_MFP_P0_ALT_Pos,SYS_P0_MFP_P0_TYPE_Pos}, //32 
-	{P1,/*0xff, */ (uint32_t)&SYS->P1_MFP,SYS_P1_MFP_P1_ALT_Pos,SYS_P1_MFP_P1_TYPE_Pos}, //3
-	{P2,/*0xff, */ (uint32_t)&SYS->P2_MFP,SYS_P2_MFP_P2_ALT_Pos,SYS_P2_MFP_P2_TYPE_Pos}, //19
-	{P3,/*0xff, */ (uint32_t)&SYS->P3_MFP,SYS_P3_MFP_P3_ALT_Pos,SYS_P3_MFP_P3_TYPE_Pos}, //7 TXD
-	{P4,/*0xff, */ (uint32_t)&SYS->P4_MFP,SYS_P4_MFP_P4_ALT_Pos,SYS_P4_MFP_P4_TYPE_Pos}, //12 
-};
-#endif
-

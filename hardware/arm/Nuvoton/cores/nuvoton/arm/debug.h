@@ -38,7 +38,7 @@
  *             from debug port (UART0 or UART1).
  */
 # ifndef  ASSERT_PARAM
-#   define ASSERT_PARAM(expr)  { if (!(expr)) { AssertError((char*)__FILE__, __LINE__); } }
+#   define ASSERT_PARAM(expr)  { if (!(expr)) { AssertError((uint8_t*)__FILE__, __LINE__); } }
 # endif
 
 #else
@@ -75,7 +75,7 @@ void debug(const char *format, ...);
 void debug_if(int condition, const char *format, ...);
 
 void _Error_Handler(char* file, uint32_t line);
-void AssertError(char* file, uint32_t line);
+void AssertError(uint8_t* file, uint32_t line);
 
 #ifdef __cplusplus
 }

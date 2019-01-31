@@ -1,3 +1,27 @@
+/*
+  variant100.h
+  
+  Copyright (c) 2018 huaweiwx@sina.com 2018.11.1
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
+#pragma GCC diagnostic ignored "-Wconversion-null"
 
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
@@ -13,23 +37,23 @@ const GPIOPinDescription GPIO_Desc[] =
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //8
   {PA, BIT11, {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA11_Msk, SYS_ALT_MFP_PA11_Msk, NULL,                   NULL,                 SYS_GPA_MFP_PA11_GPIO}}, //9
   {PA, BIT10, {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA10_Msk, SYS_ALT_MFP_PA10_Msk, NULL,                   NULL,                 SYS_GPA_MFP_PA10_GPIO}}, //10
-  {PA, BIT9,  {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA9_Msk, NULL,                 NULL,                   NULL,                 SYS_GPA_MFP_PA9_GPIO }}, //11
-  {PA, BIT8,  {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA8_Msk, NULL,                 NULL,                   NULL,                 SYS_GPA_MFP_PA8_GPIO }}, //12
-  {PD, BIT8,  {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD8_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD8_GPIO }}, //13
-  {PD, BIT9,  {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD9_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD9_GPIO }}, //14
+  {PA, BIT9,  {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA9_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPA_MFP_PA9_GPIO }}, //11
+  {PA, BIT8,  {(uint32_t)&SYS->GPA_MFP, SYS_GPA_MFP_PA8_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPA_MFP_PA8_GPIO }}, //12
+  {PD, BIT8,  {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD8_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD8_GPIO }}, //13
+  {PD, BIT9,  {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD9_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD9_GPIO }}, //14
   {PD, BIT10, {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD10_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD10_GPIO}}, //15
   {PD, BIT11, {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD11_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD11_GPIO}}, //16
   {PD, BIT12, {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD12_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD12_GPIO}}, //17
   {PD, BIT13, {(uint32_t)&SYS->GPD_MFP, SYS_GPD_MFP_PD13_Msk, NULL,                 NULL,                   NULL,                 SYS_GPD_MFP_PD13_GPIO}}, //18
-  {PB, BIT4,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB4_Msk, NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB4_GPIO }}, //19
-  {PB, BIT5,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB5_Msk, NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB5_GPIO }}, //20
-  {PB, BIT6,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB6_Msk, NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB6_GPIO }}, //21
-  {PB, BIT7,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB7_Msk, NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB7_GPIO }}, //22
+  {PB, BIT4,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB4_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB4_GPIO }}, //19
+  {PB, BIT5,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB5_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB5_GPIO }}, //20
+  {PB, BIT6,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB6_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB6_GPIO }}, //21
+  {PB, BIT7,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB7_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB7_GPIO }}, //22
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //23
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //24
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //25
-  {PE, BIT7,  {(uint32_t)&SYS->GPE_MFP, SYS_GPE_MFP_PE7_Msk, NULL,                 NULL,                   NULL,                 SYS_GPE_MFP_PE7_GPIO }}, //26
-  {PE, BIT8,  {(uint32_t)&SYS->GPE_MFP, SYS_GPE_MFP_PE8_Msk, NULL,                 NULL,                   NULL,                 SYS_GPE_MFP_PE8_GPIO }}, //27
+  {PE, BIT7,  {(uint32_t)&SYS->GPE_MFP, SYS_GPE_MFP_PE7_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPE_MFP_PE7_GPIO }}, //26
+  {PE, BIT8,  {(uint32_t)&SYS->GPE_MFP, SYS_GPE_MFP_PE8_Msk,  NULL,                 NULL,                   NULL,                 SYS_GPE_MFP_PE8_GPIO }}, //27
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //28
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //29
   {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //30
@@ -135,23 +159,20 @@ const ADCPinDescription ADC_Desc[] = {
 
 #ifndef SPI_DESC_USERDEF
 const SPIPinAlt_TypeDef SPI0PinAlt[] = {
-	{{60,SYS_GPC_MFP_PC9_SPI1_CLK},    {58,SYS_GPC_MFP_PC11_SPI1_MOSI0 }},
-	{{59,SYS_GPC_MFP_PC10_SPI1_MISO0 },{61,SYS_GPC_MFP_PC8_SPI1_SS0}},
+	{{60,SYS_GPC_MFP_PC9_SPI1_CLK, NULL, NULL, NULL},
+     {58,SYS_GPC_MFP_PC11_SPI1_MOSI0, NULL, NULL, NULL},
+	 {59,SYS_GPC_MFP_PC10_SPI1_MISO0, NULL, NULL, NULL},
+	 {61,SYS_GPC_MFP_PC8_SPI1_SS0, NULL, NULL, NULL}},
 };
 const SPIPinAlt_TypeDef SPI1PinAlt[] = {
-  {SPI1,SPI1_MODULE,SPI1_IRQn,CLK_CLKSEL1_SPI1_S_HCLK,
-    {{PC_9 ,SYS_GPC_MFP_PC9_SPI1_CLK},    {PC_11,SYS_GPC_MFP_PC11_SPI1_MOSI0 },
-     {PC_10,SYS_GPC_MFP_PC10_SPI1_MISO0 },{PC_8 ,SYS_GPC_MFP_PC8_SPI1_SS0}}},
+    {{PC_9 ,SYS_GPC_MFP_PC9_SPI1_CLK, NULL, NULL, NULL},    {PC_11,SYS_GPC_MFP_PC11_SPI1_MOSI0, NULL, NULL, NULL},
+     {PC_10,SYS_GPC_MFP_PC10_SPI1_MISO0, NULL, NULL, NULL},{PC_8 ,SYS_GPC_MFP_PC8_SPI1_SS0, NULL, NULL, NULL}},
 };
 const SPIPinAlt_TypeDef SPI2PinAlt[] = {
-  {
-    SPI2, SPI2_MODULE, SPI2_IRQn, CLK_CLKSEL1_SPI2_S_HCLK,
-    {
-      {PD_1, SYS_GPD_MFP_PD1_SPI2_CLK  , NULL, NULL, NULL},
+     {{PD_1, SYS_GPD_MFP_PD1_SPI2_CLK  , NULL, NULL, NULL},
       {PD_3, SYS_GPD_MFP_PD3_SPI2_MOSI0, NULL, NULL, NULL},
       {PD_2, SYS_GPD_MFP_PD2_SPI2_MISO0, NULL, NULL, NULL},
       {PD_0, SYS_GPD_MFP_PD0_SPI2_SS0  , NULL, NULL, NULL}
-    }
   },
 };
 const SPIPinDescription SPI_Desc[] = {
@@ -172,9 +193,9 @@ const UARTPinAlt_TypeDef UART2PinAlt[] = {
   {{PD_14, SYS_GPD_MFP_PD14_UART2_RXD, NULL, NULL, NULL},{PD_15, SYS_GPD_MFP_PD15_UART2_TXD, NULL, NULL, NULL}},
 };
 const UARTPinDescription UART_Desc[] = {
-  {UART0, UART0_MODULE, UART0_IRQn, UART0PinAlt},
+  {UART0, UART0_MODULE, UART02_IRQn, UART0PinAlt},
   {UART1, UART1_MODULE, UART1_IRQn, UART1PinAlt},
-  {UART2, UART2_MODULE, UART2_IRQn, UART2PinAlt},
+  {UART2, UART2_MODULE, UART02_IRQn, UART2PinAlt},
 };
 #endif
 
@@ -186,8 +207,8 @@ const I2CPinAlt_TypeDef I2C1PinAlt[] = {
   {{PA_11,SYS_GPA_MFP_PA11_I2C1_SCL,NULL, NULL, NULL},{PA_10,SYS_GPA_MFP_PA10_I2C1_SDA,NULL, NULL, NULL}},
 };
 const I2CPinDescription I2C_Desc[] = {
-  {I2C0, I2C0_MODULE,I2C0PinAlt},
-  {I2C1, I2C1_MODULE,I2C1PinAlt},
+  {I2C0, I2C0_MODULE,I2C0_IRQn,I2C0PinAlt},
+  {I2C1, I2C1_MODULE,I2C1_IRQn,I2C1PinAlt},
 };
 #endif
 

@@ -108,6 +108,7 @@ typedef struct _I2CPinDescription
 {
   I2C_T *I;
   uint32_t module;
+  IRQn_Type irq;
   const I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 

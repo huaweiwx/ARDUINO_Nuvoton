@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include "M058S.h"
 
-
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 /*----------------------------------------------------------------------------
   Clock Variable definitions

@@ -21,6 +21,8 @@
 
  #if defined(CHIP128P)
   #include "Chips/variant128.h"
+ #elif defined(CHIP100P)
+  #include "Chips/variant100.h"
  #elif defined(CHIP64P)
   #include "Chips/variant64.h"
  #elif defined(CHIP48P)

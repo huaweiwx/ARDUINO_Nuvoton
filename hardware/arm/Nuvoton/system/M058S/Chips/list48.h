@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M0516LDE.csv
+ * @file     M058(LQFP48)
  * @version  V1.13
  * @Date     2018/10/19-12:10:43 
  * @brief    NuMicro pin descriptions file
@@ -117,8 +117,8 @@
 #define MISO_PIN   P1_6
 #define  SCK_PIN   P1_7
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
+#define  SDA_PIN   P3_4
+#define  SCL_PIN   P3_5
 
 
 static const uint8_t A0 = 0;

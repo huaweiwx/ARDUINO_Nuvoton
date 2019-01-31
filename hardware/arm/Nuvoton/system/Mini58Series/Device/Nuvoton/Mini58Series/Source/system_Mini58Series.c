@@ -27,11 +27,6 @@ uint32_t CyclesPerUs;                    /*!< Cycles per micro second */
  *  @return none
  */
 
-void SystemInit (void)
-{
-
-}
-
 /**
   * @brief  This function is used to update the variable SystemCoreClock
   *   and must be called whenever the core clock is changed.
@@ -62,6 +57,24 @@ void SystemCoreClockUpdate (void)
     SystemCoreClock = (u32CoreFreq/((CLK->CLKDIV & CLK_CLKDIV_HCLKDIV_Msk) + 1));
     CyclesPerUs = (SystemCoreClock + 500000) / 1000000;
 }
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Function: SystemInit                                                                                    */
+/*                                                                                                         */
+/* Parameters:                                                                                             */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Returns:                                                                                                */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Description:                                                                                            */
+/*      The necessary initialization of system.                                                            */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
+__attribute__((weak))
+void SystemInit(void){
+}
+
 
 #if 0 // USE_ASSERT  /*move to arduino debug.cpp huaweiwx@sina.com 2018.10.18*/
 

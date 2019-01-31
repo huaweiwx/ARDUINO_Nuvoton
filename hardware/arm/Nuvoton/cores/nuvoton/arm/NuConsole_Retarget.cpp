@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     NuConsole_Retarget.c
+ * @file     NuConsole_Retarget.cpp
  * @version  V1.01
  * $Revision: 0 $
  * $Date: 17/02/23 0:00p $
@@ -14,21 +14,26 @@
 
 #include "unistd.h"
 #include "cmsis_gcc.h"
+#include <reent.h>        // required for _write_r
 
-NuConsoleCLASS NuConsole;
+NuConsoleCLASS   NuConsole;
 static const int print_fileno = 3;
+
+static Print *print;
+static Print *stdPrint = &Serial;
+static Print *errPrint = &Serial;
 
 /**
   * @brief   C library retargetting
   * @param   ch Character to send out
   * @return  None
   */
-extern "C"
-void _ttywrch(int ch)
-{
-	NuConsole_Write((const uint8_t *)&ch, 1);
-	return;
-}
+//extern "C"
+//void _ttywrch(int ch)
+//{
+//	NuConsole_Write((const uint8_t *)&ch, 1);
+//	return;
+//}
 
 /**
   * @brief      Write character to stream
@@ -60,9 +65,7 @@ void _ttywrch(int ch)
 //	return ch;
 //}
 
-static Print *print;
-
-int setPrintOutput(Print *p) {
+extern "C" int setPrintOutput(Print *p) {
     if (p == NULL) {
         print = NULL;
         return 0;
@@ -78,13 +81,28 @@ int setPrintOutput(Print *p) {
     return print_fileno;
 }
 
+extern "C" void setStdPrintDev(Print *p,int file) {
+    if((file == STDOUT_FILENO)||(file == STDIN_FILENO)){
+		stdPrint = p;
+	}
+#if (USE_ICEPRINTERR < 1) && (USE_SWOPRINTERR < 1)  /*NUVOTON not swo , USE_SWOPRINTERR compatible with stm32/efm32*/
+	else if(file == STDERR_FILENO){
+		errPrint = p;		
+	}
+#endif
+}
+
 extern "C" int _write(int file, char *ptr, int len ) {
 	if (file == STDOUT_FILENO){
-		return Serial.write(ptr, len);
+		return stdPrint->write(ptr, len);
 	} 
 	if (file == STDERR_FILENO) {
-		Serial.write(ptr, len);
-		Serial.flush();
+#if (USE_ICEPRINTERR < 1) && (USE_SWOPRINTERR < 1)  /*NUVOTON not swo , USE_SWOPRINTERR compatible with stm32/efm32*/
+		errPrint->write(ptr, len);
+		((Stream *)errPrint)->flush();
+#else
+	    NuConsole_Write(ptr,len);
+#endif
 		return len;
 	} 
 	if (file == print_fileno) {
@@ -93,6 +111,13 @@ extern "C" int _write(int file, char *ptr, int len ) {
 	
 	// TODO show error
 	return 0;  //return no-void warning add by huaweiwx@sina.com 2017.7.21
+}
+
+struct _reent;
+extern "C"  int _write_r(struct _reent *r, int file, const void *ptr, size_t len) {
+  (void) r;     /* Not used, avoid warning */
+  _write(file, (char *)ptr, (int)len);
+  return len;
 }
 
 /*** (C) COPYRIGHT 2016 Nuvoton Technology Corp. ***/

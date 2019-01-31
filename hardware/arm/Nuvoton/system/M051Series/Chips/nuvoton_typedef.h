@@ -107,6 +107,7 @@ typedef struct _I2CPinDescription
 {
   I2C_T *I;
   uint32_t module;
+  IRQn_Type irq;
   const I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 
@@ -141,6 +142,7 @@ extern const PWMPinDescription PWM_Desc[];
 
 #define ADC_MAX_COUNT 6
 extern const ADCPinDescription ADC_Desc[];
+#define ADC_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
 
 #define SPI_MAX_COUNT 1
 #define SPI_CHANNELS_NUM 1

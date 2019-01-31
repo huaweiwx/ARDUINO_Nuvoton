@@ -9,6 +9,7 @@
  * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #include "NUC200Series.h"
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 /** @addtogroup NUC200_Device_Driver NUC200 Device Driver
   @{

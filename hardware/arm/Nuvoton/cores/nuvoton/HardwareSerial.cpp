@@ -381,15 +381,16 @@
   #endif
   
 #else //if defined(Mini58Series) || defined(Mini51Series) || defined(M051Series) || defined(M058S)
-  #ifdef CLK_CLKSEL1_UART_S_IRC22M
-  #  define CLK_CLKSEL1_UART_S_HIRC CLK_CLKSEL1_UART_S_IRC22M
-  #elif defined(CLK_CLKSEL1_UARTSEL_HIRC)
-  #  define CLK_CLKSEL1_UART_S_HIRC CLK_CLKSEL1_UARTSEL_HIRC  //mini58
+  #ifndef CLK_CLKSEL1_UART_S_HIRC
+    #ifdef CLK_CLKSEL1_UART_S_IRC22M
+    #  define CLK_CLKSEL1_UART_S_HIRC CLK_CLKSEL1_UART_S_IRC22M
+    #elif defined(CLK_CLKSEL1_UARTSEL_HIRC)
+    #  define CLK_CLKSEL1_UART_S_HIRC CLK_CLKSEL1_UARTSEL_HIRC  //mini58
+    #endif
+    #ifdef UART_INTEN_RDAIEN_Msk
+    # define UART_IER_RDA_IEN_Msk UART_INTEN_RDAIEN_Msk
+    #endif
   #endif
-  #ifdef UART_INTEN_RDAIEN_Msk
-  # define UART_IER_RDA_IEN_Msk UART_INTEN_RDAIEN_Msk
-  #endif
-  
   #if(UART_MAX_COUNT>0)
     ring_buffer rx_buffer0 = { { 0 }, 0, 0};  /* for UAR0_IRQ */
     HardwareSerial Serial0(UART_Desc[0].U, 0,UART0_LOC, CLK_CLKSEL1_UART_S_HIRC, 1, UART_Desc[0].irq, &rx_buffer0);

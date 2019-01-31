@@ -46,6 +46,24 @@ void SystemCoreClockUpdate (void)
     CyclesPerUs = (SystemCoreClock + 500000) / 1000000;
 }
 
+/*---------------------------------------------------------------------------------------------------------*/
+/* Function: SystemInit                                                                                    */
+/*                                                                                                         */
+/* Parameters:                                                                                             */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Returns:                                                                                                */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Description:                                                                                            */
+/*      The necessary initialization of system.                                                           */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
+__attribute__((weak))
+void SystemInit(void){
+}
+
+
 #if 0 // USE_ASSERT  /*move to arduino debug.cpp huaweiwx@sina.com 2018.10.18*/
 
 /**

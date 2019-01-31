@@ -46,7 +46,9 @@ extern uint32_t _estack;
 #define IRAM1_ADDR      (0x20080000u) /**< Internal RAM 1 base address */
 #define NFC_RAM_ADDR    (0x20100000u) /**< NAND Flash Controller RAM base address */
 
+
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void SystemInit(void);
 int main(void);
 /** \endcond */
 
@@ -184,6 +186,9 @@ void Reset_Handler(void)
 		*pDest++ = 0;
 	}
 
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
 	/* Initialize the C library */
 
 	// Arduino: we must setup hardware before doing this

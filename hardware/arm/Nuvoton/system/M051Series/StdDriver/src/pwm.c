@@ -9,6 +9,7 @@
  * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #include "M051Series.h"
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 /** @addtogroup M051_Device_Driver M051 Device Driver
   @{

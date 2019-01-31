@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M0516ZDE(QFN33)
+ * @file     M058(QFN33)
  * @version  V1.13
  * @Date     2018/10/19-12:23:34 
  * @brief    NuMicro pin descriptions file
@@ -86,8 +86,8 @@ PIN(1,4,32)  /* /AIN4/ACMP0_N          */
 #define MISO_PIN   P1_6
 #define  SCK_PIN   P1_7
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
+#define  SDA_PIN   P3_4
+#define  SCL_PIN   P3_5
 
 
 static const uint8_t A0 = 0;

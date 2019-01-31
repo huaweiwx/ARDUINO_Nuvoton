@@ -1,18 +1,28 @@
 
- #if defined(CHIP128P)
-  #include "list128.h"
- #elif defined(CHIP100P)
-  #include "list100.h"
- #elif defined(CHIP64P)
-  #include "list64.h"
- #elif defined(CHIP48P)
-  #include "list48.h"
- #elif defined(CHIP33P)
-  #include "list33.h"
- #elif defined(CHIP28P)
-  #include "list28.h"
- #elif defined(CHIP20P)
-  #include "list20.h"
- #endif
+#if defined(CHIP100P)
+  #if defined(M453VG)||defined(M453VE)
+    #include "list100_3.h"
+  #else
+    #include "list100_1.h"
+  #endif
+#elif defined(CHIP64P)
+  #if  defined(M453RG)||defined(M453RE)
+    #include "list64_3.h"
+  #elif defined(M452RG)||defined(M452RE)
+    #include "list64_2.h"
+  #else
+    #include "list64_1.h"
+  #endif
+#elif defined(CHIP48P)
+  #if defined(M453LG)||defined(M453LE)
+    #include "list48_3.h"
+  #elif defined(M452LG)||defined(M452LE)
+    #include "list48_2.h"
+  #else
+    #include "list48_1.h"
+  #endif	  
+#else
+  #error "! undefined ! "
+#endif
 
  

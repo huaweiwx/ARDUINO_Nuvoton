@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M058SSAN(LQFP64)
+ * @file     M058(LQFP64)
  * @version  V1.13
  * @Date     2018/10/19-12:33:47 
  * @brief    NuMicro pin descriptions file
@@ -13,7 +13,7 @@
 PIN(1,5,1 ), /* /AIN5/MOSI        */\
 PIN(1,6,2 ), /* /AIN6/MISO        */\
 PIN(1,7,3 ), /* /AIN7/SPICLK      */\
-     /* 4 ),   nRST              */\
+     /* 4       nRST              */\
 PIN(3,0,5 ), /* /RXD              */\
       /*6 ),    AVSS              */\
 PIN(5,1,7 ), /* /T1EX             */\
@@ -29,9 +29,9 @@ PIN(3,6,16), /* /CKO              */\
 PIN(3,7,17), /*                   */\
 PIN(7,0,18), /* /XTAL2            */\
 PIN(7,1,19), /* /XTAL1            */\
-      /*20),    VSS              */\
-      /*21),    VDD              */\
-      /*22),    LDO_CAP          */\
+      /*20       VSS              */\
+      /*21       VDD              */\
+      /*22       LDO_CAP          */\
 PIN(5,4,23), /*                   */\
 PIN(5,5,24), /*                   */\
 PIN(5,6,25), /*                   */\
@@ -62,10 +62,10 @@ PIN(0,3,49), /* /RTS0/RXD         */\
 PIN(0,2,50), /* /CTS0/TXD         */\
 PIN(0,1,51), /*                   */\
 PIN(0,0,52), /*                   */\
-      /*53),     VSS              */\
-      /*54),     VDD              */\
-      /*55),     AVDD             */\
-      /*56),     Vref             */\
+      /*53       VSS              */\
+      /*54       VDD              */\
+      /*55       AVDD             */\
+      /*56       Vref             */\
 PIN(6,6,57), /*                   */\
 PIN(6,7,58), /*                   */\
 PIN(1,0,59), /* /AIN0/T2          */\
@@ -80,9 +80,9 @@ PIN(4,2,64)  /* /PWM2             */
 PIN(1,5,1 ), /* /AIN5/MOSI        */\
 PIN(1,6,2 ), /* /AIN6/MISO        */\
 PIN(1,7,3 ), /* /AIN7/SPICLK      */\
-     /* 4 ),   nRST              */\
+     /* 4       nRST              */\
 PIN(3,0,5 ), /* /RXD              */\
-      /*6 ),    AVSS              */\
+      /*6       AVSS              */\
 PIN(5,1,7 ), /* /T1EX             */\
 PIN(5,2,8 ), /* /SDA0             */\
 PIN(5,3,9 ), /* /SCL0             */\
@@ -96,9 +96,9 @@ PIN(3,6,16), /* /CKO              */\
 PIN(3,7,17), /*                   */\
 PIN(7,0,18), /* /XTAL2            */\
 PIN(7,1,19), /* /XTAL1            */\
-      /*20),     VSS              */\
-      /*21),     VDD              */\
-      /*22),     LDO_CAP          */\
+      /*20       VSS              */\
+      /*21       VDD              */\
+      /*22       LDO_CAP          */\
 PIN(5,4,23), /*                   */\
 PIN(5,5,24), /*                   */\
 PIN(5,6,25), /*                   */\
@@ -129,10 +129,10 @@ PIN(0,3,49), /* /RTS0/RXD         */\
 PIN(0,2,50), /* /CTS0/TXD         */\
 PIN(0,1,51), /*                   */\
 PIN(0,0,52), /*                   */\
-      /*53),    VSS              */\
-      /*54),    VDD              */\
-      /*55),    AVDD             */\
-      /*56),    Vref             */\
+      /*53       VSS              */\
+      /*54       VDD              */\
+      /*55       AVDD             */\
+      /*56       Vref             */\
 PIN(6,6,57), /*                   */\
 PIN(6,7,58), /*                   */\
 PIN(1,0,59), /* /AIN0/T2          */\
@@ -150,8 +150,8 @@ PIN(4,2,64)  /* /PWM2             */
 #define MISO_PIN   P1_6
 #define  SCK_PIN   P1_7
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
+#define  SDA_PIN   P3_4
+#define  SCL_PIN   P3_5
 
 
 static const uint8_t A0 = 0;

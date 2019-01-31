@@ -239,9 +239,9 @@ void hard_fault_handler_hook(uint32_t lr, uint32_t msp, uint32_t psp) __attribut
 //AssertError() as stm32_hal. huaweiwx@sina.com  2017.12.8
 
 extern "C"
-void AssertError(char* file, uint32_t line)
+void AssertError(uint8_t* file, uint32_t line)
 {
-	errorCallback(file,line);
+	errorCallback((char *)file,line);
 	while(1)
 		yield();
 };

@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M0516LDE.csv
+ * @file     M051(LQFP48)
  * @version  V1.13
  * @Date     2018/10/19-12:10:43 
  * @brief    NuMicro pin descriptions file

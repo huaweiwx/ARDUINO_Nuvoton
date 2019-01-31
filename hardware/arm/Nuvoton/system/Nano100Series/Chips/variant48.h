@@ -150,7 +150,7 @@ const I2CPinAlt_TypeDef I2C1PinAlt[] = {
   {{PA_11, SYS_PA_H_MFP_PA11_MFP_I2C1_SCL},{PA_10, SYS_PA_H_MFP_PA10_MFP_I2C1_SDA}},  /* Loc 0 */
 };
 const I2CPinDescription I2C_Desc[] = {
-  {I2C0, I2C0_MODULE, I2C0PinAlt},
-  {I2C1, I2C1_MODULE, I2C1PinAlt},
+  {I2C0, I2C0_MODULE,I2C0_IRQn, I2C0PinAlt},
+  {I2C1, I2C1_MODULE,I2C1_IRQn, I2C1PinAlt},
 };
 #endif

@@ -317,6 +317,7 @@ size_t Print::printf(const char* format, ...) {
     return ret;
 }
 
+extern "C" int setPrintOutput(Print *p);
 size_t Print::printf(const char* format, va_list args) {
     int fileno = setPrintOutput(this);
 

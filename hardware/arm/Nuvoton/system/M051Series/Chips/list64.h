@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M058SSAN(LQFP64)
+ * @file     M051(LQFP64)
  * @version  V1.13
  * @Date     2018/10/19-12:33:47 
  * @brief    NuMicro pin descriptions file

@@ -326,6 +326,7 @@ Reset_Handler:
 	ldr	r1, =0
 	str	r1, [r0]
 
+
 /*huawei add*/
     bl __libc_init_array  
 	

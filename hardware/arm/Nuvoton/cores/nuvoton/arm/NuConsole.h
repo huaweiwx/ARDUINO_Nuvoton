@@ -65,6 +65,8 @@ extern "C"
 {
 #endif
 // Internal: what will be the
+//int      setPrintOutput(Print *p);
+//void     setStdPrintDev(Print *p,int file);
 
 void     NuConsole_Init(void);
 void     NuConsole_ConfigBuffer(uint32_t uTxFIFO_Mode);
@@ -79,18 +81,17 @@ uint32_t NuConsole_Read(uint8_t *pucBuffer, uint32_t uNumBytes);
 #ifdef __cplusplus
 }
 
-extern "C" int setPrintOutput(Print *p);
-
 #include "Stream.h"
-class NuConsoleCLASS : public Stream {
-
+class NuConsoleCLASS:public Stream {
   public:
-//    NuConsoleClass() {};
+
+     void NuConsoleClass() {
+     }
 
     /* Set up/tear down */
     void begin(uint32_t baud = 115200) {
+	  NuConsole_Init();
       UNUSED(baud);
-      NuConsole_Init();
     }
 
 #if __LOG_LEVEL  /*__LOG_LEVEL > 0*/

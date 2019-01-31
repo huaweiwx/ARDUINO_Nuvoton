@@ -14,6 +14,7 @@
 #include "M051Series.h"
 
 
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 /*----------------------------------------------------------------------------
   Clock Variable definitions
@@ -22,6 +23,7 @@ uint32_t SystemCoreClock  = __HSI;              /*!< System Clock Frequency (Cor
 uint32_t CyclesPerUs      = (__HSI / 1000000);  /*!< Cycles per micro second             */
 uint32_t PllClock         = __HSI;              /*!< PLL Output Clock Frequency          */
 const uint32_t gau32ClkSrcTbl[] = {__HXT, NULL, __HSI, __LIRC, NULL, NULL, NULL, __HIRC};
+//const uint32_t gau32ClkSrcTbl[] =   {__HXT, 0,    __HSI, __LIRC, 0,    0,       0, __HIRC};
 
 
 /**

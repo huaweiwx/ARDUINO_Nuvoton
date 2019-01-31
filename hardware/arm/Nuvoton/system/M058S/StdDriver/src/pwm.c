@@ -9,6 +9,7 @@
  * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #include "M058S.h"
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 /** @addtogroup Standard_Driver Standard Driver
   @{

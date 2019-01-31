@@ -1,21 +1,28 @@
 /*
-  Copyright (c) 2011 Arduino.  All right reserved.
+  variant164.h
+  
+  Copyright (c) 2018 huaweiwx@sina.com 2018.11.1
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU Lesser General Public License for more details.
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
 
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
 */
 
+#pragma GCC diagnostic ignored "-Wconversion-null"
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
@@ -143,8 +150,8 @@ const UARTPinDescription UART_Desc[] = {
 
 #ifndef I2C_DESC_USERDEF
 const I2CPinDescription I2C_Desc[] = {
-  {I2C1, I2C1_MODULE, {{9, SYS_GPA_MFP_PA11_I2C1_SCL, NULL, NULL, NULL}, {10, SYS_GPA_MFP_PA10_I2C1_SDA, NULL, NULL, NULL}}},
-  {I2C0, I2C0_MODULE, {{11, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL}, {12, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL}}},
+  {I2C1, I2C1_MODULE,I2C1_IRQn, {{9, SYS_GPA_MFP_PA11_I2C1_SCL, NULL, NULL, NULL}, {10, SYS_GPA_MFP_PA10_I2C1_SDA, NULL, NULL, NULL}}},
+  {I2C0, I2C0_MODULE,I2C0_IRQn, {{11, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL}, {12, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL}}},
 };
 #endif
 

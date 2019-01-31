@@ -235,15 +235,15 @@ const UARTPinDescription UART_Desc[] = {
 
 #ifndef I2C_DESC_USERDEF
 const I2CPinAlt_TypeDef I2C0PinAlt[] = {
-  {{PA_9,  SYS_PA_H_MFP_PA9_MFP_I2C0_SCL},{PA_8, SYS_PA_H_MFP_PA8_MFP_I2C0_SDA }},  /* Loc 0*/
-  {{PA_5,  SYS_PA_L_MFP_PA5_MFP_I2C0_SCL},{PA_4, SYS_PA_L_MFP_PA4_MFP_I2C0_SDA }},  /* Loc 1*/
+  {{PA_9, SYS_PA_H_MFP_PA9_MFP_I2C0_SCL}, {PA_8, SYS_PA_H_MFP_PA8_MFP_I2C0_SDA }},  /* Loc 0*/
+  {{PA_5, SYS_PA_L_MFP_PA5_MFP_I2C0_SCL}, {PA_4, SYS_PA_L_MFP_PA4_MFP_I2C0_SDA }},  /* Loc 1*/
   {{PA_13,SYS_PA_H_MFP_PA13_MFP_I2C0_SCL},{PA_12,SYS_PA_H_MFP_PA12_MFP_I2C0_SDA}},  /* Loc 2*/
 };
 const I2CPinAlt_TypeDef I2C1PinAlt[] = {
   {{PA_11,SYS_PA_H_MFP_PA11_MFP_I2C1_SCL},{PA_10,SYS_PA_H_MFP_PA10_MFP_I2C1_SDA}},  /* Loc 0 */
 };
 const I2CPinDescription I2C_Desc[] = {
-  {I2C0, I2C0_MODULE, I2C0PinAlt},
-  {I2C1, I2C1_MODULE, I2C1PinAlt},
+  {I2C0, I2C0_MODULE,I2C0_IRQn, I2C0PinAlt},
+  {I2C1, I2C1_MODULE,I2C1_IRQn, I2C1PinAlt},
 };
 #endif

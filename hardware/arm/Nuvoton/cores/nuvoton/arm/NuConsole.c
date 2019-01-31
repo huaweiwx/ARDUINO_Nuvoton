@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     NuConsole.cpp
+ * @file     NuConsole.c
  * @version  V1.01
  * $Revision: 0 $
  * $Date: 17/02/23 0:00p $
@@ -19,6 +19,7 @@
 #endif
 
 NUCONSOLE_INFOBLOCK NuConsole_InfoBlock;
+
 static uint8_t g_acTxBuffer[NUCOSOLE_TX_BUFFER_SIZE];
 static uint8_t g_acRxBuffer[NUCOSOLE_RX_BUFFER_SIZE];
 

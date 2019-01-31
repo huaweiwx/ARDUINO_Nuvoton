@@ -24,36 +24,21 @@
 typedef struct _PinType
 {
   uint32_t num;
-#if defined(__M451__) | defined(__NANO100__) | defined(__NANO1X2__) |defined(M480)
-  uint32_t type;
-#elif defined(__NUC240__)
-  uint32_t type;
-  uint32_t AMsk;
-  uint32_t AMsk1;
-  uint32_t AMsk2;
-#elif defined(__NUC131__)
   uint32_t type;
   uint32_t AMsk;
   uint32_t AMsk2;
   uint32_t AMsk3;
   uint32_t AMsk4;
-#endif
 } PinType;
 
 typedef struct _PinDescription
 {
   uint32_t MFP;
   uint32_t Mask;
-#if defined(__NUC240__)
-  uint32_t ALTMsk;
-  uint32_t ALT1Msk;
-  uint32_t ALT2Msk;
-#elif defined(__NUC131__)
   uint32_t ALTMsk;
   uint32_t ALT2Msk;
   uint32_t ALT3Msk;
   uint32_t ALT4Msk;
-#endif
   uint32_t Type;
 } PinDescription;
 
@@ -63,6 +48,7 @@ typedef struct _GPIOPinDescription
   uint32_t bit;
   PinDescription Pin;
 } GPIOPinDescription;
+
 
 typedef struct _ADCPinDescription
 {
@@ -90,21 +76,33 @@ typedef struct _PWMPinDescription
   PinType pintype;
 } PWMPinDescription;
 
+typedef struct _SPIPinAlt
+{
+  PinType clk;
+  PinType mosi;
+  PinType miso;
+  PinType ss;
+} SPIPinAlt_TypeDef;
 typedef struct _SPIPinDescription
 {
   SPI_T *S;
   uint32_t module;
   IRQn_Type irq;
   uint32_t clksel;
-  PinType pintype[4];
+  const SPIPinAlt_TypeDef* pinAlt;
 } SPIPinDescription;
 
+typedef struct _UARTPinAlt
+{
+  PinType rxd;
+  PinType txd;
+} UARTPinAlt_TypeDef;
 typedef struct _UARTPinDescription
 {
   UART_T *U;
   uint32_t module;
   IRQn_Type irq;
-  PinType pintype[2];
+  const UARTPinAlt_TypeDef* pinAlt;
 } UARTPinDescription;
 
 #if defined(CAN0) /* M451/NUC240*/
@@ -117,11 +115,17 @@ typedef struct _CANPinDescription
 } CANPinDescription;
 #endif
 
+typedef struct _I2CPinAlt
+{
+  PinType scl;
+  PinType sda;
+} I2CPinAlt_TypeDef;
 typedef struct _I2CPinDescription
 {
   I2C_T *I;
   uint32_t module;
-  PinType pintype[2];
+  IRQn_Type irq;
+  I2CPinAlt_TypeDef* pinAlt;
 } I2CPinDescription;
 
 

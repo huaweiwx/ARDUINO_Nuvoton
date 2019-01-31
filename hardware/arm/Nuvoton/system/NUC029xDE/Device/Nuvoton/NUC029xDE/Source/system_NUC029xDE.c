@@ -69,6 +69,7 @@ void SystemCoreClockUpdate(void)             /* Get Core Clock Frequency      */
 /*      The necessary initialization of system.                                                           */
 /*                                                                                                         */
 /*---------------------------------------------------------------------------------------------------------*/
-void SystemInit(void)
-{
+__attribute__((weak))
+void SystemInit(void){
 }
+

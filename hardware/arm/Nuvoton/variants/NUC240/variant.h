@@ -46,12 +46,12 @@ PIN(E,8,  39), \
 PIN(D,2,  40), /* SPI2_MISO0                           */\
 PIN(D,1,  41), /* SPI2_CLK                             */\
 PIN(D,3,  42), /* SPI2_MOSI0                           */\
-/* (D,4,  43), /* SPI2_MISO1                           */\
+/* (D,4,  43),    SPI2_MISO1                           */\
 PIN(C,13, 44), /* SPI1_MOSI1                      */\
 PIN(D,8,  45), /*SPI3_SS0                         */\
 PIN(B,8,  46), /* TM0/STADC/CLKO                  */\
 PIN(D,9,  47), /*SPI3_CLK                         */\
-/* (A,15, 48), /* PWM3/I2S_MCLK/SC2_PWR           */\
+/* (A,15, 48),    PWM3/I2S_MCLK/SC2_PWR           */\
 PIN(D,10, 49), /*SPI3_MISO0                       */\
 PIN(C,0,  50), /* SPI0_SS0/I2S_LRCLK              */\
 PIN(D,11, 51), /*SPI3_MOSI0                       */\
@@ -87,8 +87,8 @@ PIN(E,4,  80), \
 PIN(E,13, 81), \
 PIN(B,13, 82), /*ACMP1_O/AD1                     */\
 PIN(D,0,  83)  /* SPI2_SS0                       */\
-/* PIN(F,0,  84), /* XT1_OUT     */
-/* PIN(F,1,  85), /* XT1_IN      */
+/* PIN(F,0,  84),   XT1_OUT     */
+/* PIN(F,1,  85),   XT1_IN      */
 
 
   #define LED_BUILTIN      PA_12  /*PA12*/

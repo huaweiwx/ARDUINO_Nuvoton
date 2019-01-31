@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     M058SFAN(TSSOP20)
+ * @file     M051(TSSOP20)
  * @version  V1.00
  * @Date     2018/10/19-12:33:59 
  * @brief    arduino pin descriptions file

@@ -39,4 +39,5 @@ static const uint8_t A1 = 1;
 static const uint8_t SDA = 12;
 static const uint8_t SCL = 13;
 
+#define  LED_BUILTIN  PD_9
 #endif

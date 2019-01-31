@@ -1,3 +1,27 @@
+/*
+  variant64.h
+  
+  Copyright (c) 2018 huaweiwx@sina.com 2018.11.1
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
+#pragma GCC diagnostic ignored "-Wconversion-null"
 
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
@@ -110,20 +134,8 @@ const SPIPinDescription SPI_Desc[]={
 #ifndef I2C_DESC_USERDEF
 const I2CPinDescription I2C_Desc[]={	
   {
-	I2C,I2C_MODULE,
+	I2C,I2C_MODULE,I2C_IRQn,
     {{PD_4,SYS_MFP_PD4_SDA},{PD_5, SYS_MFP_PD5_SCL},}
   },
-};
-#endif
-
-#ifndef PORT_DESC_USERDEF
-const GPIOPortDescription  PORT_Desc[]=
-{
-	{PA,/*0xff, */ (uint32_t)&SYS->PA_MFP,SYS_PA_MFP_PA_ALT_Pos,SYS_PA_MFP_PA_TYPE_Pos},  
-	{PB,/*0xff, */ (uint32_t)&SYS->PB_MFP,SYS_PB_MFP_PB_ALT_Pos,SYS_PB_MFP_PB_TYPE_Pos}, 
-	{PC,/*0xff, */ (uint32_t)&SYS->PC_MFP,SYS_PC_MFP_PC_ALT_Pos,SYS_PC_MFP_PC_TYPE_Pos}, 
-	{PD,/*0xff, */ (uint32_t)&SYS->PD_MFP,SYS_PD_MFP_PD_ALT_Pos,SYS_PD_MFP_PD_TYPE_Pos}, 
-	{PE,/*0xff, */ (uint32_t)&SYS->PE_MFP,SYS_PE_MFP_PE_ALT_Pos,SYS_PE_MFP_PE_TYPE_Pos},  
-	{P5,/*0xff, */ (uint32_t)&SYS->P5_MFP,SYS_P5_MFP_P5_ALT_Pos,SYS_P5_MFP_P5_TYPE_Pos},  
 };
 #endif

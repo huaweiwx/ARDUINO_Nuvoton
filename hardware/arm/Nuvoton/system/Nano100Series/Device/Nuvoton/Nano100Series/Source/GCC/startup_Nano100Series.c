@@ -48,6 +48,8 @@ extern uint32_t _estack;
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
 int main(void);
+int _start(void);
+
 /** \endcond */
 
 // Arduino: we must setup hardware before doing this
@@ -182,15 +184,25 @@ void Reset_Handler(void)
 	for (pDest = &_szero; pDest < &_ezero;) {
 		*pDest++ = 0;
 	}
+	
+#ifndef __NO_SYSTEM_INIT
+	SystemInit();
+#endif
+
+#if 1
+  #ifndef __START
+  #  define __START _start
+  #endif
+  __START();
+#else
 
 	/* Initialize the C library */
 
 	// Arduino: we must setup hardware before doing this
 	__libc_init_array();
-
 	/* Branch to main function */
 	main();
-
+#endif
 	/* Infinite loop */
 	while (1);
 }

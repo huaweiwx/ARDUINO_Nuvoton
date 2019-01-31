@@ -16,6 +16,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #include "Arduino.h"
+#pragma GCC diagnostic ignored "-Wconversion-null"
 
 #if defined(__M451__)
 #ifdef USE_BoardToPin
@@ -1012,11 +1013,7 @@ const I2CPinDescription I2C_Desc[] = {
   {I2C0, I2C0_MODULE, {{9, SYS_GPA_MFP_PA8_I2C0_SDA, NULL, NULL, NULL, NULL}, {8, SYS_GPA_MFP_PA9_I2C0_SCL, NULL, NULL, NULL, NULL}}},
 };
 
-//#if defined(__M451__) | defined(__NUC240__)
-//CANPinDescription CAN_Desc[]={
-//{CAN0,CAN0_MODULE,CAN0_IRQn,{{36,SYS_GPD_MFP_PD6_CAN0_RXD,NULL,NULL},{37,SYS_GPD_MFP_PD7_CAN0_TXD,NULL,NULL,NULL,NULL}}},
-//};
-//#endif
+
 #elif defined(__NANO1X2__)
 #if defined(__IOT_EVB__)
 #ifdef USE_BoardToPin
@@ -1045,6 +1042,7 @@ const BoardToPin BoardToPinInfo[] = {{ 5, GPIO_TYPE, 0}, // 0: PC4
   //-------------------------------
 } ;
 #endif
+
 const PWMPinDescription PWM_Desc[] = {
   {PWM0, PWM0_CH23_MODULE, PWM0_IRQn, 3, 500, { 13, SYS_PD_H_MFP_PD9_MFP_PWM0_CH3}}, //0
 };
@@ -1054,13 +1052,23 @@ const ADCPinDescription ADC_Desc[] = {
   {ADC, ADC_MODULE, 5, { 26, SYS_PA_L_MFP_PA5_MFP_ADC_CH5}}, //1
 };
 
-const UARTPinDescription UART_Desc[] = {
-  {UART0, UART0_MODULE, UART0_IRQn, {{31, SYS_PA_H_MFP_PA13_MFP_UART0_RX }, {30, SYS_PA_H_MFP_PA12_MFP_UART0_TX}}}, /* UART_RX0,UART_TX0 */
-  {UART1, UART1_MODULE, UART1_IRQn, {{ 7, SYS_PC_L_MFP_PC7_MFP_UART1_RX  }, { 8, SYS_PC_H_MFP_PC8_MFP_UART1_TX}}}, /* UART_RX1,UART_TX1 */
+const UARTPinAlt_TypeDef UART0PinAlt[] = {
+  {{PA_13, SYS_PA_H_MFP_PA13_MFP_UART0_RX }, {PA_12, SYS_PA_H_MFP_PA12_MFP_UART0_TX}},
+};
+const UARTPinAlt_TypeDef UART1PinAlt[] = {
+  {{PC_7, SYS_PC_L_MFP_PC7_MFP_UART1_RX  }, {PC_8, SYS_PC_H_MFP_PC8_MFP_UART1_TX}},
 };
 
+const UARTPinDescription UART_Desc[] = {
+  {UART0, UART0_MODULE, UART0_IRQn,UART0PinAlt}, /* UART_RX0,UART_TX0 */
+  {UART1, UART1_MODULE, UART1_IRQn,UART1PinAlt}, /* UART_RX1,UART_TX1 */
+};
+
+const I2CPinAlt_TypeDef I2C1PinAlt[] = {
+  {{PC_10, SYS_PC_H_MFP_PC10_MFP_I2C1_SCL}, {PC_11, SYS_PC_H_MFP_PC11_MFP_I2C1_SDA}},
+};
 const I2CPinDescription I2C_Desc[] = {
-  {I2C1, I2C1_MODULE, {{  9, SYS_PC_H_MFP_PC10_MFP_I2C1_SCL}, { 10, SYS_PC_H_MFP_PC11_MFP_I2C1_SDA}}}, /* I2C1_SDA,I2C1_SCL */
+  {I2C1, I2C1_MODULE,I2C1_IRQn,I2C1PinAlt},
 };
 #endif
 
