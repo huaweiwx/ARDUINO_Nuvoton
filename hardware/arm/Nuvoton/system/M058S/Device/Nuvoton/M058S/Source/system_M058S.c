@@ -13,8 +13,6 @@
 #include <stdint.h>
 #include "M058S.h"
 
-#pragma GCC diagnostic ignored "-Wint-conversion"
-
 /*----------------------------------------------------------------------------
   Clock Variable definitions
  *----------------------------------------------------------------------------*/
@@ -25,7 +23,14 @@ uint32_t PllClock         = __HSI;              /*!< PLL Output Clock Frequency 
 /**
  * @cond HIDDEN_SYMBOLS
  */
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wint-conversion"
+#endif
 const uint32_t gau32ClkSrcTbl[] = {__HXT, NULL, __HSI, __LIRC, NULL, NULL, NULL, __HIRC};
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic pop
+#endif
 /**
  * @endcond
  */

@@ -280,10 +280,8 @@ extern const ADCPinDescription ADC_Desc[];
 
 #if defined(__M451__)
 #define SPI_MAX_COUNT 1
-#define SPI_CHANNELS_NUM 1
 #elif defined(__NUC240__)
 #define SPI_MAX_COUNT 1
-#define SPI_CHANNELS_NUM 1
 #elif defined(__NANO100__)
 #define SPI_MAX_COUNT 3
 #elif defined(__NANO1X2__)
@@ -292,7 +290,6 @@ extern const ADCPinDescription ADC_Desc[];
 #endif
 #elif defined(__NUC131__)
 #define SPI_MAX_COUNT 1
-#define SPI_CHANNELS_NUM 1
 #endif
 
 
@@ -301,7 +298,7 @@ extern const SPIPinDescription SPI_Desc[];
   do { \
       outp32(GPIO_Desc[Desc.clk.num].Pin.MFP, (inp32(GPIO_Desc[Desc.clk.num].Pin.MFP)  & ~GPIO_Desc[Desc.clk.num].Pin.Mask)  | Desc.clk.type); \
       outp32(GPIO_Desc[Desc.mosi.num].Pin.MFP,(inp32(GPIO_Desc[Desc.mosi.num].Pin.MFP) & ~GPIO_Desc[Desc.mosi.num].Pin.Mask) | Desc.mosi.type); \
-      outp32(GPIO_Desc[Desc.mido.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
+      outp32(GPIO_Desc[Desc.miso.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
       outp32(GPIO_Desc[Desc.ss.num].Pin.MFP,  (inp32(GPIO_Desc[Desc.ss.num].Pin.MFP)   & ~GPIO_Desc[Desc.ss.num].Pin.Mask)   | Desc.ss.type); \
   }while(0);
 

@@ -22,63 +22,67 @@
   SOFTWARE.
 */
 #pragma GCC diagnostic ignored "-Wconversion-null"
+#define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}
+#define MFP_PN(a,b) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_MFP, \
+                                  SYS_MFP_P##a##b##_Msk, \
+					              SYS_MFP_P##a##b##_GPIO}}
 
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 0
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 1
-  {P1, BIT5, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P15_Msk, SYS_MFP_P15_GPIO }},   // 2
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 3
-  {P3, BIT0, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P30_Msk, SYS_MFP_P30_GPIO }},   // 4
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 5
-  {P5, BIT4, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P54_Msk, SYS_MFP_P54_GPIO }},   // 6
-  {P3, BIT1, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P31_Msk, SYS_MFP_P31_GPIO }},   // 7
-  {P3, BIT2, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P32_Msk, SYS_MFP_P32_GPIO }},   // 8
-  {P3, BIT4, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P34_Msk, SYS_MFP_P34_GPIO }},   // 9
-  {P3, BIT5, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P35_Msk, SYS_MFP_P35_GPIO }},   //10
-  {NULL, NULL, {NULL, NULL, NULL}},                                           //11
-  {NULL, NULL, {NULL, NULL, NULL}},                                           //12
-  {NULL, NULL, {NULL, NULL, NULL}}, 									      //13
-  {P3, BIT6, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P36_Msk, SYS_MFP_P36_GPIO }},   //14
-  {P5, BIT1, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P51_Msk, SYS_MFP_P51_GPIO }},   //15
-  {P5, BIT0, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P50_Msk, SYS_MFP_P50_GPIO }},   //16
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //17
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //18
-  {P5, BIT5, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P55_Msk, SYS_MFP_P55_GPIO }},   //19
-  {P5, BIT2, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P52_Msk, SYS_MFP_P52_GPIO }},   //20
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //21
-  {P2, BIT2, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P22_Msk, SYS_MFP_P22_GPIO }},   //22
-  {P2, BIT3, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P23_Msk, SYS_MFP_P23_GPIO }},   //23
-  {P2, BIT4, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P24_Msk, SYS_MFP_P24_GPIO }},   //24
-  {P2, BIT5, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P25_Msk, SYS_MFP_P25_GPIO }},   //25
-  {P2, BIT6, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P26_Msk, SYS_MFP_P26_GPIO }},   //26
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //27
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //28
+  MFP_NULL    , // 0
+  MFP_NULL    , // 1  NC
+  MFP_PN(1, 5), // 2  AIN5/ACMP0_P
+  MFP_NULL    , // 3  RESET
+  MFP_PN(3, 0), // 4  ACMP1_N/AIN6
+  MFP_NULL    , // 5  AVSS
+  MFP_PN(5, 4), // 6  
+  MFP_PN(3, 1), // 7  ACMP1_P/AIN7
+  MFP_PN(3, 2), // 8  INT0/T0EX/STADC/ACMP1_P
+  MFP_PN(3, 4), // 9  T0/SDA/ACMP1_P
+  MFP_PN(3, 5), //10  T1/SCL/ACMP1_P
+  MFP_NULL    , //11  NC
+  MFP_NULL    , //12  NC
+  MFP_NULL 	  , //13  NC
+  MFP_PN(3, 6), //14  T1EX/CKO/ACMP0_O
+  MFP_PN(5, 1), //15  XTAL2
+  MFP_PN(5, 0), //16  XTAL1
+  MFP_NULL 	  , //17  VSS
+  MFP_NULL 	  , //18  LDO_CAP
+  MFP_PN(5, 5), //19  
+  MFP_PN(5, 2), //20  INT1
+  MFP_NULL 	  , //21  NC
+  MFP_PN(2, 2), //22  PWM0
+  MFP_PN(2, 3), //23  PWM1
+  MFP_PN(2, 4), //24  PWM2
+  MFP_PN(2, 5), //25  PWM3
+  MFP_PN(2, 6), //26  PWM4/ACMP1_O
+  MFP_NULL 	  , //27  NC
+  MFP_NULL 	  , //28  NC
 #if USE_ICE == 0
-  {P4, BIT6, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P46_Msk, SYS_MFP_P46_GPIO }},   //29
-  {P4, BIT7, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P47_Msk, SYS_MFP_P47_GPIO }},   //30
+  MFP_PN(4, 6), //29  ICE_CLK
+  MFP_PN(4, 7), //30  ICE_DAT
 #else
-  {NULL, NULL, {NULL, NULL, NULL}},   //29
-  {NULL, NULL, {NULL, NULL, NULL}},   //30
+  MFP_NULL    , //29  ICE_CLK
+  MFP_NULL    , //30  ICE_DAT
 #endif
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //31
-  {P0, BIT7, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P07_Msk, SYS_MFP_P07_GPIO }},   //32
-  {P0, BIT6, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P06_Msk, SYS_MFP_P06_GPIO }},   //33
-  {P0, BIT5, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P05_Msk, SYS_MFP_P05_GPIO }},   //34
-  {P0, BIT4, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P04_Msk, SYS_MFP_P04_GPIO }},   //35
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //36
-  {P0, BIT1, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P01_Msk, SYS_MFP_P01_GPIO }},   //37
-  {P0, BIT0, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P00_Msk, SYS_MFP_P00_GPIO }},   //38
-  {NULL, NULL, {NULL, NULL, NULL}}, 						  				  //39
-  {NULL, NULL, {NULL, NULL, NULL}}, 						  				  //40
-  {P5, BIT3, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P53_Msk, SYS_MFP_P53_GPIO }},   //41
-  {NULL, NULL, {NULL, NULL, NULL}}, 						  				  //42
-  {NULL, NULL, {NULL, NULL, NULL}}, 						  				  //43
-  {P1, BIT0, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P10_Msk, SYS_MFP_P10_GPIO }},   //44
-  {P1, BIT2, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P12_Msk, SYS_MFP_P12_GPIO}},    //45
-  {P1, BIT3, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P13_Msk, SYS_MFP_P13_GPIO}},    //46
-  {P1, BIT4, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P14_Msk, SYS_MFP_P14_GPIO}},    //47
+  MFP_NULL 	  , //31  NC
+  MFP_PN(0, 7), //32  SPICLK
+  MFP_PN(0, 6), //33  MISO
+  MFP_PN(0, 5), //34  MOSI
+  MFP_PN(0, 4), //35  SPISS/PWM5
+  MFP_NULL 	  , //36  NC
+  MFP_PN(0, 1), //37  SPISS/RTSn/RX
+  MFP_PN(0, 0), //38  CTSn/TX
+  MFP_NULL 	  , //39  NC
+  MFP_NULL 	  , //40  NC
+  MFP_PN(5, 3), //41  AIN0
+  MFP_NULL 	  , //42  VDD
+  MFP_NULL 	  , //43  AVDD
+  MFP_PN(1, 0), //44  AIN1/ACMP0_P
+  MFP_PN(1, 2), //45  AIN2/RX/ACMP0_P
+  MFP_PN(1, 3), //46  AIN3/TX/ACMP0_P
+  MFP_PN(1, 4), //47  AIN4/ACMP0_N
 };
 #endif
 

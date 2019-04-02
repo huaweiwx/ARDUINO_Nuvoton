@@ -56,8 +56,8 @@ const GPIOPinDescription GPIO_Desc[] =
   {PA, BIT13, {(uint32_t)&SYS->PA_MFP, SYS_MFP_PA13_Msk, SYS_MFP_PA13_GPIO }},//27
   {PA, BIT12, {(uint32_t)&SYS->PA_MFP, SYS_MFP_PA12_Msk, SYS_MFP_PA12_GPIO }},//28
 #if USE_ICE == 0
-  {PF, BIT7, {(uint32_t)&SYS->PE_MFP, SYS_MFP_PF7_Msk, SYS_MFP_PF7_GPIO }},   //29
-  {PF, BIT6, {(uint32_t)&SYS->PE_MFP, SYS_MFP_PF6_Msk, SYS_MFP_PF6_GPIO }},   //30
+  {PF, BIT7, {(uint32_t)&SYS->PF_MFP, SYS_MFP_PF7_Msk, SYS_MFP_PF7_GPIO }},   //29
+  {PF, BIT6, {(uint32_t)&SYS->PF_MFP, SYS_MFP_PF6_Msk, SYS_MFP_PF6_GPIO }},   //30
 #else
   {NULL, NULL, {NULL, NULL, NULL}},   // 29
   {NULL, NULL, {NULL, NULL, NULL}},   // 30
@@ -78,7 +78,7 @@ const GPIOPinDescription GPIO_Desc[] =
   /*    		XTAL2            */{NULL, NULL, {NULL, NULL, NULL}},          //44
   /*    		XTAL1            */{NULL, NULL, {NULL, NULL, NULL}},          //45
   /*nRST*/{NULL, NULL, {NULL, NULL, NULL}},                                   //46 
-  {PF, BIT8, {(uint32_t)&SYS->PE_MFP, SYS_MFP_PF8_Msk, SYS_MFP_PF8_GPIO }},   //47
+  {PF, BIT8, {(uint32_t)&SYS->PF_MFP, SYS_MFP_PF8_Msk, SYS_MFP_PF8_GPIO }},   //47
   {PB, BIT8, {(uint32_t)&SYS->PB_MFP, SYS_MFP_PB8_Msk, SYS_MFP_PB8_GPIO }},   //48
 };
 #endif

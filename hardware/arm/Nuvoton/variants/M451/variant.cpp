@@ -27,7 +27,7 @@
   #if   defined(M453RG)||defined(M453RE)
     #include "Chips/variant64_3.h"
   #elif defined(M452RG)||defined(M452RE)
-    #include "list64_2.h"
+    #include "Chips/variant64_2.h"
   #else
     #include "Chips/variant64_1.h"
   #endif
@@ -35,7 +35,7 @@
   #if   defined(M453LG)||defined(M453LE)
     #include "Chips/variant48_3.h"
   #elif defined(M452LG)||defined(M452LE)
-    #include "list48_2.h"
+    #include "Chips/variant48_2.h"
   #else
     #include "Chips/variant48_1.h"
   #endif

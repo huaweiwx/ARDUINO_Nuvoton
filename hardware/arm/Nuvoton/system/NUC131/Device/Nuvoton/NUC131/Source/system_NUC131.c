@@ -19,7 +19,14 @@
 uint32_t SystemCoreClock  = __HSI;             /*!< System Clock Frequency (Core Clock) */
 uint32_t CyclesPerUs      = (__HSI / 1000000); /* Cycles per micro second */
 uint32_t PllClock         = __HSI;             /*!< PLL Output Clock Frequency */
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wint-conversion"
+#endif
 uint32_t gau32ClkSrcTbl[] = {__HXT, NULL, __HSI, __LIRC, NULL, NULL, NULL, __HIRC};
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic pop
+#endif
 
 
 /*----------------------------------------------------------------------------

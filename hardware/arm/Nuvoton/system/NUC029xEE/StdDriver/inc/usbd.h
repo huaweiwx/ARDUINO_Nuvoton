@@ -10,6 +10,11 @@
 #ifndef __USBD_H__
 #define __USBD_H__
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 
 /** @addtogroup Standard_Driver Standard Driver
   @{
@@ -652,6 +657,10 @@ void USBD_LockEpStall(uint32_t u32EpBitmap);
 
 /*@}*/ /* end of group Standard_Driver */
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //__USBD_H__
 

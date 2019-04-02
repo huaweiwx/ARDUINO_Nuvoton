@@ -22,37 +22,41 @@
   SOFTWARE.
 */
 #pragma GCC diagnostic ignored "-Wconversion-null"
+#define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}
+#define MFP_PN(a,b) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_MFP, \
+                                     SYS_MFP_P##a##b##_Msk, \
+					                 SYS_MFP_P##a##b##_GPIO}}
 
-#ifndef PWM_DESC_USERDEF
+#ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 0
-  {P1, BIT2, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P12_Msk, SYS_MFP_P12_GPIO }},   // 1
-  {P1, BIT3, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P13_Msk, SYS_MFP_P13_GPIO }},   // 2
-  {P1, BIT4, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P14_Msk, SYS_MFP_P14_GPIO}},    // 3
-  {P1, BIT5, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P15_Msk, SYS_MFP_P15_GPIO }},   // 4
-   /*nRST*/{NULL, NULL, {NULL, NULL, NULL}},                                  // 
-  {P3, BIT0, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P30_Msk, SYS_MFP_P30_GPIO }},   // 6
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 7
-  {P3, BIT2, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P32_Msk, SYS_MFP_P32_GPIO }},   // 8
-  {P3, BIT4, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P34_Msk, SYS_MFP_P34_GPIO }},   // 9
-  {P3, BIT5, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P35_Msk, SYS_MFP_P35_GPIO }},   // 10
-  {P5, BIT0, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P50_Msk, SYS_MFP_P50_GPIO }},   // 11
-  {P5, BIT1, {(uint32_t)&SYS->P5_MFP, SYS_MFP_P51_Msk, SYS_MFP_P51_GPIO }},   // 12
-  /*VSS*/ {NULL, NULL, {NULL, NULL, NULL}},                                   //13
-  {P2, BIT4, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P24_Msk, SYS_MFP_P24_GPIO }},   //14
-  {P2, BIT5, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P25_Msk, SYS_MFP_P25_GPIO }},   //15
-#if USE_ICE == 0
-  {P4, BIT6, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P46_Msk, SYS_MFP_P46_GPIO }},   //14
-  {P4, BIT7, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P47_Msk, SYS_MFP_P47_GPIO }},   //15
+  MFP_NULL,       // 0
+  MFP_PN(1, 2),   // 1
+  MFP_PN(1, 3),   // 2
+  MFP_PN(1, 4),   // 3
+  MFP_PN(1, 5),   // 4
+  MFP_NULL,       // 5
+  MFP_PN(3, 0),   // 6
+  MFP_NULL,       // 7
+  MFP_PN(3, 2),   // 8
+  MFP_PN(3, 4),   // 9
+  MFP_PN(3, 5),   // 10
+  MFP_PN(5, 0),   // 11
+  MFP_PN(5, 1),   // 12
+  MFP_NULL,       // 13
+  MFP_PN(2, 4),   // 14
+  MFP_PN(2, 5),   // 15
+#if USE_ICE == 0     
+  MFP_PN(4, 6),   // 14
+  MFP_PN(4, 7),   // 15
 #else
-  {NULL, NULL, {NULL, NULL, NULL}},   // 14
-  {NULL, NULL, {NULL, NULL, NULL}},   // 15
+  MFP_NULL,       // 14
+  MFP_NULL,       // 15
 #endif
-  {P0, BIT7, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P07_Msk, SYS_MFP_P07_GPIO }},   //16
-  {P0, BIT6, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P06_Msk, SYS_MFP_P06_GPIO }},   //17
-  {P0, BIT5, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P05_Msk, SYS_MFP_P05_GPIO }},   //18
-  {P0, BIT4, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P04_Msk, SYS_MFP_P04_GPIO }},   //19
+  MFP_PN(0, 7),   // 16
+  MFP_PN(0, 6),   // 17
+  MFP_PN(0, 5),   // 18
+  MFP_PN(0, 4),   // 19
 };
 #endif
 

@@ -36,10 +36,6 @@
 #define __NUC029xDE_H__
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /** @addtogroup Definitions Definitions for CMSIS
   This file defines all structures and symbols:
     - registers and bitfields
@@ -119,6 +115,7 @@ typedef enum IRQn
 #endif
 
 
+
 /******************************************************************************/
 /*                Device Specific Peripheral registers structures             */
 /******************************************************************************/
@@ -128,6 +125,7 @@ typedef enum IRQn
   @{
 
 */
+
 
 
 /*---------------------- Analog to Digital Converter -------------------------*/
@@ -422,6 +420,8 @@ typedef struct
 
 /*@}*/ /* end of group ADC_CONST */
 /*@}*/ /* end of group ADC */
+
+
 
 
 /*---------------------- System Clock Controller -------------------------*/
@@ -859,6 +859,8 @@ typedef struct
     __IO uint32_t CDLOWB;
 
 
+
+
 } CLK_T;
 
 /**
@@ -1087,6 +1089,10 @@ typedef struct
 
 /*@}*/ /* end of group CLK_CONST */
 /*@}*/ /* end of group CLK */
+
+
+
+
 
 
 
@@ -1336,6 +1342,8 @@ typedef struct
 #define FMC_ISPSTA_ISPGO_Msk                    (1ul << FMC_ISPSTA_ISPGO_Pos)           /*!< FMC_T::ISPSTA: ISPGO Mask */
 /*@}*/ /* end of group FMC_CONST */
 /*@}*/ /* end of group FMC */
+
+
 
 
 
@@ -1712,6 +1720,11 @@ typedef struct
 
 
 
+
+
+
+
+
 /*---------------------- Inter-IC Bus Controller -------------------------*/
 /**
     @addtogroup I2C Inter-IC Bus Controller (I2C)
@@ -1958,6 +1971,7 @@ typedef struct
      */
     uint32_t RESERVED0[2];
 
+
     /**
      * I2CWKUPCON
      * ===================================================================================================
@@ -1985,6 +1999,8 @@ typedef struct
      */
     __IO uint32_t I2CWKUPSTS;
 } I2C_T;
+
+
 
 
 /**
@@ -2054,6 +2070,8 @@ typedef struct
 #define I2C_I2CWKUPSTS_WKUPIF_Msk               (1ul << I2C_I2CWKUPSTS_WKUPIF_Pos)      /*!< I2C_T::I2CWKUPSTS: WKUPIF Mask */
 /*@}*/ /* end of group I2C_CONST */
 /*@}*/ /* end of group I2C */
+
+
 
 
 /*---------------------- Pulse Width Modulation Controller -------------------------*/
@@ -4639,6 +4657,9 @@ typedef struct
 
 
 
+
+
+
 /*---------------------- Serial Peripheral Interface Controller -------------------------*/
 /**
     @addtogroup SPI Serial Peripheral Interface Controller (SPI)
@@ -5195,6 +5216,10 @@ typedef struct
 #define SPI_STATUS_RX_INTSTS_Msk   (1ul << SPI_STATUS_RX_INTSTS_Pos)                 /*!< SPI_T::STATUS: RX_INTSTS Mask */
 /*@}*/ /* end of group SPI_CONST */
 /*@}*/ /* end of group SPI */
+
+
+
+
 
 
 
@@ -6438,6 +6463,7 @@ typedef struct
 
 /*@}*/ /* end of group SYS_CONST */
 
+
 typedef struct
 {
     /**
@@ -6712,6 +6738,8 @@ typedef struct
 } TIMER_T;
 
 
+
+
 /** @addtogroup TIMER_CONST TIMER Bit Field Definition
     Constant Definitions for TIMER Controller
   @{
@@ -6800,6 +6828,8 @@ typedef struct
 #define TIMER_TEXISR_TEXIF_Msk      (1ul << TIMER_TEXISR_TEXIF_Pos)             /*!< TIMER_T::TEXISR: TEXIF Mask */
 /*@}*/ /* end of group TIMER_CONST */
 /*@}*/ /* end of group TIMER */
+
+
 
 
 
@@ -7850,6 +7880,7 @@ typedef struct
 
 
 
+
 /*----------------------------- Watchdog Timer (WDT) -----------------------------*/
 /**
     @addtogroup WDT Watch Dog Timer Controller (WDT)
@@ -8190,6 +8221,7 @@ typedef struct
 
 /*@}*/ /* end of group PERIPHERAL_MEM_MAP */
 
+
 /******************************************************************************/
 /*                         Peripheral Definitions                             */
 /******************************************************************************/
@@ -8379,6 +8411,7 @@ typedef volatile unsigned long  vu32;       ///< Define 32-bit unsigned volatile
   */
 #define inp8(port)            (*((volatile unsigned char *)(port)))
 
+
 /*@}*/ /* end of group IO_ROUTINE */
 
 
@@ -8464,10 +8497,6 @@ typedef volatile unsigned long  vu32;       ///< Define 32-bit unsigned volatile
 #include "WWDT.h"
 #include "UART.h"
 #include "CLK.h"
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // End of __NUC029xDE_H__
 

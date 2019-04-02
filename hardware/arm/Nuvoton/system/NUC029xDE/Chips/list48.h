@@ -114,13 +114,13 @@ PIN(B,8 ,48)  /* TM0/STADC/CLKO/BPWM1_CH2            */
 
 #endif
 
-#define   SS_PIN   P0_4
-#define MOSI_PIN   P0_5
-#define MISO_PIN   P0_6
-#define  SCK_PIN   P0_7
+#define   SS_PIN   PC_0
+#define MOSI_PIN   PC_3
+#define MISO_PIN   PC_2
+#define  SCK_PIN   PC_1
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
+#define  SDA_PIN   PF_4
+#define  SCL_PIN   PF_5
 
 #define A0 0
 #define A1 1

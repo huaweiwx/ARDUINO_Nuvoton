@@ -11,26 +11,26 @@
 
 #if USE_ICE >0
 #define CHIP_PIN_LIST \
-PIN(1,0, 1), /* /AIN0/T2     */\
-PIN(1,4, 2), /* /AIN4/SPISS  */\
-      /* 3),  nRST           */\
-PIN(3,0, 4), /* /RXD         */\
-      /* 5),    AVSS         */\
-PIN(3,1, 6), /* /TXD         */\
-PIN(3,4, 7), /* /T0/SDA0     */\
-PIN(3,5, 8), /* /T1/SCL0/CKO */\
-PIN(7,0, 9), /* XTAL2/       */\
-PIN(7,1,10), /* XTAL1/       */\
-     /* 11),  VSS            */\
-     /* 12),  LDO_CAP        */\
-PIN(2,3,13), /* /PWM3        */\
-/*PIN(4,6,14),  /ICE_CLK     */\
-/*PIN(4,7,15),  /ICE_DAT     */\
-PIN(0,7,16), /*  /SPICLK      */\
-PIN(0,6,17), /* /MISO        */\
-PIN(0,5,18) /* /MOSI        */
-     /* 19),  VDD          */
-     /* 20),  AVDD         */
+PIN(1,0, 1), /* AIN0/T2     */\
+PIN(1,4, 2), /* AIN4/SPISS  */\
+      /* 3),    nRST        */\
+PIN(3,0, 4), /* RXD         */\
+      /* 5),    AVSS        */\
+PIN(3,1, 6), /* TXD         */\
+PIN(3,4, 7), /* T0/SDA0     */\
+PIN(3,5, 8), /* T1/SCL0/CKO */\
+PIN(7,0, 9), /* XTAL2/      */\
+PIN(7,1,10), /* XTAL1/      */\
+     /* 11),    VSS         */\
+     /* 12),    LDO_CAP     */\
+PIN(2,3,13), /* PWM3        */\
+/*PIN(4,6,14),  ICE_CLK     */\
+/*PIN(4,7,15),  ICE_DAT     */\
+PIN(0,7,16), /* SPICLK      */\
+PIN(0,6,17), /* MISO        */\
+PIN(0,5,18) /*  MOSI        */
+     /* 19),    VDD          */
+     /* 20),    AVDD         */
 
 #else /*used ICE*/
 

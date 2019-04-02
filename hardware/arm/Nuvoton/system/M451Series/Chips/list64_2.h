@@ -140,7 +140,9 @@ PIN(B,3 ,60),  /* EADC_CH3/SPI0_MISO0/SPI1_MISO/UART1_TXD                       
 PIN(B,4 ,61),  /* EADC_CH4/SPI0_SS/SPI1_SS/UART1_nCTS/ACMP0_N/EBI_AD7                */\
 PIN(B,8 ,62),  /* EADC_CH5/UART1_nRTS/PWM0_CH2                                       */\
 PIN(B,11,63),  /* EADC_CH8                                                           */\
-PIN(B,12,64)   /* EADC_CH9                                                           */#endif
+PIN(B,12,64)   /* EADC_CH9                                                           */
+
+#endif
 
 #define SS_PIN   PD_12
 #define MOSI_PIN PD_13

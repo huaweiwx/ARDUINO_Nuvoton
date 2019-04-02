@@ -17,6 +17,8 @@
 */
 #include "Arduino.h"
 
+#pragma GCC diagnostic ignored "-Wconversion-null"
+
 #ifdef USE_BoardToPin
 const BoardToPin BoardToPinInfo[] = {
   { 17, UART_TYPE, 0}, // 0: PB0(UART_RX0)   /* 64Pins */

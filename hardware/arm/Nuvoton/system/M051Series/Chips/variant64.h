@@ -22,6 +22,85 @@
   SOFTWARE.
 */
 #pragma GCC diagnostic ignored "-Wconversion-null"
+#define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}
+#define MFP_PN(a,b) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_MFP, \
+                                     SYS_MFP_P##a##b##_Msk, \
+					                 SYS_MFP_P##a##b##_GPIO}}
+#ifndef GPIO_DESC_USERDEF
+const GPIOPinDescription GPIO_Desc[] =
+{
+  MFP_NULL   ,  /* 0                   */
+  MFP_PN(1,5),  /* 1  AIN5/MOSI        */
+  MFP_PN(1,6),  /* 2  AIN6/MISO        */
+  MFP_PN(1,7),  /* 3  AIN7/SPICLK      */
+  MFP_NULL   ,  /* 4  RST               */
+  MFP_PN(3,0),  /* 5  RXD              */
+  MFP_NULL   ,  /* 6  AVSS              */
+  MFP_PN(5,1),  /* 7  T1EX             */
+  MFP_PN(5,2),  /* 8  SDA0             */
+  MFP_PN(5,3),  /* 9  SCL0             */
+  MFP_PN(3,1),  /* 10 TXD              */
+  MFP_PN(3,2),  /* 11 nINT0/T0EX/STADC */
+  MFP_PN(3,3),  /* 12 nINT1/T1EX       */
+  MFP_PN(3,4),  /* 13 T0/SDA0          */
+  MFP_PN(3,5),  /* 14 T1/SCL0/CKO      */
+  MFP_PN(4,3),  /* 15 PWM3             */
+  MFP_PN(3,6),  /* 16 CKO              */
+  MFP_PN(3,7),  /* 17                  */
+  MFP_PN(7,0),  /* 18  XTAL2           */
+  MFP_PN(7,1),  /* 19  XTAL1           */
+  MFP_NULL   ,  /* 20  VSS             */
+  MFP_NULL   ,  /* 21  VDD             */
+  MFP_NULL   ,  /* 22  LDO_CAP         */
+  MFP_PN(5,4),  /* 23                  */
+  MFP_PN(5,5),  /* 24                  */
+  MFP_PN(5,6),  /* 25                  */
+  MFP_PN(5,7),  /* 26                  */
+  MFP_PN(2,0),  /* 27  PWM0            */
+  MFP_PN(2,1),  /* 28  PWM1            */
+  MFP_PN(2,2),  /* 29  PWM2            */
+  MFP_PN(2,3),  /* 30  PWM3            */
+  MFP_PN(2,4),  /* 31                  */
+  MFP_PN(4,0),  /* 32  PWM0/T2EX       */
+  MFP_PN(2,5),  /* 33                  */
+  MFP_PN(2,6),  /* 34                  */
+  MFP_PN(2,7),  /* 35                  */
+  MFP_PN(4,4),  /* 36  SCL1            */
+  MFP_PN(4,5),  /* 37  SDA1            */
+#if USE_ICE == 0
+  MFP_PN(4, 6), /* 38  ICE_CLK         */
+  MFP_PN(4, 7), /* 39  ICE_DAT         */
+#else
+  MFP_NULL,     /* 38  ICE_CLK         */ 
+  MFP_NULL,     /* 39  ICE_DAT         */  
+#endif
+  MFP_PN(6,0),  /* 40                  */
+  MFP_PN(6,1),  /* 41                  */
+  MFP_PN(6,2),  /* 42                  */
+  MFP_PN(6,3),  /* 43                  */
+  MFP_PN(0,7),  /* 44  SPICLK          */
+  MFP_PN(0,6),  /* 45  MISO            */
+  MFP_PN(0,5),  /* 46  MOSI            */
+  MFP_PN(0,4),  /* 47  SPISS           */
+  MFP_PN(4,1),  /* 48  PWM1/T3EX       */
+  MFP_PN(0,3),  /* 49  RTS0/RXD        */
+  MFP_PN(0,2),  /* 50  CTS0/TXD        */
+  MFP_PN(0,1),  /* 51                  */
+  MFP_PN(0,0),  /* 52                  */
+  MFP_NULL   ,  /* 53  VSS             */
+  MFP_NULL   ,  /* 54  VDD             */
+  MFP_NULL   ,  /* 55  AVDD            */
+  MFP_NULL   ,  /* 56  Vref            */
+  MFP_PN(6,6,)  /* 57                  */
+  MFP_PN(6,7,)  /* 58                  */
+  MFP_PN(1,0,)  /* 59 AIN0/T2          */
+  MFP_PN(1,1,)  /* 60 AIN1/T3          */
+  MFP_PN(1,2,)  /* 61 AIN2             */
+  MFP_PN(1,3,)  /* 62 AIN3             */
+  MFP_PN(1,4,)  /* 63 AIN4/SPISS       */
+  MFP_PN(4,2,)  /* 64 PWM2             */
+};
+#endif
 
 #ifndef PWM_DESC_USERDEF
 const PWMPinDescription PWM_Desc[]={

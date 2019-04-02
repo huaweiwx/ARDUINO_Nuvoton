@@ -294,5 +294,9 @@ uint32_t SPI_GetStatus(SPI_T *spi, uint32_t u32Mask);
   */
 
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif
 

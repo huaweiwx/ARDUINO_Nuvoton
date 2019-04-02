@@ -3,6 +3,32 @@
 
 extern void CLK_EnableModuleClock(uint32_t);
 
+//for m3/m4/m7 only
+int UTIL_checkUserCode(uint32_t usrAddr) {
+    uint32_t sp = *(volatile uint32_t *) usrAddr;
+    extern char __StackTop; /* Defined in the linker script */
+    return (sp == (uint32_t)&__StackTop)?1:0;
+}
+
+/*bootloader use*/
+void UTIL_jumpToUser(uint32_t usrAddr) {
+  // Dedicated function with no call to any function (appart the last call)
+  // This way, there is no manipulation of the stack here, ensuring that GGC
+  // didn't insert any pop from the SP after having set the MSP.
+  
+  typedef void (*funcPtr)(void);
+
+  uint32_t jumpAddr = *(volatile uint32_t *)(usrAddr + 0x04); /* reset ptr in vector table */
+
+  funcPtr usrMain = (funcPtr) jumpAddr;
+
+  asm volatile("msr msp, %0"::"g"
+               (*(volatile uint32_t *)usrAddr));
+  *(uint32_t *) 0xE000ED08 = usrAddr;   /* 设置中断向量表地址 */
+  usrMain();                            /* go! */
+}
+
+
 void Enable_All_IPs(void)
 {
    //Enable ADC module
@@ -27,6 +53,9 @@ void Enable_All_IPs(void)
 //F_CPU
 void SystemClock_Config(void)
 {
+#ifdef CHK_JUMP_TO_SRAM    /*for develop ram debug only*/
+    UTIL_jumpToUser(0x20000000);
+#endif
 #if 1
 
 /*---------------------------------------------------------------------------------------------------------*/

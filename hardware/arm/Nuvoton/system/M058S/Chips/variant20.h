@@ -23,33 +23,38 @@
 */
 #pragma GCC diagnostic ignored "-Wconversion-null"
 
+#define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}
+#define MFP_PN(a,b) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_MFP, \
+                                   SYS_MFP_P##a##b##_Msk, \
+					               SYS_MFP_P##a##b##_GPIO}}
+
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 0
-  {P1, BIT0, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P10_Msk, SYS_MFP_P10_GPIO }},   // 1
-  {P1, BIT4, {(uint32_t)&SYS->P1_MFP, SYS_MFP_P14_Msk, SYS_MFP_P14_GPIO}},    // 2
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 3
-  {P3, BIT0, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P30_Msk, SYS_MFP_P30_GPIO }},   // 4
-  {NULL, NULL, {NULL, NULL, NULL}},                                           // 5
-  {P3, BIT1, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P31_Msk, SYS_MFP_P31_GPIO }},   // 6
-  {P3, BIT4, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P34_Msk, SYS_MFP_P34_GPIO }},   // 7
-  {P3, BIT5, {(uint32_t)&SYS->P3_MFP, SYS_MFP_P35_Msk, SYS_MFP_P35_GPIO }},   // 8
-  {P7, BIT0, {(uint32_t)&SYS->P7_MFP, SYS_MFP_P70_Msk, SYS_MFP_P70_GPIO }},   // 9
-  {P7, BIT1, {(uint32_t)&SYS->P7_MFP, SYS_MFP_P71_Msk, SYS_MFP_P71_GPIO }},   //10
-  {NULL, NULL, {NULL, NULL, NULL}},                                           //11                               //15
-  {NULL, NULL, {NULL, NULL, NULL}}, 										  //12	     	 	    //17
-  {P2, BIT3, {(uint32_t)&SYS->P2_MFP, SYS_MFP_P23_Msk, SYS_MFP_P23_GPIO }},   //13
+  MFP_NULL    ,   // 0
+  MFP_PN(1, 0),   // 1 AIN0/T2    
+  MFP_PN(1, 4),   // 2 AIN4/SPISS 
+  MFP_NULL    ,   // 3 nRST       
+  MFP_PN(3, 0),   // 4 RXD        
+  MFP_NULL    ,   // 5 AVSS       
+  MFP_PN(3, 1),   // 6 TXD        
+  MFP_PN(3, 4),   // 7 T0/SDA0    
+  MFP_PN(3, 5),   // 8 T1/SCL0/CKO
+  MFP_PN(7, 0),   // 9 XTAL2/     
+  MFP_PN(7, 1),   //10 XTAL1/     
+  MFP_NULL    ,   //11 VSS         
+  MFP_NULL    ,   //12	LDO_CAP    
+  MFP_PN(2, 3),   //13 PWM3       
 #if USE_ICE == 0
-  {P4, BIT6, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P46_Msk, SYS_MFP_P46_GPIO }},   //14
-  {P4, BIT7, {(uint32_t)&SYS->P4_MFP, SYS_MFP_P47_Msk, SYS_MFP_P47_GPIO }},   //15
-#else
-  {NULL, NULL, {NULL, NULL, NULL}},   //14													//30
-  {NULL, NULL, {NULL, NULL, NULL}},   //15
-#endif
-  {P0, BIT7, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P07_Msk, SYS_MFP_P07_GPIO }},   //16
-  {P0, BIT6, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P06_Msk, SYS_MFP_P06_GPIO }},   //17
-  {P0, BIT5, {(uint32_t)&SYS->P0_MFP, SYS_MFP_P05_Msk, SYS_MFP_P05_GPIO }},   //18
+  MFP_PN(4, 6),   //14 ICE_CLK
+  MFP_PN(4, 7),   //15 ICE_DAT
+#else                   
+  MFP_NULL    ,   //14 ICE_CLK
+  MFP_NULL    ,   //15 ICE_DAT
+#endif                   
+  MFP_PN(0, 7),   //16 SPICLK
+  MFP_PN(0, 6),   //17 MISO  
+  MFP_PN(0, 5),   //18 MOSI     
 };
 #endif
 

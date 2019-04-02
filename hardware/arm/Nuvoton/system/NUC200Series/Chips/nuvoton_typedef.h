@@ -34,16 +34,9 @@ typedef struct _PinDescription
 {
   uint32_t MFP;
   uint32_t Mask;
-#if defined(__NUC240__)
   uint32_t ALTMsk;
   uint32_t ALT1Msk;
   uint32_t ALT2Msk;
-#elif defined(__NUC131__)
-  uint32_t ALTMsk;
-  uint32_t ALT2Msk;
-  uint32_t ALT3Msk;
-  uint32_t ALT4Msk;
-#endif
   uint32_t Type;
 } PinDescription;
 
@@ -168,11 +161,11 @@ extern const PWMPinDescription PWM_Desc[];
 #define PWM_Config(Desc) \
   do{ \
     outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALTMsk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALTMsk!=0) \
       outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.ALTMsk) | Desc.pintype.AMsk); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk!=0) \
       outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk) | Desc.pintype.AMsk1); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk!=0) \
       outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk) | Desc.pintype.AMsk2); \
   }while(0);
 
@@ -182,23 +175,34 @@ extern const ADCPinDescription ADC_Desc[];
 #define ADC_Config(Desc) \
   do { \
     outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALTMsk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALTMsk!=0) \
       outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.ALTMsk) | Desc.pintype.AMsk); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk!=0) \
       outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.pintype.num].Pin.ALT1Msk) | Desc.pintype.AMsk1); \
-    if(GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk!=NULL) \
+    if(GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk!=0) \
       outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.pintype.num].Pin.ALT2Msk) | Desc.pintype.AMsk2); \
   }while(0);
 
 #define SPI_MAX_COUNT 1
-#define SPI_CHANNELS_NUM 1
 extern const SPIPinDescription SPI_Desc[];
 #define SPI_Config(Desc) \
   do { \
       outp32(GPIO_Desc[Desc.clk.num].Pin.MFP, (inp32(GPIO_Desc[Desc.clk.num].Pin.MFP)  & ~GPIO_Desc[Desc.clk.num].Pin.Mask)  | Desc.clk.type); \
+      if(GPIO_Desc[Desc.clk.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.clk.num].Pin.ALTMsk)  | Desc.clk.AMsk); \
+      if(GPIO_Desc[Desc.clk.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.clk.num].Pin.ALT1Msk) | Desc.clk.AMsk1); \
+      if(GPIO_Desc[Desc.clk.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.clk.num].Pin.ALT2Msk) | Desc.clk.AMsk2); \
       outp32(GPIO_Desc[Desc.mosi.num].Pin.MFP,(inp32(GPIO_Desc[Desc.mosi.num].Pin.MFP) & ~GPIO_Desc[Desc.mosi.num].Pin.Mask) | Desc.mosi.type); \
+      if(GPIO_Desc[Desc.mosi.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.mosi.num].Pin.ALTMsk)  | Desc.mosi.AMsk); \
+      if(GPIO_Desc[Desc.mosi.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.mosi.num].Pin.ALT1Msk) | Desc.mosi.AMsk1); \
+      if(GPIO_Desc[Desc.mosi.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.mosi.num].Pin.ALT2Msk) | Desc.mosi.AMsk2); \
       outp32(GPIO_Desc[Desc.miso.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
+      if(GPIO_Desc[Desc.miso.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.miso.num].Pin.ALTMsk)  | Desc.miso.AMsk); \
+      if(GPIO_Desc[Desc.miso.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.miso.num].Pin.ALT1Msk) | Desc.miso.AMsk1); \
+      if(GPIO_Desc[Desc.miso.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.miso.num].Pin.ALT2Msk) | Desc.miso.AMsk2); \
       outp32(GPIO_Desc[Desc.ss.num].Pin.MFP,  (inp32(GPIO_Desc[Desc.ss.num].Pin.MFP)   & ~GPIO_Desc[Desc.ss.num].Pin.Mask)   | Desc.ss.type); \
+      if(GPIO_Desc[Desc.ss.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.ss.num].Pin.ALTMsk)  | Desc.ss.AMsk); \
+      if(GPIO_Desc[Desc.ss.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.ss.num].Pin.ALT1Msk) | Desc.ss.AMsk1); \
+      if(GPIO_Desc[Desc.ss.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.ss.num].Pin.ALT2Msk) | Desc.ss.AMsk2); \
   }while(0);
 
 #define UART_MAX_COUNT 3
@@ -206,7 +210,13 @@ extern const UARTPinDescription UART_Desc[];
 #define UART_Config(Desc) \
   do { \
       outp32(GPIO_Desc[Desc.rxd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.rxd.num].Pin.MFP) & ~GPIO_Desc[Desc.rxd.num].Pin.Mask) | Desc.rxd.type); \
+      if(GPIO_Desc[Desc.rxd.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.rxd.num].Pin.ALTMsk)  | Desc.rxd.AMsk); \
+      if(GPIO_Desc[Desc.rxd.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.rxd.num].Pin.ALT1Msk) | Desc.rxd.AMsk1); \
+      if(GPIO_Desc[Desc.rxd.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.rxd.num].Pin.ALT2Msk) | Desc.rxd.AMsk2); \
       outp32(GPIO_Desc[Desc.txd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.txd.num].Pin.MFP) & ~GPIO_Desc[Desc.txd.num].Pin.Mask) | Desc.txd.type); \
+      if(GPIO_Desc[Desc.txd.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.txd.num].Pin.ALTMsk)  | Desc.txd.AMsk); \
+      if(GPIO_Desc[Desc.txd.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.txd.num].Pin.ALT1Msk) | Desc.txd.AMsk1); \
+      if(GPIO_Desc[Desc.txd.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.txd.num].Pin.ALT2Msk) | Desc.txd.AMsk2); \
   }while(0);
 
 #define CAN_MAX_COUNT 1
@@ -225,7 +235,13 @@ extern const I2CPinDescription I2C_Desc[];
 #define I2C_Config(Desc) \
   do { \
       outp32(GPIO_Desc[Desc.sda.num].Pin.MFP,(inp32(GPIO_Desc[Desc.sda.num].Pin.MFP) & ~GPIO_Desc[Desc.sda.num].Pin.Mask) | Desc.sda.type); \
+      if(GPIO_Desc[Desc.sda.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.sda.num].Pin.ALTMsk)  | Desc.sda.AMsk); \
+      if(GPIO_Desc[Desc.sda.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.sda.num].Pin.ALT1Msk) | Desc.sda.AMsk1); \
+      if(GPIO_Desc[Desc.sda.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.sda.num].Pin.ALT2Msk) | Desc.sda.AMsk2); \
       outp32(GPIO_Desc[Desc.scl.num].Pin.MFP,(inp32(GPIO_Desc[Desc.scl.num].Pin.MFP) & ~GPIO_Desc[Desc.scl.num].Pin.Mask) | Desc.scl.type); \
+      if(GPIO_Desc[Desc.scl.num].Pin.ALTMsk  != NULL)outp32(&SYS->ALT_MFP,(inp32(&SYS->ALT_MFP)   & ~GPIO_Desc[Desc.scl.num].Pin.ALTMsk)  | Desc.scl.AMsk); \
+      if(GPIO_Desc[Desc.scl.num].Pin.ALT1Msk != NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~GPIO_Desc[Desc.scl.num].Pin.ALT1Msk) | Desc.scl.AMsk1); \
+      if(GPIO_Desc[Desc.scl.num].Pin.ALT2Msk != NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~GPIO_Desc[Desc.scl.num].Pin.ALT2Msk) | Desc.scl.AMsk2); \
   }while(0);
 
 

@@ -11,15 +11,15 @@
 #if USE_ICE >0
 
 #define CHIP_PIN_LIST \
-PIN(B,14,1 ), /*  INT0                                 */\
-PIN(B,13,2 ), /*                                       */\
-PIN(B,12,3 ), /*  CLKO/BPWM1_CH3                       */\
-PIN(F, 5,4 ), /*  I2C0_SCL/PWM1_CH5                    */\
-PIN(F, 4,5 ), /*  I2C0_SDA/PWM1_CH4                    */\
-PIN(A,11,6 ), /*  I2C1_SCL/PWM1_CH3                    */\
-PIN(A,10,7 ), /*  I2C1_SDA/PWM1_CH2                    */\
-PIN(A, 9,8 ), /*  I2C0_SCL/UART1_nCTS                  */\
-PIN(A, 8,9 ), /*  I2C0_SDA/UART1_nRTS                  */\
+PIN(B,14, 1), /*  INT0                                 */\
+PIN(B,13, 2), /*                                       */\
+PIN(B,12, 3), /*  CLKO/BPWM1_CH3                       */\
+PIN(F, 5, 4), /*  I2C0_SCL/PWM1_CH5                    */\
+PIN(F, 4, 5), /*  I2C0_SDA/PWM1_CH4                    */\
+PIN(A,11, 6), /*  I2C1_SCL/PWM1_CH3                    */\
+PIN(A,10, 7), /*  I2C1_SDA/PWM1_CH2                    */\
+PIN(A, 9, 8), /*  I2C0_SCL/UART1_nCTS                  */\
+PIN(A, 8, 9), /*  I2C0_SDA/UART1_nRTS                  */\
 PIN(B, 4,10), /*  UART1_RXD                            */\
 PIN(B, 5,11), /*  UART1_TXD                            */\
 PIN(B, 6,12), /*  UART1_nRTS                           */\
@@ -79,15 +79,15 @@ PIN(B, 8,64)  /*  TM0/STADC/CLKO/BPWM1_CH2             */
 #else /*used ICE*/
 
 #define CHIP_PIN_LIST \
-PIN(B,14,1 ), /*  INT0                                 */\
-PIN(B,13,2 ), /*                                       */\
-PIN(B,12,3 ), /*  CLKO/BPWM1_CH3                       */\
-PIN(F, 5,4 ), /*  I2C0_SCL/PWM1_CH5                    */\
-PIN(F, 4,5 ), /*  I2C0_SDA/PWM1_CH4                    */\
-PIN(A,11,6 ), /*  I2C1_SCL/PWM1_CH3                    */\
-PIN(A,10,7 ), /*  I2C1_SDA/PWM1_CH2                    */\
-PIN(A, 9,8 ), /*  I2C0_SCL/UART1_nCTS                  */\
-PIN(A, 8,9 ), /*  I2C0_SDA/UART1_nRTS                  */\
+PIN(B,14, 1), /*  INT0                                 */\
+PIN(B,13, 2), /*                                       */\
+PIN(B,12, 3), /*  CLKO/BPWM1_CH3                       */\
+PIN(F, 5, 4), /*  I2C0_SCL/PWM1_CH5                    */\
+PIN(F, 4, 5), /*  I2C0_SDA/PWM1_CH4                    */\
+PIN(A,11, 6), /*  I2C1_SCL/PWM1_CH3                    */\
+PIN(A,10, 7), /*  I2C1_SDA/PWM1_CH2                    */\
+PIN(A, 9, 8), /*  I2C0_SCL/UART1_nCTS                  */\
+PIN(A, 8, 9), /*  I2C0_SDA/UART1_nRTS                  */\
 PIN(B, 4,10), /*  UART1_RXD                            */\
 PIN(B, 5,11), /*  UART1_TXD                            */\
 PIN(B, 6,12), /*  UART1_nRTS                           */\
@@ -147,13 +147,13 @@ PIN(B, 8,64)  /*  TM0/STADC/CLKO/BPWM1_CH2             */
 #endif
 
 
-#define   SS_PIN   P0_4
-#define MOSI_PIN   P0_5
-#define MISO_PIN   P0_6
-#define  SCK_PIN   P0_7
+#define   SS_PIN   PA_4
+#define MOSI_PIN   PA_5
+#define MISO_PIN   PA_6
+#define  SCK_PIN   PA_7
 
-#define  SDA_PIN  P3_4
-#define  SCL_PIN  P3_5
+#define  SDA_PIN   PF_4
+#define  SCL_PIN   PF_5
 
 #define A0 0
 #define A1 1

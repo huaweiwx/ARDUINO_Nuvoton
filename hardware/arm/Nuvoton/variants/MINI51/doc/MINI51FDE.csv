@@ -1,0 +1,52 @@
+/****************************************************************************
+ * @file     MINI51FDE.csv
+ * @version  V1.13
+ * @Date     2019/04/02-10:26:46 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2019 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU: MINI51FDE(TSSOP20)
+Pin,Current Multi Function
+1,P1.2
+2,P1.3
+3,P1.4
+4,P1.5
+5,/RESET
+6,P3.2
+7,P3.4
+8,P3.5
+9,P5.1
+10,P5.0
+11,VSS
+12,P2.4
+13,P2.5
+14,P4.6/ICE_CLK
+15,P4.7/ICE_DAT
+16,P0.7
+17,P0.6
+18,P0.5
+19,P0.4
+20,VDD
+
+Pin,Description
+1,P1.2 /AIN2/RX
+2,P1.3 /AIN3/TX
+3,P1.4 /AIN4
+4,P1.5 /AIN5
+5,     /RESET
+6,P3.2 /INT0/T0EX/STADC
+7,P3.4 /T0/SDA
+8,P3.5 /T1/SCL
+9,P5.1 /XTAL2
+10,P5.0/XTAL1
+11,VSS
+12,P2.4/PWM2
+13,P2.5/PWM3
+14,P4.6/ICE_CLK
+15,P4.7/ICE_DAT
+16,P0.7/SPICLK
+17,P0.6/MISO
+18,P0.5/MOSI
+19,P0.4/SPISS/PWM5
+20,VDD
+/*** (C) COPYRIGHT 2013-2019 Nuvoton Technology Corp. ***/

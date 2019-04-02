@@ -22,6 +22,30 @@ uint32_t CyclesPerUs      = (__HSI / 1000000UL); /* Cycles per micro second */
 uint32_t PllClock         = __HSI;             /*!< PLL Output Clock Frequency         */
 uint32_t gau32ClkSrcTbl[] = {__HXT, __LXT, 0UL, __LIRC, 0UL, 0UL, 0UL, __HIRC};
 
+//for m3/m4/m7 only
+int _checkUserCode(uint32_t usrAddr) {
+    uint32_t sp = *(volatile uint32_t *) usrAddr;
+    return ((sp & 0xFFFC0000) == 0x20000000)?1:0;  /*0x0C0000 < 196k*/
+}
+
+/*bootloader use*/
+void _jumpToUser(uint32_t usrAddr) {
+  // Dedicated function with no call to any function (appart the last call)
+  // This way, there is no manipulation of the stack here, ensuring that GGC
+  // didn't insert any pop from the SP after having set the MSP.
+  
+  typedef void (*funcPtr)(void);
+
+  uint32_t jumpAddr = *(volatile uint32_t *)(usrAddr + 0x04); /* reset ptr in vector table */
+
+  funcPtr usrMain = (funcPtr) jumpAddr;
+
+  asm volatile("msr msp, %0"::"g"
+               (*(volatile uint32_t *)usrAddr));
+  *(uint32_t *) 0xE000ED08 = usrAddr;   /* 设置中断向量表地址 */
+  usrMain();                            /* go! */
+}
+
 /*----------------------------------------------------------------------------
   Clock functions
  *----------------------------------------------------------------------------*/
@@ -104,6 +128,10 @@ void SystemInit (void)
                        RTC_GPIOCTL1_CTLSEL6_Msk | RTC_GPIOCTL1_CTLSEL7_Msk);
     CLK->APBCLK0 &= ~CLK_APBCLK0_RTCCKEN_Msk;
     HXTInit();
+	
+#ifdef CHK_JUMP_TO_SRAM
+    if(_checkUserCode(0x20000000U)) _jumpToUser(0x20000000U);
+#endif
 
 }
 /*** (C) COPYRIGHT 2016 Nuvoton Technology Corp. ***/

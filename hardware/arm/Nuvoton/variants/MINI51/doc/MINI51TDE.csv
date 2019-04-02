@@ -1,0 +1,43 @@
+/****************************************************************************
+ * @file     MINI51TDE.csv
+ * @version  V1.13
+ * @Date     2019/04/02-10:30:51 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2019 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU: MINI51TDE(QFN33)
+
+Pin,Description
+1,P1.5 /AIN5/ACMP0_P
+2,     /RESET
+3,P3.0 /ACMP1_N/AIN6
+4,P5.4 
+5,P3.1 /ACMP1_P/AIN7
+6,P3.2 /INT0/T0EX/STADC/ACMP1_P
+7,P3.4 /T0/SDA/ACMP1_P
+8,P3.5 /T1/SCL/ACMP1_P
+9,P3.6 /T1EX/CKO/ACMP0_O
+10,P5.1/XTAL2
+11,P5.0/XTAL1
+12,     VSS
+13,P5.2/INT1
+14,P2.2/PWM0
+15,P2.3/PWM1
+16,P2.4/PWM2
+17,P2.5/PWM3
+18,P2.6/PWM4/ACMP1_O
+19,P4.6/ICE_CLK
+20,P4.7/ICE_DAT
+21,P0.7/SPICLK
+22,P0.6/MISO
+23,P0.5/MOSI
+24,P0.4/SPISS/PWM5
+25,P0.1/SPISS/RTSn/RX
+26,P0.0/CTSn/TX
+27,P5.3/AIN0
+28,     VDD
+29,P1.0/AIN1/ACMP0_P
+30,P1.2/AIN2/RX/ACMP0_P
+31,P1.3/AIN3/TX/ACMP0_P
+32,P1.4/AIN4/ACMP0_N
+/*** (C) COPYRIGHT 2013-2019 Nuvoton Technology Corp. ***/

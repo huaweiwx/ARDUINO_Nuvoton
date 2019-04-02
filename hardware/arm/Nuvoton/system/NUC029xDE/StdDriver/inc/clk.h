@@ -393,6 +393,10 @@ void CLK_DisableSysTick(void);
 
 
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif //__CLK_H__
 
 

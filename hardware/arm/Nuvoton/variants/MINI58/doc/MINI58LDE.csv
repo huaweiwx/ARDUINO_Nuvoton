@@ -1,0 +1,58 @@
+/****************************************************************************
+ * @file     MINI58LDE.csv
+ * @version  V1.13
+ * @Date     2019/04/02-10:40:00 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2019 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU: MINI58LDE(LQFP48)
+Pin,Description
+1,      NC
+2,P1.5  ADC_CH5/UART1_TXD/ACMP0_P0
+3,      nRESET
+4,P3.0  ACMP1_N/ADC_CH6
+5,      AVSS
+6,P5.4  
+7,P3.1  ACMP1_P0/ADC_CH7
+8,P3.2  INT0/TM0_EXT/STADC/ACMP1_P1
+9,P3.4  TM0_CNT_OUT/I2C0_SDA/ACMP1_P2
+10,P3.5 TM1_CNT_OUT/I2C0_SCL/ACMP1_P3
+11,     NC
+12,     NC
+13,     NC
+14,P3.6 TM1_EXT/CLKO/ACMP0_O
+15,P5.1 XT1_OUT/I2C1_SCL/UART0_RXD
+16,P5.0 XT1_IN/I2C1_SDA/UART0_TXD
+17,     VSS
+18,     LDO_CAP
+19,P5.5 
+20,P5.2 INT1
+21,     NC   
+22,P2.2 PWM0_CH0/I2C1_SCL
+23,P2.3 PWM0_CH1/I2C1_SDA
+24,P2.4 UART1_RXD/PWM0_CH2
+25,P2.5 UART1_TXD/PWM0_CH3
+26,P2.6 PWM0_CH4/ACMP1_O
+27,     NC
+28,     NC
+29,P4.6 ICE_CLK/UART1_RXD
+30,P4.7 ICE_DAT/UART1_TXD
+31,     NC   
+32,P0.7 SPI0_CLK/PWM0_CH0
+33,P0.6 SPI0_MISO/PWM0_CH1
+34,P0.5 SPI0_MOSI/PWM0_CH4
+35,P0.4 SPI0_SS/PWM0_CH5
+36,     NC   
+37,P0.1 SPI0_SS/UART0_nRTS/UART0_RXD
+38,P0.0 UART0_nCTS/UART0_TXD
+39,     NC
+40,     NC
+41,P5.3 ADC_CH0
+42,     VDD
+43,     AVDD
+44,P1.0 ADC_CH1/ACMP0_P1
+45,P1.2 ADC_CH2/UART0_RXD/ACMP0_P2/PWM0_CH0
+46,P1.3 ADC_CH3/UART0_TXD/ACMP0_P3/PWM0_CH1
+47,P1.4 ADC_CH4/UART1_RXD/ACMP0_N/PWM0_CH4
+48,NC
+/*** (C) COPYRIGHT 2013-2019 Nuvoton Technology Corp. ***/

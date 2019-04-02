@@ -31,16 +31,6 @@ typedef struct _PinDescription
 {
   uint32_t MFP;
   uint32_t Mask;
-#if defined(__NUC240__)
-  uint32_t ALTMsk;
-  uint32_t ALT1Msk;
-  uint32_t ALT2Msk;
-#elif defined(__NUC131__)
-  uint32_t ALTMsk;
-  uint32_t ALT2Msk;
-  uint32_t ALT3Msk;
-  uint32_t ALT4Msk;
-#endif
   uint32_t Type;
 } PinDescription;
 
@@ -51,15 +41,15 @@ typedef struct _GPIOPinDescription
   PinDescription Pin;
 } GPIOPinDescription;
 
-typedef struct _GPIOPortDescription
-{
-  GPIO_T *P;
-  uint32_t Pins;
-  uint32_t MFP;  
-  uint32_t Mask;
-  uint32_t Type;
+//typedef struct _GPIOPortDescription
+//{
+//  GPIO_T *P;
+//  uint32_t Pins;
+//  uint32_t MFP;  
+//  uint32_t Mask;
+//  uint32_t Type;
 //  PinDescription Pin;
-} GPIOPortDescription;
+//} GPIOPortDescription;
 
 typedef struct _ADCPinDescription
 {
@@ -156,29 +146,29 @@ extern BoardToPin BoardToPinInfo[];
 #endif 
 
 extern const GPIOPinDescription GPIO_Desc[];
-#define GPIO_Config(Desc)   /*outp32(Desc.MFP,(inp32(Desc.MFP) & ~Desc.Mask) | Desc.Type)*/
+#define GPIO_Config(Desc)   outp32(Desc.Pin.MFP,(inp32(Desc.Pin.MFP) & ~Desc.Pin.Mask) | Desc.Pin.Type)
 
 
 #define PWM_MAX_COUNT 8
 extern const PWMPinDescription PWM_Desc[];
-#define PWM_Config(Desc) 
+#define PWM_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
 
 #define ADC_MAX_COUNT 6
 extern const ADCPinDescription ADC_Desc[];
 #define ADC_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
 
 #define SPI_MAX_COUNT 1
-#define SPI_CHANNELS_NUM 1
 extern const SPIPinDescription SPI_Desc[];
 #define SPI_Config(Desc) \
   do { \
       outp32(GPIO_Desc[Desc.clk.num].Pin.MFP, (inp32(GPIO_Desc[Desc.clk.num].Pin.MFP)  & ~GPIO_Desc[Desc.clk.num].Pin.Mask)  | Desc.clk.type); \
       outp32(GPIO_Desc[Desc.mosi.num].Pin.MFP,(inp32(GPIO_Desc[Desc.mosi.num].Pin.MFP) & ~GPIO_Desc[Desc.mosi.num].Pin.Mask) | Desc.mosi.type); \
-      outp32(GPIO_Desc[Desc.mido.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
+      outp32(GPIO_Desc[Desc.miso.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
       outp32(GPIO_Desc[Desc.ss.num].Pin.MFP,  (inp32(GPIO_Desc[Desc.ss.num].Pin.MFP)   & ~GPIO_Desc[Desc.ss.num].Pin.Mask)   | Desc.ss.type); \
   }while(0);
 
 #define UART_MAX_COUNT 1
+#define  UART_IER_RDA_IEN_Msk UART_INTEN_RDAIEN_Msk
 extern const UARTPinDescription UART_Desc[];
 #define UART_Config(Desc) \
   do { \

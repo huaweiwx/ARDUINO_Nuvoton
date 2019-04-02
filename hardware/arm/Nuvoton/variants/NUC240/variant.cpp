@@ -94,16 +94,16 @@ const GPIOPinDescription GPIO_Desc[] =
   {PC, BIT3,  {(uint32_t)&SYS->GPC_MFP, SYS_GPC_MFP_PC3_Msk, SYS_ALT_MFP_PC3_Msk,  NULL,                   NULL,                 SYS_GPC_MFP_PC3_GPIO }}, //56
   {PC, BIT12, {(uint32_t)&SYS->GPC_MFP, SYS_GPC_MFP_PC12_Msk, NULL,                 NULL,                  NULL,                 SYS_GPC_MFP_PC12_GPIO}}, //57
   {PB, BIT10, {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB10_Msk, SYS_ALT_MFP_PB10_Msk, NULL,                  NULL,                 SYS_GPB_MFP_PB10_GPIO}}, //58
-  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}}, //59
+  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}}, //59
 
   {PB, BIT3,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB3_Msk, SYS_ALT_MFP_PB3_Msk,  SYS_ALT_MFP1_PB3_Msk,   SYS_ALT_MFP2_PB3_Msk, SYS_GPB_MFP_PB3_GPIO }}, //60
-  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}},                                                                                                           //61
+  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}},                                                                                                           //61
   {PC, BIT7,  {(uint32_t)&SYS->GPC_MFP, SYS_GPC_MFP_PC7_Msk, NULL,                 SYS_ALT_MFP1_PC7_Msk,   NULL,                 SYS_GPC_MFP_PC7_GPIO }}, //62
-  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}},                                                                                                           //63
+  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}},                                                                                                           //63
   {PC, BIT6,  {(uint32_t)&SYS->GPC_MFP, SYS_GPC_MFP_PC6_Msk, NULL,                 SYS_ALT_MFP1_PC6_Msk,   NULL,                 SYS_GPC_MFP_PC6_GPIO }}, //64
-  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}},                                                                                                           //65
+  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}},                                                                                                           //65
   {PB, BIT2,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB2_Msk, SYS_ALT_MFP_PB2_Msk,  NULL,                   SYS_ALT_MFP2_PB2_Msk, SYS_GPB_MFP_PB2_GPIO }}, //66
-  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL}},                                                                                                           //67
+  {NULL, NULL, {NULL, NULL, NULL, NULL, NULL, NULL}},                                                                                                           //67
   {PC, BIT8,  {(uint32_t)&SYS->GPC_MFP, SYS_GPC_MFP_PC8_Msk, NULL,                 NULL,                   NULL,                 SYS_GPC_MFP_PC8_GPIO }}, //68
   {PB, BIT7,  {(uint32_t)&SYS->GPB_MFP, SYS_GPB_MFP_PB7_Msk, NULL,                 NULL,                   NULL,                 SYS_GPB_MFP_PB7_GPIO }}, //69
 

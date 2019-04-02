@@ -29,8 +29,8 @@
   */
 
 
-#ifndef __NUC2201_H__
-#define __NUC2201_H__
+#ifndef __NUC029xEE_H__
+#define __NUC029xEE_H__
 
 /*
  * ==========================================================================
@@ -505,5 +505,4 @@ typedef volatile unsigned long  vu32;       ///< Define 32-bit unsigned volatile
 #endif
 
 /*@}*/ /* end of REGISTER group Definitions */
-
 

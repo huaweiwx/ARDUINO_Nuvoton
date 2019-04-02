@@ -1,0 +1,59 @@
+/****************************************************************************
+ * @file     MINI51LDE.csv
+ * @version  V1.13
+ * @Date     2019/04/02-10:34:55 
+ * @brief    NuMicro pin descriptions file
+ * Copyright (C) 2013-2019 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU: MINI51LDE(LQFP48)
+
+Pin,Description
+1,        NC
+2,P1.5    AIN5/ACMP0_P
+3,        RESET
+4,P3.0    ACMP1_N/AIN6
+5,        AVSS
+6,P5.4    
+7,P3.1    ACMP1_P/AIN7
+8,P3.2    INT0/T0EX/STADC/ACMP1_P
+9,P3.4    T0/SDA/ACMP1_P
+10,P3.5   T1/SCL/ACMP1_P
+11,       NC
+12,       NC
+13,       NC
+14,P3.6   T1EX/CKO/ACMP0_O
+15,P5.1   XTAL2
+16,P5.0   XTAL1
+17,       VSS
+18,       LDO_CAP
+19,P5.5   
+20,P5.2   INT1
+21,       NC
+22,P2.2   PWM0
+23,P2.3   PWM1
+24,P2.4   PWM2
+25,P2.5   PWM3
+26,P2.6   PWM4/ACMP1_O
+27,       NC
+28,       NC
+29,P4.6   ICE_CLK
+30,P4.7   ICE_DAT
+31,       NC
+32,P0.7   SPICLK
+33,P0.6   MISO
+34,P0.5   MOSI
+35,P0.4   SPISS/PWM5
+36,       NC
+37,P0.1   SPISS/RTSn/RX
+38,P0.0   CTSn/TX
+39,       NC
+40,       NC
+41,P5.3   AIN0
+42,       VDD
+43,       AVDD
+44,P1.0   AIN1/ACMP0_P
+45,P1.2   AIN2/RX/ACMP0_P
+46,P1.3   AIN3/TX/ACMP0_P
+47,P1.4   AIN4/ACMP0_N
+48,       NC
+/*** (C) COPYRIGHT 2013-2019 Nuvoton Technology Corp. ***/

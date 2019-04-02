@@ -33,9 +33,9 @@
       PIN(B,5   ,20 ), /*TX1/SPICLK2                          */\
       PIN(B,6   ,21 ), /*RTSn1/ALE/MISO20                     */\
       PIN(B,7   ,22 ), /*CTSn1/nCS/MOSI20                     */\
-      /* 		   23      LDO_CAP                              */\
-      /* 		   24      VDD                                  */\
-      /* 		   25      VSS                                  */\
+      /* 		 23      LDO_CAP                              */\
+      /* 		 24      VDD                                  */\
+      /* 		 25      VSS                                  */\
       PIN(E,8   ,26 ), /*                                     */\
       PIN(E,7   ,27 ), /*                                     */\
       /*         28      SB_VBUS                              */\
@@ -136,9 +136,9 @@
       PIN(B,5   ,20 ), /*TX1/SPICLK2                          */\
       PIN(B,6   ,21 ), /*RTSn1/ALE/MISO20                     */\
       PIN(B,7   ,22 ), /*CTSn1/nCS/MOSI20                     */\
-      /* 		   23      LDO_CAP                              */\
-      /* 		   24      VDD                                  */\
-      /* 		   25      VSS                                  */\
+      /* 		 23      LDO_CAP                              */\
+      /* 		 24      VDD                                  */\
+      /* 		 25      VSS                                  */\
       PIN(E,8   ,26 ), /*                                     */\
       PIN(E,7   ,27 ), /*                                     */\
       /*         28      SB_VBUS                              */\
