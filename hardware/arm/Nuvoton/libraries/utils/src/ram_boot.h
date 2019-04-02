@@ -22,8 +22,8 @@
 
 #ifndef _RAM_BOOT_H_
 #define _RAM_BOOT_H_
-#include "Bootloader.h"
 
+#include "Bootloader.h"
 
 __attribute__(( constructor (101))) void premain(){ 
 #ifdef SERIAL_LOAD_RAM

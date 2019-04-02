@@ -12,12 +12,16 @@
       operate ()
       operate =	  
 */
+
+#define DAT_PIN PA_0
+#define CLK_PIN PA_1
+
 //#define TEST_INPUT
 
 #ifdef TEST_INPUT
-ClockedInput<>  sinp(PA0,PA1);
+ClockedInput<>  sinp(DAT_PIN,CLK_PIN);
 #else
-ClockedOutput<> sout(PA0,PA1);
+ClockedOutput<> sout(DAT_PIN,CLK_PIN);
 #endif
 
 void setup() {

@@ -140,6 +140,10 @@ class EXTEEPROM : public WARE {
 
     EXTEEPROM(ARDUINOPIN_TypeDef sda = AT24CXX_SDA, ARDUINOPIN_TypeDef scl = AT24CXX_SCL, uint8_t devAdr = AT24CXX_ADR, uint16_t devType = AT24CXX_TYPE)
       : WARE(sda, scl), devAdr(devAdr), devType(devType) {}
+
+    EXTEEPROM(TwoWire _twi, uint8_t devAdr = AT24CXX_ADR, uint16_t devType = AT24CXX_TYPE)
+      : WARE(_twi), devAdr(devAdr), devType(devType) {}
+
     ~EXTEEPROM() {}
 
     EERef operator[](const int idx) { return idx;}

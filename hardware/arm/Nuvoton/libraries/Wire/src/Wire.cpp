@@ -23,30 +23,50 @@ extern "C" {
 }
 
 #include "Wire.h"
+TwoWire::TwoWire(I2C_T *i2c,int route) :
+	             i2c(i2c), ucLoc(route),
+	             rxBufferIndex(0), rxBufferLength(0), 
+	             txAddress(0), txBufferLength(0), 
+	             srvBufferIndex(0),srvBufferLength(0), 
+	             status(UNINITIALIZED){ /* Empty	*/}
 
-TwoWire::TwoWire(I2C_T *_i2c, void(*_beginCb)(void)) :
-	i2c(_i2c), rxBufferIndex(0), rxBufferLength(0), txAddress(0),
-			txBufferLength(0), srvBufferIndex(0), srvBufferLength(0), status(
-					UNINITIALIZED), onBeginCallback(_beginCb) {
-	// Empty	
-}
-void TwoWire::Init() {
+void TwoWire::_init() {
+	uint8_t i2c_x = 0;
+#if I2C_MAX_COUNT > 1
+    if (i2c == I2C1){
+	  i2c_x = 1;
+	}
+#endif
+#if I2C_MAX_COUNT > 2
+    else if (i2c == I2C2){
+	  i2c_x = 2;
+	}
+#endif
+    
+	I2C_Config(I2C_Desc[i2c_x].pinAlt[ucLoc]);
 	
+	/* Enable IP clock */       
+	CLK_EnableModuleClock(I2C_Desc[i2c_x].module);    	
+   	
+	/* Select IP clock source and clock divider */
+	CLK_SetModuleClock(I2C_Desc[i2c_x].module,0,0);
+
+	NVIC_DisableIRQ(I2C_Desc[i2c_x].irq);
+	NVIC_ClearPendingIRQ(I2C_Desc[i2c_x].irq);
+	NVIC_SetPriority(I2C_Desc[i2c_x].irq, 0);
+	NVIC_EnableIRQ(I2C_Desc[i2c_x].irq);
+	I2C_Open(i2c,I2C_CLOCK);			
 }
 
 void TwoWire::begin(void) {   
-        if(init_flag==0) init();
-		if (onBeginCallback) onBeginCallback();			
-		I2C_Open(i2c,I2C_CLOCK);		
+	    _init();
 		status = MASTER_IDLE;
-                delay(1);
+        delay(1);
 }
 
 void TwoWire::begin(uint8_t address) {
-		if (onBeginCallback) onBeginCallback();
-		I2C_Open(i2c,I2C_CLOCK);			
+	    _init();
 		status = SLAVE_IDLE;
-		
 		I2C_SetSlaveAddr(i2c, 0, address, 0);   /* Slave Address */	        		
 		I2C_EnableInt(i2c);				    
         I2C_SET_CONTROL_REG(i2c, I2C_SI_AA); /* I2C enter no address SLV mode */
@@ -59,7 +79,7 @@ void TwoWire::begin(int address) {
 uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) {
 	if (quantity > BUFFER_LENGTH) quantity = BUFFER_LENGTH;
 	int readed = 0;
-	int timeout_=TIMEOUT;
+	int timeout_=I2C_TIMEOUT;
 	while(timeout_--)
 	{
 		/* Send start */
@@ -142,7 +162,7 @@ void TwoWire::beginTransmission(int address) {
 uint8_t TwoWire::endTransmission(uint8_t sendStop) {
 	
 	int sent = 0;	/* Send data */
-	int timeout_=TIMEOUT;
+	int timeout_=I2C_TIMEOUT;
 	while(timeout_--)
 	{
 		/* Send start */
@@ -217,6 +237,7 @@ size_t TwoWire::write(const uint8_t *data, size_t quantity) {
 			srvBuffer[srvBufferLength++] = data[i];
 		}
 	}
+	return 0;
 }
 
 int TwoWire::available(void) {
@@ -256,7 +277,7 @@ void TwoWire::I2C_SlaveTRx(uint32_t u32Status)
 		//Serial.println(srvBufferIndex,HEX);
     if(u32Status == 0x60)                       /* Own SLA+W has been receive; ACK has been return */
     {
-    	  status = SLAVE_RECV;
+    	status = SLAVE_RECV;
         srvBufferLength = 0;
         I2C_SET_CONTROL_REG(i2c, I2C_SI_AA);
     }
@@ -350,68 +371,46 @@ void TwoWire::onService(void) {
 }
 
 #if I2C_MAX_COUNT > 0
-static void Wire_Init(void) {
-#ifdef I2C
-	IRQn_Type irq=I2C_IRQn;
-#else	
-	IRQn_Type irq=I2C0_IRQn;
+#ifndef I2C0_ROUTELOC
+  #define I2C0_ROUTELOC 0
 #endif
-	I2C_Config(I2C_Desc[0].pinAlt[ucLoc]);	
-	/* Enable IP clock */       
-	CLK_EnableModuleClock(I2C_Desc[0].module);    	
-   	
-	/* Select IP clock source and clock divider */
-	CLK_SetModuleClock(I2C_Desc[0].module,0,0);
+TwoWire Wire0 = TwoWire(I2C_Desc[0].I,I2C0_ROUTELOC);
 
-	NVIC_DisableIRQ(irq);
-	NVIC_ClearPendingIRQ(irq);
-	NVIC_SetPriority(irq, 0);
-	NVIC_EnableIRQ(irq);
-}
-
-TwoWire Wire = TwoWire(I2C_Desc[0].I, Wire_Init);
-
-#ifdef __cplusplus
-#ifdef I2C
-extern "C" void I2C_IRQHandler(void) {
-	Wire.onService();
-}
-#else
-extern "C" void I2C1_IRQHandler(void) {
-	Wire.onService();
-}
+# ifdef __cplusplus
+#  ifdef I2C
+     extern "C" void I2C_IRQHandler(void) {
+	   Wire0.onService();
+     }
+#  else
+     extern "C" void I2C0_IRQHandler(void) {
+	   Wire0.onService();
+     }
+#  endif
+# endif
 #endif
-#endif
-
-#endif
-
-
 
 #if I2C_MAX_COUNT > 1
-static void Wire1_Init(void) {
-	
-	IRQn_Type irq=I2C1_IRQn;
-	
-	I2C_Config(I2C_Desc[1].pinAlt[ucLoc]);
-	
-	/* Enable IP clock */       
-	CLK_EnableModuleClock(I2C_Desc[1].module);    	
-   	
-	/* Select IP clock source and clock divider */
-	CLK_SetModuleClock(I2C_Desc[1].module,0,0);
+#ifndef I2C1_ROUTELOC
+  #define I2C1_ROUTELOC 0
+#endif
+TwoWire Wire1 = TwoWire(I2C_Desc[1].I,I2C1_ROUTELOC);
 
-	NVIC_DisableIRQ(irq);
-	NVIC_ClearPendingIRQ(irq);
-	NVIC_SetPriority(irq, 0);
-	NVIC_EnableIRQ(irq);
-}
-
-TwoWire Wire1 = TwoWire(I2C_Desc[1].I, Wire1_Init);
-
-#ifdef __cplusplus
-extern "C" void I2C1_IRQHandler(void) {
-	Wire1.onService();
-}
+#  ifdef __cplusplus
+	 extern "C" void I2C1_IRQHandler(void) {
+	   Wire1.onService();
+     }
+#  endif
 #endif
 
+#if I2C_MAX_COUNT > 2
+#ifndef I2C2_ROUTELOC
+  #define I2C2_ROUTELOC 0
+#endif
+TwoWire Wire2 = TwoWire(I2C_Desc[2].I,I2C2_ROUTELOC);
+
+#  ifdef __cplusplus
+     extern "C" void I2C2_IRQHandler(void) {
+	    Wire2.onService();
+     }
+#  endif
 #endif

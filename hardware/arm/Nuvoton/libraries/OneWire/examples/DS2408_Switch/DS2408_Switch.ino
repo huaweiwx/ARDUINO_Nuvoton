@@ -26,7 +26,7 @@ void PrintBytes(const uint8_t* addr, uint8_t count, bool newline=false) {
 
 
 void setup(void) {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop(void) {

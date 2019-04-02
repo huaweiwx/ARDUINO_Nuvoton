@@ -5,8 +5,8 @@
 // DS1307 VCC --> VCC
 // DS1307 GND --> GND
 
-/*NUCLEO F401RE*/
-#define  USE_WARESOFT  1  /* set to 1 use software i2c */
+/*NUVOTON M482 */
+#define USE_WARESOFT  1  /* set to 1 use software i2c */
 #define AT24CXX_SCL    PB_2
 #define AT24CXX_SDA    PB_3
 #define VCC_PIN        PB_4
@@ -50,7 +50,7 @@ void setup ()
   // the available pins for SDA, SCL
   // Wire.begin(0, 2); // due to limited pins, use pin 0 and 2 for SDA, SCL
 
-  Rtc.Begin();
+  Rtc.Init();
 
   RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
   printDateTime(compiled);

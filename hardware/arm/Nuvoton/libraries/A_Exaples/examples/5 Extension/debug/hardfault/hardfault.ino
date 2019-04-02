@@ -1,5 +1,5 @@
 /*
-  LogLevel.ino
+  hardFaultl.ino
   
   fault:
     _Error_Handler(char* , uint32_t);
@@ -35,7 +35,7 @@ void setup() {
 extern "C" void _Error_Handler(char* file, uint32_t line);
 void test (int n) {
 //  assert_param( n < 20);
-  void (*func)(void) = (void (*)(void))0x00000000;
+  void (*func)(void) = (void (*)(void))0x00000000; /* defined a illegal call address, generate the Hardware Failure events*/
 
   if ((n % 10) == 0) {
     PRINT_TRACE("val= %d\n", n);
@@ -46,9 +46,9 @@ void test (int n) {
   }
   if (n >20) {
     PRINT_INFO("\nval= %d must <= 30 \n", n);
-//    func();
-    MEM_ADDR(0) = 0;
-    _Error_Handler(__FILENAME__, __LINE__);
+    func();                                  /* The func is a illegal call, generate the Hardware Failure interrupt. hardfault code demo 1*/
+//  MEM_ADDR(0) = 0;                       /* The write address 0  is illegal , will be generate the Hardware Failure interrupt. hardfault code demo 2*/
+    _Error_Handler(__FILENAME__, __LINE__); /*std err fun*/
    }
 }
 

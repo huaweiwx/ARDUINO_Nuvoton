@@ -237,7 +237,7 @@ void directModeOutput(IO_REG_TYPE pin)
 #include "avr/pgmspace.h"
 
 #define GPIO_ID(pin)			(g_APinDescription[pin].ulGPIOId)
-#define GPIO_TYPE(pin)			(g_APinDescription[pin].ulGPIOType)
+#define GPIO_Type(pin)			(g_APinDescription[pin].ulGPIOType)
 #define GPIO_BASE(pin)			(g_APinDescription[pin].ulGPIOBase)
 #define DIR_OFFSET_SS			0x01
 #define DIR_OFFSET_SOC			0x04
@@ -255,7 +255,7 @@ static inline __attribute__((always_inline))
 IO_REG_TYPE directRead(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 {
     IO_REG_TYPE ret;
-    if (SS_GPIO == GPIO_TYPE(pin)) {
+    if (SS_GPIO == GPIO_Type(pin)) {
         ret = READ_ARC_REG(((IO_REG_TYPE)base + EXT_PORT_OFFSET_SS));
     } else {
         ret = MMIO_REG_VAL_FROM_BASE((IO_REG_TYPE)base, EXT_PORT_OFFSET_SOC);
@@ -266,7 +266,7 @@ IO_REG_TYPE directRead(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 static inline __attribute__((always_inline))
 void directModeInput(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 {
-    if (SS_GPIO == GPIO_TYPE(pin)) {
+    if (SS_GPIO == GPIO_Type(pin)) {
         WRITE_ARC_REG(READ_ARC_REG((((IO_REG_TYPE)base) + DIR_OFFSET_SS)) & ~(0x01 << GPIO_ID(pin)),
 			((IO_REG_TYPE)(base) + DIR_OFFSET_SS));
     } else {
@@ -277,7 +277,7 @@ void directModeInput(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 static inline __attribute__((always_inline))
 void directModeOutput(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 {
-    if (SS_GPIO == GPIO_TYPE(pin)) {
+    if (SS_GPIO == GPIO_Type(pin)) {
         WRITE_ARC_REG(READ_ARC_REG(((IO_REG_TYPE)(base) + DIR_OFFSET_SS)) | (0x01 << GPIO_ID(pin)),
 			((IO_REG_TYPE)(base) + DIR_OFFSET_SS));
     } else {
@@ -288,7 +288,7 @@ void directModeOutput(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 static inline __attribute__((always_inline))
 void directWriteLow(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 {
-    if (SS_GPIO == GPIO_TYPE(pin)) {
+    if (SS_GPIO == GPIO_Type(pin)) {
         WRITE_ARC_REG(READ_ARC_REG(base) & ~(0x01 << GPIO_ID(pin)), base);
     } else {
         MMIO_REG_VAL(base) &= ~(0x01 << GPIO_ID(pin));
@@ -298,7 +298,7 @@ void directWriteLow(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 static inline __attribute__((always_inline))
 void directWriteHigh(volatile IO_REG_TYPE *base, IO_REG_TYPE pin)
 {
-    if (SS_GPIO == GPIO_TYPE(pin)) {
+    if (SS_GPIO == GPIO_Type(pin)) {
         WRITE_ARC_REG(READ_ARC_REG(base) | (0x01 << GPIO_ID(pin)), base);
     } else {
         MMIO_REG_VAL(base) |= (0x01 << GPIO_ID(pin));

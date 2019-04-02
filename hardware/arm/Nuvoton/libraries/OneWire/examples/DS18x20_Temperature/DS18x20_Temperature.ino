@@ -10,7 +10,7 @@
 OneWire  ds(10);  // on pin 10 (a 4.7K resistor is necessary)
 
 void setup(void) {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop(void) {

@@ -1,6 +1,6 @@
 /*
-  Blink.ino
-  Turns LED on/off demo running in FreeRTOS V9.0/10.0.
+  errorCallBack.ino
+  errorCallBack demo running in FreeRTOS V9.0/10.0.
 
   This example code is in the public domain.
   Nuvoton tested  by huaweiwx@sina.com , May 2 2018

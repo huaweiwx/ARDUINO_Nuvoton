@@ -12,7 +12,7 @@
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(LED_BUILTIN,OUTPUT)
+  pinMode(LED_BUILTIN,OUTPUT);
   Serial.begin();
 }
 
@@ -20,7 +20,7 @@ int count = 0;
 void loop() {
   // put your main code here, to run repeatedly:
   Serial.print("count: ");
-  Serial.println(count);
+  Serial.println(count++);
   digitalToggle(LED_BUILTIN);
   delay(1000);
 }

@@ -23,7 +23,7 @@ static void myTask1(void __attribute__ ((unused)) *argument)
     /* USER CODE BEGIN Task1 */
     vTaskDelay(1000);
     i++;
-    Serial << "Count:" << _HEX(i) << " in myTask1";
+    Serial << "Count:" << _HEX(i) << " in myTask1\n";
     /* USER CODE END Task1 */
   }
 }

@@ -14,32 +14,30 @@
 #define SPI_WRITE_TX(spi, u32TxData) 	SPI_WRITE_TX0(spi, u32TxData);
 #define SPI_READ_RX(spi)                SPI_READ_RX0(spi)
 #endif		
-					
-#define SPI_ID0 0
 
 SPIClass::SPIClass(SPI_T *_spi, uint8_t ucLoc) :
 	  spi(_spi), ucLoc(ucLoc)
 {
 	  this->spi=_spi;
 	  this->ucLoc=ucLoc;
-	  if(spi = SPI0) this->idx = 0;
+	  if(spi == SPI0) this->idx = 0;
 #ifdef SPI1
-      else 	if(spi = SPI1) this->idx = 1;
+      else 	if(spi == SPI1) this->idx = 1;
 #elif defined(SPI2)
-      else 	if(spi = SPI2) this->idx = 2;
+      else 	if(spi == SPI2) this->idx = 2;
 #elif defined(SPI3)
-      else 	if(spi = SPI3) this->idx = 3;
+      else 	if(spi == SPI3) this->idx = 3;
 #elif defined(SPI4)
-      else 	if(spi = SPI4) this->idx = 4;
+      else 	if(spi == SPI4) this->idx = 4;
 #elif defined(SPI5)
-      else 	if(spi = SPI5) this->idx = 5;
+      else 	if(spi == SPI5) this->idx = 5;
 #endif  
 	  this->module = SPI_Desc[idx].module;
       this->clksel = SPI_Desc[idx].clksel;
 	  this->id     =SPI_Desc[idx].irq;
 }
 
-SPIClass::SPIClass(uint8_t idx,uint8_t ucLoc) :
+SPIClass::SPIClass(uint8_t idx, uint8_t ucLoc) :
 	  idx(idx), ucLoc(ucLoc)
 {
 	  this->idx = idx;
@@ -51,7 +49,7 @@ SPIClass::SPIClass(uint8_t idx,uint8_t ucLoc) :
 }
 
 void SPIClass::Init() {
-	 SPI_Config(SPI_Desc[idx].pinAlt[loc]);	
+	 SPI_Config(SPI_Desc[idx].pinAlt[ucLoc]);	
 	 this->init_flag = 1;
 }
 
@@ -87,7 +85,8 @@ void SPIClass::begin() {
 }
 
 void SPIClass::begin(uint8_t _pin) {
-if(init_flag==0) Init();
+	UNUSED(_pin); 
+    if(init_flag==0) Init();
 #if defined(__M451__)	
 	/* Enable IP clock */       
 	CLK_EnableModuleClock(module);    	
@@ -131,7 +130,8 @@ if(init_flag==0) Init();
 }
 
 void SPIClass::end(uint8_t _pin) {
-		SPI_Close(spi);
+	UNUSED(_pin); 
+	SPI_Close(spi);
 }
 
 void SPIClass::end() {
@@ -140,11 +140,13 @@ void SPIClass::end() {
 
 void SPIClass::usingInterrupt(uint8_t interruptNumber)
 {
+	UNUSED(interruptNumber); 
 }
 
 void SPIClass::beginTransaction(uint8_t pin, SPISettings settings)
 {
-        if(init_flag==0) init();
+	UNUSED(pin); 
+    if(init_flag==0) init();
 	/* Configure as a master, clock idle low, falling clock edge Tx, rising edge Rx and 8-bit transaction */
 	/* Set IP clock divider. SPI clock rate = 4MHz */  	
 	SPI_Open(spi, SPI_MASTER, settings.datmode, 8, settings.clock);	
@@ -163,6 +165,7 @@ void SPIClass::endTransaction(void)
 }
 
 void SPIClass::setBitOrder(uint8_t _pin, BitOrder _bitOrder) {	
+	UNUSED(_pin); 
 	if(_bitOrder==LSBFIRST)
 		SPI_SET_LSB_FIRST(spi);
 	else
@@ -170,6 +173,7 @@ void SPIClass::setBitOrder(uint8_t _pin, BitOrder _bitOrder) {
 }
 
 void SPIClass::setDataMode(uint8_t _pin, uint8_t _mode) {	
+	UNUSED(_pin); 
 #if defined(__M451__)
 	spi->CTL = (spi->CTL & ~SPI_MODE_Msk) | _mode;
 #elif defined(__NUC240__) | defined(__NUC131__)
@@ -179,12 +183,20 @@ void SPIClass::setDataMode(uint8_t _pin, uint8_t _mode) {
 #endif
 }
 
-void SPIClass::setClockDivider(uint8_t _pin, uint8_t _divider) {	
+void SPIClass::setClockDivider(uint8_t _pin, uint8_t _divider) {
+	UNUSED(_pin); 
+#if defined(M051Series)||defined(M058S)||defined(Mini51Series)||defined(NUC029FAE)||defined(NUC029xAN) \
+    ||defined(NUC029xDE)||defined(NUC029xEE)||defined(NUC131)||defined(NUC200Series)
 	spi->DIVIDER = (spi->DIVIDER & ~0xffff) | _divider;
+#else	
+	spi->CLKDIV = (spi->CLKDIV & ~0xffff) | _divider;
+#endif
 }
 
 byte SPIClass::transfer(byte _pin, uint8_t _data, SPITransferMode _mode) {	
-	uint32_t rdata;
+	UNUSED(_pin); 
+	UNUSED(_mode); 
+//	uint32_t rdata;
 	SPI_WRITE_TX(spi, _data);
 	SPI_TRIGGER(spi);
 	while(SPI_IS_BUSY(spi));
@@ -193,6 +205,8 @@ byte SPIClass::transfer(byte _pin, uint8_t _data, SPITransferMode _mode) {
 
 uint16_t SPIClass::transfer16(byte _pin, uint16_t _data, SPITransferMode _mode) {
 	uint32_t rdata;
+	UNUSED(_pin); 
+	UNUSED(_mode); 
 	SPI_WRITE_TX(spi, _data&0xff);
 	SPI_TRIGGER(spi);
 	while(SPI_IS_BUSY(spi));
@@ -206,6 +220,8 @@ uint16_t SPIClass::transfer16(byte _pin, uint16_t _data, SPITransferMode _mode) 
 }
 
 void SPIClass::transfer(byte _pin, void *_buf, size_t _count, SPITransferMode _mode) {
+	UNUSED(_pin); 
+	UNUSED(_mode); 
 	uint32_t i;
 	uint8_t *buf;
 	buf=(uint8_t *)_buf;
@@ -229,7 +245,13 @@ void SPIClass::detachInterrupt(void) {
 
 #ifndef SPI_ID0
 #define SPI_ID0 0
+#ifdef  SPI0_ROUTELOC
+#  define SPI_ROUTELOC  SPI0_ROUTELOC
+#else
+#  define SPI_ROUTELOC  0
+#endif
 #endif
 
-SPIClass SPI(0,0);
+SPIClass SPI((uint8_t)SPI_ID0, SPI_ROUTELOC);
+
 #endif

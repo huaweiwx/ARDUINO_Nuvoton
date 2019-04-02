@@ -23,5 +23,4 @@ uint32_t UTIL_Str2PortPin(char* str);
 #endif
 
 #include "Bootloader.h"
-#include "dev_table.h"
 #endif

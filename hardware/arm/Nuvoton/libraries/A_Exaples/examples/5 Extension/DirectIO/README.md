@@ -1,4 +1,4 @@
-# EFM32 ARDUINO  ARM EXTENSION
+# STM32/EFM32/Nuvoton ARDUINO  ARM EXTENSION
   arduino arm extension.
 
 ## DIRECTIO

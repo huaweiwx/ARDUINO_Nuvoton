@@ -6,13 +6,12 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
+TwoWireSoft	KEYWORD1
 
 #######################################
 # Instances (KEYWORD1)
 #######################################
-
 WireSoft	KEYWORD2
-TwoWireSoft	KEYWORD2
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -33,6 +32,6 @@ receive	KEYWORD1
 I2C_FAST_MODE	LITERAL1
 SOFT_STANDARD	LITERAL1
 SOFT_FAST	LITERAL1
-
+USE_WARESOFT	LITERAL1
 #######################################
 

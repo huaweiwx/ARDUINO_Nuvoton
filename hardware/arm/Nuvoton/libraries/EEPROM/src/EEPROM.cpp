@@ -35,34 +35,5 @@
 /******************************************************************************
  * User API
  ******************************************************************************/
-EEPROMClass::EEPROMClass()
-{
-	 Wire.begin();
-}
 
-uint8_t EEPROMClass::read(int address)
-{
-	  uint8_t reading;     			
-  	  Wire.beginTransmission(0x50); // transmit to device #80(0x50)
-      Wire.write(byte(address>>8)); // high address
-      Wire.write(byte(address)); 	//low address
-      Wire.endTransmission(); 		// stop transmitting
-      			       
-      Wire.requestFrom(80, 1);    	// request 1 bytes from slave device #80(0x50)      
-      delay(2);
-      // receive reading from sensor
-      if( Wire.available() >=1)    	// if two bytes were received      
-        reading = Wire.read();  	// receive high byte (overwrites previous reading)                       
-      return reading; 
-}
-
-void EEPROMClass::write(int address, uint8_t value)
-{
-	Wire.beginTransmission(80); 	// transmit to device #80(0x50)
-    Wire.write(address>>8); 		// high address
-    Wire.write(address);  			// low address
-    Wire.write(value);  			// data
-    Wire.endTransmission();
-}
-
-EEPROMClass EEPROM;
+//EEPROMClass EEPROM;

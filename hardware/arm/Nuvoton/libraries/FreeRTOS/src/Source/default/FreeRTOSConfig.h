@@ -65,15 +65,19 @@
 #ifndef configUSE_PREEMPTION
 #  define configUSE_PREEMPTION            1
 #endif
+
 #ifndef configUSE_IDLE_HOOK
 #  define configUSE_IDLE_HOOK             1
 #endif
+
 #define configCPU_CLOCK_HZ              (SystemCoreClock)
 #define configTICK_RATE_HZ              (( portTickType )1000 )
 #define configMAX_PRIORITIES            ( 5 )
-#ifndef configMINIMAL_STACK_SIZE
-#define configMINIMAL_STACK_SIZE        (( unsigned short )128 )
+
+#ifndef  configMINIMAL_STACK_SIZE
+# define configMINIMAL_STACK_SIZE       (( unsigned short )128 )
 #endif
+
 #ifndef configTOTAL_HEAP_SIZE
 # if RAM_LENGTH > 16384
 #  define configTOTAL_HEAP_SIZE           (( size_t )(RAM_LENGTH/4))
@@ -83,17 +87,21 @@
 #  define configTOTAL_HEAP_SIZE           (( size_t )( 4 * 1024 ) )
 # endif
 #endif
-#define configMAX_TASK_NAME_LEN         ( 10 )
-#define configUSE_TRACE_FACILITY        1
-#define configUSE_16_BIT_TICKS          0
-#define configIDLE_SHOULD_YIELD         1
-#define configUSE_MUTEXES               1
+
+#define configMAX_TASK_NAME_LEN           ( 10 )
+#define configUSE_TRACE_FACILITY          1
+#define configUSE_16_BIT_TICKS            0
+#define configIDLE_SHOULD_YIELD           1
+#define configUSE_MUTEXES                 1
+
 #ifndef configQUEUE_REGISTRY_SIZE
 #  define configQUEUE_REGISTRY_SIZE       8
 #endif      
+
 #ifndef   configUSE_RECURSIVE_MUTEXES
 #  define configUSE_RECURSIVE_MUTEXES     1
 #endif
+
 #ifndef configCHECK_FOR_STACK_OVERFLOW
 # if USE_ASSERT
 #   define configCHECK_FOR_STACK_OVERFLOW  1
@@ -101,6 +109,7 @@
 #   define configCHECK_FOR_STACK_OVERFLOW  0
 # endif      
 #endif
+
 #ifndef   configUSE_MALLOC_FAILED_HOOK
 # if USE_ASSERT
 #   define configUSE_MALLOC_FAILED_HOOK    1
@@ -108,12 +117,15 @@
 #   define configUSE_MALLOC_FAILED_HOOK    0
 # endif
 #endif
+
 #define  configUSE_APPLICATION_TASK_TAG   0
+
 #ifndef  configUSE_COUNTING_SEMAPHORES
-#define  configUSE_COUNTING_SEMAPHORES   1
+ #define configUSE_COUNTING_SEMAPHORES    1
 #endif
-#define  configGENERATE_RUN_TIME_STATS   0
-#define  configUSE_QUEUE_SETS            1
+
+#define  configGENERATE_RUN_TIME_STATS    0
+#define  configUSE_QUEUE_SETS             1
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES             0
@@ -122,8 +134,8 @@
 /* Software timer definitions. */
 #define configUSE_TIMERS                 1
 #define configTIMER_TASK_PRIORITY       (2)
-#define configTIMER_QUEUE_LENGTH        10
-#define configTIMER_TASK_STACK_DEPTH    80    /*( configMINIMAL_STACK_SIZE * 2 )*/
+#define configTIMER_QUEUE_LENGTH         10
+#define configTIMER_TASK_STACK_DEPTH     80    /*( configMINIMAL_STACK_SIZE * 2 )*/
 
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
@@ -132,20 +144,23 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelete             1
 #define INCLUDE_vTaskCleanUpResources   0
 #define INCLUDE_vTaskSuspend            1
+
 #ifndef INCLUDE_vTaskDelayUntil
 #  define INCLUDE_vTaskDelayUntil       0
 #endif
+
 #ifndef INCLUDE_vTaskDelay
 #define INCLUDE_vTaskDelay              1
 #endif      
+
 /* Hook function related definitions. */
 #ifndef configUSE_TICK_HOOK
-#  define configUSE_TICK_HOOK         ( 0 )
+#  define configUSE_TICK_HOOK          (0)
 #endif
 
 /* Cortex-M specific definitions. */
 /* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */
-#define configPRIO_BITS          __NVIC_PRIO_BITS        /* Assembly code compile error. Because applied U Suffix to __NVIC_PRIO_BITS(M480.h).*/
+#define configPRIO_BITS                __NVIC_PRIO_BITS  /* Assembly code compile error. Because applied U Suffix to __NVIC_PRIO_BITS(M480.h).*/
 
 /* The lowest interrupt priority that can be used in a call to a "set priority" function. */
 #define configLIBRARY_LOWEST_INTERRUPT_PRIORITY   15
