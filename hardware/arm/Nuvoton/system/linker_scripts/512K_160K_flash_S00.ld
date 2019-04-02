@@ -1,8 +1,8 @@
 /* Linker script to configure memory regions. */
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x20000   /* 128k */
-  RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 0x04000    /* 16k */
+  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x20000   /* 512k all, appmgr use 128k */
+  RAM (rwx)  : ORIGIN = 0x20020000, LENGTH = 0x08000   /* 32k */
 }
 
 /* Library configurations */
