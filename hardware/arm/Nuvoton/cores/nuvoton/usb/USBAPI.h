@@ -19,7 +19,7 @@
 #ifndef __USBAPI__
 #define __USBAPI__
 
-#if defined __cplusplus
+#ifdef __cplusplus
 
 //================================================================================
 //================================================================================
@@ -134,5 +134,5 @@ extern Keyboard_ Keyboard;
 void	HID_SendReport(uint8_t id, const void* data, uint32_t len);
 
 
-#endif
+#endif //__cplusplus
 #endif

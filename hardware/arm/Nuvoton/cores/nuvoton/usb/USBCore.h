@@ -60,7 +60,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif // __cplusplus
 
 
 /*-------------------------------------------------------------*/
@@ -71,7 +71,7 @@ extern uint8_t volatile g_u8EP2Ready;
 void EP2_Handler(void);
 #ifdef __cplusplus
 }
-#endif
+#endif // __cplusplus
 
 #endif  /* __USBD_HID_H_ */
 

@@ -94,56 +94,53 @@
 #endif
 
 HardwareTimer* Timer[NR_TIMERS]={
-	#if(NR_TIMERS>0)
+  #if(NR_TIMERS>0)
 		&Timer1,
   #endif
   #if(NR_TIMERS>1)		
 		&Timer2,
-	#endif
-	#if(NR_TIMERS>2)
+  #endif
+  #if(NR_TIMERS>2)
 		&Timer3,
-	#endif
-	#if(NR_TIMERS>3)
+  #endif
+  #if(NR_TIMERS>3)
 		&Timer4
-	#endif
+  #endif
 };
 
 /** Timer channel numbers */
 static voidFuncPtr TimerFuncPtr[NR_TIMERS];
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-	#if(NR_TIMERS>0)
-	void TMR0_IRQHandler(void) { 
-		if(TimerFuncPtr[0])	TimerFuncPtr[0](0); 
-		TIMER_ClearIntFlag(TIMER0);
-	}
-	#endif
-	
-	#if(NR_TIMERS>1)
-	void TMR1_IRQHandler(void) { 
-		if(TimerFuncPtr[1])	TimerFuncPtr[1](1); 
-		TIMER_ClearIntFlag(TIMER1);
-	}
-	#endif
-	
-	#if(NR_TIMERS>2)
-	void TMR2_IRQHandler(void) { 
-		if(TimerFuncPtr[2])	TimerFuncPtr[2](2); 
-		TIMER_ClearIntFlag(TIMER2);
-	}	
-	#endif
-	
-	#if(NR_TIMERS>3)
-	void TMR3_IRQHandler(void) { 
-		if(TimerFuncPtr[3])	TimerFuncPtr[3](3); 
-		TIMER_ClearIntFlag(TIMER3);
-	}	
-	#endif
-#ifdef __cplusplus
+#if(NR_TIMERS>0)
+   extern "C"
+void TMR0_IRQHandler(void) { 
+	if(TimerFuncPtr[0])	TimerFuncPtr[0](0); 
+	TIMER_ClearIntFlag(TIMER0);
 }
+#endif
+
+#if(NR_TIMERS>1)
+   extern "C"
+void TMR1_IRQHandler(void) { 
+	if(TimerFuncPtr[1])	TimerFuncPtr[1](1); 
+	TIMER_ClearIntFlag(TIMER1);
+}
+#endif
+
+#if(NR_TIMERS>2)
+   extern "C"
+void TMR2_IRQHandler(void) { 
+	if(TimerFuncPtr[2])	TimerFuncPtr[2](2); 
+	TIMER_ClearIntFlag(TIMER2);
+}	
+#endif
+
+#if(NR_TIMERS>3)
+   extern "C"
+void TMR3_IRQHandler(void) { 
+	if(TimerFuncPtr[3])	TimerFuncPtr[3](3); 
+	TIMER_ClearIntFlag(TIMER3);
+}	
 #endif
 
 HardwareTimer::HardwareTimer(uint8_t timerNum,uint32_t moduleIdx,uint32_t clksel) {

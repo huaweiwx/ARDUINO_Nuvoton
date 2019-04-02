@@ -63,7 +63,7 @@ typedef struct
 #ifdef __cplusplus
 extern "C"
 {
-#endif
+#endif //__cplusplus
 // Internal: what will be the
 //int      setPrintOutput(Print *p);
 //void     setStdPrintDev(Print *p,int file);

@@ -20,10 +20,10 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif //__cplusplus
 
 char *dtostrf (double val, signed char width, unsigned char prec, char *sout);
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus

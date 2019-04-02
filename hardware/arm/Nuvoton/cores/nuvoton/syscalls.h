@@ -36,7 +36,7 @@
  *----------------------------------------------------------------------------*/
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif //__cplusplus
 
 extern caddr_t _sbrk( int incr ) ;
 
@@ -56,5 +56,5 @@ extern int _write( int file, char *ptr, int len ) ;
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
 

@@ -34,7 +34,7 @@ extern uint32_t SystemTickClock;
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif  //__cplusplus
 
 //#include "wiring_shift.h"
 
@@ -59,7 +59,7 @@ void yield(void);
 void tone(uint8_t ucPin, unsigned int frequency, unsigned long duration = 0);
 void noTone(uint8_t ucPin);
 
-#endif
+#endif //__cplusplus
 
 static volatile uint8_t init_flag=0;	
 

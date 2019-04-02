@@ -38,8 +38,9 @@
 
 #include "Stream.h"
 
-
-#define SERIAL_BUFFER_SIZE 16
+#ifndef SERIAL_BUFFER_SIZE
+  #define SERIAL_BUFFER_SIZE 32
+#endif
 
 struct ring_buffer
 {

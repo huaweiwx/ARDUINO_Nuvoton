@@ -111,6 +111,11 @@ enum BitOrder {
 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
 #define bit(b) (1UL << (b))
 
+// avr-libc defines _NOP() since 1.6.2
+#ifndef _NOP
+# define _NOP() do { __asm__ volatile ("nop"); } while (0)
+#endif
+
 typedef unsigned int word;
 
 

@@ -106,3 +106,48 @@ void digitalToggle(uint8_t ucPin)  //add 2015.6 by huawei
 	((GPIO_T *)(GPIO_Desc[ucPin].P))->DOUT ^= GPIO_Desc[ucPin].bit;	
 }
 
+
+uint32_t shiftIn(uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder )
+{
+	uint8_t value = 0 ;
+	uint8_t i ;
+
+	for ( i=0 ; i < 8 ; ++i )
+    {
+		digitalWrite(ulClockPin, HIGH ) ;
+
+		if (ulBitOrder == LSBFIRST )
+        {
+			value |= digitalRead(ulDataPin ) << i ;
+        }
+		else
+        {
+			value |= digitalRead(ulDataPin ) << (7 - i) ;
+        }
+
+		digitalWrite(ulClockPin, LOW ) ;
+	}
+
+	return value ;
+}
+
+void shiftOut(uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint8_t ucVal)
+{
+	uint8_t i ;
+
+	for ( i=0 ; i < 8 ; i++ )
+    {
+		if (ulBitOrder == LSBFIRST )
+        {
+			digitalWrite(ulDataPin, !!(ucVal & (1 << i)) ) ;
+        }
+		else	
+        {
+			digitalWrite(ulDataPin, !!(ucVal & (1 << (7 - i))) ) ;
+        }
+
+		digitalWrite(ulClockPin, HIGH ) ;
+		_NOP();
+		digitalWrite(ulClockPin, LOW ) ;		
+	}
+}

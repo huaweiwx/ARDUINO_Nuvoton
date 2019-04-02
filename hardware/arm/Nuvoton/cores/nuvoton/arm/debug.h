@@ -62,7 +62,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif //__cplusplus
 
 void errorLedBlink(char* file, uint32_t n);
 
@@ -79,7 +79,7 @@ void AssertError(uint8_t* file, uint32_t line);
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
 
 #if __unix__
 #define __FILENAME__ (char *)(__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)

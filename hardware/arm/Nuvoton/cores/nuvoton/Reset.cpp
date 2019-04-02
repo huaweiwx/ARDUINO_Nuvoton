@@ -21,7 +21,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif //__cplusplus
 
 static int ticks = -1;
 
@@ -43,4 +43,4 @@ void tickReset() {
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus

@@ -23,6 +23,7 @@
 
 #include "util/base.h"
 #define MEM_ADDR  M32
+
 #ifdef __cplusplus
 
 //inline void pinMode(__ConstPin CPin, uint32_t mode) {
@@ -139,7 +140,7 @@ class LL_PIN {
 class InputPin : public LL_PIN {
   public:
     uint32_t ulDelayCnt = F_CPU / 10'000'000;  
-    constexpr InputPin(__ConstPin CPin, bool initial_value = 1): LL_PIN(CPin) {
+    constexpr InputPin(__ConstPin CPin, bool initial_value = true): LL_PIN(CPin) {
       config(INPUT, initial_value);
     }
 
@@ -188,7 +189,7 @@ class InputPin : public LL_PIN {
 class OutputPin : public LL_PIN {
   public:
     uint32_t ulDelayCnt = F_CPU / 10'000'000; /* pulse_widch*/
-    constexpr OutputPin(__ConstPin CPin, bool initial_value = 0): LL_PIN(CPin) {
+    constexpr OutputPin(__ConstPin CPin, bool initial_value = true): LL_PIN(CPin) {
       config(OUTPUT, initial_value);
     }
 
@@ -253,7 +254,7 @@ class ClockedInput {
       bits_t value = 0;
       bits_t mask = (bit_order == LSBFIRST) ? 1 : (bits_t(1) << (nbits - 1));
 
-      data.setWaitTime(0);  /*use this ulDelayCnt*/
+      data.setWaitTime(ulDelayCnt);  /*use this ulDelayCnt*/
 
       for (uint8_t i = 0; i < nbits; i++) {
         clock = HIGH;
@@ -335,7 +336,7 @@ class ClockedOutput {
 // with(cs, LOW) {
 //     data = HIGH;
 // }
-// 
+//
 // is equivalent to:
 // cs = LOW;
 // data = HIGH;
@@ -344,7 +345,7 @@ class ClockedOutput {
 #define with(pin, val) for(boolean _loop_##pin=((pin=val),true);_loop_##pin; _loop_##pin=((pin=!val), false))
 
 #define GPIOPIN LL_PIN
-#define BB_PIN LL_PIN   /* LL_PIN use bitband operation */
+#define BB_PIN  LL_PIN   /* LL_PIN use bitband operation */
 
 #endif /*__cplusplus*/
 #include "avr_emulation.h"

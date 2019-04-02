@@ -42,7 +42,7 @@
 
 #ifdef __cplusplus
  extern "C" {
-#endif
+#endif //__cplusplus
 
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
@@ -59,7 +59,8 @@ void coreCallback(void);
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
+
 #endif /* USE_CORECALLBACK */
 #endif /* __CORECALLBACK_H */
 

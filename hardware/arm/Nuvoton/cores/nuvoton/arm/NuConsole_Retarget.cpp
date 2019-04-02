@@ -8,12 +8,9 @@
  * @note
  * Copyright (C) 2016 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
+#include "Arduino.h"
 #include "NuConsole.h"
-#include <stdio.h>
-#include "systemDrivers.h"
-
 #include "unistd.h"
-#include "cmsis_gcc.h"
 #include <reent.h>        // required for _write_r
 
 NuConsoleCLASS   NuConsole;
@@ -65,7 +62,8 @@ static Print *errPrint = &Serial;
 //	return ch;
 //}
 
-extern "C" int setPrintOutput(Print *p) {
+extern "C"
+int setPrintOutput(Print *p) {
     if (p == NULL) {
         print = NULL;
         return 0;
@@ -81,7 +79,8 @@ extern "C" int setPrintOutput(Print *p) {
     return print_fileno;
 }
 
-extern "C" void setStdPrintDev(Print *p,int file) {
+extern "C"
+void setStdPrintDev(Print *p,int file) {
     if((file == STDOUT_FILENO)||(file == STDIN_FILENO)){
 		stdPrint = p;
 	}
@@ -92,7 +91,8 @@ extern "C" void setStdPrintDev(Print *p,int file) {
 #endif
 }
 
-extern "C" int _write(int file, char *ptr, int len ) {
+extern "C"
+int _write(int file, char *ptr, int len ) {
 	if (file == STDOUT_FILENO){
 		return stdPrint->write(ptr, len);
 	} 
@@ -114,7 +114,8 @@ extern "C" int _write(int file, char *ptr, int len ) {
 }
 
 struct _reent;
-extern "C"  int _write_r(struct _reent *r, int file, const void *ptr, size_t len) {
+extern "C"
+int _write_r(struct _reent *r, int file, const void *ptr, size_t len) {
   (void) r;     /* Not used, avoid warning */
   _write(file, (char *)ptr, (int)len);
   return len;

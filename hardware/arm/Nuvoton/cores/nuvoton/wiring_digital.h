@@ -66,6 +66,9 @@ extern int digitalRead(uint8_t ucPin) ;
 
 extern void digitalToggle(uint8_t ucPin) ;
 
+extern uint32_t shiftIn( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder ); //add by huaweiwx@sina.com
+extern void shiftOut( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint8_t ucVal ); //add by huaweiwx@sina.com
+
 #ifdef __cplusplus
 }
 #endif

@@ -20,7 +20,11 @@
 #ifndef _DirectIO_Base_
 #define _DirectIO_Base_
 
+
 #ifdef __cplusplus
+
+#define BITS(start, end)   ((0xFFFFFFFFUL << (start)) & (0xFFFFFFFFUL >> (31U - (uint32_t)(end)))) 
+#define BITSREAD(regval, start, end) (((regval) & BITS((start),(end))) >> (start))
 
 // bits_type(N) gives the smallest type that will hold N bits (0 <= N <= 32)
 #define bits_type(N) typename _nbits_t<N>::bits_t
@@ -66,5 +70,5 @@ _nbits(32, uint32_t);
 
 #undef _nbits
 
-#endif
-#endif // _DirectIO_Base_
+#endif  // __cplusplus
+#endif  // _DirectIO_Base_

@@ -49,7 +49,7 @@
 
 #ifdef __cplusplus
  extern "C" {
-#endif
+#endif //__cplusplus
 
 /* Includes ------------------------------------------------------------------*/
 #include "core_callback.h"
@@ -109,7 +109,7 @@ void coreCallback(void)
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
 
 #endif // USE_CORECALLBACK
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

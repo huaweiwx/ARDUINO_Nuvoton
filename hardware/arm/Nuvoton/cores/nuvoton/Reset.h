@@ -21,7 +21,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif //__cplusplus
 
 void initiateReset(int ms);
 void tickReset();
@@ -29,6 +29,6 @@ void cancelReset();
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
 
 #endif
