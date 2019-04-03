@@ -146,11 +146,11 @@ extern const GPIOPinDescription GPIO_Desc[];
 
 #define PWM_MAX_COUNT 8
 extern const PWMPinDescription PWM_Desc[];
-#define PWM_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
+#define PWM_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type)
 
 #define ADC_MAX_COUNT 11
 extern const ADCPinDescription ADC_Desc[];
-#define ADC_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type);
+#define ADC_Config(Desc) outp32(GPIO_Desc[Desc.pintype.num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype.num].Pin.MFP) & ~GPIO_Desc[Desc.pintype.num].Pin.Mask) | Desc.pintype.type)
 
 #define SPI_MAX_COUNT 1
 extern const SPIPinDescription SPI_Desc[];
@@ -160,7 +160,7 @@ extern const SPIPinDescription SPI_Desc[];
       outp32(GPIO_Desc[Desc.mosi.num].Pin.MFP,(inp32(GPIO_Desc[Desc.mosi.num].Pin.MFP) & ~GPIO_Desc[Desc.mosi.num].Pin.Mask) | Desc.mosi.type); \
       outp32(GPIO_Desc[Desc.miso.num].Pin.MFP,(inp32(GPIO_Desc[Desc.miso.num].Pin.MFP) & ~GPIO_Desc[Desc.miso.num].Pin.Mask) | Desc.miso.type); \
       outp32(GPIO_Desc[Desc.ss.num].Pin.MFP,  (inp32(GPIO_Desc[Desc.ss.num].Pin.MFP)   & ~GPIO_Desc[Desc.ss.num].Pin.Mask)   | Desc.ss.type); \
-  }while(0);
+  }while(0)
 
 #define UART_MAX_COUNT 4
 #define CLK_CLKDIV_UART(x) CLK_CLKDIV0_UART(x)
@@ -170,7 +170,7 @@ extern const UARTPinDescription UART_Desc[];
   do { \
       outp32(GPIO_Desc[Desc.rxd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.rxd.num].Pin.MFP) & ~GPIO_Desc[Desc.rxd.num].Pin.Mask) | Desc.rxd.type); \
       outp32(GPIO_Desc[Desc.txd.num].Pin.MFP,(inp32(GPIO_Desc[Desc.txd.num].Pin.MFP) & ~GPIO_Desc[Desc.txd.num].Pin.Mask) | Desc.txd.type); \
-  }while(0);
+  }while(0)
 
 #define CAN_MAX_COUNT 1
 extern const CANPinDescription CAN_Desc[];
@@ -181,7 +181,7 @@ extern const CANPinDescription CAN_Desc[];
     uint8_t i; \
     for(i=0;i<2;i++) \
       outp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP,(inp32(GPIO_Desc[Desc.pintype[i].num].Pin.MFP) & ~GPIO_Desc[Desc.pintype[i].num].Pin.Mask) | Desc.pintype[i].type); \
-  }while(0);
+  }while(0)
 
 #define I2C_MAX_COUNT 2
 extern const I2CPinDescription I2C_Desc[];
@@ -189,6 +189,6 @@ extern const I2CPinDescription I2C_Desc[];
   do { \
       outp32(GPIO_Desc[Desc.sda.num].Pin.MFP,(inp32(GPIO_Desc[Desc.sda.num].Pin.MFP) & ~GPIO_Desc[Desc.sda.num].Pin.Mask) | Desc.sda.type); \
       outp32(GPIO_Desc[Desc.scl.num].Pin.MFP,(inp32(GPIO_Desc[Desc.scl.num].Pin.MFP) & ~GPIO_Desc[Desc.scl.num].Pin.Mask) | Desc.scl.type); \
-  }while(0);
+  }while(0)
 
 #endif /*_NUVOTON_TYPEDEF_H_*/

@@ -162,6 +162,8 @@ xEventGroupSetBitsFromISR	KEYWORD2
 xEventGroupSync	KEYWORD2
 xEventGroupWaitBits	KEYWORD2
 
+assertMsg	KEYWORD2
+
 #######################################
 # types (LITERAL1)
 #######################################

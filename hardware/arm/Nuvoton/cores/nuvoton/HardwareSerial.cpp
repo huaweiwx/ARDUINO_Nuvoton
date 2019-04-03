@@ -276,12 +276,12 @@
     #endif
   #endif
   #if(UART_MAX_COUNT>0)
-    ring_buffer rx_buffer0 = { { 0 }, 0, 0};  /* for UAR0_IRQ */
+    ring_buffer rx_buffer0 = { { 0 }, 0, 0};  /* for UAR0 */
     HardwareSerial Serial0(UART_Desc[0].U, 0,UART0_ROUTELOC, CLK_CLKSEL1_UART_S_PLL, 1, UART_Desc[0].irq, &rx_buffer0);
   #endif
   
   #if(UART_MAX_COUNT>1)
-    ring_buffer rx_buffer1 = { { 0 }, 0, 0}; /* for UAR1_IRQ */
+    ring_buffer rx_buffer1 = { { 0 }, 0, 0}; /* for UAR1 */
     HardwareSerial Serial1(UART_Desc[1].U, 1,UART1_ROUTELOC, CLK_CLKSEL1_UART_S_PLL, 1, UART_Desc[1].irq, &rx_buffer1);
   #endif
   

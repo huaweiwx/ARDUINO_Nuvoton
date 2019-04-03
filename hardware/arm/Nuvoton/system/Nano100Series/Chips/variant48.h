@@ -22,63 +22,68 @@
   SOFTWARE.
 */
 
+#define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}  
+#define MFP_PN(a, b,c) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_##c##_MFP, \
+                         SYS_P##a##_##c##_MFP_P##a##b##_MFP_Msk, \
+						 SYS_P##a##_##c##_MFP_P##a##b##_MFP_GP##a##b}}
+
 #ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
-  {NULL, NULL, {NULL, NULL, NULL}}, //0
-  {PB, BIT12, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB12_MFP_Msk, SYS_PB_H_MFP_PB12_MFP_GPB12}}, //1
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 2,X32_OUT                                   */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 3,X32_IN                                    */
-  {PA, BIT11, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA11_MFP_Msk, SYS_PA_H_MFP_PA11_MFP_GPA11}}, //4
-  {PA, BIT10, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA10_MFP_Msk, SYS_PA_H_MFP_PA10_MFP_GPA10}}, //5
-  {PA, BIT9, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA9_MFP_Msk,   SYS_PA_H_MFP_PA9_MFP_GPA9}},   //6
-  {PA, BIT8, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA8_MFP_Msk,   SYS_PA_H_MFP_PA8_MFP_GPA8}},   //7
-  {PB, BIT4, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB4_MFP_Msk, SYS_PB_L_MFP_PB4_MFP_GPB4}},     //8
-  {PB, BIT5, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB5_MFP_Msk, SYS_PB_L_MFP_PB5_MFP_GPB5}},     //9
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 10,LDO_CAP */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 11,VDD     */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 12,VSS     */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 13,USB_VBUS       */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 14,USB_VDD33_CAP  */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 15,USB_D-         */
-  {NULL, NULL, {NULL, NULL, NULL}}, /* 16,USB_D+         */
-  {PB, BIT0, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB0_MFP_Msk, SYS_PB_L_MFP_PB0_MFP_GPB0}},    //17
-  {PB, BIT1, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB1_MFP_Msk, SYS_PB_L_MFP_PB1_MFP_GPB1}},    //18
-  {PB, BIT2, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB2_MFP_Msk, SYS_PB_L_MFP_PB2_MFP_GPB2}},    //19
-  {PB, BIT3, {(uint32_t)&SYS->PB_L_MFP, SYS_PB_L_MFP_PB3_MFP_Msk, SYS_PB_L_MFP_PB3_MFP_GPB3}},    //20
-  {PC, BIT3, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC3_MFP_Msk, SYS_PC_L_MFP_PC3_MFP_GPC3}},    //21
-  {PC, BIT2, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC2_MFP_Msk, SYS_PC_L_MFP_PC2_MFP_GPC2}},    //22
-  {PC, BIT1, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC1_MFP_Msk, SYS_PC_L_MFP_PC1_MFP_GPC1}},    //23
-  {PC, BIT0, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC0_MFP_Msk, SYS_PC_L_MFP_PC0_MFP_GPC0}},    //24
-  {PA, BIT15, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA15_MFP_Msk, SYS_PA_H_MFP_PA15_MFP_GPA15}},//25
-  {PA, BIT14, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA14_MFP_Msk, SYS_PA_H_MFP_PA14_MFP_GPA14}},//26
-  {PA, BIT13, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA13_MFP_Msk, SYS_PA_H_MFP_PA13_MFP_GPA13}},//27
-  {PA, BIT12, {(uint32_t)&SYS->PA_H_MFP, SYS_PA_H_MFP_PA12_MFP_Msk, SYS_PA_H_MFP_PA12_MFP_GPA12}},//28
+  MFP_NULL,           // 0 
+  MFP_PN(B, 12,H),    // 1  EBI_AD0/FCLKO                          
+  MFP_NULL,           // 2  X32_OUT                                
+  MFP_NULL,           // 3  X32_IN                                 
+  MFP_PN(A, 11,H),    // 4  I2C1_SCL/EBI_nRD/SC0_RST/SPI2_MOSI0    
+  MFP_PN(A, 10,H),    // 5  I2C1_SDA/EBI_nWR/SC0_PWR/SPI2_MISO0    
+  MFP_PN(A, 9, H),    // 6  I2C0_SCL/SC0_DAT/SPI2_CLK              
+  MFP_PN(A, 8, H),    // 7  I2C0_SDA/SC0_CLK/SPI2_SS0              
+  MFP_PN(B, 4, L),    // 8  UART1_RXD/SC0_CD/SPI2_SS0              
+  MFP_PN(B, 5, L),    // 9  UART1_TXD/SC0_RST/SPI2_CLK             
+  MFP_NULL,           // 10 LDO_CAP                                
+  MFP_NULL,           // 11 VDD                                    
+  MFP_NULL,           // 12 VSS                                    
+  MFP_NULL,           // 13 USB_VBUS                               
+  MFP_NULL,           // 14 USB_VDD33_CAP                          
+  MFP_NULL,           // 15 USB_D-                                 
+  MFP_NULL,           // 16 USB_D+                                 
+  MFP_PN(B, 0, L),    // 17 UART0_RXD/SPI1_MOSI0                   
+  MFP_PN(B, 1, L),    // 18 UART0_TXD/SPI1_MISO0                   
+  MFP_PN(B, 2, L),    // 19 UART0_RTSn/EBI_nWRL/SPI1_CLK           
+  MFP_PN(B, 3, L),    // 20 UART0_CTSn/EBI_nWRH/SPI1_SS0           
+  MFP_PN(C, 3, L),    // 21 SPI0_MOSI0/I2S_DO/SC1_RST              
+  MFP_PN(C, 2, L),    // 22 SPI0_MISO0/I2S_DI/SC1_PWR              
+  MFP_PN(C, 1, L),    // 23 SPI0_CLK/I2S_BCLK/SC1_DAT              
+  MFP_PN(C, 0, L),    // 24 SPI0_SS0/I2S_LRCLK/SC1_CLK             
+  MFP_PN(A, 15,H),    // 25 PWM0_CH3/I2S_MCLK/TC3/SC0_PWR/UART0_TXD
+  MFP_PN(A, 14,H),    // 26 PWM0_CH2/EBI_AD15/TC2/UART0_RXD        
+  MFP_PN(A, 13,H),    // 27 PWM0_CH1/EBI_AD14/TC1/I2C0_SCL         
+  MFP_PN(A, 12,H),    // 28 PWM0_CH0/EBI_AD13/TC0/I2C0_SDA         
 #if USE_ICE == 0
-  {PF, BIT0, {(uint32_t)&SYS->PF_L_MFP, SYS_PF_L_MFP_PF0_MFP_Msk, SYS_PF_L_MFP_PF0_MFP_GPF0}},   //29
-  {PF, BIT1, {(uint32_t)&SYS->PF_L_MFP, SYS_PF_L_MFP_PF1_MFP_Msk, SYS_PF_L_MFP_PF1_MFP_GPF1}},   //30
+  MFP_PN(F, 0, L),    // 29 INT0/ICE_DAT                          
+  MFP_PN(F, 1, L),    // 30 FCLKO/INT1/ICE_CLK
 #else
-  {NULL, NULL, {NULL, NULL, NULL}}, //29
-  {NULL, NULL, {NULL, NULL, NULL}}, //30
+  MFP_NULL,           // 29 INT0/ICE_DAT      
+  MFP_NULL,           // 30 FCLKO/INT1/ICE_CLK
 #endif
-  {NULL, NULL, {NULL, NULL, NULL}}, /*31,AVSS*/
-  {PA, BIT0, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA0_MFP_Msk, SYS_PA_L_MFP_PA0_MFP_GPA0}}, //32
-  {PA, BIT1, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA1_MFP_Msk, SYS_PA_L_MFP_PA1_MFP_GPA1}}, //33
-  {PA, BIT2, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA2_MFP_Msk, SYS_PA_L_MFP_PA2_MFP_GPA2}}, //34
-  {PA, BIT3, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA3_MFP_Msk, SYS_PA_L_MFP_PA3_MFP_GPA3}}, //35
-  {PA, BIT4, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA4_MFP_Msk, SYS_PA_L_MFP_PA4_MFP_GPA4}}, //36
-  {PA, BIT5, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA5_MFP_Msk, SYS_PA_L_MFP_PA5_MFP_GPA5}}, //37
-  {PA, BIT6, {(uint32_t)&SYS->PA_L_MFP, SYS_PA_L_MFP_PA6_MFP_Msk, SYS_PA_L_MFP_PA6_MFP_GPA6}}, //38
-  {NULL, NULL, {NULL, NULL, NULL}}, /*39,VREF*/
-  {NULL, NULL, {NULL, NULL, NULL}}, /*40,AVDD*/
-  {PC, BIT7, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC7_MFP_Msk, SYS_PC_L_MFP_PC7_MFP_GPC7 }},   //41
-  {PC, BIT6, {(uint32_t)&SYS->PC_L_MFP, SYS_PC_L_MFP_PC6_MFP_Msk, SYS_PC_L_MFP_PC6_MFP_GPC6 }},   //42
-  {PB, BIT15, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB15_MFP_Msk, SYS_PB_H_MFP_PB15_MFP_GPB15}},//43
-  {NULL, NULL, {NULL, NULL, NULL}}, /*44,XT1_IN */
-  {NULL, NULL, {NULL, NULL, NULL}}, /*45,XT1_OUT*/
-  {NULL, NULL, {NULL, NULL, NULL}}, /*46,nRESET */
-  {NULL, NULL, {NULL, NULL, NULL}}, /*47,PVSS*/
-  {PB, BIT8, {(uint32_t)&SYS->PB_H_MFP, SYS_PB_H_MFP_PB8_MFP_Msk, SYS_PB_H_MFP_PB8_MFP_GPB8 }},   //48
+  MFP_NULL,           // 31 AVSS                               
+  MFP_PN(A, 0, L),    // 32 AD0/SC2_CD                         
+  MFP_PN(A, 1, L),    // 33 AD1/EBI_AD12                       
+  MFP_PN(A, 2, L),    // 34 AD2/EBI_AD11/UART1_RXD             
+  MFP_PN(A, 3, L),    // 35 AD3/EBI_AD10/UART1_TXD             
+  MFP_PN(A, 4, L),    // 36 AD4/EBI_AD9/SC2_PWR/I2C0_SDA       
+  MFP_PN(A, 5, L),    // 37 AD5/EBI_AD8/SC2_RST/I2C0_SCL       
+  MFP_PN(A, 6, L),    // 38 AD6/EBI_AD7/TC3/SC2_CLK/PWM0_CH3   
+  MFP_NULL,           // 39 VREF                               
+  MFP_NULL,           // 40 AVDD                               
+  MFP_PN(C, 7, L),    // 41 DA1_OUT/EBI_AD5/TC1/PWM0_CH1       
+  MFP_PN(C, 6, L),    // 42 DA0_OUT/EBI_AD4/TC0/SC1_CD/PWM0_CH0
+  MFP_PN(B, 15,H),    // 43 INT1/SNOOPER/SC1_CD                
+  MFP_NULL,           // 44 XT1_IN                             
+  MFP_NULL,           // 45 XT1_OUT                            
+  MFP_NULL,           // 46 nRESET                             
+  MFP_NULL,           // 47 PVSS                               
+  MFP_PN(B, 8, H),    // 48 STADC/TM0/INT0/SC2_PWR             
 };
 #endif
 

@@ -150,9 +150,9 @@ extern const GPIOPinDescription GPIO_Desc[];
 #define GPIO_Config(Desc) \
   do { \
     outp32(Desc.Pin.MFP,(inp32(Desc.Pin.MFP) & ~Desc.Pin.Mask) | Desc.Pin.Type); \
-    outp32(&SYS->ALT_MFP, (inp32(&SYS->ALT_MFP)  & ~Desc.Pin.ALTMsk));  \
-    outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~Desc.Pin.ALT1Msk)); \
-    outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~Desc.Pin.ALT2Msk)); \
+    if(Desc.Pin.ALTMsk!=NULL) outp32(&SYS->ALT_MFP ,(inp32(&SYS->ALT_MFP)  & ~Desc.Pin.ALTMsk));  \
+    if(Desc.Pin.ALT1Msk!=NULL)outp32(&SYS->ALT_MFP1,(inp32(&SYS->ALT_MFP1) & ~Desc.Pin.ALT1Msk)); \
+    if(Desc.Pin.ALT2Msk!=NULL)outp32(&SYS->ALT_MFP2,(inp32(&SYS->ALT_MFP2) & ~Desc.Pin.ALT2Msk)); \
   }while(0);
 
 #define PWM_MAX_COUNT 8

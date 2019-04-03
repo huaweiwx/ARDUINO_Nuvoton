@@ -22,11 +22,12 @@
   SOFTWARE.
 */
 
-#ifndef GPIO_DESC_USERDEF
 #define MFP_NULL {NULL, NULL, {NULL, NULL, NULL}}  
 #define MFP_PN(a, b,c) {P##a,BIT##b,{(uint32_t)&SYS->P##a##_##c##_MFP, \
                          SYS_P##a##_##c##_MFP_P##a##b##_MFP_Msk, \
 						 SYS_P##a##_##c##_MFP_P##a##b##_MFP_GP##a##b}}
+
+#ifndef GPIO_DESC_USERDEF
 const GPIOPinDescription GPIO_Desc[] =
 {
   MFP_NULL,       //0

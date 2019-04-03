@@ -1,5 +1,5 @@
 /****************************************************************************
- * @file     NANO120VD3AN(LQFP1100)
+ * @file     NANO120VD3AN(LQFP100)
  * @version  V1.00
  * @Date     2018/10/19-20:44:46 
  * @brief    arduino pin descriptions file

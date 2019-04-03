@@ -23,140 +23,137 @@ M480.build.variant=M480
 M480.build.board=M480
 
 M480.menu.cpu.M481SI=NuMaker_M481SI(LQP64)(512kFLASH 160kRAM)
-M480.menu.cpu.M481SI.build.extra_flags0=-DCHIP64P -DM481S
+M480.menu.cpu.M481SI.build.extra_flags=-DCHIP64P -DM481S
 M480.menu.cpu.M481SI.build.board=GENERIC_M481S
 M480.menu.cpu.M481SI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M481SI.upload.maximum_size=524288
 M480.menu.cpu.M481SI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M481SG=GENERIC_M481SG(LQP64)(256kFLASH 96kRAM)
-#M480.menu.cpu.M481SG.build.extra_flags0=-DCHIP64P -DM481S
-#M480.menu.cpu.M481SG.build.board=GENERIC_M481S
-#M480.menu.cpu.M481SG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M481SG.upload.maximum_size=262144
-#M480.menu.cpu.M481SG.upload.maximum_data_size=98304
+M480.menu.cpu.M481SG=GENERIC_M481SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.M481SG.build.extra_flags=-DCHIP64P -DM481S
+M480.menu.cpu.M481SG.build.board=GENERIC_M481S
+M480.menu.cpu.M481SG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M481SG.upload.maximum_size=262144
+M480.menu.cpu.M481SG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M481LI=GENERIC_M481LI(LQP48)(512kFLASH 160kRAM)
-M480.menu.cpu.M481LI.build.extra_flags0=-DCHIP48P -DM481L
+M480.menu.cpu.M481LI.build.extra_flags=-DCHIP48P -DM481L
 M480.menu.cpu.M481LI.build.board=GENERIC_M481L
 M480.menu.cpu.M481LI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M481LI.upload.maximum_size=524288
 M480.menu.cpu.M481LI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M481LG=GENERIC_M481LG(LQP48)(256kFLASH 96kRAM)
-#M480.menu.cpu.M481LG.build.extra_flags0=-DCHIP48P -DM481L
-#M480.menu.cpu.M481LG.build.board=GENERIC_M481L
-#M480.menu.cpu.M481LG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M481LG.upload.maximum_size=262144
-#M480.menu.cpu.M481LG.upload.maximum_data_size=98304
+M480.menu.cpu.M481LG=GENERIC_M481LG(LQP48)(256kFLASH 96kRAM)
+M480.menu.cpu.M481LG.build.extra_flags=-DCHIP48P -DM481L
+M480.menu.cpu.M481LG.build.board=GENERIC_M481L
+M480.menu.cpu.M481LG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M481LG.upload.maximum_size=262144
+M480.menu.cpu.M481LG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M481ZI=GENERIC_M481ZI(QFN33)(512kFLASH 160kRAM)
-M480.menu.cpu.M481ZI.build.extra_flags0=-DCHIP33P -DM481Z
+M480.menu.cpu.M481ZI.build.extra_flags=-DCHIP33P -DM481Z
 M480.menu.cpu.M481ZI.build.board=GENERIC_M481Z
 M480.menu.cpu.M481ZI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M481ZI.upload.maximum_size=524288
 M480.menu.cpu.M481ZI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M481ZG=GENERIC_M481ZG(QFN33)(256kFLASH 96kRAM)
-#M480.menu.cpu.M481ZG.build.extra_flags0=-DCHIP33P -DM481Z
-#M480.menu.cpu.M481ZG.build.board=GENERIC_M481Z
-#M480.menu.cpu.M481ZG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M481ZG.upload.maximum_size=262144
-#M480.menu.cpu.M481ZG.upload.maximum_data_size=98304
+M480.menu.cpu.M481ZG=GENERIC_M481ZG(QFN33)(256kFLASH 96kRAM)
+M480.menu.cpu.M481ZG.build.extra_flags=-DCHIP33P -DM481Z
+M480.menu.cpu.M481ZG.build.board=GENERIC_M481Z
+M480.menu.cpu.M481ZG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M481ZG.upload.maximum_size=262144
+M480.menu.cpu.M481ZG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M482KI=GENERIC_M482KI(LQP128)(512kFLASH 160kRAM)
-M480.menu.cpu.M482KI.build.extra_flags0=-DCHIP128P -DM482K
+M480.menu.cpu.M482KI.build.extra_flags=-DCHIP128P -DM482K
 M480.menu.cpu.M482KI.build.board=GENERIC_M482K
 M480.menu.cpu.M482KI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M482KI.upload.maximum_size=524288
 M480.menu.cpu.M482KI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M482KG=GENERIC_M482KG(LQP128)(256kFLASH 96kRAM)
-#M480.menu.cpu.M482KG.build.extra_flags0=-DCHIP128P -DM482K
-#M480.menu.cpu.M482KG.build.board=GENERIC_M482K
-#M480.menu.cpu.M482KG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M482KG.upload.maximum_size=262144
-#M480.menu.cpu.M482KG.upload.maximum_data_size=98304
+M480.menu.cpu.M482KG=GENERIC_M482KG(LQP128)(256kFLASH 96kRAM)
+M480.menu.cpu.M482KG.build.extra_flags=-DCHIP128P -DM482K
+M480.menu.cpu.M482KG.build.board=GENERIC_M482K
+M480.menu.cpu.M482KG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M482KG.upload.maximum_size=262144
+M480.menu.cpu.M482KG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M482SI=GENERIC_M482SI(LQP64)(512kFLASH 160kRAM)
-M480.menu.cpu.M482SI.build.extra_flags0=-DCHIP64P -DM482S
+M480.menu.cpu.M482SI.build.extra_flags=-DCHIP64P -DM482S
 M480.menu.cpu.M482SI.build.board=GENERIC_M482S
 M480.menu.cpu.M482SI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M482SI.upload.maximum_size=524288
 M480.menu.cpu.M482SI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M482SG=GENERIC_M482SG(LQP64)(256kFLASH 96kRAM)
-#M480.menu.cpu.M482SG.build.extra_flags0=-DCHIP64P -DM482S
-#M480.menu.cpu.M482SG.build.board=GENERIC_M482S
-#M480.menu.cpu.M482SG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M482SG.upload.maximum_size=262144
-#M480.menu.cpu.M482SG.upload.maximum_data_size=98304
+M480.menu.cpu.M482SG=GENERIC_M482SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.M482SG.build.extra_flags=-DCHIP64P -DM482S
+M480.menu.cpu.M482SG.build.board=GENERIC_M482S
+M480.menu.cpu.M482SG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M482SG.upload.maximum_size=262144
+M480.menu.cpu.M482SG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M482LI=GENERIC_M482LI(LQP48)(512kFLASH 160kRAM)
-M480.menu.cpu.M482LI.build.extra_flags0=-DCHIP48P -DM482L
+M480.menu.cpu.M482LI.build.extra_flags=-DCHIP48P -DM482L
 M480.menu.cpu.M482LI.build.board=GENERIC_M482L
 M480.menu.cpu.M482LI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M482LI.upload.maximum_size=524288
 M480.menu.cpu.M482LI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M482LG=GENERIC_M482LG(LQP48)(256kFLASH 96kRAM)
-#M480.menu.cpu.M482LG.build.extra_flags0=-DCHIP48P -DM482L
-#M480.menu.cpu.M482LG.build.board=GENERIC_M482L
-#M480.menu.cpu.M482LG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M482LG.upload.maximum_size=262144
-#M480.menu.cpu.M482LG.upload.maximum_data_size=98304
+M480.menu.cpu.M482LG=GENERIC_M482LG(LQP48)(256kFLASH 96kRAM)
+M480.menu.cpu.M482LG.build.extra_flags=-DCHIP48P -DM482L
+M480.menu.cpu.M482LG.build.board=GENERIC_M482L
+M480.menu.cpu.M482LG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M482LG.upload.maximum_size=262144
+M480.menu.cpu.M482LG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M482ZI=GENERIC_M482ZI(QFN33)(512kFLASH 160kRAM)
-M480.menu.cpu.M482ZI.build.extra_flags0=-DCHIP33P -DM482Z
+M480.menu.cpu.M482ZI.build.extra_flags=-DCHIP33P -DM482Z
 M480.menu.cpu.M482ZI.build.board=GENERIC_M482Z
 M480.menu.cpu.M482ZI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M482ZI.upload.maximum_size=524288
 M480.menu.cpu.M482ZI.upload.maximum_data_size=163840
 
 M480.menu.cpu.M483K=GENERIC_M483K(LQP128)(512kFLASH 160kRAM)
-M480.menu.cpu.M483K.build.extra_flags0=-DCHIP128P -DM483K
+M480.menu.cpu.M483K.build.extra_flags=-DCHIP128P -DM483K
 M480.menu.cpu.M483K.build.board=GENERIC_M483K
 M480.menu.cpu.M483K.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M483K.upload.maximum_size=524288
 M480.menu.cpu.M483K.upload.maximum_data_size=163840
 
 M480.menu.cpu.M483SI=GENERIC_M483SI(LQP64)(512kFLASH 160kRAM)
-M480.menu.cpu.M483SI.build.extra_flags0=-DCHIP64P -DM483S
+M480.menu.cpu.M483SI.build.extra_flags=-DCHIP64P -DM483S
 M480.menu.cpu.M483SI.build.board=GENERIC_M483S
 M480.menu.cpu.M483SI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M483SI.upload.maximum_size=524288
 M480.menu.cpu.M483SI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M483SG=GENERIC_M483SG(LQP64)(256kFLASH 96kRAM)
-#M480.menu.cpu.M483SG.build.extra_flags0=-DCHIP64P -DM483S
-#M480.menu.cpu.M483SG.build.board=GENERIC_M483S
-#M480.menu.cpu.M483SG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M483SG.upload.maximum_size=262144
-#M480.menu.cpu.M483SG.upload.maximum_data_size=98304
+M480.menu.cpu.M483SG=GENERIC_M483SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.M483SG.build.extra_flags=-DCHIP64P -DM483S
+M480.menu.cpu.M483SG.build.board=GENERIC_M483S
+M480.menu.cpu.M483SG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M483SG.upload.maximum_size=262144
+M480.menu.cpu.M483SG.upload.maximum_data_size=98304
 
 M480.menu.cpu.M484K=GENERIC_M484K(LQP128)(512kFLASH 160kRAM)
-M480.menu.cpu.M484K.build.extra_flags0=-DCHIP128P -DM484K
+M480.menu.cpu.M484K.build.extra_flags=-DCHIP128P -DM484K
 M480.menu.cpu.M484K.build.board=GENERIC_M484K
 M480.menu.cpu.M484K.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M484K.upload.maximum_size=524288
 M480.menu.cpu.M484K.upload.maximum_data_size=163840
 
 M480.menu.cpu.M484SI=GENERIC_M484SI(LQP64)(512kFLASH 160kRAM)
-M480.menu.cpu.M484SI.build.extra_flags0=-DCHIP64P -DM484S
+M480.menu.cpu.M484SI.build.extra_flags=-DCHIP64P -DM484S
 M480.menu.cpu.M484SI.build.board=GENERIC_M484S
 M480.menu.cpu.M484SI.build.ldscript=512K_160K_flash_S.ld
 M480.menu.cpu.M484SI.upload.maximum_size=524288
 M480.menu.cpu.M484SI.upload.maximum_data_size=163840
 
-#M480.menu.cpu.M484SG=GENERIC_M484SG(LQP64)(256kFLASH 96kRAM)
-#M480.menu.cpu.M484SG.build.extra_flags0=-DCHIP64P -DM484S
-#M480.menu.cpu.M484SG.build.board=GENERIC_M484S
-#M480.menu.cpu.M484SG.build.ldscript=256K_96K_flash_S.ld
-#M480.menu.cpu.M484SG.upload.maximum_size=262144
-#M480.menu.cpu.M484SG.upload.maximum_data_size=98304
-
-M480.menu.startadr.default=flash(512k+160k)
-M480.menu.startadr.default.build.extra_flags={build.extra_flags0}
+M480.menu.cpu.M484SG=GENERIC_M484SG(LQP64)(256kFLASH 96kRAM)
+M480.menu.cpu.M484SG.build.extra_flags=-DCHIP64P -DM484S
+M480.menu.cpu.M484SG.build.board=GENERIC_M484S
+M480.menu.cpu.M484SG.build.ldscript=256K_96K_flash_S.ld
+M480.menu.cpu.M484SG.upload.maximum_size=262144
+M480.menu.cpu.M484SG.upload.maximum_data_size=98304
 
 #M480.menu.startadr.R20000000=Sram 0:0x20000000(128K+32K)
 #M480.menu.startadr.R20000000.upload.maximum_size=131072
@@ -176,7 +173,7 @@ M480.menu.startadr.default.build.extra_flags={build.extra_flags0}
 
 M480.menu.clock_source.HIRC192=HIRC(192MHz)
 M480.menu.clock_source.HIRC192.build.f_cpu=192000000L -DHIRC
-M480.menu.clock_source.HXT192=HXT_12M(192MMHz)
+M480.menu.clock_source.HXT192=HXT12M(192MMHz)
 M480.menu.clock_source.HXT192.build.f_cpu=192000000L -DHXT12
 
 M480.menu.serial.UART0=Serial0(PB_12/13)
@@ -779,11 +776,11 @@ M05x.menu.cpu.M052Z.upload.maximum_size=8192
 M05x.menu.cpu.M052Z.upload.maximum_data_size=4096
 M05x.menu.cpu.M052Z.upload.device=M052ZE
 
-M05x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+M05x.menu.clock_source.HIRC=HIRC22M(22.1184MHz)
 M05x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
-M05x.menu.clock_source.HXT1=HXT_12M(48MMHz)
+M05x.menu.clock_source.HXT1=HXT12M(48MMHz)
 M05x.menu.clock_source.HXT1.build.f_cpu=48000000L -DHXT12
-M05x.menu.clock_source.HXT2=HXT_12M(24MMHz)
+M05x.menu.clock_source.HXT2=HXT12M(24MMHz)
 M05x.menu.clock_source.HXT2.build.f_cpu=24000000L -DHXT12
 
 M05x.menu.serial.UART0=Serial0(P3_0/1)
@@ -868,9 +865,9 @@ M031.menu.cpu.M031TB.upload.maximum_size=16384
 M031.menu.cpu.M031TB.upload.maximum_data_size=2048
 M031.menu.cpu.M031TB.upload.device=M031TB
 
-M031.menu.clock_source.HIRC=HIRC_48M(72MHz)
+M031.menu.clock_source.HIRC=HIRC48M(72MHz)
 M031.menu.clock_source.HIRC.build.f_cpu=72000000L -DHIRC
-M031.menu.clock_source.HXT1=HXT_32M(72MMHz)
+M031.menu.clock_source.HXT1=HXT32M(72MMHz)
 M031.menu.clock_source.HXT1.build.f_cpu=72000000L -DHXT32
 
 M031.menu.serial.UART0=Serial0(PB_12/13)
@@ -947,9 +944,9 @@ MINI58.menu.cpu.MINI58F.upload.maximum_size=32768
 MINI58.menu.cpu.MINI58F.upload.maximum_data_size=4096
 MINI58.menu.cpu.MINI58F.upload.device=MINI58FAN
 
-MINI58.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+MINI58.menu.clock_source.HIRC=HIRC22M(22.1184MHz)
 MINI58.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
-MINI58.menu.clock_source.HXT125=HXT_12M(50MMHz)
+MINI58.menu.clock_source.HXT125=HXT12M(50MMHz)
 MINI58.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
 #MINI58.menu.clock_source.HXT1210=HXT_12M(100MMHz)
 #MINI58.menu.clock_source.HXT1210.build.f_cpu=100000000L -DHXT12
@@ -1047,9 +1044,9 @@ MINI5x.menu.cpu.MINI54F.upload.device=MINI54FAN
 #MINI5x.menu.cpu.MINI52F.upload.maximum_size=8192
 #MINI5x.menu.cpu.MINI52F.upload.maximum_data_size=2048
 
-MINI5x.menu.clock_source.HIRC=HIRC_22M(22.1184MHz)
+MINI5x.menu.clock_source.HIRC=HIRC22M(22.1184MHz)
 MINI5x.menu.clock_source.HIRC.build.f_cpu=22118400L -DHIRC
-MINI5x.menu.clock_source.HXT125=HXT_12M(50MMHz)
+MINI5x.menu.clock_source.HXT125=HXT12M(50MMHz)
 MINI5x.menu.clock_source.HXT125.build.f_cpu=50000000L -DHXT12
 
 MINI5x.menu.serial.UART0=Serial0(P1_2/3)
@@ -1106,9 +1103,9 @@ NUC029FAE.menu.cpu.FAE.upload.maximum_size=16384
 NUC029FAE.menu.cpu.FAE.upload.maximum_data_size=2048
 NUC029FAE.menu.cpu.FAE.upload.device=NUC029FAE
 
-NUC029FAE.menu.clock_source.HXT1=HXT_12M(72MMHz)
+NUC029FAE.menu.clock_source.HXT1=HXT12M(72MMHz)
 NUC029FAE.menu.clock_source.HXT1.build.f_cpu=72000000L -DHXT12
-NUC029FAE.menu.clock_source.HIRC=HIRC_22M(72MHz)
+NUC029FAE.menu.clock_source.HIRC=HIRC22M(72MHz)
 NUC029FAE.menu.clock_source.HIRC.build.f_cpu=72000000L -DHIRC
 
 NUC029FAE.menu.serial.UART0=Serial0(P1_3/2)
@@ -1174,9 +1171,9 @@ NUC029xDE.menu.cpu.LDE.upload.maximum_size=65536
 NUC029xDE.menu.cpu.LDE.upload.maximum_data_size=8192
 NUC029xDE.menu.cpu.LDE.upload.device=NUC029LDE
 
-NUC029xDE.menu.clock_source.HIRC=HIRC_22M(72MHz)
+NUC029xDE.menu.clock_source.HIRC=HIRC22M(72MHz)
 NUC029xDE.menu.clock_source.HIRC.build.f_cpu=72000000L -DHIRC
-NUC029xDE.menu.clock_source.HXT1=HXT_12M(72MMHz)
+NUC029xDE.menu.clock_source.HXT1=HXT12M(72MMHz)
 NUC029xDE.menu.clock_source.HXT1.build.f_cpu=72000000L -DHXT12
 
 NUC029xDE.menu.serial.UART0=Serial0(PA_3/2)
@@ -1241,9 +1238,9 @@ NUC029xEE.menu.cpu.LEE.upload.maximum_size=131072
 NUC029xEE.menu.cpu.LEE.upload.maximum_data_size=16384
 NUC029xEE.menu.cpu.LEE.upload.device=NUC029LEE
 
-NUC029xEE.menu.clock_source.HXT1=HXT_12M(72MMHz)
+NUC029xEE.menu.clock_source.HXT1=HXT12M(72MMHz)
 NUC029xEE.menu.clock_source.HXT1.build.f_cpu=72000000L -DHXT12
-NUC029xEE.menu.clock_source.HIRC=HIRC_22M(72MHz)
+NUC029xEE.menu.clock_source.HIRC=HIRC22M(72MHz)
 NUC029xEE.menu.clock_source.HIRC.build.f_cpu=72000000L -DHIRC
 
 NUC029xEE.menu.serial.UART0=Serial0(PB_0/1)
@@ -1314,9 +1311,9 @@ NUC029xGE.menu.cpu.LGE.upload.maximum_size=262144
 NUC029xGE.menu.cpu.LGE.upload.maximum_data_size=20480
 NUC029xGE.menu.cpu.LGE.upload.device=NUC029LGE
 
-NUC029xGE.menu.clock_source.HXT1=HXT_12M(72MMHz)
+NUC029xGE.menu.clock_source.HXT1=HXT12M(72MMHz)
 NUC029xGE.menu.clock_source.HXT1.build.f_cpu=72000000L -DHXT12
-NUC029xGE.menu.clock_source.HIRC=HIRC_22M(72MMHz)
+NUC029xGE.menu.clock_source.HIRC=HIRC22M(72MMHz)
 NUC029xGE.menu.clock_source.HIRC.build.f_cpu=72000000L -DHIRC
 
 NUC029xGE.menu.serial.UART0=Serial0(PA_3/2)
